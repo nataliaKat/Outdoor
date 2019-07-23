@@ -58,7 +58,7 @@
                     </form>
 
                     <li class="nav-item">
-                        <a href="/logout" class="nav-link" style="font-size: 20px"><i class="far fa-user-circle"></i>  Logout</a>
+                        <a href="/Outdoor/logout" class="nav-link" style="font-size: 20px"><i class="far fa-user-circle"></i>  Logout</a>
                     </li>
                 </ul>
             </div>
