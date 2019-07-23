@@ -1,0 +1,92 @@
+*, *:before, *:after {
+    box-sizing: border-box;
+  }
+  
+  body {
+    padding-top: 56px;
+  }
+/* NAVBAR "PRODUCTS"  */
+  .dropdown-toggle::after {
+    display:none;
+}
+
+li.dropdown:hover > .dropdown-menu {
+    display: block;
+    font-family: Helvetica;
+    font-size: 20px; 
+}
+
+
+.navbar h2 
+{
+  font-family: 'Courier New', Courier, monospace;
+}
+
+/* QUANTITY BUTTON */
+button, submit
+{
+  border: none;
+  outline: none;
+  padding: 0 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,.5);
+}
+
+
+.footer
+{
+  background-color: azure;
+ 
+}
+
+ul {
+  margin-bottom: 0%;
+  list-style-type: none;
+  padding-left: 0%;
+  text-align: left;
+
+}
+
+nav li
+  {
+    
+    margin-left:70px;
+  }
+
+.column-title
+{
+  text-align: left;
+}
+
+.subscribe-button {
+  background-color: rgb(65, 65, 65);
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 14px 2px;
+  cursor: pointer;
+  border-radius: 16px;
+}
+
+i 
+  {
+      font-size: 20px;
+  }
+
+  .navbar-nav > li > a {
+    /* font-family:cursive; */
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 25px;
+    color: #131414;
+    padding: 0;
+    border-bottom: 1px solid transparent;
+  }
+
+  .navbar-nav > li:hover > a {
+    text-decoration: none;
+    border-bottom: 1px solid #333333;
+  }
+  
