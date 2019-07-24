@@ -145,20 +145,21 @@
 
 
                         <div class="form-group">
-
+                            <input type="text" readonly="readonly" value="${pBrand.brandname}"/>
                             <%--<form:label path="brand">Brand</form:label>--%>
                             <select name="brandsId" id="brand" class="form-control" value="${pBrand.brandsId}" required="required">
                                 <!--here you will need JSTL code 'for-each'--> 
 
                                 <c:forEach items="${brands}" var="b">     
-                                    <option value="${b.brandsId}"<c:if > </c:if>>${b.brandname}</option>
+                                    <option value="${b.brandsId}" >${b.brandname}</option>
                                 </c:forEach>
                             </select>
                         </div>
 
 
                         <div class="form-group">
-                            <select name="categoryId" id="category" class="form-control" value="${pCategory.categoryId}" required="required">
+                            <input type="text" readonly="readonly" value="${pCategory.categoryName}"/>
+                            <select name="categoryId" id="category" class="form-control" value="${pCategory.categoryName}" required="required">
                                 <!--here you will need JSTL code 'for-each'-->
                                 <c:forEach items="${categories}" var="cat">
                                     <option value="${cat.categoryId}" >${cat.categoryName}</option>
@@ -166,9 +167,9 @@
                             </select>
                         </div>
 
-                            <input type="submit" value="Submit" />
+                        <input type="submit" value="Submit" />
 
-                        </div>
+                    </div>
                 </form:form>
 
                 <hr>
