@@ -2,6 +2,7 @@ D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\dao\HibernateTokenReposito
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\model\PersistentLogin.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\service\UserServiceImpl.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\security\SecurityConfiguration.java
+D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\service\CategoryService.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\dao\BrandDao.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\model\UserProfileType.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\dao\ProductDao.java
@@ -13,6 +14,7 @@ D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\controller\AppController.j
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\configuration\AppInitializer.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\model\UserProfile.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\configuration\AppConfig.java
+D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\dao\CategoryDao.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\service\UserService.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\service\UserProfileService.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\model\Category.java

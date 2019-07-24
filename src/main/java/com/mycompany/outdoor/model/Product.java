@@ -93,8 +93,6 @@ public class Product implements Serializable {
         this.imageUrl = imageUrl;
         this.description = description;
         this.name = name;
-//        this.quantity = quantity;
-//        this.saleList = saleList;
         this.brand = brand;
         this.category = category;
     }
@@ -175,7 +173,7 @@ public class Product implements Serializable {
         return category;
     }
 
-    public void setCategoryId(Category category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 
@@ -226,7 +224,7 @@ public class Product implements Serializable {
 
     @Override
     public String toString() {
-        return "Product{" + "productsId=" + productsId + ", price=" + price + ", imageUrl=" + imageUrl + ", description=" + description + brand + category + saleList + '}';
+        return "Product{" + "productsId=" + productsId + ", price=" + price + ", imageUrl=" + imageUrl + ", description=" + description + brand + category + '}';
     }
 
     

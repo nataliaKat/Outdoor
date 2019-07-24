@@ -65,6 +65,11 @@ public class Brand implements Serializable {
     
     public Brand() {
     }
+
+    public Brand(Integer brandsId, String brandname) {
+        this.brandsId = brandsId;
+        this.brandname = brandname;
+    }
     
     public Brand(Integer brandsId, String brandname, List<Product> products) {
         this.brandsId = brandsId;

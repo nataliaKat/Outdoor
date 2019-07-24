@@ -21,12 +21,28 @@ public class ProductDao extends AbstractDao<Integer, Product> {
 
     @SuppressWarnings("unchecked")
     public List<Product> findAllProducts() {
-       Criteria criteria = createEntityCriteria();
-       return (List<Product>) criteria.list();
+        Criteria criteria = createEntityCriteria();
+        return (List<Product>) criteria.list();
     }
 
     public Product findById(int id) {
-       return getByKey(id);
+        return getByKey(id);
+    }
+
+    public void updateProduct(Product product) {
+        System.out.println(product);
+        Product entity = findById(product.getProductsId());
+        System.out.println(entity);
+
+        if (entity != null) {
+            entity.setName(product.getName());
+            entity.setDescription(product.getDescription());
+            entity.setBrand(product.getBrand());
+            entity.setCategory(product.getCategory());
+            entity.setImageUrl(product.getImageUrl());
+            entity.setPrice(product.getPrice());
+        }
+
     }
 //
 //    public void saveProduct(Product p) {
@@ -37,10 +53,4 @@ public class ProductDao extends AbstractDao<Integer, Product> {
 //       delete(findById(id));
 //    }
 
-   
-
-    
-    
-    
 }
-

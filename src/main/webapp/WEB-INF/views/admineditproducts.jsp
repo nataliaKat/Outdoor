@@ -49,7 +49,6 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-
             <div class="collapse navbar-collapse" id="#navbarMenu">
                 <!-- <p class="text-center font-italic font-weight-bold" style="">Compass</p> -->
                 <ul class="navbar-nav ml-auto">
@@ -114,7 +113,7 @@
 
                 <div class="col-md-6 col-sm-6">
 
-                    <form:form method="POST" action="/update" modelAttribute="product" class="main-form needs-validation border" novalidate="novalidate">
+                    <form:form method="POST" action="/Outdoor/admin/products" modelAttribute="product" class="main-form needs-validation border" novalidate="novalidate">
 
                         <form:label path="productsId" type="hidden"></form:label>
                         <form:input path="productsId" type="hidden" />
@@ -147,30 +146,29 @@
 
                         <div class="form-group">
 
-                            <form:label path="brand">Brand</form:label>
-                            <form:select path="brand" id="brand" class="form-control" required="required">
+                            <%--<form:label path="brand">Brand</form:label>--%>
+                            <select name="brandsId" id="brand" class="form-control" value="${pBrand.brandsId}" required="required">
                                 <!--here you will need JSTL code 'for-each'--> 
 
                                 <c:forEach items="${brands}" var="b">     
-                                    <form:option value="${b}">${b.brandname}</form:option>
+                                    <option value="${b.brandsId}"<c:if > </c:if>>${b.brandname}</option>
                                 </c:forEach>
-                            </form:select>
+                            </select>
                         </div>
 
 
-                        <!--                                    <div class="form-group">
-                                                                <label for="category">Category</label>
-                                                                <select name="brand" id="category" class="form-control">
-                                                                     here you will need JSTL code 'for-each' 
-                                                                    <option value="category">Category name</option>
-                                                                    <option value="category">Category name </option>
-                        
-                                                                </select>
-                                                            </div>-->
+                        <div class="form-group">
+                            <select name="categoryId" id="category" class="form-control" value="${pCategory.categoryId}" required="required">
+                                <!--here you will need JSTL code 'for-each'-->
+                                <c:forEach items="${categories}" var="cat">
+                                    <option value="${cat.categoryId}" >${cat.categoryName}</option>
+                                </c:forEach>     
+                            </select>
+                        </div>
 
-                            <form:button type="submit" path="${product}" value="Submit">Submit</form:button>
+                            <input type="submit" value="Submit" />
 
-                    </div>
+                        </div>
                 </form:form>
 
                 <hr>

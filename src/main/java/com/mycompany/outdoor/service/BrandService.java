@@ -48,7 +48,6 @@ public class BrandService {
 //
     public List<Brand> findAllBrands() {
         List<Brand> brands = dao.findAllBrands();
-        System.out.println(brands);
         return brands;
     }
 

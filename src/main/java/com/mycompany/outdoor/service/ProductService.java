@@ -11,6 +11,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 /**
  *
  * @author kat26
@@ -23,7 +24,7 @@ public class ProductService {
     private ProductDao dao;
 
     
-    public Product findById(int id) {
+    public Product findById(Integer id) {
         return dao.findById(id);
     }
 //
@@ -31,22 +32,18 @@ public class ProductService {
 //        dao.saveProduct(product);
 //    }
 //
-//    public void updateProduct(Product product) {
-//        Product entity = dao.findById(product.getProductsId());
-//        if (entity != null) {
-//            entity.setName(product.getName());
-//            entity.setDescription(product.getDescription());
-//        }
-//        
-//    }
+    public void updateProduct(Product product) {
+       dao.updateProduct(product);
+    }
 //
 //    public void deleteProductById(int id) {
 //        dao.deleteProductById(id);
 //    }
 //
+
+    
     public List<Product> findAllProducts() {
         List<Product> products = dao.findAllProducts();
-        System.out.println(products);
         return products;
 
        //return dao.findAllProducts();

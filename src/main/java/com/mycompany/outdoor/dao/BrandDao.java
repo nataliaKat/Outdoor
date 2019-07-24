@@ -26,7 +26,7 @@ public class BrandDao extends AbstractDao<Integer, Brand>{
        return (List<Brand>) criteria.list();
     }
 
-    public Brand findById(int id) {
+    public Brand findById(Integer id) {
        return getByKey(id);
     }
 //

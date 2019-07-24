@@ -7,6 +7,7 @@ com\mycompany\outdoor\model\User.class
 com\mycompany\outdoor\converter\RoleToUserProfileConverter.class
 com\mycompany\outdoor\service\UserService.class
 com\mycompany\outdoor\model\Stock.class
+com\mycompany\outdoor\dao\CategoryDao.class
 com\mycompany\outdoor\service\ProductService.class
 com\mycompany\outdoor\dao\AbstractDao.class
 com\mycompany\outdoor\model\Brand.class
@@ -15,6 +16,7 @@ com\mycompany\outdoor\dao\UserProfileDao.class
 com\mycompany\outdoor\model\Sale.class
 com\mycompany\outdoor\service\UserProfileService.class
 com\mycompany\outdoor\model\UserProfile.class
+com\mycompany\outdoor\service\CategoryService.class
 com\mycompany\outdoor\security\CustomUserDetailsService.class
 com\mycompany\outdoor\dao\UserDaoImpl.class
 com\mycompany\outdoor\model\PersistentLogin.class
