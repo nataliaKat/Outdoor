@@ -57,7 +57,7 @@ public class Brand implements Serializable {
     @Size(max = 40)
     @Column(length = 40)
     private String brandname;
-//            @LazyCollection(LazyCollectionOption.FALSE)
+            @LazyCollection(LazyCollectionOption.FALSE)
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "brand")
     
@@ -74,7 +74,7 @@ public class Brand implements Serializable {
     public Brand(Integer brandsId, String brandname, List<Product> products) {
         this.brandsId = brandsId;
         this.brandname = brandname;
-        this.products = products;
+//        this.products = products;
     }
 
     public Integer getBrandsId() {

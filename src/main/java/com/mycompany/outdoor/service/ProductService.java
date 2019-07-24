@@ -50,7 +50,9 @@ public class ProductService {
         
     }
    
-
+    public void deleteProductById(Integer id) {
+        dao.deleteProductById(id);
+    }
   
 
 }

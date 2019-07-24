@@ -49,8 +49,8 @@ public class ProductDao extends AbstractDao<Integer, Product> {
 //        persist(p);
 //    }
 //
-//    public void deleteProductById(int id) {
-//       delete(findById(id));
-//    }
+    public void deleteProductById(Integer id) {
+       delete(findById(id));
+    }
 
 }

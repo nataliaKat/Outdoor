@@ -27,8 +27,11 @@ com\mycompany\outdoor\dao\ProductDao.class
 com\mycompany\outdoor\configuration\AppInitializer.class
 com\mycompany\outdoor\model\UserProfileType.class
 com\mycompany\outdoor\configuration\HibernateConfiguration.class
+com\mycompany\outdoor\entity\ProductEntity.class
+com\mycompany\outdoor\entity\CategoryEntity.class
 com\mycompany\outdoor\model\Category.class
 com\mycompany\outdoor\dao\BrandDao.class
 com\mycompany\outdoor\security\SecurityWebApplicationInitializer.class
 com\mycompany\outdoor\service\BrandService.class
+com\mycompany\outdoor\entity\BrandEntity.class
 com\mycompany\outdoor\security\SecurityConfiguration.class

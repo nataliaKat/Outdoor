@@ -107,7 +107,7 @@
             <div class="row">
                 <div class="col-lg-3 border" style="text-align: center">
                     FILTER SECTION                                            
-                    ${jsonProd}
+                    ${jsonList}
 
                 </div>
                 <div class="col-lg-9">
@@ -130,7 +130,9 @@
                                         <a href="<c:url value="/admin/products/${product.productsId}"/>" class="btn btn-info btn-block" >Edit</a>
                                     </div>
                                     <!-- /EDIT -->
-
+                                    <div class="purchase" style="text-align: center">
+                                        <a href="<c:url value="/admin/products/delete/${product.productsId}"/>" class="btn btn-danger btn-block" >Delete</a>
+                                    </div>
                                     <div class="card-footer">
                                         <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
                                     </div>
@@ -317,6 +319,14 @@
                                 integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
                                 crossorigin="anonymous"></script>  -->
 
+                        
+                        
+                        <script>
+                            let products = JSON.parse('${jsonList}');
+                            console.log(products);
+                            
+                        </script>
+                        
                         </body>
 
                         </html>

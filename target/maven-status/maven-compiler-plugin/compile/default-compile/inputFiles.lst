@@ -18,6 +18,7 @@ D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\dao\CategoryDao.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\service\UserService.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\service\UserProfileService.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\model\Category.java
+D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\entity\BrandEntity.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\dao\UserProfileDao.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\model\User.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\security\SecurityWebApplicationInitializer.java
@@ -25,10 +26,12 @@ D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\dao\UserProfileDaoImpl.jav
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\model\Sale.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\security\CustomUserDetailsService.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\service\UserProfileServiceImpl.java
+D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\entity\CategoryEntity.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\converter\RoleToUserProfileConverter.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\configuration\HibernateConfiguration.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\controller\ProductController.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\service\ProductService.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\dao\AbstractDao.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\dao\UserDao.java
+D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\entity\ProductEntity.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\model\Brand.java

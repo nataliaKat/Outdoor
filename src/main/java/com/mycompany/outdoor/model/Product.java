@@ -73,7 +73,7 @@ public class Product implements Serializable {
     @OneToMany(mappedBy = "product")
     private List<Sale> saleList;
 
-//    @LazyCollection(LazyCollectionOption.FALSE)
+    @LazyCollection(LazyCollectionOption.FALSE)
 
     @ManyToOne
     @JoinColumn(name = "brands_id")
@@ -158,7 +158,7 @@ public class Product implements Serializable {
 //    public void setStockList(Stock quantity) {
 //        this.quantity = quantity;
 //    }
-//
+
     public List<Sale> getSaleList() {
         return saleList;
     }

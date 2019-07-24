@@ -5,12 +5,17 @@
  */
 package com.mycompany.outdoor.controller;
 
+import com.google.gson.Gson;
+import com.mycompany.outdoor.entity.BrandEntity;
+import com.mycompany.outdoor.entity.CategoryEntity;
+import com.mycompany.outdoor.entity.ProductEntity;
 import com.mycompany.outdoor.model.Brand;
 import com.mycompany.outdoor.model.Category;
 import com.mycompany.outdoor.model.Product;
 import com.mycompany.outdoor.service.BrandService;
 import com.mycompany.outdoor.service.CategoryService;
 import com.mycompany.outdoor.service.ProductService;
+import java.util.ArrayList;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,17 +48,21 @@ public class ProductController {
     @RequestMapping(method = RequestMethod.GET)
     public String findAllProducts(ModelMap model) {
         List<Product> products = productService.findAllProducts();
+        List<ProductEntity> prodPojo = new ArrayList();
+        for(Product p : products) {
+            BrandEntity tempBrand = new BrandEntity(p.getBrand().getBrandsId(), p.getBrand().getBrandname());
+            CategoryEntity tempCategory = new CategoryEntity(p.getCategory().getCategoryId(), p.getCategory().getCategoryName());
+            ProductEntity tempProduct = new ProductEntity(p.getProductsId(), p.getPrice(), p.getImageUrl(), p.getDescription(), p.getName(), tempBrand, tempCategory);
+            prodPojo.add(tempProduct);
+        }
+        
         model.addAttribute("products", products);
-//        ObjectMapper Obj = new ObjectMapper();
-//        try {
-//
-//            // get Oraganisation object as a json string 
-//            String maria = Obj.writeValueAsString(products);
-//            System.out.println(maria);
-//            System.out.println("before");
-//
-//            model.addAttribute("jsonProd", maria);
-//            System.out.println("after");
+        Gson gson = new Gson();
+        String jsonString = gson.toJson(prodPojo);
+        System.out.println(jsonString);
+                model.addAttribute("jsonList", jsonString);
+
+//        
 //
 ////        model.addAttribute("productsJson", products);
         // Displaying JSON String 
@@ -64,7 +73,7 @@ public class ProductController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public String findById(ModelMap model, @PathVariable("id") Integer id) {
+    public String updateForm(ModelMap model, @PathVariable("id") Integer id) {
         Product p = productService.findById(id);
 //        if (p != null) {
 ////            Hibernate.initialize(p.getBrand());
@@ -72,6 +81,7 @@ public class ProductController {
 //
 //        }
 
+        
         model.addAttribute("product", p);
         model.addAttribute("pBrand", p.getBrand());
         model.addAttribute("pCategory", p.getCategory());
@@ -107,24 +117,19 @@ public class ProductController {
 //        return "";
 //    }
 //
-//    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-//    public String deleteBrandById(ModelMap model, @PathVariable("id") int id) {
-//        service.deleteBrandById(id);
-//
-//        return "success";
-//    }
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    public String deleteBrandById(ModelMap model, @PathVariable("id") Integer id) {
+        productService.deleteProductById(id);
+        List<Product> products = productService.findAllProducts();
+
+        model.addAttribute("products", products);
+
+
+        return "adminproducts";
+    }
 //    
 //
-//    @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
-//    public String updateById(ModelMap model, @PathVariable("id") int id) {
-//        System.setProperty("https.protocols", "TLSv1.1");
-//
-////System.setProperty("https.protocols", "TLSv1.1");
-//
-//
-//        model.addAttribute("product", productService.findById(id));
-//        return "adminupdateproduct";
-//    }
+
 //    
 
     @RequestMapping(method = RequestMethod.POST)
