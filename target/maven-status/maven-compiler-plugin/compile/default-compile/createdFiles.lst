@@ -21,11 +21,13 @@ com\mycompany\outdoor\security\CustomUserDetailsService.class
 com\mycompany\outdoor\dao\UserDaoImpl.class
 com\mycompany\outdoor\model\PersistentLogin.class
 com\mycompany\outdoor\configuration\AppConfig.class
+com\mycompany\outdoor\dao\SaleDao.class
 com\mycompany\outdoor\dao\UserDao.class
 com\mycompany\outdoor\service\UserProfileServiceImpl.class
 com\mycompany\outdoor\dao\ProductDao.class
 com\mycompany\outdoor\configuration\AppInitializer.class
 com\mycompany\outdoor\model\UserProfileType.class
+com\mycompany\outdoor\controller\SaleController.class
 com\mycompany\outdoor\configuration\HibernateConfiguration.class
 com\mycompany\outdoor\entity\ProductEntity.class
 com\mycompany\outdoor\entity\CategoryEntity.class
@@ -35,3 +37,4 @@ com\mycompany\outdoor\security\SecurityWebApplicationInitializer.class
 com\mycompany\outdoor\service\BrandService.class
 com\mycompany\outdoor\entity\BrandEntity.class
 com\mycompany\outdoor\security\SecurityConfiguration.class
+com\mycompany\outdoor\service\SaleService.class

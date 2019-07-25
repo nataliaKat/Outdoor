@@ -4,16 +4,23 @@
   
   body {
     padding-top: 56px;
+    
   }
 /* NAVBAR "PRODUCTS"  */
   .dropdown-toggle::after {
     display:none;
 }
+.big-banner {
+  background-image: url('../pictures/mountain.jpeg');
+ background-position: center;
+ 
+}
+
 
 li.dropdown:hover > .dropdown-menu {
     display: block;
-    font-family: Helvetica;
-    font-size: 20px; 
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px; 
 }
 
 
@@ -22,15 +29,19 @@ li.dropdown:hover > .dropdown-menu {
   font-family: 'Courier New', Courier, monospace;
 }
 
+/* .fixed-top-2 {
+  margin-top: 130px;
+} */
+
 /* QUANTITY BUTTON */
-button, submit
+/* button
 {
   border: none;
   outline: none;
   padding: 0 10px;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0,0,0,.5);
-}
+} */
 
 
 .footer
@@ -42,7 +53,7 @@ button, submit
 ul {
   margin-bottom: 0%;
   list-style-type: none;
-  padding-left: 0%;
+  padding-left: 0px;
   text-align: left;
 
 }
@@ -58,7 +69,7 @@ nav li
   text-align: left;
 }
 
-.subscribe-button {
+button {
   background-color: rgb(65, 65, 65);
   border: none;
   color: white;
@@ -69,6 +80,13 @@ nav li
   margin: 14px 2px;
   cursor: pointer;
   border-radius: 16px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+
+button:hover {
+  background-color: aquamarine; 
+  color: black;
 }
 
 i 
@@ -77,16 +95,37 @@ i
   }
 
   .navbar-nav > li > a {
-    /* font-family:cursive; */
-    font-family:Arial, Helvetica, sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 25px;
-    color: #131414;
+    color: #686868;
     padding: 0;
     border-bottom: 1px solid transparent;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
   }
 
   .navbar-nav > li:hover > a {
     text-decoration: none;
-    border-bottom: 1px solid #333333;
+    border-bottom: 1px solid #4b4747;
   }
   
+
+  .foo-columns > a:hover {
+    text-decoration: none;
+    border-bottom: 1px solid #4b4747;
+  
+  } 
+
+.nav-link{
+ color: #371685;
+}  
+
+.card > a > img {
+  height: 200px;
+  background-color: black;  
+}
+
+#breadcrumb {
+  background: white;
+  color: white; 
+}

@@ -27,6 +27,15 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
               integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
+        <!-- Monserant-Font -->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+
+        <!-- Muli Font -->
+        <link href="https://fonts.googleapis.com/css?family=Muli:600&display=swap" rel="stylesheet">
+
+        <!-- Rokkitt Font -->
+        <link href="https://fonts.googleapis.com/css?family=Rokkitt:500&display=swap" rel="stylesheet">
+
         <!-- My CSS -->
         <link rel="stylesheet" type="text/css" href="static/css/style.css">
 
@@ -109,9 +118,13 @@
                     <img class="card-img-top" style="height: 420px"
                          src="https://images.pexels.com/photos/2376997/pexels-photo-2376997.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940/1200x600"
                          alt="">
+                    <div class="delete mt-5 border-top border-info" style=" font-family: 'Montserrat', sans-serif;  width:470px; height: 150px;">
+                    <span class="light-text" style="margin-top: 20px;">Do you want to delete this product?</span>
+                    <button style="position:relative; top:72px; right: 292px">Delete</button>
+                </div>
                 </div>
 
-                <div class="col-md-6 col-sm-6">
+                <div class="col-md-6 col-sm-6 border border-dark rounded " style="box-shadow:20px 20px 10px grey; ">
 
                     <form:form method="POST" action="/Outdoor/admin/products" modelAttribute="product" class="main-form needs-validation border" novalidate="novalidate">
 
@@ -168,6 +181,7 @@
                         </div>
 
                         <input type="submit" value="Submit" />
+
 
                     </div>
                 </form:form>

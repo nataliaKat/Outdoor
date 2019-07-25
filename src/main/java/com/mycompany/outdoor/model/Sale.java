@@ -52,7 +52,7 @@ public class Sale implements Serializable {
     private Integer total;
     @JoinColumn(name = "app_user_id", referencedColumnName = "id", nullable = false)
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
-    private User appUserId;
+    private User appUser;
 //        @LazyCollection(LazyCollectionOption.FALSE)
 
     @JoinColumn(name = "products_id", referencedColumnName = "products_id")
@@ -62,10 +62,15 @@ public class Sale implements Serializable {
     public Sale() {
     }
 
-    public Sale(Integer salesId) {
+    public Sale(Integer salesId, Date salesDate, Integer total, User appUser, Product product) {
         this.salesId = salesId;
+        this.salesDate = salesDate;
+        this.total = total;
+        this.appUser = appUser;
+        this.product = product;
     }
 
+  
     public Integer getSalesId() {
         return salesId;
     }
@@ -91,11 +96,27 @@ public class Sale implements Serializable {
     }
 
     public User getAppUserId() {
-        return appUserId;
+        return appUser;
     }
 
-    public void setAppUserId(User appUserId) {
-        this.appUserId = appUserId;
+    public User getAppUser() {
+        return appUser;
+    }
+
+    public void setAppUser(User appUser) {
+        this.appUser = appUser;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public void setAppUserId(User appUser) {
+        this.appUser = appUser;
     }
 
 //    public Product getProduct() {
@@ -112,7 +133,7 @@ public class Sale implements Serializable {
         hash = 29 * hash + Objects.hashCode(this.salesId);
         hash = 29 * hash + Objects.hashCode(this.salesDate);
         hash = 29 * hash + Objects.hashCode(this.total);
-        hash = 29 * hash + Objects.hashCode(this.appUserId);
+        hash = 29 * hash + Objects.hashCode(this.appUser);
 //        hash = 29 * hash + Objects.hashCode(this.product);
         return hash;
     }
@@ -138,7 +159,7 @@ public class Sale implements Serializable {
         if (!Objects.equals(this.total, other.total)) {
             return false;
         }
-        if (!Objects.equals(this.appUserId, other.appUserId)) {
+        if (!Objects.equals(this.appUser, other.appUser)) {
             return false;
         }
 //        if (!Objects.equals(this.product, other.product)) {
@@ -149,7 +170,7 @@ public class Sale implements Serializable {
 
     @Override
     public String toString() {
-        return "Sale{" + "salesId=" + salesId + ", salesDate=" + salesDate + ", total=" + total + ", appUserId=" + appUserId + '}';
+        return "Sale{" + "salesId=" + salesId + ", salesDate=" + salesDate + ", total=" + total + ", appUser=" + appUser + product + '}';
     }
 
  
