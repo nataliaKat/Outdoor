@@ -125,7 +125,7 @@
                         <c:forEach items='${products}' var='product'>
                             <div class="col-lg-4 col-md-6 mb-4">
                                 <div class="card h-100">
-                                    <a href="#"><img class="card-img-top" src="https://images.pexels.com/photos/2376997/pexels-photo-2376997.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940/700x400" alt=""></a>
+                                    <a href="#"><img class="card-img-top" src="${product.imageUrl}" alt=""></a>
                                     <div class="card-body">
                                         <h4 class="card-title">
                                             <a href="#">${product.name}</a>

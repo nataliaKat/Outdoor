@@ -29,19 +29,6 @@ li.dropdown:hover > .dropdown-menu {
   font-family: 'Courier New', Courier, monospace;
 }
 
-/* .fixed-top-2 {
-  margin-top: 130px;
-} */
-
-/* QUANTITY BUTTON */
-/* button
-{
-  border: none;
-  outline: none;
-  padding: 0 10px;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0,0,0,.5);
-} */
 
 
 .footer
@@ -125,7 +112,7 @@ i
   background-color: black;  
 }
 
-#breadcrumb {
-  background: white;
-  color: white; 
+.quantityButton input {
+  display: flex;
+  align-self: center;
 }

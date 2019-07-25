@@ -30,7 +30,7 @@ public class SaleController {
         List<Sale> sales = saleService.findAllSales();
         model.addAttribute("sales", sales);
         
-        return "test";
+        return "salesadmin";
     }
     
 }

@@ -130,14 +130,14 @@ public class ProductController {
     }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-    public String deleteBrandById(ModelMap model, @PathVariable("id") Integer id) {
+    public String deleteProductById(ModelMap model, @PathVariable("id") Integer id) {
         productService.deleteProductById(id);
         List<Product> products = productService.findAllProducts();
 
         model.addAttribute("products", products);
 
 
-        return "admineditproducts";
+        return "adminproducts";
     }
     
 
