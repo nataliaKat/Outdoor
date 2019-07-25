@@ -1,7 +1,7 @@
 <%-- 
-    Document   : admineditproducts
-    Created on : 22 Ιουλ 2019, 12:30:30 πμ
-    Author     : kat26
+    Document   : admininsertproduct
+    Created on : Jul 25, 2019, 12:16:51 AM
+    Author     : Eleni
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -111,22 +111,14 @@
 
         </nav>
 
-        <!-- MAIN BODY -->
+        <!-- PICTURE COLUMN -->
         <div class="container" style="margin-top: 50px ; padding-right: 30px">
             <div class="row">
-                <div class="col-md-6 col-sm-6">
-                    <img class="card-img-top" style="height: 420px"
-                         src="https://images.pexels.com/photos/2376997/pexels-photo-2376997.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940/1200x600"
-                         alt="">
-                    <div class="delete mt-5 border-top border-info" style=" font-family: 'Montserrat', sans-serif;  width:470px; height: 150px;">
-                    <span class="light-text" style="margin-top: 20px;">Do you want to delete this product?</span>
-                    <button style="position:relative; top:72px; right: 292px">Delete</button>
-                </div>
-                </div>
 
-                <div class="col-md-6 col-sm-6 border border-dark rounded " style="box-shadow:20px 20px 10px grey; ">
+                <!-- FORM COLUMN -->
+                <div class="col-md-6 col-sm-6 border border-dark rounded " style="box-shadow:20px 20px 10px grey; position:relative; left:310px ">
 
-                    <form:form method="POST" action="/Outdoor/admin/products" modelAttribute="product" class="main-form needs-validation border" novalidate="novalidate">
+                    <form:form method="POST" action="/Outdoor/admin/products/new" modelAttribute="product" class="main-form needs-validation border" novalidate="novalidate">
 
                         <form:label path="productsId" type="hidden"></form:label>
                         <form:input path="productsId" type="hidden" />
@@ -158,9 +150,9 @@
 
 
                         <div class="form-group">
-                            <input type="text" readonly="readonly" value="${pBrand.brandname}"/>
+                            
                             <%--<form:label path="brand">Brand</form:label>--%>
-                            <select name="brandsId" id="brand" class="form-control" value="${pBrand.brandsId}" required="required">
+                            <select name="brandsId" id="brand" class="form-control"  required="required">
                                 <!--here you will need JSTL code 'for-each'--> 
 
                                 <c:forEach items="${brands}" var="b">     
@@ -171,34 +163,139 @@
 
 
                         <div class="form-group">
-                            <input type="text" readonly="readonly" value="${pCategory.categoryName}"/>
-                            <select name="categoryId" id="category" class="form-control" value="${pCategory.categoryName}" required="required">
+                            
+                            <select name="categoryId" id="category" class="form-control" required="required">
                                 <!--here you will need JSTL code 'for-each'-->
                                 <c:forEach items="${categories}" var="cat">
                                     <option value="${cat.categoryId}" >${cat.categoryName}</option>
                                 </c:forEach>     
                             </select>
                         </div>
-
-                        <input type="submit" value="Submit" />
+                        <input type="submit" value="Insert"/>
 
 
                     </div>
                 </form:form>
-
-                <hr>
-
             </div>
 
-
-
+            <hr>
 
         </div>
 
+        <!-- FOOTER -->
+
+        <footer class="footer mt-5">
+            <div class="container p-5">
+                <!-- FIRST ROW -->
+                <div class="row" style="padding-bottom: 90px; text-align: center">
+                    <div class="col-md-3" style="padding-top: 30px; ">
+                        <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0%">
+                            Get in touch
+                        </h5>
+                    </div>
+                    <div class="col-md-3" style="padding-top: 30px; ">
+                        <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0%">
+                            Categories
+                        </h5>
+
+                        <ul style="padding-left: 0%">
+                            <li class="foo-columns" style="padding-bottom: 18px">
+                                <a href="#" class="text-secondary">
+                                    <i class="fas fa-campground"></i> tents
+                                </a>
+                            </li>
+
+                            <li class="foo-columns" style="padding-bottom: 18px">
+                                <a href="#" class="text-secondary">
+                                    <i class="fas fa-toolbox"></i> hiking equipment
+                                </a>
+                            </li>
+
+                            <li class="foo-columns" style="padding-bottom: 18px">
+                                <a href="#" class="text-secondary ">
+                                    <i class="fas fa-hiking"></i> backpacks
+                                </a>
+                            </li>
+
+                            <li class="foo-columns" style="padding-bottom: 18px">
+                                <a href="#" class="text-secondary">
+                                    <i class="fas fa-medkit"></i> first-aid kits
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3" style="padding-top: 30px; ">
+                        <h5 class="column-title" style="padding-bottom: 30px ;margin-bottom: 0%">
+                            Contact
+                        </h5>
+                        <ul style="padding-left: 0%">
+                            <li class="foo-columns" style="padding-bottom: 18px">
+                                <a href="#" class="text-secondary">
+                                    <i class="far fa-envelope" style=></i> compass@hotmail.com
+                                </a>
+                            </li>
+
+                            <li class="foo-columns" style="padding-bottom: 18px">
+                                <a href="#" class="text-secondary">
+                                    <i class="fas fa-phone-square"></i>
+
+                                    (+30) 6986487890
+                                </a>
+
+                            </li>
+
+                            <li class="foo-columns" style="padding-bottom: 18px">
+                                <a href="#" class="text-secondary">
+                                    <i class="fas fa-map-marker-alt"></i>location
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="col-md-3" style="padding-top: 30px; ">
+                        <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0% ;text-align: center">
+                            Newsletter
+                        </h5>
+                        <form>
+                            <div class="email-field">
+                                <input class="text-secondary"
+                                       style="padding-bottom: 5px; border-style: hidden; padding-top: 0%; text-align: center"
+                                       placeholder="email@example.com">
+                                <hr style="margin-bottom:0% ; margin-top:15px">
+                            </div>
+                            <div class="subscribe">
+                                <button class="subscribe-button">SUBSCRIBE</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+                <!-- SECOND ROW -->
+                <div class="row">
+                    <div class="paypal"
+                         style="padding-left: 15px; padding-right: 15px ; text-align: center ; margin-left:190px ">
+                        <a href="#">
+                            <img class="h-size2" src="static/pictures/paypal.png" alt="IMG-PAYPAL">
+                        </a>
+                        <div class="copyrights" style="padding-top: 20px; font-family: 'Montserrat', sans-serif;">
+                            Copyright © 2019 All rights reserved. | This template is made with <i class="far fa-heart"></i>
+                            by AFDEmp
+                            Bootcamp 8
+                        </div>
+                    </div>
+                    <!-- /second row -->
+                </div>
+                <!-- /container -->
+            </div>
+
+        </footer>
+        <!-- Bootstrap  -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
         <script>
             var form = document.querySelector('.needs-validation');
             form.addEventListener('submit', function (event) {
@@ -209,6 +306,8 @@
                 form.classList.add('was-validated');
             });
         </script>
+
+
 
 
     </body>
