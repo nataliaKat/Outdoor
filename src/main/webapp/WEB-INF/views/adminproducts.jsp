@@ -23,6 +23,15 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
               integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
+         <!-- Monserant-Font -->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+
+        <!-- Muli Font -->
+        <link href="https://fonts.googleapis.com/css?family=Muli:600&display=swap" rel="stylesheet">
+
+        <!-- Rokkitt Font -->
+        <link href="https://fonts.googleapis.com/css?family=Rokkitt:500&display=swap" rel="stylesheet">
+        
         <!-- My CSS -->
         <link rel="stylesheet" type="text/css" href="<c:url value='/static/css/style.css'/>"
     </head>
@@ -133,6 +142,7 @@
                                     <div class="purchase" style="text-align: center">
                                         <a href="<c:url value="/admin/products/delete/${product.productsId}"/>" class="btn btn-danger btn-block" >Delete</a>
                                     </div>
+                                    
                                     <div class="card-footer">
                                         <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
                                     </div>
@@ -140,6 +150,11 @@
                                 </div>
                             </div>
                         </c:forEach>
+                         <!-- /EDIT -->
+                                    <div class="purchase" style="text-align: center">
+                                       <a href="/Outdoor/admin/products/new" class="btn btn-danger btn-block" >Insert</a>
+                                    </div>
+                                    
 
                         <!--          
                                    ITEM 2 

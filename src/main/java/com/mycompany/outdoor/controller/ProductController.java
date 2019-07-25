@@ -44,6 +44,10 @@ public class ProductController {
 
     @Autowired
     CategoryService categoryService;
+    
+    
+    
+    
 
     @RequestMapping(method = RequestMethod.GET)
     public String findAllProducts(ModelMap model) {
@@ -55,7 +59,7 @@ public class ProductController {
             ProductEntity tempProduct = new ProductEntity(p.getProductsId(), p.getPrice(), p.getImageUrl(), p.getDescription(), p.getName(), tempBrand, tempCategory);
             prodPojo.add(tempProduct);
         }
-        
+//        
         model.addAttribute("products", products);
         Gson gson = new Gson();
         String jsonString = gson.toJson(prodPojo);
@@ -65,7 +69,7 @@ public class ProductController {
 //        
 //
 ////        model.addAttribute("productsJson", products);
-        // Displaying JSON String 
+//         Displaying JSON String 
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
@@ -98,25 +102,33 @@ public class ProductController {
 //        return "adminproducts";
 //    }
 //
-//    @RequestMapping(value = "/insert", method = RequestMethod.GET)
-//    public String insertForm(ModelMap model) {
-//      
-//        Brand product = new Brand();
-//        
-//        model.addAttribute("product", product);
-//        
-//        return "addBrand";
-//    }
+    @RequestMapping(value = {"/new"}, method = RequestMethod.GET)
+    public String insertForm(ModelMap model) {
+      
+       Product product = new Product();
+        
+        model.addAttribute("product", product);
+       model.addAttribute("brands", brandService.findAllBrands());
+        model.addAttribute("categories", categoryService.findAllCategories());
+        
+        return "admininsertproduct";
+    }
+
+    @RequestMapping(value = {"/new"}, method = RequestMethod.POST)
+    public String saveProduct(@RequestParam("brandsId") Integer brandsId, @RequestParam("categoryId") Integer categoryId, @Valid Product product, BindingResult result, ModelMap model) {
+        Brand foundBrand = brandService.findById(brandsId);
+        product.setBrand(foundBrand);
+        Category foundCategory = categoryService.findById(brandsId);
+        product.setCategory(foundCategory);
+        
+        productService.saveProduct(product);
 //
-//    @RequestMapping(value = "/insert", method = RequestMethod.POST)
-//    public String saveBrand(@Valid Brand product, BindingResult result, ModelMap model) {
-//        service.saveBrand(product);
-//        if (result.hasErrors()) {
-//            return "insert";
-//        }
-//        return "";
-//    }
 //
+ List<Product> products = productService.findAllProducts();
+  model.addAttribute("products", products);
+        return "adminproducts";
+    }
+
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     public String deleteBrandById(ModelMap model, @PathVariable("id") Integer id) {
         productService.deleteProductById(id);
@@ -125,12 +137,12 @@ public class ProductController {
         model.addAttribute("products", products);
 
 
-        return "adminproducts";
+        return "admineditproducts";
     }
-//    
-//
+    
 
-//    
+
+   
 
     @RequestMapping(method = RequestMethod.POST)
     public String updateProduct(@RequestParam("brandsId") Integer brandsId, @RequestParam("categoryId") Integer categoryId, @Valid Product product, BindingResult result, ModelMap model) {

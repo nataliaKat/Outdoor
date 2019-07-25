@@ -27,11 +27,11 @@ public class ProductService {
     public Product findById(Integer id) {
         return dao.findById(id);
     }
-//
-//    public void saveProduct(Product product) {
-//        dao.saveProduct(product);
-//    }
-//
+
+    public void saveProduct(Product product) {
+        dao.saveProduct(product);
+    }
+
     public void updateProduct(Product product) {
        dao.updateProduct(product);
     }
@@ -54,6 +54,7 @@ public class ProductService {
         dao.deleteProductById(id);
     }
   
+    
 
 }
 
