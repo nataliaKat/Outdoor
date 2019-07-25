@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -50,7 +51,7 @@ public class Sale implements Serializable {
     private Date salesDate;
     private Integer total;
     @JoinColumn(name = "app_user_id", referencedColumnName = "id", nullable = false)
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
     private User appUserId;
 //        @LazyCollection(LazyCollectionOption.FALSE)
 

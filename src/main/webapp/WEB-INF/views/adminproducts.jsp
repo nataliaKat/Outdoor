@@ -107,99 +107,99 @@
             <div class="row">
                 <div class="col-lg-3 border" style="text-align: center">
                     FILTER SECTION                                            
-                    ${jsonList}
 
                 </div>
                 <div class="col-lg-9">
-                    <div class="row">
+                    <div id="format" class="row">
+
                         <!-- ITEM 1 -->
                         <c:forEach items='${products}' var='product'>
-                            <div class="col-lg-4 col-md-6 mb-4">
-                                <div class="card h-100">
-                                    <a href="#"><img class="card-img-top" src="https://images.pexels.com/photos/2376997/pexels-photo-2376997.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940/700x400" alt=""></a>
-                                    <div class="card-body">
-                                        <h4 class="card-title">
-                                            <a href="#">${product.name}</a>
-                                        </h4>
-                                        <h5>$${product.price}</h5>
-                                        <p class="card-text">${product.description}
-                                        </p>
-                                    </div>
-                                    <!-- EDIT -->
-                                    <div class="purchase" style="text-align: center">
-                                        <a href="<c:url value="/admin/products/${product.productsId}"/>" class="btn btn-info btn-block" >Edit</a>
-                                    </div>
-                                    <!-- /EDIT -->
-                                    <div class="purchase" style="text-align: center">
-                                        <a href="<c:url value="/admin/products/delete/${product.productsId}"/>" class="btn btn-danger btn-block" >Delete</a>
-                                    </div>
-                                    <div class="card-footer">
-                                        <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                                    </div>
-
-                                </div>
+                        <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                        <a href="#"><img class="card-img-top" src="https://images.pexels.com/photos/2376997/pexels-photo-2376997.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940/700x400" alt=""></a>
+                        <div class="card-body">
+                        <h4 class="card-title">
+                            <a href="#">${product.name}</a>
+                        </h4>
+                        <h5>$${product.price}</h5>
+                        <p id = "descr" class="card-text">${product.description}
+                            </p>
                             </div>
-                        </c:forEach>
-
-                        <!--          
-                                   ITEM 2 
-                                  <div class="col-lg-4 col-md-6 mb-4">
-                                      <div class="card h-100">
-                                        <a href="#"><img class="card-img-top" src="https://images.pexels.com/photos/2376997/pexels-photo-2376997.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940/700x400" alt=""></a>
-                                        <div class="card-body">
-                                          <h4 class="card-title">
-                                            <a href="#">Product Name</a>
-                                          </h4>
-                                          <h5>$Price</h5>
-                                          <p class="card-text">Description Description Description Description Description Description Description 
-                                          </p>
-                                        </div>
-                                        
-                                        <div class="card-footer">
-                                          <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                                        </div>
-                                      </div>
-                                    </div>
-                        
-                                     ITEM 3 
-                                    <div class="col-lg-4 col-md-6 mb-4">
-                                        <div class="card h-100">
-                                          <a href="#"><img class="card-img-top" src="https://images.pexels.com/photos/2376997/pexels-photo-2376997.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940/700x400" alt=""></a>
-                                          <div class="card-body">
-                                            <h4 class="card-title">
-                                              <a href="#">Product Name</a>
-                                            </h4>
-                                            <h5>$Price</h5>
-                                            <p class="card-text">Description Description Description Description Description Description Description 
-                                            </p>
-                                          </div>
-                                          <div class="card-footer">
-                                            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                                          </div>
-                                        </div>
-                                      </div>
-                        
-                                        ITEM 4 
-                                    <div class="col-lg-4 col-md-6 mb-4">
-                                        <div class="card h-100">
-                                          <a href="#"><img class="card-img-top" src="https://images.pexels.com/photos/2376997/pexels-photo-2376997.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940/700x400" alt=""></a>
-                                          <div class="card-body">
-                                            <h4 class="card-title">
-                                              <a href="#">Product Name</a>
-                                            </h4>
-                                            <h5>$Price</h5>
-                                            <p class="card-text">Description Description Description Description Description Description Description 
-                                            </p>
-                                          </div>
-                                          <div class="card-footer">
-                                            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                                          </div>
-                                        </div>
-                                      </div>
-                                </div>
-                              </div>
+                             <!--EDIT--> 
+                            <div class="purchase" style="text-align: center">
+                                <a href="<c:url value="/admin/products/${product.productsId}"/>" class="btn btn-info btn-block" >Edit</a>
                             </div>
-                          </div>-->
+                             <!--/EDIT--> 
+                            <div class="purchase" style="text-align: center">
+                                <a href="<c:url value="/admin/products/delete/${product.productsId}"/>" class="btn btn-danger btn-block" >Delete</a>
+                            </div>
+                            <div class="card-footer">
+                            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                            </div>
+
+                            </div>
+                            </div>
+                            </c:forEach>
+
+                            <!--          
+                                       ITEM 2 
+                                      <div class="col-lg-4 col-md-6 mb-4">
+                                          <div class="card h-100">
+                                            <a href="#"><img class="card-img-top" src="https://images.pexels.com/photos/2376997/pexels-photo-2376997.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940/700x400" alt=""></a>
+                                            <div class="card-body">
+                                              <h4 class="card-title">
+                                                <a href="#">Product Name</a>
+                                              </h4>
+                                              <h5>$Price</h5>
+                                              <p class="card-text">Description Description Description Description Description Description Description 
+                                              </p>
+                                            </div>
+                                            
+                                            <div class="card-footer">
+                                              <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                                            </div>
+                                          </div>
+                                        </div>
+                            
+                                         ITEM 3 
+                                        <div class="col-lg-4 col-md-6 mb-4">
+                                            <div class="card h-100">
+                                              <a href="#"><img class="card-img-top" src="https://images.pexels.com/photos/2376997/pexels-photo-2376997.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940/700x400" alt=""></a>
+                                              <div class="card-body">
+                                                <h4 class="card-title">
+                                                  <a href="#">Product Name</a>
+                                                </h4>
+                                                <h5>$Price</h5>
+                                                <p class="card-text">Description Description Description Description Description Description Description 
+                                                </p>
+                                              </div>
+                                              <div class="card-footer">
+                                                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                                              </div>
+                                            </div>
+                                          </div>
+                            
+                                            ITEM 4 
+                                        <div class="col-lg-4 col-md-6 mb-4">
+                                            <div class="card h-100">
+                                              <a href="#"><img class="card-img-top" src="https://images.pexels.com/photos/2376997/pexels-photo-2376997.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940/700x400" alt=""></a>
+                                              <div class="card-body">
+                                                <h4 class="card-title">
+                                                  <a href="#">Product Name</a>
+                                                </h4>
+                                                <h5>$Price</h5>
+                                                <p class="card-text">Description Description Description Description Description Description Description 
+                                                </p>
+                                              </div>
+                                              <div class="card-footer">
+                                                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                                              </div>
+                                            </div>
+                                          </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>-->
 
                         <footer class="footer">
                             <div class="container p-5">
@@ -319,14 +319,13 @@
                                 integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
                                 crossorigin="anonymous"></script>  -->
 
-                        
-                        
+
+
                         <script>
-                            let products = JSON.parse('${jsonList}');
-                            console.log(products);
-                            
+                           let obj = JSON.parse('${jsonList}');
+                           console.log(obj);
                         </script>
-                        
+
                         </body>
 
                         </html>

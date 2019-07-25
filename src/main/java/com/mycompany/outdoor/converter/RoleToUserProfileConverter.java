@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import com.mycompany.outdoor.model.UserProfile;
 import com.mycompany.outdoor.service.UserProfileService;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 /**
  * A converter class used in views to map id's to actual userProfile objects.

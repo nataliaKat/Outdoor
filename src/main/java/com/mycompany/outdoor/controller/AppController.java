@@ -83,8 +83,11 @@ public class AppController {
 	@RequestMapping(value = { "/newuser" }, method = RequestMethod.POST)
 	public String saveUser(@Valid User user, BindingResult result,
 			ModelMap model) {
+//            System.out.println(user);
 
 		if (result.hasErrors()) {
+//                    System.out.println("Hey i have errors");
+//                    System.out.println(result.getAllErrors());
 			return "registration";
 		}
 
