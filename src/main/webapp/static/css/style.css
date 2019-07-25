@@ -12,10 +12,17 @@
 }
 .big-banner {
   background-image: url('../pictures/mountain.jpeg');
- background-position: center;
+ /*background-position: center;*/
+/* height:100vh;
+ width:100vh;*/
  
 }
 
+.big-banner-2 {
+  background-image: url('../pictures/mountain.jpeg');
+
+ 
+}
 
 li.dropdown:hover > .dropdown-menu {
     display: block;
