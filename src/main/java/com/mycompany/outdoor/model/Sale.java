@@ -58,17 +58,43 @@ public class Sale implements Serializable {
     @JoinColumn(name = "products_id", referencedColumnName = "products_id")
     @ManyToOne
     private Product product;
+    
+    @Column(name = "user_address")
+    private String address;
+    
+    @Column(name = "user_phonenumber")
+    private String phonenumber;
 
     public Sale() {
     }
 
-    public Sale(Integer salesId, Date salesDate, Integer total, User appUser, Product product) {
+    public Sale(Integer salesId, Date salesDate, Integer total, User appUser, Product product, String address, String phonenumber) {
         this.salesId = salesId;
         this.salesDate = salesDate;
         this.total = total;
         this.appUser = appUser;
         this.product = product;
+        this.address = address;
+        this.phonenumber = phonenumber;
     }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPhonenumber() {
+        return phonenumber;
+    }
+
+    public void setPhonenumber(String phonenumber) {
+        this.phonenumber = phonenumber;
+    }
+
+
 
   
     public Integer getSalesId() {
@@ -119,22 +145,16 @@ public class Sale implements Serializable {
         this.appUser = appUser;
     }
 
-//    public Product getProduct() {
-//        return product;
-//    }
-//
-//    public void setProduct(Product product) {
-//        this.product = product;
-//    }
-
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 29 * hash + Objects.hashCode(this.salesId);
-        hash = 29 * hash + Objects.hashCode(this.salesDate);
-        hash = 29 * hash + Objects.hashCode(this.total);
-        hash = 29 * hash + Objects.hashCode(this.appUser);
-//        hash = 29 * hash + Objects.hashCode(this.product);
+        int hash = 3;
+        hash = 11 * hash + Objects.hashCode(this.salesId);
+        hash = 11 * hash + Objects.hashCode(this.salesDate);
+        hash = 11 * hash + Objects.hashCode(this.total);
+        hash = 11 * hash + Objects.hashCode(this.appUser);
+        hash = 11 * hash + Objects.hashCode(this.product);
+        hash = 11 * hash + Objects.hashCode(this.address);
+        hash = 11 * hash + Objects.hashCode(this.phonenumber);
         return hash;
     }
 
@@ -150,6 +170,12 @@ public class Sale implements Serializable {
             return false;
         }
         final Sale other = (Sale) obj;
+        if (!Objects.equals(this.address, other.address)) {
+            return false;
+        }
+        if (!Objects.equals(this.phonenumber, other.phonenumber)) {
+            return false;
+        }
         if (!Objects.equals(this.salesId, other.salesId)) {
             return false;
         }
@@ -162,17 +188,16 @@ public class Sale implements Serializable {
         if (!Objects.equals(this.appUser, other.appUser)) {
             return false;
         }
-//        if (!Objects.equals(this.product, other.product)) {
-//            return false;
-//        }
+        if (!Objects.equals(this.product, other.product)) {
+            return false;
+        }
         return true;
     }
 
     @Override
     public String toString() {
-        return "Sale{" + "salesId=" + salesId + ", salesDate=" + salesDate + ", total=" + total + ", appUser=" + appUser + product + '}';
+        return "Sale{" + "salesId=" + salesId + ", salesDate=" + salesDate + ", total=" + total + ", appUser=" + appUser + ", product=" + product + ", address=" + address + ", phonenumber=" + phonenumber + '}';
     }
-
  
    
     
