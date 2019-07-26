@@ -15,6 +15,7 @@ import com.mycompany.outdoor.model.Product;
 import com.mycompany.outdoor.service.BrandService;
 import com.mycompany.outdoor.service.CategoryService;
 import com.mycompany.outdoor.service.ProductService;
+import com.mycompany.outdoor.service.StockService;
 import java.util.ArrayList;
 import java.util.List;
 import javax.validation.Valid;
@@ -44,48 +45,34 @@ public class ProductController {
 
     @Autowired
     CategoryService categoryService;
-    
-    
-    
-    
 
-    @RequestMapping(method = RequestMethod.GET)
-    public String findAllProducts(ModelMap model) {
-        List<Product> products = productService.findAllProducts();
+    @Autowired
+    StockService stockService;
+
+    public String getProductsJSON(List<Product> products) {
         List<ProductEntity> prodPojo = new ArrayList();
-        for(Product p : products) {
+        for (Product p : products) {
             BrandEntity tempBrand = new BrandEntity(p.getBrand().getBrandsId(), p.getBrand().getBrandname());
             CategoryEntity tempCategory = new CategoryEntity(p.getCategory().getCategoryId(), p.getCategory().getCategoryName());
             ProductEntity tempProduct = new ProductEntity(p.getProductsId(), p.getPrice(), p.getImageUrl(), p.getDescription(), p.getName(), tempBrand, tempCategory);
             prodPojo.add(tempProduct);
         }
-//        
-        model.addAttribute("products", products);
         Gson gson = new Gson();
-        String jsonString = gson.toJson(prodPojo);
-        System.out.println(jsonString);
-                model.addAttribute("jsonList", jsonString);
+        return gson.toJson(prodPojo);
+    }
 
-//        
-//
-////        model.addAttribute("productsJson", products);
-//         Displaying JSON String 
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+    
+    @RequestMapping(method = RequestMethod.GET)
+    public String findAllProducts(ModelMap model) {
+        List<Product> products = productService.findAllProducts();
+        model.addAttribute("products", products);
+        model.addAttribute("jsonList", getProductsJSON(products));
         return "adminproducts";
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public String updateForm(ModelMap model, @PathVariable("id") Integer id) {
         Product p = productService.findById(id);
-//        if (p != null) {
-////            Hibernate.initialize(p.getBrand());
-////            Hibernate.initialize(p.getSaleList());
-//
-//        }
-
-        
         model.addAttribute("product", p);
         model.addAttribute("pBrand", p.getBrand());
         model.addAttribute("pCategory", p.getCategory());
@@ -94,65 +81,44 @@ public class ProductController {
         return "admineditproducts";
     }
 
-//    @RequestMapping(value = "/{categoryName}", method = RequestMethod.GET)
-//    public String filterByCategory(ModelMap model, @PathVariable("categoryName") String categoryName) {
-////        Criteria crit = session.createCriteria(Product.class);
-////crit.add(Restrictions.eq("brand",categoryName));
-////List<Product> results = crit.list();
-//        return "adminproducts";
-//    }
-//
     @RequestMapping(value = {"/new"}, method = RequestMethod.GET)
     public String insertForm(ModelMap model) {
-      
-       Product product = new Product();
-        
+
+        Product product = new Product();
+
         model.addAttribute("product", product);
-       model.addAttribute("brands", brandService.findAllBrands());
+        model.addAttribute("brands", brandService.findAllBrands());
         model.addAttribute("categories", categoryService.findAllCategories());
-        
+
         return "admininsertproduct";
     }
 
     @RequestMapping(value = {"/new"}, method = RequestMethod.POST)
-    public String saveProduct(@RequestParam("brandsId") Integer brandsId, @RequestParam("categoryId") Integer categoryId, @Valid Product product, BindingResult result, ModelMap model) {
+    public String saveProduct(@RequestParam("brandsId") Integer brandsId, @RequestParam("categoryId") Integer categoryId, @RequestParam("quantity") int quantity, @Valid Product product, BindingResult result, ModelMap model) {
         Brand foundBrand = brandService.findById(brandsId);
         product.setBrand(foundBrand);
-        Category foundCategory = categoryService.findById(brandsId);
+        Category foundCategory = categoryService.findById(categoryId);
         product.setCategory(foundCategory);
-        
         productService.saveProduct(product);
-//
-//
- List<Product> products = productService.findAllProducts();
-  model.addAttribute("products", products);
-        return "adminproducts";
+        stockService.newProduct(product, quantity);
+        return "redirect:/admin/products";
     }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     public String deleteProductById(ModelMap model, @PathVariable("id") Integer id) {
         productService.deleteProductById(id);
-        List<Product> products = productService.findAllProducts();
-
-        model.addAttribute("products", products);
-
-
-        return "adminproducts";
+        return "redirect:/admin/products";
     }
-    
-
-
-   
 
     @RequestMapping(method = RequestMethod.POST)
     public String updateProduct(@RequestParam("brandsId") Integer brandsId, @RequestParam("categoryId") Integer categoryId, @Valid Product product, BindingResult result, ModelMap model) {
-        
+
         Brand foundBrand = brandService.findById(brandsId);
         product.setBrand(foundBrand);
         Category foundCategory = categoryService.findById(brandsId);
         product.setCategory(foundCategory);
         productService.updateProduct(product);
-        
+
 //        System.out.println(result.hasErrors());
 //        if (result.hasErrors()) {
 //            Product p = productService.findById(product.getProductsId());
@@ -161,10 +127,8 @@ public class ProductController {
 //            model.addAttribute("product", p);
 //            return "admineditproducts";
 //        }        
-        List<Product> products = productService.findAllProducts();
 
-        model.addAttribute("products", products);
 
-        return "adminproducts";
+        return  "redirect:/admin/products";
     }
 }

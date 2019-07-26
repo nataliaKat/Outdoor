@@ -146,7 +146,13 @@
                             <form:textarea type="text" path="description" id="description" class="form-control" required="required"/>
                             <div class="invalid-feedback">Please enter a valid text</div>
 
-                        </div>      
+                        </div>   
+                            
+                        <div class="form-group">
+                            <label path="quantity">Quantity</label>
+                            <input type="number" name="quantity" id="quantity" class="form-control" required="required"/>
+                            <div class="invalid-feedback">Please enter a valid number</div>
+                        </div>
 
 
                         <div class="form-group">

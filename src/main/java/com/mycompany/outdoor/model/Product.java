@@ -59,8 +59,8 @@ public class Product implements Serializable {
     @Column(name = "image_url", length = 200)
     private String imageUrl;
 
-    @Size(max = 300)
-    @Column(length = 300)
+    @Size(max = 600)
+    @Column(length = 600)
     private String description;
 
     @Size(max = 100)

@@ -3,6 +3,7 @@ D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\model\PersistentLogin.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\service\UserServiceImpl.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\controller\SaleController.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\security\SecurityConfiguration.java
+D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\dao\StockDao.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\service\CategoryService.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\dao\BrandDao.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\model\UserProfileType.java
@@ -26,6 +27,7 @@ D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\dao\UserProfileDao.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\model\User.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\security\SecurityWebApplicationInitializer.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\dao\UserProfileDaoImpl.java
+D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\service\StockService.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\model\Sale.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\security\CustomUserDetailsService.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\service\UserProfileServiceImpl.java
