@@ -119,9 +119,9 @@
                          src="https://images.pexels.com/photos/2376997/pexels-photo-2376997.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940/1200x600"
                          alt="">
                     <div class="delete mt-5 border-top border-info" style=" font-family: 'Montserrat', sans-serif;  width:470px; height: 150px;">
-                    <span class="light-text" style="margin-top: 20px;">Do you want to delete this product?</span>
-                    <button style="position:relative; top:72px; right: 292px">Delete</button>
-                </div>
+                        <span class="light-text" style="margin-top: 20px;">Do you want to delete this product?</span>
+                        <button style="position:relative; top:72px; right: 292px">Delete</button>
+                    </div>
                 </div>
 
                 <div class="col-md-6 col-sm-6 border border-dark rounded " style="box-shadow:20px 20px 10px grey; ">
@@ -155,7 +155,11 @@
                             <div class="invalid-feedback">Please enter a valid text</div>
 
                         </div>      
-
+                        <div class="form-group">
+                            <label path="quantity">Quantity</label>
+                            <input type="number" name="quantity" value="${quantity}" id="quantity" class="form-control" required="required"/>
+                            <div class="invalid-feedback">Please enter a valid number</div>
+                        </div>
 
                         <div class="form-group">
                             <input type="text" readonly="readonly" value="${pBrand.brandname}"/>

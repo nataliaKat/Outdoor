@@ -83,6 +83,7 @@ public class Product implements Serializable {
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
+    
 
     public Product() {
     }  

@@ -30,9 +30,7 @@ public class ProductDao extends AbstractDao<Integer, Product> {
     }
 
     public void updateProduct(Product product) {
-        System.out.println(product);
         Product entity = findById(product.getProductsId());
-        System.out.println(entity);
 
         if (entity != null) {
             entity.setName(product.getName());

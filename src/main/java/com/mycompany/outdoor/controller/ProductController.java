@@ -61,7 +61,6 @@ public class ProductController {
         return gson.toJson(prodPojo);
     }
 
-    
     @RequestMapping(method = RequestMethod.GET)
     public String findAllProducts(ModelMap model) {
         List<Product> products = productService.findAllProducts();
@@ -73,6 +72,7 @@ public class ProductController {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public String updateForm(ModelMap model, @PathVariable("id") Integer id) {
         Product p = productService.findById(id);
+        model.addAttribute("quantity", stockService.getQuantityPerProduct(p));
         model.addAttribute("product", p);
         model.addAttribute("pBrand", p.getBrand());
         model.addAttribute("pCategory", p.getCategory());
@@ -85,7 +85,6 @@ public class ProductController {
     public String insertForm(ModelMap model) {
 
         Product product = new Product();
-
         model.addAttribute("product", product);
         model.addAttribute("brands", brandService.findAllBrands());
         model.addAttribute("categories", categoryService.findAllCategories());
@@ -111,13 +110,14 @@ public class ProductController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String updateProduct(@RequestParam("brandsId") Integer brandsId, @RequestParam("categoryId") Integer categoryId, @Valid Product product, BindingResult result, ModelMap model) {
+    public String updateProduct(@RequestParam("quantity") int quantity, @RequestParam("brandsId") Integer brandsId, @RequestParam("categoryId") Integer categoryId, @Valid Product product, BindingResult result, ModelMap model) {
 
         Brand foundBrand = brandService.findById(brandsId);
         product.setBrand(foundBrand);
         Category foundCategory = categoryService.findById(brandsId);
         product.setCategory(foundCategory);
         productService.updateProduct(product);
+        stockService.updateStock(product, quantity);
 
 //        System.out.println(result.hasErrors());
 //        if (result.hasErrors()) {
@@ -127,8 +127,6 @@ public class ProductController {
 //            model.addAttribute("product", p);
 //            return "admineditproducts";
 //        }        
-
-
-        return  "redirect:/admin/products";
+        return "redirect:/admin/products";
     }
 }

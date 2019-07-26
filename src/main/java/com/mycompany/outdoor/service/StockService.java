@@ -24,5 +24,13 @@ public class StockService {
     public void newProduct(Product product, int quantity) {
         dao.newProduct(new Stock(quantity, product));
     }
+    
+    public void updateStock(Product product, int quantity) {
+        dao.updateStock(product, quantity);
+    }
+    
+    public int getQuantityPerProduct(Product p) {
+        return dao.getQuantityPerProduct(p);
+    }
             
 }
