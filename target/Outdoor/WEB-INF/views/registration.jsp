@@ -10,9 +10,11 @@
     <title>User Registration Form</title>
     <link href="<c:url value='/static/css/bootstrap.css' />" rel="stylesheet"></link>
     <link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
+      <!-- My CSS -->
+        <link rel="stylesheet" type="text/css" href="static/css/style.css">
 </head>
  
-<body>
+<body class="big-banner-2">
     <div class="generic-container">
         <%@include file="authheader.jsp" %>
  
