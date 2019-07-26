@@ -116,7 +116,7 @@
             <div class="row">
                 <div class="col-md-6 col-sm-6">
                     <img class="card-img-top" style="height: 420px"
-                         src="https://images.pexels.com/photos/2376997/pexels-photo-2376997.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940/1200x600"
+                         src="${product.imageUrl}"
                          alt="">
                     <div class="delete mt-5 border-top border-info" style=" font-family: 'Montserrat', sans-serif;  width:470px; height: 150px;">
                     <span class="light-text" style="margin-top: 20px;">Do you want to delete this product?</span>
