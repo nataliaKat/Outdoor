@@ -7,6 +7,7 @@ com\mycompany\outdoor\controller\ProductController.class
 com\mycompany\outdoor\model\User.class
 com\mycompany\outdoor\converter\RoleToUserProfileConverter.class
 com\mycompany\outdoor\service\UserService.class
+com\mycompany\outdoor\controller\RestProductController.class
 com\mycompany\outdoor\model\Stock.class
 com\mycompany\outdoor\dao\CategoryDao.class
 com\mycompany\outdoor\service\ProductService.class

@@ -372,8 +372,18 @@
 
 
                         <script>
-                            let obj = JSON.parse('${jsonList}');
-                            console.log(obj);
+
+                            const URL = "http://localhost:8080/Outdoor/json";
+                            fetch(URL).then(handleResponse).then(handleJSON);
+                            function handleResponse(response) {
+                                //Get response body, convert to JSON object and return as a promise
+                                return response.json();
+                            }
+
+                            function handleJSON(json) {
+                                console.log(json);
+                            }
+
                         </script>
 
                         </body>

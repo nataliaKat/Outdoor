@@ -68,10 +68,10 @@ public class Product implements Serializable {
     private String name;
 
     
-            @LazyCollection(LazyCollectionOption.FALSE)
-
-    @OneToMany(mappedBy = "product")
-    private List<Sale> saleList;
+//            @LazyCollection(LazyCollectionOption.FALSE)
+//
+//    @OneToMany(mappedBy = "product")
+//    private List<Sale> saleList;
 
     @LazyCollection(LazyCollectionOption.FALSE)
 
@@ -160,13 +160,13 @@ public class Product implements Serializable {
 //        this.quantity = quantity;
 //    }
 
-    public List<Sale> getSaleList() {
-        return saleList;
-    }
-
-    public void setSaleList(List<Sale> saleList) {
-        this.saleList = saleList;
-    }
+//    public List<Sale> getSaleList() {
+//        return saleList;
+//    }
+//
+//    public void setSaleList(List<Sale> saleList) {
+//        this.saleList = saleList;
+//    }
 //
  
 //

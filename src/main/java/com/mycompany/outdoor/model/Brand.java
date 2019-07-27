@@ -57,12 +57,12 @@ public class Brand implements Serializable {
     @Size(max = 40)
     @Column(length = 40)
     private String brandname;
-            @LazyCollection(LazyCollectionOption.FALSE)
+//            @LazyCollection(LazyCollectionOption.FALSE)
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "brand")
-    
-    private List<Product> products;
-    
+//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "brand")
+//    
+//    private List<Product> products;
+//    
     public Brand() {
     }
 
@@ -93,20 +93,20 @@ public class Brand implements Serializable {
         this.brandname = brandname;
     }
 
-    public List<Product> getProducts() {
-        return products;
-    }
-    
-    public void setProducts(List<Product> products) {
-        this.products = products;
-    }
+//    public List<Product> getProducts() {
+//        return products;
+//    }
+//    
+//    public void setProducts(List<Product> products) {
+//        this.products = products;
+//    }
 
     @Override
     public int hashCode() {
         int hash = 3;
         hash = 97 * hash + Objects.hashCode(this.brandsId);
         hash = 97 * hash + Objects.hashCode(this.brandname);
-        hash = 97 * hash + Objects.hashCode(this.products);
+//        hash = 97 * hash + Objects.hashCode(this.products);
         return hash;
     }
 
@@ -128,9 +128,9 @@ public class Brand implements Serializable {
         if (!Objects.equals(this.brandsId, other.brandsId)) {
             return false;
         }
-        if (!Objects.equals(this.products, other.products)) {
-            return false;
-        }
+//        if (!Objects.equals(this.products, other.products)) {
+//            return false;
+//        }
         return true;
     }
 

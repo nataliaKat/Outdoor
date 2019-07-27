@@ -46,10 +46,10 @@ public class Category implements Serializable {
     @Size(max = 30)
     @Column(name = "category_name", length = 30)
     private String categoryName;
-        @LazyCollection(LazyCollectionOption.FALSE)
+//        @LazyCollection(LazyCollectionOption.FALSE)
 
-    @OneToMany(mappedBy = "category")
-    private List<Product> productList;
+//    @OneToMany(mappedBy = "category")
+//    private List<Product> productList;
 
     public Category() {
     }
@@ -79,21 +79,21 @@ public class Category implements Serializable {
         this.categoryName = categoryName;
     }
 
-    @XmlTransient
-    public List<Product> getProductList() {
-        return productList;
-    }
-
-    public void setProductList(List<Product> productList) {
-        this.productList = productList;
-    }
+//    @XmlTransient
+//    public List<Product> getProductList() {
+//        return productList;
+//    }
+//
+//    public void setProductList(List<Product> productList) {
+//        this.productList = productList;
+//    }
 
     @Override
     public int hashCode() {
         int hash = 7;
         hash = 37 * hash + Objects.hashCode(this.categoryId);
         hash = 37 * hash + Objects.hashCode(this.categoryName);
-        hash = 37 * hash + Objects.hashCode(this.productList);
+//        hash = 37 * hash + Objects.hashCode(this.productList);
         return hash;
     }
 
@@ -115,9 +115,9 @@ public class Category implements Serializable {
         if (!Objects.equals(this.categoryId, other.categoryId)) {
             return false;
         }
-        if (!Objects.equals(this.productList, other.productList)) {
-            return false;
-        }
+//        if (!Objects.equals(this.productList, other.productList)) {
+//            return false;
+//        }
         return true;
     }
 

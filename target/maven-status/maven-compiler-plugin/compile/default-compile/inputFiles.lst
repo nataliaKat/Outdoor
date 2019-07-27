@@ -18,6 +18,7 @@ D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\model\UserProfile.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\configuration\AppConfig.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\dao\CategoryDao.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\service\UserService.java
+D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\controller\RestProductController.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\service\SaleService.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\service\UserProfileService.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\model\Category.java

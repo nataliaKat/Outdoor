@@ -63,9 +63,9 @@ public class ProductController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String findAllProducts(ModelMap model) {
-        List<Product> products = productService.findAllProducts();
-        model.addAttribute("products", products);
-        model.addAttribute("jsonList", getProductsJSON(products));
+//        List<Product> products = productService.findAllProducts();
+//        model.addAttribute("products", products);
+//        model.addAttribute("jsonList", getProductsJSON(products));
         return "adminproducts";
     }
 
