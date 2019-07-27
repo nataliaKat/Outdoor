@@ -66,7 +66,7 @@ public class ProductController {
 //        List<Product> products = productService.findAllProducts();
 //        model.addAttribute("products", products);
 //        model.addAttribute("jsonList", getProductsJSON(products));
-        return "adminproducts";
+        return "adminproduct";
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)

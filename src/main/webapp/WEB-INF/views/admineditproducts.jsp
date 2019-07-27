@@ -162,6 +162,8 @@
                         </div>
 
                         <div class="form-group">
+                                                        <label for="brand">Brand</label>
+
                             <input type="text" readonly="readonly" value="${pBrand.brandname}"/>
                             <%--<form:label path="brand">Brand</form:label>--%>
                             <select name="brandsId" id="brand" class="form-control" value="${pBrand.brandsId}" required="required">
