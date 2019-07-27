@@ -114,10 +114,18 @@
         <!-- MAIN BODY -->
         <div class="container" style="margin-top: 30px">
             <div class="row">
+
+                <!--FILTER-->
+
                 <div class="col-lg-3 border" style="text-align: center">
                     FILTER SECTION                                            
-
                 </div>
+
+                <!--/FILTER-->
+
+
+                <!--PRODUCT LIST-->
+
                 <div class="col-lg-9">
                     <div id="format" class="row">
 
@@ -138,10 +146,10 @@
                                     <div class="purchase" style="text-align: center">
                                         <a href="<c:url value="/admin/products/${product.productsId}"/>" class="btn btn-info btn-block" >Edit</a>
                                     </div>
-                                    <!--/EDIT--> 
-                                    <div class="purchase" style="text-align: center">
+                                    <!--/DELETE--> 
+<!--                                    <div class="purchase" style="text-align: center">
                                         <a href="<c:url value="/admin/products/delete/${product.productsId}"/>" class="btn btn-danger btn-block" >Delete</a>
-                                    </div>
+                                    </div>-->
                                     <div class="card-footer">
                                         <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
                                     </div>
@@ -149,233 +157,240 @@
                                 </div>
                             </div>
                         </c:forEach>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-                        <!--          
-                                   ITEM 2 
-                                  <div class="col-lg-4 col-md-6 mb-4">
-                                      <div class="card h-100">
-                                        <a href="#"><img class="card-img-top" src="https://images.pexels.com/photos/2376997/pexels-photo-2376997.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940/700x400" alt=""></a>
-                                        <div class="card-body">
-                                          <h4 class="card-title">
-                                            <a href="#">Product Name</a>
-                                          </h4>
-                                          <h5>$Price</h5>
-                                          <p class="card-text">Description Description Description Description Description Description Description 
-                                          </p>
-                                        </div>
-                                        
-                                        <div class="card-footer">
-                                          <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                                        </div>
-                 
-                        <!-- /EDIT -->
-                        <div class="purchase" style="text-align: center">
-                            <a href="/Outdoor/admin/products/new" class="btn btn-danger btn-block" >Insert</a>
+        <!-- /INSERT BUTTON -->
+
+        <div class="purchase" style="text-align: center">
+            <a href="/Outdoor/admin/products/new" class="btn btn-danger btn-block" >Insert</a>
+        </div>
+
+
+        <!--/PRODUCT LIST-->
+
+        <!--          
+                   ITEM 2 
+                  <div class="col-lg-4 col-md-6 mb-4">
+                      <div class="card h-100">
+                        <a href="#"><img class="card-img-top" src="https://images.pexels.com/photos/2376997/pexels-photo-2376997.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940/700x400" alt=""></a>
+                        <div class="card-body">
+                          <h4 class="card-title">
+                            <a href="#">Product Name</a>
+                          </h4>
+                          <h5>$Price</h5>
+                          <p class="card-text">Description Description Description Description Description Description Description 
+                          </p>
                         </div>
-
-
-                        <!--          
-                                   ITEM 2 
-                                  <div class="col-lg-4 col-md-6 mb-4">
-                                      <div class="card h-100">
-                                        <a href="#"><img class="card-img-top" src="https://images.pexels.com/photos/2376997/pexels-photo-2376997.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940/700x400" alt=""></a>
-                                        <div class="card-body">
-                                          <h4 class="card-title">
-                                            <a href="#">Product Name</a>
-                                          </h4>
-                                          <h5>$Price</h5>
-                                          <p class="card-text">Description Description Description Description Description Description Description 
-                                          </p>
-                                        </div>
-                                        
-                                        <div class="card-footer">
-                                          <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                                        </div>
-                                      </div>
-                                    </div>
                         
-                                     ITEM 3 
-                                    <div class="col-lg-4 col-md-6 mb-4">
-                                        <div class="card h-100">
-                                          <a href="#"><img class="card-img-top" src="https://images.pexels.com/photos/2376997/pexels-photo-2376997.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940/700x400" alt=""></a>
-                                          <div class="card-body">
-                                            <h4 class="card-title">
-                                              <a href="#">Product Name</a>
-                                            </h4>
-                                            <h5>$Price</h5>
-                                            <p class="card-text">Description Description Description Description Description Description Description 
-                                            </p>
-                                          </div>
-                                          <div class="card-footer">
-                                            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                                          </div>
-                                        </div>
-                            
-                                         ITEM 3 
-                                        <div class="col-lg-4 col-md-6 mb-4">
-                                            <div class="card h-100">
-                                              <a href="#"><img class="card-img-top" src="https://images.pexels.com/photos/2376997/pexels-photo-2376997.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940/700x400" alt=""></a>
-                                              <div class="card-body">
-                                                <h4 class="card-title">
-                                                  <a href="#">Product Name</a>
-                                                </h4>
-                                                <h5>$Price</h5>
-                                                <p class="card-text">Description Description Description Description Description Description Description 
-                                                </p>
-                                              </div>
-                                              <div class="card-footer">
-                                                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                                              </div>
-                                            </div>
-                                          </div>
-                            
-                                            ITEM 4 
-                                        <div class="col-lg-4 col-md-6 mb-4">
-                                            <div class="card h-100">
-                                              <a href="#"><img class="card-img-top" src="https://images.pexels.com/photos/2376997/pexels-photo-2376997.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940/700x400" alt=""></a>
-                                              <div class="card-body">
-                                                <h4 class="card-title">
-                                                  <a href="#">Product Name</a>
-                                                </h4>
-                                                <h5>$Price</h5>
-                                                <p class="card-text">Description Description Description Description Description Description Description 
-                                                </p>
-                                              </div>
-                                              <div class="card-footer">
-                                                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                                              </div>
-                                            </div>
-                                          </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>-->
+                        <div class="card-footer">
+                          <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                        </div>
+ 
+        
 
-                        <footer class="footer">
-                            <div class="container p-5">
-                                <!-- FIRST ROW -->
-                                <div class="row" style="padding-bottom: 90px; text-align: center">
-                                    <div class="col-md-3" style="padding-top: 30px; ">
-                                        <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0%">
-                                            Get in touch
-                                        </h5>
-
-
-                                    </div>
-                                    <div class="col-md-3" style="padding-top: 30px; ">
-                                        <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0%">
-                                            Categories
-                                        </h5>
-                                        <ul>
-                                            <li class="foo-columns" style="padding-bottom: 18px">
-                                                <a href="#" class="text-secondary">
-                                                    <i class="fas fa-campground"></i>  tents 
-                                                </a>
-                                            </li>
-
-                                            <li class="foo-columns" style="padding-bottom: 18px">
-                                                <a href="#" class="text-secondary">
-                                                    <i class="fas fa-toolbox"></i>  hiking equipment
-                                                </a>
-                                            </li>
-
-                                            <li class="foo-columns" style="padding-bottom: 18px">
-                                                <a href="#" class="text-secondary">
-                                                    <i class="fas fa-hiking"></i>  backpacks
-                                                </a>
-                                            </li>
-
-                                            <li class="foo-columns" style="padding-bottom: 18px">
-                                                <a href="#" class="text-secondary">
-                                                    <i class="fas fa-medkit"></i>  first-aid kits
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-3" style="padding-top: 30px; ">
-                                        <h5 class="column-title" style="padding-bottom: 30px ;margin-bottom: 0%">
-                                            Contact
-
-
-                                        </h5>
-                                        <ul>
-                                            <li class="foo-columns" style="padding-bottom: 18px">
-                                                <a href="#" class="text-secondary">
-                                                    <i class="far fa-envelope" style=></i> compass@hotmail.com
-                                                </a>
-                                            </li>
-
-                                            <li class="foo-columns" style="padding-bottom: 18px">
-                                                <a href="#" class="text-secondary">
-                                                    <i class="fas fa-phone-square"></i>(+30) 6986487890
-                                                </a>
-                                            </li>
-
-                                            <li class="foo-columns" style="padding-bottom: 18px">
-                                                <a href="#" class="text-secondary">
-                                                    <i class="fas fa-map-marker-alt"></i>location
-                                                </a>
-                                            </li>
-
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-3" style="padding-top: 30px; ">
-                                        <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0% ;text-align: center">
-                                            Newsletter
-                                        </h5>
-                                        <form>
-                                            <div class="email-field">
-                                                <input class="text-secondary" style="padding-bottom: 5px; border-style: hidden; padding-top: 0%; text-align: center" placeholder="email@example.com"> 
-                                                <hr style="margin-bottom:0% ; margin-top:15px">
-                                            </div>
-                                            <div class="subscribe">
-                                                <button class="subscribe-button">SUBSCRIBE</button>
-                                            </div>
-                                        </form>
-
-                                    </div>
-                                </div>
-                                <!-- SECOND ROW -->
-                                <div class="row">
-                                    <div class="paypal" style="padding-left: 15px; padding-right: 15px ; text-align: center ; margin-left:190px ">
-                                        <a href="#">
-                                            <img class="h-size2" src="<c:url value='/static/pictures/paypal.png'/>" alt="IMG-PAYPAL">
-                                        </a>
-                                        <div class="copyrights" style="padding-top: 20px;">
-                                            Copyright © 2019 All rights reserved. | This template is made with <i class="far fa-heart"></i> by AFDEmp Bootcamp 8
-                                        </div>
-                                    </div>
-                                    <!-- /second row -->
-                                </div>
-                                <!-- /container -->
+        <!--          
+                   ITEM 2 
+                  <div class="col-lg-4 col-md-6 mb-4">
+                      <div class="card h-100">
+                        <a href="#"><img class="card-img-top" src="https://images.pexels.com/photos/2376997/pexels-photo-2376997.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940/700x400" alt=""></a>
+                        <div class="card-body">
+                          <h4 class="card-title">
+                            <a href="#">Product Name</a>
+                          </h4>
+                          <h5>$Price</h5>
+                          <p class="card-text">Description Description Description Description Description Description Description 
+                          </p>
+                        </div>
+                        
+                        <div class="card-footer">
+                          <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                        </div>
+                      </div>
+                    </div>
+        
+                     ITEM 3 
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                          <a href="#"><img class="card-img-top" src="https://images.pexels.com/photos/2376997/pexels-photo-2376997.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940/700x400" alt=""></a>
+                          <div class="card-body">
+                            <h4 class="card-title">
+                              <a href="#">Product Name</a>
+                            </h4>
+                            <h5>$Price</h5>
+                            <p class="card-text">Description Description Description Description Description Description Description 
+                            </p>
+                          </div>
+                          <div class="card-footer">
+                            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                          </div>
+                        </div>
+            
+                         ITEM 3 
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="card h-100">
+                              <a href="#"><img class="card-img-top" src="https://images.pexels.com/photos/2376997/pexels-photo-2376997.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940/700x400" alt=""></a>
+                              <div class="card-body">
+                                <h4 class="card-title">
+                                  <a href="#">Product Name</a>
+                                </h4>
+                                <h5>$Price</h5>
+                                <p class="card-text">Description Description Description Description Description Description Description 
+                                </p>
+                              </div>
+                              <div class="card-footer">
+                                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                              </div>
                             </div>
+                          </div>
+            
+                            ITEM 4 
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="card h-100">
+                              <a href="#"><img class="card-img-top" src="https://images.pexels.com/photos/2376997/pexels-photo-2376997.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940/700x400" alt=""></a>
+                              <div class="card-body">
+                                <h4 class="card-title">
+                                  <a href="#">Product Name</a>
+                                </h4>
+                                <h5>$Price</h5>
+                                <p class="card-text">Description Description Description Description Description Description Description 
+                                </p>
+                              </div>
+                              <div class="card-footer">
+                                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                              </div>
+                            </div>
+                          </div>
+                    </div>
+                  </div>
+        -->            
+        <footer class="footer">
+            <div class="container p-5">
+                <!-- FIRST ROW -->
+                <div class="row" style="padding-bottom: 90px; text-align: center">
+                    <div class="col-md-3" style="padding-top: 30px; ">
+                        <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0%">
+                            Get in touch
+                        </h5>
 
-                        </footer>
 
-                        <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-                        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+                    </div>
+                    <div class="col-md-3" style="padding-top: 30px; ">
+                        <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0%">
+                            Categories
+                        </h5>
+                        <ul>
+                            <li class="foo-columns" style="padding-bottom: 18px">
+                                <a href="#" class="text-secondary">
+                                    <i class="fas fa-campground"></i>  tents 
+                                </a>
+                            </li>
 
-                        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+                            <li class="foo-columns" style="padding-bottom: 18px">
+                                <a href="#" class="text-secondary">
+                                    <i class="fas fa-toolbox"></i>  hiking equipment
+                                </a>
+                            </li>
 
-                        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-                                integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-                        crossorigin="anonymous"></script>
-                        <!--
-                            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-                                integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-                                crossorigin="anonymous"></script> 
-                                
-                            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-                                integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-                                crossorigin="anonymous"></script>  -->
+                            <li class="foo-columns" style="padding-bottom: 18px">
+                                <a href="#" class="text-secondary">
+                                    <i class="fas fa-hiking"></i>  backpacks
+                                </a>
+                            </li>
+
+                            <li class="foo-columns" style="padding-bottom: 18px">
+                                <a href="#" class="text-secondary">
+                                    <i class="fas fa-medkit"></i>  first-aid kits
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3" style="padding-top: 30px; ">
+                        <h5 class="column-title" style="padding-bottom: 30px ;margin-bottom: 0%">
+                            Contact
+
+
+                        </h5>
+                        <ul>
+                            <li class="foo-columns" style="padding-bottom: 18px">
+                                <a href="#" class="text-secondary">
+                                    <i class="far fa-envelope" style=></i> compass@hotmail.com
+                                </a>
+                            </li>
+
+                            <li class="foo-columns" style="padding-bottom: 18px">
+                                <a href="#" class="text-secondary">
+                                    <i class="fas fa-phone-square"></i>(+30) 6986487890
+                                </a>
+                            </li>
+
+                            <li class="foo-columns" style="padding-bottom: 18px">
+                                <a href="#" class="text-secondary">
+                                    <i class="fas fa-map-marker-alt"></i>location
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="col-md-3" style="padding-top: 30px; ">
+                        <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0% ;text-align: center">
+                            Newsletter
+                        </h5>
+                        <form>
+                            <div class="email-field">
+                                <input class="text-secondary" style="padding-bottom: 5px; border-style: hidden; padding-top: 0%; text-align: center" placeholder="email@example.com"> 
+                                <hr style="margin-bottom:0% ; margin-top:15px">
+                            </div>
+                            <div class="subscribe">
+                                <button class="subscribe-button">SUBSCRIBE</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+                <!-- SECOND ROW -->
+                <div class="row">
+                    <div class="paypal" style="padding-left: 15px; padding-right: 15px ; text-align: center ; margin-left:190px ">
+                        <a href="#">
+                            <img class="h-size2" src="<c:url value='/static/pictures/paypal.png'/>" alt="IMG-PAYPAL">
+                        </a>
+                        <div class="copyrights" style="padding-top: 20px;">
+                            Copyright © 2019 All rights reserved. | This template is made with <i class="far fa-heart"></i> by AFDEmp Bootcamp 8
+                        </div>
+                    </div>
+                    <!-- /second row -->
+                </div>
+                <!-- /container -->
+            </div>
+
+        </footer>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+                integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+        <!--
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+                integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+                crossorigin="anonymous"></script> 
+                
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+                integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+                crossorigin="anonymous"></script>  -->
 
 
 
-                        <script>
-                            let obj = JSON.parse('${jsonList}');
-                            console.log(obj);
-                        </script>
+        <!--                        <script>
+                                    let obj = JSON.parse('${jsonList}');
+                                    console.log(obj);
+                                </script>-->
 
-                        </body>
+    </body>
 
-                        </html>
+</html>

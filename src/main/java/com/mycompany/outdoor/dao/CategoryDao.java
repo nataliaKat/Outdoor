@@ -27,6 +27,7 @@ public class CategoryDao extends AbstractDao<Integer, Category> {
     }
     
     public Category findById(Integer id) {
+        System.out.println("Category Dao !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
        return getByKey(id);
     }
     

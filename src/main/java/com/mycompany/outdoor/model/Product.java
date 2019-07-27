@@ -68,7 +68,7 @@ public class Product implements Serializable {
     private String name;
 
     
-            @LazyCollection(LazyCollectionOption.FALSE)
+        @LazyCollection(LazyCollectionOption.FALSE)
 
     @OneToMany(mappedBy = "product")
     private List<Sale> saleList;

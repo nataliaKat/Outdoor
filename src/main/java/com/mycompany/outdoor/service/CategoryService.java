@@ -29,6 +29,7 @@ public class CategoryService {
     }
     
     public Category findById(Integer id) {
+        System.out.println("Category Service!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         return categoryDao.findById(id);
     }
     

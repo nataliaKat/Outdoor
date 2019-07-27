@@ -115,7 +115,8 @@ public class ProductController {
     }
 
     @RequestMapping(value = {"/new"}, method = RequestMethod.POST)
-    public String saveProduct(@RequestParam("brandsId") Integer brandsId, @RequestParam("categoryId") Integer categoryId, @Valid Product product, BindingResult result, ModelMap model) {
+    public String saveProduct(@RequestParam("brandsId") Integer brandsId, @RequestParam("categoryId") Integer categoryId, BindingResult result, ModelMap model) {
+        Product product = new Product();
         Brand foundBrand = brandService.findById(brandsId);
         product.setBrand(foundBrand);
         Category foundCategory = categoryService.findById(brandsId);
