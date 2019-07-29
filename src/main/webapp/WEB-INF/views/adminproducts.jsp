@@ -146,7 +146,8 @@
 
 
                         <!-- ITEM 1 -->
-
+                        <c:forEach items='${products}' var='product'>
+                           
                         <div  class="col-lg-4 col-md-6 mb-4" ng-repeat="product in products">
 
                             <div class="card h-100 border" >
