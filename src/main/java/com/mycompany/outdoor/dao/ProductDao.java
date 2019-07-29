@@ -8,6 +8,7 @@ package com.mycompany.outdoor.dao;
 import com.mycompany.outdoor.model.Product;
 import java.util.List;
 import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -49,6 +50,15 @@ public class ProductDao extends AbstractDao<Integer, Product> {
 
     public void deleteProductById(Integer id) {
        delete(findById(id));
+    }
+    
+    
+    public List<Product> findProductsByPrice(double lowPrice, double highPrice){
+        Criteria criteria = createEntityCriteria();
+        criteria.add(Restrictions.ge("price", lowPrice));
+        criteria.add(Restrictions.le("price", highPrice));
+        return criteria.list();
+        
     }
 
 }

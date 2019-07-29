@@ -32,6 +32,9 @@
         <!-- Rokkitt Font -->
         <link href="https://fonts.googleapis.com/css?family=Rokkitt:500&display=swap" rel="stylesheet">
 
+        <!-- AngularJS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.min.js"></script>
+
         <!-- My CSS -->
         <link rel="stylesheet" type="text/css" href="<c:url value='/static/css/style.css'/>"
     </head>
@@ -39,18 +42,19 @@
 
 
 
-    <body style="padding-top: 0px">
+    <body ng-app="app" ng-controller="MainCtrl" ng-cloak style="padding-top: 0px">
 
         <!-- NAVBAR HEADER  (BUTTON TOOGLE DOESNT WORK)-->
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-white border" style="padding-left: 150px; padding-right: 150px;">
+        <nav class="navbar big-banner navbar-expand-lg navbar-light bg-white border"
+             style="padding-left: 150px; padding-right: 150px; height:368px;">
 
-            <img
-                src="https://cdn2.shopify.com/s/files/1/0173/2227/8976/products/mountain-compass-temporary-tattoos-easytatt-6802109694016_2048x2048.jpg?v=1548635909"
-                width="150" height="120" class="d-inline-block align-center " alt="">
+            <!-- <img
+              src="https://cdn2.shopify.com/s/files/1/0173/2227/8976/products/mountain-compass-temporary-tattoos-easytatt-6802109694016_2048x2048.jpg?v=1548635909"
+              width="150" height="120" class="d-inline-block align-center " alt="">
             <a class="navbar-brand" href="#">
-                <h2 class="text-center font font-weight-bold" style="padding-left: 20px">Compass</h2>
-            </a>
+              <h2 class="text-center font font-weight-bold" style="padding-left: 20px;">Compass</h2>
+            </a> -->
 
 
             <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
@@ -58,16 +62,13 @@
             </button>
 
 
-            <div class="collapse navbar-collapse" id="#navbarMenu">
+            <div class="collapse navbar-collapse" id="#navbarMenu"  style="position:relative; bottom:130px; left:80px; color: blue">
                 <!-- <p class="text-center font-italic font-weight-bold" style="">Compass</p> -->
-                <ul class="navbar-nav ml-auto">
-                    <form class="form-inline" style="padding-right: 65px;">
-                        <input class="form-control mr-auto" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                    </form>
 
+
+                <ul class="navbar-nav1 ml-auto">
                     <li class="nav-item">
-                        <a href="/Outdoor/logout" class="nav-link" style="font-size: 20px"><i class="far fa-user-circle"></i>  Logout</a>
+                        <a href="#" class="nav-link" style="font-size: 20px;"><i class="far fa-user-circle"></i> Logout</a>
                     </li>
                 </ul>
             </div>
@@ -76,7 +77,7 @@
         <!-- <div class="container" style="margin-left: 40px; margin-right: 40"> -->
 
         <!-- NAVBAR 2 -->
-        <nav class="navbar navbar-expand-sm navbar-light align-center" style="background-color: aquamarine">
+        <nav class="navbar navbar-expand-sm navbar-light align-center sticky-top" style="background-color: aquamarine">
             <button class="navbar-toggler" data-toggle="colapse" data-target="#navbarMenu2">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -92,7 +93,7 @@
                            aria-haspopup="true" aria-expanded="false">
                             Products
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: rgb(217, 223, 223)">
                             <a class="dropdown-item" href="#">Tents</a>
                             <a class="dropdown-item" href="#">Hiking Equipment</a>
                             <a class="dropdown-item" href="#">Backpacks</a>
@@ -104,7 +105,7 @@
                         <a href="#" class="navbar-brand">Brands</a>
                     </li>
                     <li class="navbar-brand">
-                        <a href="#" class="navbar-brand">About</a>
+                        <a href="#" class="navbar-brand">Sales</a>
                     </li>
                 </ul>
             </div>
@@ -112,280 +113,238 @@
         </nav>
 
         <!-- MAIN BODY -->
-        <div class="container" style="margin-top: 30px">
+        <div class="container" style="margin-top: 50px">
             <div class="row">
-                <div class="col-lg-3 border" style="text-align: center">
-                    FILTER SECTION                                            
+                <div class="filter col-lg-3 border" style="text-align: center">
+                    FILTER SECTION
+                    <hr><br>
+
+                    Brands<hr>
+                    <ol>
+                        <li ng-repeat="brand in brands">
+                            <label for="{{brand.brandname}}">{{brand.brandname}}</label>
+                            <input type="checkbox" id="{{brand.brandname}}" >
+                        </li>
+                    </ol>
+
+                    Price <br><hr>
+
+                    Up to 50 Euro<input type="checkbox" id="low"><br>
+                    Up to 200 Euro<input type="checkbox" id="medium"><br>
+                    Up to<input type="checkbox" id="high"> 
+
+
+
+
 
                 </div>
+
                 <div class="col-lg-9">
-                    <div id="format" class="row">
+                    <div class="row">
+
+
+
 
                         <!-- ITEM 1 -->
-                        <c:forEach items='${products}' var='product'>
-                            <div class="col-lg-4 col-md-6 mb-4">
-                                <div class="card h-100">
-                                    <a href="#"><img class="card-img-top" src="${product.imageUrl}" alt=""></a>
-                                    <div class="card-body">
-                                        <h4 class="card-title">
-                                            <a href="#">${product.name}</a>
-                                        </h4>
-                                        <h5>$${product.price}</h5>
-                                        <p id = "descr" class="card-text">${product.description}
-                                        </p>
-                                    </div>
-                                    <!--EDIT--> 
-                                    <div class="purchase" style="text-align: center">
-                                        <a href="<c:url value="/admin/products/${product.productsId}"/>" class="btn btn-info btn-block" >Edit</a>
-                                    </div>
-                                    <!--/EDIT--> 
-                                    <div class="purchase" style="text-align: center">
-                                        <a href="<c:url value="/admin/products/delete/${product.productsId}"/>" class="btn btn-danger btn-block" >Delete</a>
-                                    </div>
-                                    <div class="card-footer">
-                                        <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                                    </div>
+
+                        <div  class="col-lg-4 col-md-6 mb-4" ng-repeat="product in products">
+
+                            <div class="card h-100 border" >
+                                <a href="#"><img class="card-img-top" src="{{ product.imageUrl}}" alt=""></a>
+                                <div class="card-body" >
+                                    <h4 class="card-title" style="font-family: 'Muli', sans-serif; overflow: hidden; height: 60px; ">
+                                        <a href="#"> {{ product.name}} </a>
+                                    </h4>
+                                    <h5 style="font-family: 'Rokkitt', serif;">&euro; {{ product.price}} </h5>
+                                    <hr style="margin-top:5px; margin-bottom:7px">
+                                    <p class="card-text text-left" style="height:100px; overflow:auto"> {{ product.description}}
+                                    </p>
+                                </div>
+                                <!-- EDIT -->
+                                <div class="purchase" style="text-align: center">
+                                    <!-- <a href="#" role="button" class="btn btn-info btn-block" data-toggle="button">Edit</a> -->
+
+                                    <!-- natalia's button -->
+                                    <!-- <button class="btn-block btn-lg" style="padding-left:0%; padding-right:0%; margin-left:0%">Edit</button> -->
+
+                                    <!-- andreas button -->
+                                    <!-- <button style="position:relative; top:72px; right: 292px" onclick="window.location.href='<c:url value="/admin/products/delete/${product.productsId}"/>'">Edit</button> -->
+                                    <button class="btn-block"  onclick="window.location.href = '<c:url value="/admin/products/${product.productsId}"/>'">Edit</button>
 
                                 </div>
-                            </div>
-                        </c:forEach>
+                                <!-- /EDIT -->
 
-                        <!--          
-                                   ITEM 2 
-                                  <div class="col-lg-4 col-md-6 mb-4">
-                                      <div class="card h-100">
-                                        <a href="#"><img class="card-img-top" src="https://images.pexels.com/photos/2376997/pexels-photo-2376997.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940/700x400" alt=""></a>
-                                        <div class="card-body">
-                                          <h4 class="card-title">
-                                            <a href="#">Product Name</a>
-                                          </h4>
-                                          <h5>$Price</h5>
-                                          <p class="card-text">Description Description Description Description Description Description Description 
-                                          </p>
-                                        </div>
-                                        
-                                        <div class="card-footer">
-                                          <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                                        </div>
-                 
-                        <!-- /EDIT -->
-                        <div class="purchase" style="text-align: center">
-                            <a href="/Outdoor/admin/products/new" class="btn btn-danger btn-block" >Insert</a>
+                                <div class="card-footer">
+                                    <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                                </div>
+                            </div>
                         </div>
 
 
-                        <!--          
-                                   ITEM 2 
-                                  <div class="col-lg-4 col-md-6 mb-4">
-                                      <div class="card h-100">
-                                        <a href="#"><img class="card-img-top" src="https://images.pexels.com/photos/2376997/pexels-photo-2376997.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940/700x400" alt=""></a>
-                                        <div class="card-body">
-                                          <h4 class="card-title">
-                                            <a href="#">Product Name</a>
-                                          </h4>
-                                          <h5>$Price</h5>
-                                          <p class="card-text">Description Description Description Description Description Description Description 
-                                          </p>
-                                        </div>
-                                        
-                                        <div class="card-footer">
-                                          <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                                        </div>
-                                      </div>
-                                    </div>
-                        
-                                     ITEM 3 
-                                    <div class="col-lg-4 col-md-6 mb-4">
-                                        <div class="card h-100">
-                                          <a href="#"><img class="card-img-top" src="https://images.pexels.com/photos/2376997/pexels-photo-2376997.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940/700x400" alt=""></a>
-                                          <div class="card-body">
-                                            <h4 class="card-title">
-                                              <a href="#">Product Name</a>
-                                            </h4>
-                                            <h5>$Price</h5>
-                                            <p class="card-text">Description Description Description Description Description Description Description 
-                                            </p>
-                                          </div>
-                                          <div class="card-footer">
-                                            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                                          </div>
-                                        </div>
-                            
-                                         ITEM 3 
-                                        <div class="col-lg-4 col-md-6 mb-4">
-                                            <div class="card h-100">
-                                              <a href="#"><img class="card-img-top" src="https://images.pexels.com/photos/2376997/pexels-photo-2376997.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940/700x400" alt=""></a>
-                                              <div class="card-body">
-                                                <h4 class="card-title">
-                                                  <a href="#">Product Name</a>
-                                                </h4>
-                                                <h5>$Price</h5>
-                                                <p class="card-text">Description Description Description Description Description Description Description 
-                                                </p>
-                                              </div>
-                                              <div class="card-footer">
-                                                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                                              </div>
-                                            </div>
-                                          </div>
-                            
-                                            ITEM 4 
-                                        <div class="col-lg-4 col-md-6 mb-4">
-                                            <div class="card h-100">
-                                              <a href="#"><img class="card-img-top" src="https://images.pexels.com/photos/2376997/pexels-photo-2376997.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940/700x400" alt=""></a>
-                                              <div class="card-body">
-                                                <h4 class="card-title">
-                                                  <a href="#">Product Name</a>
-                                                </h4>
-                                                <h5>$Price</h5>
-                                                <p class="card-text">Description Description Description Description Description Description Description 
-                                                </p>
-                                              </div>
-                                              <div class="card-footer">
-                                                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                                              </div>
-                                            </div>
-                                          </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>-->
-
-                        <footer class="footer">
-                            <div class="container p-5">
-                                <!-- FIRST ROW -->
-                                <div class="row" style="padding-bottom: 90px; text-align: center">
-                                    <div class="col-md-3" style="padding-top: 30px; ">
-                                        <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0%">
-                                            Get in touch
-                                        </h5>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
-                                    </div>
-                                    <div class="col-md-3" style="padding-top: 30px; ">
-                                        <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0%">
-                                            Categories
-                                        </h5>
-                                        <ul>
-                                            <li class="foo-columns" style="padding-bottom: 18px">
-                                                <a href="#" class="text-secondary">
-                                                    <i class="fas fa-campground"></i>  tents 
-                                                </a>
-                                            </li>
+        <!--FOOTER-->
 
-                                            <li class="foo-columns" style="padding-bottom: 18px">
-                                                <a href="#" class="text-secondary">
-                                                    <i class="fas fa-toolbox"></i>  hiking equipment
-                                                </a>
-                                            </li>
-
-                                            <li class="foo-columns" style="padding-bottom: 18px">
-                                                <a href="#" class="text-secondary">
-                                                    <i class="fas fa-hiking"></i>  backpacks
-                                                </a>
-                                            </li>
-
-                                            <li class="foo-columns" style="padding-bottom: 18px">
-                                                <a href="#" class="text-secondary">
-                                                    <i class="fas fa-medkit"></i>  first-aid kits
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-3" style="padding-top: 30px; ">
-                                        <h5 class="column-title" style="padding-bottom: 30px ;margin-bottom: 0%">
-                                            Contact
+        <footer class="footer">
+            <div class="container p-5">
+                <!-- FIRST ROW -->
+                <div class="row" style="padding-bottom: 90px; text-align: center">
+                    <div class="col-md-3" style="padding-top: 30px; ">
+                        <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0%">
+                            Get in touch
+                        </h5>
 
 
-                                        </h5>
-                                        <ul>
-                                            <li class="foo-columns" style="padding-bottom: 18px">
-                                                <a href="#" class="text-secondary">
-                                                    <i class="far fa-envelope" style=></i> compass@hotmail.com
-                                                </a>
-                                            </li>
+                    </div>
+                    <div class="col-md-3" style="padding-top: 30px; ">
+                        <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0%">
+                            Categories
+                        </h5>
+                        <ul>
+                            <li class="foo-columns" style="padding-bottom: 18px">
+                                <a href="#" class="text-secondary">
+                                    <i class="fas fa-campground"></i>  tents 
+                                </a>
+                            </li>
 
-                                            <li class="foo-columns" style="padding-bottom: 18px">
-                                                <a href="#" class="text-secondary">
-                                                    <i class="fas fa-phone-square"></i>(+30) 6986487890
-                                                </a>
-                                            </li>
+                            <li class="foo-columns" style="padding-bottom: 18px">
+                                <a href="#" class="text-secondary">
+                                    <i class="fas fa-toolbox"></i>  hiking equipment
+                                </a>
+                            </li>
 
-                                            <li class="foo-columns" style="padding-bottom: 18px">
-                                                <a href="#" class="text-secondary">
-                                                    <i class="fas fa-map-marker-alt"></i>location
-                                                </a>
-                                            </li>
+                            <li class="foo-columns" style="padding-bottom: 18px">
+                                <a href="#" class="text-secondary">
+                                    <i class="fas fa-hiking"></i>  backpacks
+                                </a>
+                            </li>
 
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-3" style="padding-top: 30px; ">
-                                        <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0% ;text-align: center">
-                                            Newsletter
-                                        </h5>
-                                        <form>
-                                            <div class="email-field">
-                                                <input class="text-secondary" style="padding-bottom: 5px; border-style: hidden; padding-top: 0%; text-align: center" placeholder="email@example.com"> 
-                                                <hr style="margin-bottom:0% ; margin-top:15px">
-                                            </div>
-                                            <div class="subscribe">
-                                                <button class="subscribe-button">SUBSCRIBE</button>
-                                            </div>
-                                        </form>
+                            <li class="foo-columns" style="padding-bottom: 18px">
+                                <a href="#" class="text-secondary">
+                                    <i class="fas fa-medkit"></i>  first-aid kits
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3" style="padding-top: 30px; ">
+                        <h5 class="column-title" style="padding-bottom: 30px ;margin-bottom: 0%">
+                            Contact
 
-                                    </div>
-                                </div>
-                                <!-- SECOND ROW -->
-                                <div class="row">
-                                    <div class="paypal" style="padding-left: 15px; padding-right: 15px ; text-align: center ; margin-left:190px ">
-                                        <a href="#">
-                                            <img class="h-size2" src="<c:url value='/static/pictures/paypal.png'/>" alt="IMG-PAYPAL">
-                                        </a>
-                                        <div class="copyrights" style="padding-top: 20px;">
-                                            Copyright © 2019 All rights reserved. | This template is made with <i class="far fa-heart"></i> by AFDEmp Bootcamp 8
-                                        </div>
-                                    </div>
-                                    <!-- /second row -->
-                                </div>
-                                <!-- /container -->
+
+                        </h5>
+                        <ul>
+                            <li class="foo-columns" style="padding-bottom: 18px">
+                                <a href="#" class="text-secondary">
+                                    <i class="far fa-envelope" style=></i> compass@hotmail.com
+                                </a>
+                            </li>
+
+                            <li class="foo-columns" style="padding-bottom: 18px">
+                                <a href="#" class="text-secondary">
+                                    <i class="fas fa-phone-square"></i>(+30) 6986487890
+                                </a>
+                            </li>
+
+                            <li class="foo-columns" style="padding-bottom: 18px">
+                                <a href="#" class="text-secondary">
+                                    <i class="fas fa-map-marker-alt"></i>location
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="col-md-3" style="padding-top: 30px; ">
+                        <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0% ;text-align: center">
+                            Newsletter
+                        </h5>
+                        <form>
+                            <div class="email-field">
+                                <input class="text-secondary" style="padding-bottom: 5px; border-style: hidden; padding-top: 0%; text-align: center" placeholder="email@example.com"> 
+                                <hr style="margin-bottom:0% ; margin-top:15px">
                             </div>
+                            <div class="subscribe">
+                                <button class="subscribe-button">SUBSCRIBE</button>
+                            </div>
+                        </form>
 
-                        </footer>
+                    </div>
+                </div>
+                <!-- SECOND ROW -->
+                <div class="row">
+                    <div class="paypal" style="padding-left: 15px; padding-right: 15px ; text-align: center ; margin-left:190px ">
+                        <a href="#">
+                            <img class="h-size2" src="<c:url value='/static/pictures/paypal.png'/>" alt="IMG-PAYPAL">
+                        </a>
+                        <div class="copyrights" style="padding-top: 20px;">
+                            Copyright © 2019 All rights reserved. | This template is made with <i class="far fa-heart"></i> by AFDEmp Bootcamp 8
+                        </div>
+                    </div>
+                    <!-- /second row -->
+                </div>
+                <!-- /container -->
+            </div>
 
-                        <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-                        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        </footer>
 
-                        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
-                        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-                                integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-                        crossorigin="anonymous"></script>
-                        <!--
-                            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-                                integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-                                crossorigin="anonymous"></script> 
-                                
-                            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-                                integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-                                crossorigin="anonymous"></script>  -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+                integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
 
 
 
-                        <script>
 
-                            const URL = "http://localhost:8080/Outdoor/json";
-                            fetch(URL).then(handleResponse).then(handleJSON);
-                            function handleResponse(response) {
-                                //Get response body, convert to JSON object and return as a promise
-                                return response.json();
-                            }
 
-                            function handleJSON(json) {
-                                console.log(json);
-                            }
+        <script>
 
-                        </script>
+                                             const ProductApp = angular.module("app", []);
 
-                        </body>
 
-                        </html>
+                                             ProductApp.controller("MainCtrl", ['$scope', '$http', MainCtrl]);
+
+                                             function MainCtrl($scope, $http) {
+                                                 const URL = "http://localhost:8080/Outdoor/json/all";
+                                                 const brandURL = "https://api.myjson.com/bins/e6en1";
+                                                 const priceURL = "http://localhost:8080/Outdoor/json/price";
+                                                 $scope.products = [];
+//                                                 $scope.brands = [];
+                                                 //ΘΑ ΓΕΜΙΖΩ ΜΙΑ ΛΙΣΤΑ - ΤΗΝ products ΜΕ ΤΟ URL ΠΟΥ ΘΕΛΩ ΚΑΘΕ ΦΟΡΑ ΩΣΤΕ ΝΑ ΠΑΙΡΝΩ ΤΟ 
+                                                 //ΚΑΤΑΛΛΗΛΟ JSON
+                                                   //ΘΑ ΦΤΙΑΞΩ ΠΟΛΛΑ URL ΚΑΙ ΘΑ ΤΑ ΦΟΡΤΩΝΩ ΑΝΑΛΟΓΑ ΜΕ ΤΟ ONCLICK ΣΤΗΝ products
+                                                 
+                                                 if( )
+                                                 $http.get(URL).then(handleJson);
+                                                 $http.get(brandURL).then(handleJsonBrands);
+
+
+                                                 function handleJson(response) {
+
+                                                     // console.log(response.data);
+                                                     $scope.products = response.data;
+                                                 }
+
+
+//                                                 function handleJsonBrands(response) {
+//                                                     // console.log(response.data);
+//                                                     $scope.brands = response.data;
+//                                                 }
+//                                                 function handleJsonPrice(response) {
+//                                                     $scoper.prices = response.data;
+//                                                 }
+                                             }
+
+
+
+        </script>
+
+    </body>
+
+</html>

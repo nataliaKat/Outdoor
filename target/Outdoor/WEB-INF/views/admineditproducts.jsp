@@ -120,7 +120,7 @@
                          alt="">
                     <div class="delete mt-5 border-top border-info" style=" font-family: 'Montserrat', sans-serif;  width:470px; height: 150px;">
                         <span class="light-text" style="margin-top: 20px;">Do you want to delete this product?</span>
-                        <button style="position:relative; top:72px; right: 292px">Delete</button>
+                       <button style="position:relative; top:72px; right: 292px" onclick="window.location.href='<c:url value="/admin/products/delete/${product.productsId}"/>'">Delete</button>
                     </div>
                 </div>
 
@@ -133,12 +133,12 @@
                         <div class="form-group">
 
                             <form:label path="name">Name</form:label>
-                            <form:input type="text" path="name" id="name" class="form-control" required="required"/>
+                            <form:input type="text" path="name" id="name" maxlength="100" class="form-control" required="required"/>
                             <div class="invalid-feedback">Please enter a valid name</div>
                         </div>
                         <div class="form-group">
                             <form:label path="price">Price</form:label>
-                            <form:input type="number" path="price" id="price" class="form-control" required="required"/>
+                            <form:input type="number" min="0.1" step="0.01" path="price" id="price" class="form-control" required="required"/>
                             <div class="invalid-feedback">Please enter a valid price</div>
                             <small class="form-text text-muted">
                                 This should be in euros
@@ -146,24 +146,23 @@
                         </div>
                         <div class="form-group">
                             <form:label path="imageUrl">Image_URL</form:label>
-                            <form:input type="url" path="imageUrl" id="img_url" class="form-control" required="required"/>
+                            <form:input type="url" path="imageUrl" id="img_url" maxlength="200" class="form-control" required="required"/>
                             <div class="invalid-feedback">Please enter a valid url</div>
                         </div>
                         <div class="form-group">
                             <form:label path="description">Description</form:label>
-                            <form:textarea type="text" path="description" id="description" class="form-control" required="required"/>
+                            <form:textarea type="text" path="description" maxlength="600" id="description" class="form-control" required="required"/>
                             <div class="invalid-feedback">Please enter a valid text</div>
 
                         </div>      
-                        <div class="form-group">
+<!--                        <div class="form-group">
                             <label path="quantity">Quantity</label>
                             <input type="number" name="quantity" value="${quantity}" id="quantity" class="form-control" required="required"/>
                             <div class="invalid-feedback">Please enter a valid number</div>
-                        </div>
+                        </div>-->
 
                         <div class="form-group">
-                                                        <label for="brand">Brand</label>
-
+                            <label for="brand">Brand</label>
                             <input type="text" readonly="readonly" value="${pBrand.brandname}"/>
                             <%--<form:label path="brand">Brand</form:label>--%>
                             <select name="brandsId" id="brand" class="form-control" value="${pBrand.brandsId}" required="required">
@@ -174,9 +173,12 @@
                                 </c:forEach>
                             </select>
                         </div>
-
+<!--<option selected="selected">
+3
+</option>-->
 
                         <div class="form-group">
+                            <label for="brand">Brand</label>
                             <input type="text" readonly="readonly" value="${pCategory.categoryName}"/>
                             <select name="categoryId" id="category" class="form-control" value="${pCategory.categoryName}" required="required">
                                 <!--here you will need JSTL code 'for-each'-->

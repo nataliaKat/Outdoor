@@ -21,6 +21,7 @@ import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -49,6 +50,7 @@ public class ProductController {
     @Autowired
     StockService stockService;
 
+    
     public String getProductsJSON(List<Product> products) {
         List<ProductEntity> prodPojo = new ArrayList();
         for (Product p : products) {
@@ -62,25 +64,16 @@ public class ProductController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public String findAllProducts(ModelMap model) {
-//        List<Product> products = productService.findAllProducts();
-//        model.addAttribute("products", products);
-//        model.addAttribute("jsonList", getProductsJSON(products));
-        return "adminproduct";
+    public String findAllProducts(Model model) {
+        List<Product> products = productService.findAllProducts();
+        model.addAttribute("products", products);
+//        model.addAttribute("products", getProductsJSON(products));
+        return "adminproducts";
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public String updateForm(ModelMap model, @PathVariable("id") Integer id) {
-        Product p = productService.findById(id);
-        model.addAttribute("quantity", stockService.getQuantityPerProduct(p));
-        model.addAttribute("product", p);
-        model.addAttribute("pBrand", p.getBrand());
-        model.addAttribute("pCategory", p.getCategory());
-        model.addAttribute("brands", brandService.findAllBrands());
-        model.addAttribute("categories", categoryService.findAllCategories());
-        return "admineditproducts";
-    }
-
+    
+//       -- INSERT FORM --
+    
     @RequestMapping(value = {"/new"}, method = RequestMethod.GET)
     public String insertForm(ModelMap model) {
 
@@ -102,15 +95,35 @@ public class ProductController {
         stockService.newProduct(product, quantity);
         return "redirect:/admin/products";
     }
-
+       
+    
+        //   -- DELETE --
+    
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     public String deleteProductById(ModelMap model, @PathVariable("id") Integer id) {
         productService.deleteProductById(id);
         return "redirect:/admin/products";
     }
 
+//        -- UPDATE FORM --
+    
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public String updateForm(ModelMap model, @PathVariable("id") Integer id) {
+        Product p = productService.findById(id);
+        model.addAttribute("quantity", stockService.getQuantityPerProduct(p));
+        model.addAttribute("product", p);
+        model.addAttribute("pBrand", p.getBrand());
+        model.addAttribute("pCategory", p.getCategory());
+        model.addAttribute("brands", brandService.findAllBrands());
+        model.addAttribute("categories", categoryService.findAllCategories());
+        return "admineditproducts";
+    }
+    
+    
+    
     @RequestMapping(method = RequestMethod.POST)
-    public String updateProduct(@RequestParam("quantity") int quantity, @RequestParam("brandsId") Integer brandsId, @RequestParam("categoryId") Integer categoryId, @Valid Product product, BindingResult result, ModelMap model) {
+    public String updateProduct(@RequestParam("quantity") int quantity, @RequestParam("brandsId") Integer brandsId, 
+            @RequestParam("categoryId") Integer categoryId, @Valid Product product, BindingResult result, ModelMap model) {
 
         Brand foundBrand = brandService.findById(brandsId);
         product.setBrand(foundBrand);
