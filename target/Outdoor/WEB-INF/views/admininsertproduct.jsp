@@ -124,7 +124,7 @@
                         </div>
                         <div class="form-group">
                             <form:label path="price">Price</form:label>
-                            <form:input type="number" path="price" id="price" class="form-control" required="required"/>
+                            <form:input min="0.1" step="0.01" type="number" path="price" id="price" class="form-control" required="required"/>
                             <div class="invalid-feedback">Please enter a valid price</div>
                             <small class="form-text text-muted">
                                 This should be in euros
@@ -143,8 +143,8 @@
                            
                             <!--QUANTITY-->
                                  <div class="form-group">
-                            <label path="quantity">Quantity</label>
-                            <input type="number" path="quantity" id="quantity" class="form-control" required="required"/>
+                            <label for="quantity">Quantity</label>
+                            <input type="number" name="quantity" id="quantity" class="form-control" required="required"/>
                             <div class="invalid-feedback">Please enter a valid number</div>
                            
                                 </div>

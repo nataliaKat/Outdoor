@@ -6,7 +6,6 @@
 package com.mycompany.outdoor.model;
 
 import java.io.Serializable;
-import java.util.List;
 import java.util.Objects;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -18,8 +17,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import org.hibernate.annotations.LazyCollection;
@@ -51,7 +48,6 @@ public class Product implements Serializable {
     private Integer productsId;
 
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    
     @Column(precision = 22, scale = 0)
     private Double price;
 
@@ -67,28 +63,26 @@ public class Product implements Serializable {
     @Column(length = 100)
     private String name;
 
-    
 //            @LazyCollection(LazyCollectionOption.FALSE)
 //
 //    @OneToMany(mappedBy = "product")
 //    private List<Sale> saleList;
-
     @LazyCollection(LazyCollectionOption.FALSE)
 
     @ManyToOne
     @JoinColumn(name = "brands_id")
     private Brand brand;
-    
+
 //    @LazyCollection(LazyCollectionOption.FALSE)
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
-    
+
 
     public Product() {
-    }  
-    
-    public Product(Integer productsId, Double price, String imageUrl, String description, String name, Brand brand, Category category){
+    }
+
+    public Product(Integer productsId, Double price, String imageUrl, String description, String name, Brand brand, Category category) {
         this.productsId = productsId;
         this.price = price;
         this.imageUrl = imageUrl;
@@ -151,6 +145,7 @@ public class Product implements Serializable {
         this.brand = brand;
     }
 
+    
 
 //    public Stock getQuantity() {
 //        return quantity;
@@ -159,7 +154,6 @@ public class Product implements Serializable {
 //    public void setStockList(Stock quantity) {
 //        this.quantity = quantity;
 //    }
-
 //    public List<Sale> getSaleList() {
 //        return saleList;
 //    }
@@ -168,7 +162,6 @@ public class Product implements Serializable {
 //        this.saleList = saleList;
 //    }
 //
- 
 //
     public Category getCategory() {
         return category;
@@ -227,14 +220,5 @@ public class Product implements Serializable {
     public String toString() {
         return "Product{" + "productsId=" + productsId + ", price=" + price + ", imageUrl=" + imageUrl + ", description=" + description + brand + category + '}';
     }
-
-    
-
-   
-    
-   
-
-    
-  
 
 }

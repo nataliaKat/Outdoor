@@ -134,11 +134,12 @@
                                         <p id = "descr" class="card-text">${product.description}
                                         </p>
                                     </div>
-                                    <!--EDIT--> 
+                                    <!-- EDIT -->
                                     <div class="purchase" style="text-align: center">
-                                        <a href="<c:url value="/admin/products/${product.productsId}"/>" class="btn btn-info btn-block" >Edit</a>
+                                        <!-- <a href="#" role="button" class="btn btn-info btn-block" data-toggle="button">Edit</a> -->
+                                        <button class="btn-block btn-lg" value="/admin/products/${product.productsId}"/>" style="padding-left:0%; padding-right:0%; margin-left:0%">Edit</button>
                                     </div>
-                                    <!--/EDIT--> 
+                                    <!--/EDIT-->
                                     <div class="purchase" style="text-align: center">
                                         <a href="<c:url value="/admin/products/delete/${product.productsId}"/>" class="btn btn-danger btn-block" >Delete</a>
                                     </div>

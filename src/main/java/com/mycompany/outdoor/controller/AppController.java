@@ -1,5 +1,6 @@
 package com.mycompany.outdoor.controller;
 
+import com.mycompany.outdoor.model.Product;
 import java.util.List;
 import java.util.Locale;
 
@@ -26,6 +27,8 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.mycompany.outdoor.model.User;
 import com.mycompany.outdoor.model.UserProfile;
+import com.mycompany.outdoor.service.ProductService;
+import com.mycompany.outdoor.service.StockService;
 import com.mycompany.outdoor.service.UserProfileService;
 import com.mycompany.outdoor.service.UserService;
 
@@ -39,6 +42,12 @@ public class AppController {
 
     @Autowired
     UserProfileService userProfileService;
+    
+    @Autowired
+    ProductService productService;
+    
+    @Autowired
+    StockService stockService;
 
     @Autowired
     MessageSource messageSource;
@@ -52,15 +61,27 @@ public class AppController {
     /**
      * This method will list all existing users.
      */
-    @RequestMapping(value = {"/", "/list"}, method = RequestMethod.GET)
-    public String listUsers(ModelMap model) {
+    @RequestMapping(method = RequestMethod.GET)
+    public String welcome(ModelMap model) {
 
-        List<User> users = userService.findAllUsers();
-        model.addAttribute("users", users);
-        model.addAttribute("loggedinuser", getPrincipal());
-        return "userslist";
+//        List<User> users = userService.findAllUsers();
+//        model.addAttribute("users", users);
+//        model.addAttribute("loggedinuser", getPrincipal());
+        return "test";
     }
-
+    @RequestMapping(value = {"/{id}"}, method = RequestMethod.GET)
+    public String showDetails(@PathVariable("id") Integer id, ModelMap model) {
+        model.addAttribute("id", id);
+        return "details";
+    }
+    
+    @RequestMapping(value = {"/{id}/buy"}, method = RequestMethod.GET)
+    public String buy(@PathVariable("id") Integer id, ModelMap model) {
+        Product p = productService.findById(id);
+        model.addAttribute("product", p);
+        model.addAttribute("quantity", stockService.getQuantityPerProduct(p));
+        return "buy";
+    }
     /**
      * This method will provide the medium to add a new user.
      */

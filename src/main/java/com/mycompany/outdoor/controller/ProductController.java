@@ -32,7 +32,6 @@ import org.springframework.web.bind.annotation.RequestParam;
  *
  * @author kat26
  */
-//@Qualifier(value = "products")
 @Controller
 @RequestMapping("/admin/products")
 public class ProductController {
@@ -49,24 +48,25 @@ public class ProductController {
     @Autowired
     StockService stockService;
 
-    public String getProductsJSON(List<Product> products) {
-        List<ProductEntity> prodPojo = new ArrayList();
-        for (Product p : products) {
-            BrandEntity tempBrand = new BrandEntity(p.getBrand().getBrandsId(), p.getBrand().getBrandname());
-            CategoryEntity tempCategory = new CategoryEntity(p.getCategory().getCategoryId(), p.getCategory().getCategoryName());
-            ProductEntity tempProduct = new ProductEntity(p.getProductsId(), p.getPrice(), p.getImageUrl(), p.getDescription(), p.getName(), tempBrand, tempCategory);
-            prodPojo.add(tempProduct);
-        }
-        Gson gson = new Gson();
-        return gson.toJson(prodPojo);
-    }
-
+//    public String getProductsJSON(List<Product> products) {
+//        List<ProductEntity> prodPojo = new ArrayList();
+//        for (Product p : products) {
+//            BrandEntity tempBrand = new BrandEntity(p.getBrand().getBrandsId(), p.getBrand().getBrandname());
+//            CategoryEntity tempCategory = new CategoryEntity(p.getCategory().getCategoryId(), p.getCategory().getCategoryName());
+//            ProductEntity tempProduct = new ProductEntity(p.getProductsId(), p.getPrice(), p.getImageUrl(), p.getDescription(), p.getName(), tempBrand, tempCategory);
+//            prodPojo.add(tempProduct);
+//        }
+//        Gson gson = new Gson();
+//        return gson.toJson(prodPojo);
+//    }
+    
+    
     @RequestMapping(method = RequestMethod.GET)
     public String findAllProducts(ModelMap model) {
 //        List<Product> products = productService.findAllProducts();
 //        model.addAttribute("products", products);
 //        model.addAttribute("jsonList", getProductsJSON(products));
-        return "adminproduct";
+        return "test";
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
@@ -110,7 +110,8 @@ public class ProductController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String updateProduct(@RequestParam("quantity") int quantity, @RequestParam("brandsId") Integer brandsId, @RequestParam("categoryId") Integer categoryId, @Valid Product product, BindingResult result, ModelMap model) {
+    public String updateProduct(@RequestParam("quantity") int quantity, @RequestParam("brandsId") Integer brandsId, 
+            @RequestParam("categoryId") Integer categoryId, @Valid Product product, BindingResult result, ModelMap model) {
 
         Brand foundBrand = brandService.findById(brandsId);
         product.setBrand(foundBrand);
