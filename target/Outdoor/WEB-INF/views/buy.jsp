@@ -73,7 +73,7 @@
                 function handleKeyUp(event) {
                     let usersQuantity = $("#quant").val();
                     if (usersQuantity > ${quantity}) {
-                        $("#message").html("Quantity not available. You will have to wait for us to ");
+                        $("#message").html("Quantity not available.");
                     } else {
                         $("#message").html("");
 
@@ -98,7 +98,7 @@
                         return actions.order.capture().then(function (details) {
                             // Show a success message to the buyer
                             alert('Transaction completed by ' + details.payer.name.given_name + '!');
-                                console.log(details.payer.keys());
+                               
                             });
                     }
 
