@@ -104,8 +104,6 @@
                             <th scope="col" style="width: 20px">#</th>
                             <th scope="col" style="width: 10px">Date</th>
                             <th scope="col" style="width: 100px">User</th>
-                            <th scope="col" style="width: 100px">Address</th>
-                            <th scope="col" style="width: 100px">Phonenumber</th>
                             <th scope="col" style="width: 100px">Product_id</th>
                             <th scope="col" style="width: 100px">Product</th>
                             <th scope="col" style="width: 100px">Total</th>
@@ -118,8 +116,6 @@
                                 <td>${sale.salesId}</td>
                                 <td>${sale.salesDate}</td>
                                 <td>${sale.appUser.firstName} ${sale.appUser.lastName}</td>
-                                <td>${sale.address}</td>
-                                <td>${sale.phonenumber}</td>
                                 <td>${sale.product.productsId}</td>
                                 <td>${sale.product.name}</td>
                                 <td>${sale.total}</td>

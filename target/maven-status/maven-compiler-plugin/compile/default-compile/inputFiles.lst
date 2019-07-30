@@ -11,6 +11,7 @@ D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\dao\ProductDao.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\model\Stock.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\dao\UserDaoImpl.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\model\Product.java
+D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\controller\AdminProductsController.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\service\BrandService.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\controller\AppController.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\configuration\AppInitializer.java

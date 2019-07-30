@@ -45,7 +45,7 @@
             <input min="1" id='quant' name="quantity" type="number" value="1"/>
             <form:label path="total" for="quant">Total</form:label>
             <form:input  readonly="true" path="total" id="total"
-                         style="outline: none; padding:5px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,.5); margin: 0 5px !important"/>
+                  style="outline: none; padding:5px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,.5); margin: 0 5px !important"/>
 
             <!--<input id="post" type="submit" value="Submit" />-->
         </form:form>

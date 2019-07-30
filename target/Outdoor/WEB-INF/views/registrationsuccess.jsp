@@ -19,7 +19,7 @@
 		</div>
 		
 		<span class="well floatRight">
-			Go to <a href="<c:url value='/list' />">Users List</a>
+			Go to <a href="<c:url value='/' />">Main Page</a>
 		</span>
 	</div>
 </body>

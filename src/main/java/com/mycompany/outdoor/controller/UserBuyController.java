@@ -78,14 +78,14 @@ public class UserBuyController {
     }
 
     @RequestMapping(value = {"/buy"}, method = RequestMethod.POST)
-    public String saveBuy(@RequestParam("productId") Integer id, @RequestParam("quantity") int quantity, @Valid Sale sale, BindingResult result, ModelMap model) {
+    public String saveBuy(@RequestParam("productId") Integer id, @RequestParam("quantity") int quantity, 
+            @Valid Sale sale, BindingResult result, ModelMap model) {
         sale.setAppUser(userService.findBySSO(getPrincipal()));
         Product boughtProduct = productService.findById(id);
         sale.setProduct(boughtProduct);
-        System.out.println(sale);
         saleService.save(sale);
         stockService.reduceQuantity(boughtProduct, quantity);
-//        if (result.hasErrors()) return "buy";
+        if (result.hasErrors()) return "buy";
         return "redirect:/";
     }
     

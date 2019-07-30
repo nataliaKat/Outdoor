@@ -71,8 +71,6 @@ public class AppController {
         return "test";
     }
 
-
-
     /**
      * This method will provide the medium to add a new user.
      */
@@ -82,6 +80,20 @@ public class AppController {
         model.addAttribute("user", user);
         model.addAttribute("edit", false);
         model.addAttribute("loggedinuser", getPrincipal());
+        model.addAttribute("userProfile", 1);
+        model.addAttribute("profile", "User");
+
+        return "registration";
+    }
+
+    @RequestMapping(value = {"/admin/newadmin"}, method = RequestMethod.GET)
+    public String newAdmin(ModelMap model) {
+        User user = new User();
+        model.addAttribute("user", user);
+        model.addAttribute("edit", false);
+        model.addAttribute("loggedinuser", getPrincipal());
+        model.addAttribute("userProfile", 2);
+        model.addAttribute("profile", "Administrator");
         return "registration";
     }
 
@@ -89,10 +101,9 @@ public class AppController {
      * This method will be called on form submission, handling POST request for
      * saving user in database. It also validates the user input
      */
-    @RequestMapping(value = {"/newuser"}, method = RequestMethod.POST)
+    @RequestMapping(value = {"/newuser", "/admin/newadmin"}, method = RequestMethod.POST)
     public String saveUser(@Valid User user, BindingResult result,
             ModelMap model) {
-
         if (result.hasErrors()) {
             return "registration";
         }
@@ -112,6 +123,7 @@ public class AppController {
         }
 
         userService.saveUser(user);
+        System.out.println(user);
 
         model.addAttribute("success", "User " + user.getFirstName() + " " + user.getLastName() + " registered successfully");
         model.addAttribute("loggedinuser", getPrincipal());

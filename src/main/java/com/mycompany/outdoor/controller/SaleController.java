@@ -28,6 +28,7 @@ public class SaleController {
     @RequestMapping(method = RequestMethod.GET)
     public String findAllProducts(ModelMap model) {
         List<Sale> sales = saleService.findAllSales();
+        
         model.addAttribute("sales", sales);
         
         return "salesadmin";

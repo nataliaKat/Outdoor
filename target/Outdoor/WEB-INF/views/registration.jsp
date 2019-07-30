@@ -7,7 +7,7 @@
 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-        <title>User Registration Form</title>
+        <title>${profile} Registration Form</title>
         <link href="<c:url value='/static/css/bootstrap.css' />" rel="stylesheet"></link>
         <link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
         <!-- My CSS -->
@@ -19,7 +19,7 @@
         <div class="generic-container">
             <%@include file="authheader.jsp" %>
 
-            <div class="well lead">User Registration Form</div>
+            <div class="well lead">${profile} Registration Form</div>
             <form:form method="POST" modelAttribute="user" class="form-horizontal">
                 <form:input type="hidden" path="id" id="id"/>
 
@@ -93,7 +93,7 @@
                 <div class="row">
                     <div class="form-group col-md-12">
                         <div class="col-md-7">
-                            <input type="hidden" name="userProfiles" value="1" class="form-control input-sm" />
+                            <input type="hidden" name="userProfiles" value="${userProfile}" class="form-control input-sm" />
 
                         </div>
                     </div>

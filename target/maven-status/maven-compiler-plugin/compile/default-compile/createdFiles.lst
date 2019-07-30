@@ -1,3 +1,4 @@
+com\mycompany\outdoor\controller\AdminProductsController.class
 com\mycompany\outdoor\dao\UserProfileDaoImpl.class
 com\mycompany\outdoor\model\Product.class
 com\mycompany\outdoor\dao\HibernateTokenRepositoryImpl.class
