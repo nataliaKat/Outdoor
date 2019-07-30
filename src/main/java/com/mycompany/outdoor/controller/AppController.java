@@ -1,6 +1,7 @@
 package com.mycompany.outdoor.controller;
 
 import com.mycompany.outdoor.model.Product;
+import com.mycompany.outdoor.model.Sale;
 import java.util.List;
 import java.util.Locale;
 
@@ -42,10 +43,10 @@ public class AppController {
 
     @Autowired
     UserProfileService userProfileService;
-    
+
     @Autowired
     ProductService productService;
-    
+
     @Autowired
     StockService stockService;
 
@@ -69,19 +70,9 @@ public class AppController {
 //        model.addAttribute("loggedinuser", getPrincipal());
         return "test";
     }
-    @RequestMapping(value = {"/{id}"}, method = RequestMethod.GET)
-    public String showDetails(@PathVariable("id") Integer id, ModelMap model) {
-        model.addAttribute("id", id);
-        return "details";
-    }
-    
-    @RequestMapping(value = {"/{id}/buy"}, method = RequestMethod.GET)
-    public String buy(@PathVariable("id") Integer id, ModelMap model) {
-        Product p = productService.findById(id);
-        model.addAttribute("product", p);
-        model.addAttribute("quantity", stockService.getQuantityPerProduct(p));
-        return "buy";
-    }
+
+
+
     /**
      * This method will provide the medium to add a new user.
      */

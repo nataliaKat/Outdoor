@@ -29,6 +29,11 @@ public class StockService {
         dao.updateStock(product, quantity);
     }
     
+    public void reduceQuantity(Product product, int boughtQuantity) {
+        int oldQuantity = dao.getQuantityPerProduct(product);
+        dao.updateStock(product, oldQuantity - boughtQuantity);
+    }
+    
     public int getQuantityPerProduct(Product p) {
         return dao.getQuantityPerProduct(p);
     }

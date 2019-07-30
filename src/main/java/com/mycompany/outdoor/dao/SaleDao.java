@@ -25,4 +25,8 @@ public class SaleDao extends AbstractDao<Integer, Sale>{
         return (List<Sale>) criteria.list();
     }
     
+    public void save(Sale sale) {
+        persist(sale);
+    }
+    
 }

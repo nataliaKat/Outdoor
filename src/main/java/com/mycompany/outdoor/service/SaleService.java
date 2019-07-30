@@ -25,4 +25,8 @@ public class SaleService {
     public List<Sale> findAllSales() {
         return dao.findAllSales();
     }
+    
+    public void save(Sale sale) {
+        dao.save(sale);
+    }
 }

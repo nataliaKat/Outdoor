@@ -115,7 +115,7 @@ public class ProductController {
 
         Brand foundBrand = brandService.findById(brandsId);
         product.setBrand(foundBrand);
-        Category foundCategory = categoryService.findById(brandsId);
+        Category foundCategory = categoryService.findById(categoryId);
         product.setCategory(foundCategory);
         productService.updateProduct(product);
         stockService.updateStock(product, quantity);

@@ -49,9 +49,9 @@ public class Sale implements Serializable {
     @Column(name = "sales_date")
     @Temporal(TemporalType.DATE)
     private Date salesDate;
-    private Integer total;
+    private Double total;
     @JoinColumn(name = "app_user_id", referencedColumnName = "id", nullable = false)
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @ManyToOne(optional = false)
     private User appUser;
 //        @LazyCollection(LazyCollectionOption.FALSE)
 
@@ -59,40 +59,40 @@ public class Sale implements Serializable {
     @ManyToOne
     private Product product;
     
-    @Column(name = "user_address")
-    private String address;
+//    @Column(name = "user_address")
+//    private String address;
     
-    @Column(name = "user_phonenumber")
-    private String phonenumber;
+//    @Column(name = "user_phonenumber")
+//    private String phonenumber;
 
     public Sale() {
     }
 
-    public Sale(Integer salesId, Date salesDate, Integer total, User appUser, Product product, String address, String phonenumber) {
+    public Sale(Integer salesId, Date salesDate, Double total, User appUser, Product product) {
         this.salesId = salesId;
         this.salesDate = salesDate;
         this.total = total;
         this.appUser = appUser;
         this.product = product;
-        this.address = address;
-        this.phonenumber = phonenumber;
+//        this.address = address;
+//        this.phonenumber = phonenumber;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getPhonenumber() {
-        return phonenumber;
-    }
-
-    public void setPhonenumber(String phonenumber) {
-        this.phonenumber = phonenumber;
-    }
+//    public String getAddress() {
+//        return address;
+//    }
+//
+//    public void setAddress(String address) {
+//        this.address = address;
+//    }
+//
+//    public String getPhonenumber() {
+//        return phonenumber;
+//    }
+//
+//    public void setPhonenumber(String phonenumber) {
+//        this.phonenumber = phonenumber;
+//    }
 
 
 
@@ -113,11 +113,11 @@ public class Sale implements Serializable {
         this.salesDate = salesDate;
     }
 
-    public Integer getTotal() {
+    public Double getTotal() {
         return total;
     }
 
-    public void setTotal(Integer total) {
+    public void setTotal(Double total) {
         this.total = total;
     }
 
@@ -153,8 +153,8 @@ public class Sale implements Serializable {
         hash = 11 * hash + Objects.hashCode(this.total);
         hash = 11 * hash + Objects.hashCode(this.appUser);
         hash = 11 * hash + Objects.hashCode(this.product);
-        hash = 11 * hash + Objects.hashCode(this.address);
-        hash = 11 * hash + Objects.hashCode(this.phonenumber);
+//        hash = 11 * hash + Objects.hashCode(this.address);
+//        hash = 11 * hash + Objects.hashCode(this.phonenumber);
         return hash;
     }
 
@@ -170,12 +170,12 @@ public class Sale implements Serializable {
             return false;
         }
         final Sale other = (Sale) obj;
-        if (!Objects.equals(this.address, other.address)) {
-            return false;
-        }
-        if (!Objects.equals(this.phonenumber, other.phonenumber)) {
-            return false;
-        }
+//        if (!Objects.equals(this.address, other.address)) {
+//            return false;
+//        }
+//        if (!Objects.equals(this.phonenumber, other.phonenumber)) {
+//            return false;
+//        }
         if (!Objects.equals(this.salesId, other.salesId)) {
             return false;
         }
@@ -196,8 +196,10 @@ public class Sale implements Serializable {
 
     @Override
     public String toString() {
-        return "Sale{" + "salesId=" + salesId + ", salesDate=" + salesDate + ", total=" + total + ", appUser=" + appUser + ", product=" + product + ", address=" + address + ", phonenumber=" + phonenumber + '}';
+        return "Sale{" + "salesId=" + salesId + ", salesDate=" + salesDate + ", total=" + total + ", appUser=" + appUser + ", product=" + product + '}';
     }
+
+   
  
    
     

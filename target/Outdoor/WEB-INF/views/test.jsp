@@ -119,7 +119,7 @@
                     FILTER SECTION 
                     
                     
-                    {{pid}}
+              
                     <hr><br>
 
                     Brands<hr>
@@ -145,7 +145,7 @@
                                 <a href="#"><img class="card-img-top" src="{{ product.imageUrl}}" alt=""></a>
                                 <div class="card-body" >{{product.brand.brandname}}
                                     <h4 class="card-title" style="font-family: 'Muli', sans-serif; overflow: hidden; height: 60px">
-                                        <a href="#">{{ product.name}}   {{pid = product.productsId}} </a>
+                                        <a href="#">{{ product.name}}</a>
                                     </h4>
                                     <h5 style="font-family: 'Rokkitt', serif;">&euro;{{ product.price}} </h5>
                                     <hr style="margin-top:5px; margin-bottom:7px">
@@ -159,7 +159,7 @@
                                      <!--<a href='https://www.google.com' role="button" class="btn btn-info btn-block" data-toggle="button">Edit</a>--> 
 
                                     <!-- natalia's button -->
-                                    <button id="edit" class="btn-block btn-lg" style="padding-left:0%; padding-right:0%; margin-left:0%" value="{{pid}}" ng-click="newPage()">Edit</button> 
+                                    <button id="edit" class="btn-block btn-lg" style="padding-left:0%; padding-right:0%; margin-left:0%" value="" ng-click="newPage(product.productsId)">Edit</button> 
 
                                     <!-- andreas button -->
 <!--                                    <button id="edit" style="position:relative; top:72px; right: 292px" value="{{product.productsId}}" ng-on-click="newPage()"/>   Edit </button> -->
@@ -314,12 +314,13 @@
                                                         
                                                     }
                                                     
-                                                    $scope.newPage = function () {
-                                                        $scope.pid=85676877865764875;
-                                                       let button = document.querySelector("#edit");
-                                                        console.log(button.value);
+                                                    $scope.newPage = function (id) {  
                                                         
-                                                        location.href = "http://localhost:8080/Outdoor/admin/products/" + pid;
+//                                                        let button = document.querySelector("#edit");
+                                                        console.log(id);
+//                                                        console.log(button.value);
+                                                        
+                                                        location.href = "http://localhost:8080/Outdoor/admin/products/" + id;
                                                     };
 
 
