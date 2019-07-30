@@ -316,10 +316,7 @@
                                                     
                                                     $scope.newPage = function (id) {  
                                                         
-//                                                        let button = document.querySelector("#edit");
-                                                        console.log(id);
-//                                                        console.log(button.value);
-                                                        
+//                                           
                                                         location.href = "http://localhost:8080/Outdoor/admin/products/" + id;
                                                     };
 

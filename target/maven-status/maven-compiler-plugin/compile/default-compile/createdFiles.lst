@@ -3,7 +3,6 @@ com\mycompany\outdoor\model\Product.class
 com\mycompany\outdoor\dao\HibernateTokenRepositoryImpl.class
 com\mycompany\outdoor\controller\AppController.class
 com\mycompany\outdoor\service\StockService.class
-com\mycompany\outdoor\controller\ProductController.class
 com\mycompany\outdoor\model\User.class
 com\mycompany\outdoor\converter\RoleToUserProfileConverter.class
 com\mycompany\outdoor\service\UserService.class

@@ -35,7 +35,6 @@ D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\service\UserProfileService
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\entity\CategoryEntity.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\converter\RoleToUserProfileConverter.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\configuration\HibernateConfiguration.java
-D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\controller\ProductController.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\controller\UserBuyController.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\service\ProductService.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\dao\AbstractDao.java
