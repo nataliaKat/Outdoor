@@ -18,7 +18,7 @@
     <body class="big-banner-2">
         <div class="generic-container">
 
-            <div class="well lead">${profile} Registration Form</div>
+            <div class="well lead">Registration Form</div>
             <form:form method="POST" modelAttribute="user" class="form-horizontal">
                 <form:input type="hidden" path="id" id="id"/>
 
@@ -50,17 +50,12 @@
                     <div class="form-group col-md-12">
                         <label class="col-md-3 control-lable" for="ssoId">Username</label>
                         <div class="col-md-7">
-                            <c:choose>
-                                <c:when test="${edit}">
-                                    <form:input type="text" path="ssoId" id="ssoId" class="form-control input-sm" disabled="true"/>
-                                </c:when>
-                                <c:otherwise>
-                                    <form:input type="text" path="ssoId" id="ssoId" class="form-control input-sm" />
-                                    <div class="has-error">
-                                        <form:errors path="ssoId" class="help-inline"/>
-                                    </div>
-                                </c:otherwise>
-                            </c:choose>
+
+                            <form:input type="text" path="ssoId" id="ssoId" class="form-control input-sm" />
+                            <div class="has-error">
+                                <form:errors path="ssoId" class="help-inline"/>
+                            </div>
+
                         </div>
                     </div>
                 </div>

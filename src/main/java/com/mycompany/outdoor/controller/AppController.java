@@ -32,6 +32,7 @@ import com.mycompany.outdoor.service.ProductService;
 import com.mycompany.outdoor.service.StockService;
 import com.mycompany.outdoor.service.UserProfileService;
 import com.mycompany.outdoor.service.UserService;
+import java.util.Iterator;
 
 @Controller
 @RequestMapping("/")
@@ -70,9 +71,7 @@ public class AppController {
 //        model.addAttribute("loggedinuser", getPrincipal());
         return "welcome";
     }
- 
-    
-   
+
     /**
      * This method will provide the medium to add a new user.
      */
@@ -83,8 +82,6 @@ public class AppController {
         model.addAttribute("edit", false);
         model.addAttribute("loggedinuser", getPrincipal());
         model.addAttribute("userProfile", 1);
-        model.addAttribute("profile", "User");
-
         return "registration";
     }
 
@@ -136,12 +133,16 @@ public class AppController {
     /**
      * This method will provide the medium to update an existing user.
      */
-    @RequestMapping(value = {"/edit-user-{ssoId}"}, method = RequestMethod.GET)
-    public String editUser(@PathVariable String ssoId, ModelMap model) {
-        User user = userService.findBySSO(ssoId);
+    @RequestMapping(value = {"/edit-user"}, method = RequestMethod.GET)
+    public String editUser(ModelMap model) {
+        User user = userService.findBySSO(getPrincipal());
+        Iterator<UserProfile> iterator = user.getUserProfiles().iterator();
+        Integer userProfile = iterator.next().getId();
         model.addAttribute("user", user);
         model.addAttribute("edit", true);
         model.addAttribute("loggedinuser", getPrincipal());
+        model.addAttribute("userProfile", userProfile);
+
         return "registration";
     }
 
@@ -149,20 +150,26 @@ public class AppController {
      * This method will be called on form submission, handling POST request for
      * updating user in database. It also validates the user input
      */
-    @RequestMapping(value = {"/edit-user-{ssoId}"}, method = RequestMethod.POST)
+    @RequestMapping(value = {"/edit-user"}, method = RequestMethod.POST)
     public String updateUser(@Valid User user, BindingResult result,
-            ModelMap model, @PathVariable String ssoId) {
+            ModelMap model) {
+        System.out.println(user);
 
+        System.out.println(result.getAllErrors());
         if (result.hasErrors()) {
+            user = userService.findBySSO(getPrincipal());
+            model.addAttribute("user", user);
+            model.addAttribute("edit", true);
+            model.addAttribute("loggedinuser", getPrincipal());
             return "registration";
         }
 
-        /*//Uncomment below 'if block' if you WANT TO ALLOW UPDATING SSO_ID in UI which is a unique key to a User.
-		if(!userService.isUserSSOUnique(user.getId(), user.getSsoId())){
-			FieldError ssoError =new FieldError("user","ssoId",messageSource.getMessage("non.unique.ssoId", new String[]{user.getSsoId()}, Locale.getDefault()));
-		    result.addError(ssoError);
-			return "registration";
-		}*/
+        //Uncomment below 'if block' if you WANT TO ALLOW UPDATING SSO_ID in UI which is a unique key to a User.
+        if (!userService.isUserSSOUnique(user.getId(), user.getSsoId())) {
+            FieldError ssoError = new FieldError("user", "ssoId", messageSource.getMessage("non.unique.ssoId", new String[]{user.getSsoId()}, Locale.getDefault()));
+            result.addError(ssoError);
+            return "registration";
+        }
         userService.updateUser(user);
 
         model.addAttribute("success", "User " + user.getFirstName() + " " + user.getLastName() + " updated successfully");
@@ -208,7 +215,6 @@ public class AppController {
             return "redirect:/";
         }
     }
-    
 
     /**
      * This method handles logout requests. Toggle the handlers if you are

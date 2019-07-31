@@ -41,7 +41,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.antMatchers("/admin/**")
 				.access("hasRole('ADMIN')").
                             and().formLogin().loginPage("/login")
-				.loginProcessingUrl("/login").usernameParameter("ssoId").passwordParameter("password").and()
+				.loginProcessingUrl("/login").usernameParameter("ssoId").passwordParameter("password").defaultSuccessUrl("/24").and()
 				.rememberMe().rememberMeParameter("remember-me").tokenRepository(tokenRepository)
 				.tokenValiditySeconds(86400).and().csrf().and().exceptionHandling().accessDeniedPage("/Access_Denied");
 	}
