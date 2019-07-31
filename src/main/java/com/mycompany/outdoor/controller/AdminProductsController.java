@@ -35,7 +35,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @Controller
 @RequestMapping("/admin/products")
-public class ProductController {
+public class AdminProductsController {
 
     @Autowired
     ProductService productService;
