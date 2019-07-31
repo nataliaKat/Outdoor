@@ -45,7 +45,7 @@
             <input min="1" id='quant' name="quantity" type="number" value="1"/>
             <form:label path="total" for="quant">Total</form:label>
             <form:input  readonly="true" path="total" id="total"
-                  style="outline: none; padding:5px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,.5); margin: 0 5px !important"/>
+                         style="outline: none; padding:5px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,.5); margin: 0 5px !important"/>
 
             <!--<input id="post" type="submit" value="Submit" />-->
         </form:form>
@@ -82,12 +82,15 @@
         <!-- BUTTON QUANTITY -->
         <script src="static/js/jquery.nice-number.js"></script>
 
-
-        <script>
+ <script>
             // Render the PayPal button into #paypal-button-container            
             jQuery(document).ready(init);
 
+ 
+
             function init($) {
+
+ 
 
                 $("#quant").on("keyup click", handleKeyUp);
                 function handleKeyUp(event) {
@@ -105,6 +108,8 @@
                         $("#total").val(${product.price} * $("#quant").val());
                         console.log($("#total").val());
 
+ 
+
                     }
                 }
                 var today = new Date();
@@ -112,8 +117,12 @@
                 $("#date").val(today.getFullYear() + "/" + month + "/" + today.getDate());
                 $("#total").val(${product.price} * $("#quant").val());
 
+ 
+
 
                 paypal.Buttons({
+
+ 
 
                     // Set up the transaction
                     createOrder: function (data, actions) {
@@ -126,6 +135,8 @@
                         });
                     },
 
+ 
+
                     // Finalize the transaction
                     onApprove: function (data, actions) {
                         return actions.order.capture().then(function (details) {
@@ -134,16 +145,23 @@
                             console.log(details.payer.entries());
                             document.querySelector("#myForm").submit();
 
+ 
+
 
                         });
                     }
 
+ 
+
 
                 }).render('#paypal-button-container');
 
+ 
+
             }
 
-        </script>
+ 
 
+        </script>
     </body>
 </html>

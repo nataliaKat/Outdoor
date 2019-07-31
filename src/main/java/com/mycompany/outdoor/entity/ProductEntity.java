@@ -13,10 +13,10 @@ import java.util.Objects;
  */
 public class ProductEntity {
     
-        private Integer productsId;
+    private Integer productsId;
     private Double price;
     private String imageUrl;
-    private String description;
+    private String description;  
     private String name;
     private BrandEntity brand;
     private CategoryEntity category;

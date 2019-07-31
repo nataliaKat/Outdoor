@@ -68,9 +68,11 @@ public class AppController {
 //        List<User> users = userService.findAllUsers();
 //        model.addAttribute("users", users);
 //        model.addAttribute("loggedinuser", getPrincipal());
-        return "test";
+        return "welcome";
     }
-
+ 
+    
+   
     /**
      * This method will provide the medium to add a new user.
      */
@@ -174,7 +176,7 @@ public class AppController {
     @RequestMapping(value = {"/delete-user-{ssoId}"}, method = RequestMethod.GET)
     public String deleteUser(@PathVariable String ssoId) {
         userService.deleteUserBySSO(ssoId);
-        return "redirect:/list";
+        return "redirect:/";
     }
 
     /**
@@ -206,6 +208,7 @@ public class AppController {
             return "redirect:/";
         }
     }
+    
 
     /**
      * This method handles logout requests. Toggle the handlers if you are

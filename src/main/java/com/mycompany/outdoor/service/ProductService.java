@@ -49,6 +49,12 @@ public class ProductService {
        //return dao.findAllProducts();
         
     }
+   public List<Product> findProductsByPrice(double lowPrice, double highPrice){
+       List<Product> priceProducts = dao.findProductsByPrice( lowPrice, highPrice);
+       return priceProducts;
+   }
+   
+   
    
     public void deleteProductById(Integer id) {
         dao.deleteProductById(id);

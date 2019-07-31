@@ -21,6 +21,7 @@ import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -69,18 +70,11 @@ public class AdminProductsController {
         return "test";
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public String updateForm(ModelMap model, @PathVariable("id") Integer id) {
-        Product p = productService.findById(id);
-        model.addAttribute("quantity", stockService.getQuantityPerProduct(p));
-        model.addAttribute("product", p);
-        model.addAttribute("pBrand", p.getBrand());
-        model.addAttribute("pCategory", p.getCategory());
-        model.addAttribute("brands", brandService.findAllBrands());
-        model.addAttribute("categories", categoryService.findAllCategories());
-        return "admineditproducts";
-    }
+   
 
+    
+//       -- INSERT FORM --
+    
     @RequestMapping(value = {"/new"}, method = RequestMethod.GET)
     public String insertForm(ModelMap model) {
 
@@ -102,13 +96,31 @@ public class AdminProductsController {
         stockService.newProduct(product, quantity);
         return "redirect:/admin/products";
     }
-
+       
+    
+        //   -- DELETE --
+    
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     public String deleteProductById(ModelMap model, @PathVariable("id") Integer id) {
         productService.deleteProductById(id);
         return "redirect:/admin/products";
     }
 
+//        -- UPDATE FORM --
+    
+
+     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public String updateForm(ModelMap model, @PathVariable("id") Integer id) {
+        Product p = productService.findById(id);
+        model.addAttribute("quantity", stockService.getQuantityPerProduct(p));
+        model.addAttribute("product", p);
+        model.addAttribute("pBrand", p.getBrand());
+        model.addAttribute("pCategory", p.getCategory());
+        model.addAttribute("brands", brandService.findAllBrands());
+        model.addAttribute("categories", categoryService.findAllCategories());
+        return "admineditproducts";
+    }
+    
     @RequestMapping(method = RequestMethod.POST)
     public String updateProduct(@RequestParam("quantity") int quantity, @RequestParam("brandsId") Integer brandsId, 
             @RequestParam("categoryId") Integer categoryId, @Valid Product product, BindingResult result, ModelMap model) {
@@ -117,9 +129,10 @@ public class AdminProductsController {
         product.setBrand(foundBrand);
         Category foundCategory = categoryService.findById(categoryId);
         product.setCategory(foundCategory);
+        
         productService.updateProduct(product);
         stockService.updateStock(product, quantity);
-
+     
 //        System.out.println(result.hasErrors());
 //        if (result.hasErrors()) {
 //            Product p = productService.findById(product.getProductsId());

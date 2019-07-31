@@ -36,6 +36,7 @@ com\mycompany\outdoor\entity\ProductEntity.class
 com\mycompany\outdoor\entity\CategoryEntity.class
 com\mycompany\outdoor\model\Category.class
 com\mycompany\outdoor\dao\BrandDao.class
+com\mycompany\outdoor\model\view\ProductView.class
 com\mycompany\outdoor\security\SecurityWebApplicationInitializer.class
 com\mycompany\outdoor\service\BrandService.class
 com\mycompany\outdoor\controller\UserBuyController.class
