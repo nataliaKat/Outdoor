@@ -82,19 +82,22 @@
         <!-- BUTTON QUANTITY -->
         <script src="static/js/jquery.nice-number.js"></script>
 
-
-        <script>
+ <script>
             // Render the PayPal button into #paypal-button-container            
             jQuery(document).ready(init);
 
+ 
+
             function init($) {
+
+ 
 
                 $("#quant").on("keyup click", handleKeyUp);
                 function handleKeyUp(event) {
                     let usersQuantity = $("#quant").val();
                     if (usersQuantity > ${quantity}) {
                         $("#message").html("Quantity not available.");
-                        $("#total").val(0);
+                        $("#total").val("");
                         console.log($("#total").val());
                     } else if (usersQuantity < 0) {
                         $("#quant").val(1);
@@ -105,6 +108,8 @@
                         $("#total").val(${product.price} * $("#quant").val());
                         console.log($("#total").val());
 
+ 
+
                     }
                 }
                 var today = new Date();
@@ -112,23 +117,25 @@
                 $("#date").val(today.getFullYear() + "/" + month + "/" + today.getDate());
                 $("#total").val(${product.price} * $("#quant").val());
 
-                console.log($("#prod").val());
-                console.log($("#user").val());
-                console.log($("#date").val());
-                console.log($("#total").val());
+ 
+
 
                 paypal.Buttons({
+
+ 
 
                     // Set up the transaction
                     createOrder: function (data, actions) {
                         return actions.order.create({
                             purchase_units: [{
                                     amount: {
-                                        value: ${product.price} * $("#quant").val()
+                                        value: $("#total").val()
                                     }
                                 }]
                         });
                     },
+
+ 
 
                     // Finalize the transaction
                     onApprove: function (data, actions) {
@@ -138,16 +145,23 @@
                             
                             document.querySelector("#myForm").submit();
 
+ 
+
 
                         });
                     }
 
+ 
+
 
                 }).render('#paypal-button-container');
 
+ 
+
             }
 
-        </script>
+ 
 
+        </script>
     </body>
 </html>

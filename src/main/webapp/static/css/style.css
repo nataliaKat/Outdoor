@@ -20,8 +20,6 @@
 
 .big-banner-2 {
   background-image: url('../pictures/mountain.jpeg');
-
- 
 }
 
 li.dropdown:hover > .dropdown-menu {
@@ -36,7 +34,11 @@ li.dropdown:hover > .dropdown-menu {
   font-family: 'Courier New', Courier, monospace;
 }
 
-
+ .navbar-brand
+  {
+    margin-left:40px;
+    margin-right:40px;
+  }
 
 .footer
 {

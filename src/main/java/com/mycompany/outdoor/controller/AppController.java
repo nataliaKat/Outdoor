@@ -68,22 +68,11 @@ public class AppController {
 //        List<User> users = userService.findAllUsers();
 //        model.addAttribute("users", users);
 //        model.addAttribute("loggedinuser", getPrincipal());
-        return "test";
+        return "welcome";
     }
-    @RequestMapping(value = {"/{id}"}, method = RequestMethod.GET)
-    public String showDetails(@PathVariable("id") Integer id, ModelMap model) {
-        model.addAttribute("id", id);
-        return "details";
-    }
+ 
     
-    @RequestMapping(value = {"/{id}/buy"}, method = RequestMethod.GET)
-    public String buy(@PathVariable("id") Integer id, ModelMap model) {
-        Product p = productService.findById(id);
-        model.addAttribute("product", p);
-        model.addAttribute("sale",new Sale());
-        model.addAttribute("quantity", stockService.getQuantityPerProduct(p));
-        return "buy";
-    }
+   
     /**
      * This method will provide the medium to add a new user.
      */
@@ -219,6 +208,7 @@ public class AppController {
             return "redirect:/";
         }
     }
+    
 
     /**
      * This method handles logout requests. Toggle the handlers if you are
