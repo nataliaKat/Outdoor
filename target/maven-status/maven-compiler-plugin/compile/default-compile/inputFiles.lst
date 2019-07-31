@@ -10,6 +10,7 @@ D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\model\UserProfileType.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\dao\ProductDao.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\model\Stock.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\dao\UserDaoImpl.java
+D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\controller\CustomerProductsController.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\model\Product.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\controller\AdminProductsController.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\service\BrandService.java
@@ -33,11 +34,11 @@ D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\model\view\ProductView.jav
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\service\StockService.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\model\Sale.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\security\CustomUserDetailsService.java
-D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\controller\CustomerController.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\service\UserProfileServiceImpl.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\entity\CategoryEntity.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\converter\RoleToUserProfileConverter.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\configuration\HibernateConfiguration.java
+D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\controller\ProductController.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\controller\UserBuyController.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\service\ProductService.java
 D:\AFDEMP\Outdoor\src\main\java\com\mycompany\outdoor\dao\AbstractDao.java

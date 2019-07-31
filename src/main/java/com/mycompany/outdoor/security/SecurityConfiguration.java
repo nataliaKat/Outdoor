@@ -40,8 +40,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.access("hasRole('USER') or hasRole('ADMIN')")
 				.antMatchers("/admin/**")
 				.access("hasRole('ADMIN')").
-                            and().formLogin().loginPage("/login")
-				.loginProcessingUrl("/login").usernameParameter("ssoId").passwordParameter("password").defaultSuccessUrl("/24").and()
+                                and().formLogin().loginPage("/login")
+				.loginProcessingUrl("/login").usernameParameter("ssoId").passwordParameter("password").defaultSuccessUrl("/products").and()
 				.rememberMe().rememberMeParameter("remember-me").tokenRepository(tokenRepository)
 				.tokenValiditySeconds(86400).and().csrf().and().exceptionHandling().accessDeniedPage("/Access_Denied");
 	}
