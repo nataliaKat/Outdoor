@@ -94,7 +94,7 @@
                     let usersQuantity = $("#quant").val();
                     if (usersQuantity > ${quantity}) {
                         $("#message").html("Quantity not available.");
-                        $("#total").val(0);
+                        $("#total").val("");
                         console.log($("#total").val());
                     } else if (usersQuantity < 0) {
                         $("#quant").val(1);
@@ -112,10 +112,6 @@
                 $("#date").val(today.getFullYear() + "/" + month + "/" + today.getDate());
                 $("#total").val(${product.price} * $("#quant").val());
 
-                console.log($("#prod").val());
-                console.log($("#user").val());
-                console.log($("#date").val());
-                console.log($("#total").val());
 
                 paypal.Buttons({
 
@@ -124,7 +120,7 @@
                         return actions.order.create({
                             purchase_units: [{
                                     amount: {
-                                        value: ${product.price} * $("#quant").val()
+                                        value: $("#total").val()
                                     }
                                 }]
                         });
@@ -135,7 +131,7 @@
                         return actions.order.capture().then(function (details) {
                             // Show a success message to the buyer
                             alert('Transaction completed by ' + details.payer.name.given_name + '!');
-                            
+                            console.log(details.payer.entries());
                             document.querySelector("#myForm").submit();
 
 
