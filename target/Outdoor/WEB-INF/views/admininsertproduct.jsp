@@ -61,7 +61,7 @@
 
                 <ul class="navbar-nav1 ml-auto">
                     <li class="nav-item">
-                        <a href="#" class="nav-link" style="font-size: 20px;"><i class="far fa-user-circle"></i> Logout</a>
+                        <a href="/Outdoor/logout" class="nav-link" style="font-size: 20px;"><i class="far fa-user-circle"></i> Logout</a>
                     </li>
                 </ul>
             </div>
@@ -179,14 +179,14 @@
 
                         </div>
                     </form:form>
-                        <div id="eru"></div>
+                       
                 </div>
 
 
 
             </div>
 
-
+        </div>
             <!-- FOOTER -->
 
             <footer class="footer mt-5">

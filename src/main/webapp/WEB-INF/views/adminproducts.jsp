@@ -119,7 +119,7 @@
                     FILTER SECTION
                     <hr><br>
 
-                    Brands<hr>
+<!--                    Brands<hr>
                     <ol>
                         <li ng-repeat="brand in brands">
                             <label for="{{brand.brandname}}">{{brand.brandname}}</label>
@@ -132,7 +132,7 @@
                     Up to 50 Euro<input type="checkbox" id="low"><br>
                     Up to 200 Euro<input type="checkbox" id="medium"><br>
                     Up to<input type="checkbox" id="high"> 
-
+-->
 
 
 
@@ -142,23 +142,20 @@
                 <div class="col-lg-9">
                     <div class="row">
 
-
-
-
                         <!-- ITEM 1 -->
-                        <c:forEach items='${products}' var='product'>
+                        <%--<c:forEach items='${products}' var='product'>--%>
                            
                         <div  class="col-lg-4 col-md-6 mb-4" ng-repeat="product in products">
 
                             <div class="card h-100 border" >
-                                <a href="#"><img class="card-img-top" src="{{ product.imageUrl}}" alt=""></a>
+                                <a href="#"><img class="card-img-top" src="{{ product.imageUrl }}" alt=""></a>
                                 <div class="card-body" >
                                     <h4 class="card-title" style="font-family: 'Muli', sans-serif; overflow: hidden; height: 60px; ">
                                         <a href="#"> {{ product.name}} </a>
                                     </h4>
-                                    <h5 style="font-family: 'Rokkitt', serif;">&euro; {{ product.price}} </h5>
+                                    <h5 style="font-family: 'Rokkitt', serif;">&euro; {{ product.price }} </h5>
                                     <hr style="margin-top:5px; margin-bottom:7px">
-                                    <p class="card-text text-left" style="height:100px; overflow:auto"> {{ product.description}}
+                                    <p class="card-text text-left" style="height:100px; overflow:auto"> {{ product.description }}
                                     </p>
                                 </div>
                                 <!-- EDIT -->
@@ -170,7 +167,7 @@
 
                                     <!-- andreas button -->
                                     <!-- <button style="position:relative; top:72px; right: 292px" onclick="window.location.href='<c:url value="/admin/products/delete/${product.productsId}"/>'">Edit</button> -->
-                                    <button class="btn-block"  onclick="window.location.href = '<c:url value="/admin/products/${product.productsId}"/>'">Edit</button>
+                                    <button class="btn-block"  onclick="window.location.href = '<c:url value="/admin/products/{{product.productsId}}"/>'">Edit</button>
 
                                 </div>
                                 <!-- /EDIT -->
@@ -279,6 +276,7 @@
                     <div class="paypal" style="padding-left: 15px; padding-right: 15px ; text-align: center ; margin-left:190px ">
                         <a href="#">
                             <img class="h-size2" src="<c:url value='/static/pictures/paypal.png'/>" alt="IMG-PAYPAL">
+                            
                         </a>
                         <div class="copyrights" style="padding-top: 20px;">
                             Copyright © 2019 All rights reserved. | This template is made with <i class="far fa-heart"></i> by AFDEmp Bootcamp 8
@@ -306,40 +304,37 @@
 
         <script>
 
-                                             const ProductApp = angular.module("app", []);
+                   const ProductApp = angular.module("app", []);
+                     ProductApp.controller("MainCtrl", ['$scope', '$http', MainCtrl]);
 
-
-                                             ProductApp.controller("MainCtrl", ['$scope', '$http', MainCtrl]);
-
-                                             function MainCtrl($scope, $http) {
-                                                 const URL = "http://localhost:8080/Outdoor/json/all";
-                                                 const brandURL = "https://api.myjson.com/bins/e6en1";
-                                                 const priceURL = "http://localhost:8080/Outdoor/json/price";
-                                                 $scope.products = [];
-//                                                 $scope.brands = [];
-                                                 //ΘΑ ΓΕΜΙΖΩ ΜΙΑ ΛΙΣΤΑ - ΤΗΝ products ΜΕ ΤΟ URL ΠΟΥ ΘΕΛΩ ΚΑΘΕ ΦΟΡΑ ΩΣΤΕ ΝΑ ΠΑΙΡΝΩ ΤΟ 
-                                                 //ΚΑΤΑΛΛΗΛΟ JSON
-                                                   //ΘΑ ΦΤΙΑΞΩ ΠΟΛΛΑ URL ΚΑΙ ΘΑ ΤΑ ΦΟΡΤΩΝΩ ΑΝΑΛΟΓΑ ΜΕ ΤΟ ONCLICK ΣΤΗΝ products
+                          function MainCtrl($scope, $http) {
+                              const URL = "http://localhost:8080/Outdoor/json/all";
+                              const brandURL = "https://api.myjson.com/bins/e6en1";
+                              const priceURL = "http://localhost:8080/Outdoor/json/price";
+                            $scope.products = [];
+                    $scope.brands = [];
+                      //ΘΑ ΓΕΜΙΖΩ ΜΙΑ ΛΙΣΤΑ - ΤΗΝ products ΜΕ ΤΟ URL ΠΟΥ ΘΕΛΩ ΚΑΘΕ ΦΟΡΑ ΩΣΤΕ ΝΑ ΠΑΙΡΝΩ ΤΟ 
+                     //ΚΑΤΑΛΛΗΛΟ JSON
+                            //ΘΑ ΦΤΙΑΞΩ ΠΟΛΛΑ URL ΚΑΙ ΘΑ ΤΑ ΦΟΡΤΩΝΩ ΑΝΑΛΟΓΑ ΜΕ ΤΟ ONCLICK ΣΤΗΝ products
                                                  
-                                                 if( )
-                                                 $http.get(URL).then(handleJson);
-                                                 $http.get(brandURL).then(handleJsonBrands);
+                                                
+                            $http.get(URL).then(handleJson);
+                      $http.get(brandURL).then(handleJsonBrands);
 
 
-                                                 function handleJson(response) {
+                        function handleJson(response) {
 
-                                                     // console.log(response.data);
-                                                     $scope.products = response.data;
+                         console.log(response.data);
+                      $scope.products = response.data;
                                                  }
 
-
-//                                                 function handleJsonBrands(response) {
-//                                                     // console.log(response.data);
-//                                                     $scope.brands = response.data;
-//                                                 }
-//                                                 function handleJsonPrice(response) {
-//                                                     $scoper.prices = response.data;
-//                                                 }
+                        function handleJsonBrands(response) {
+                                 // console.log(response.data);
+                                    $scope.brands = response.data;
+                                                 }
+                       function handleJsonPrice(response) {
+                              $scope.prices = response.data;
+                 }
                                              }
 
 

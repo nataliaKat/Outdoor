@@ -9,6 +9,8 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
 
+
+
 <!DOCTYPE html>
 
 <html class="no-js">
@@ -16,7 +18,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Edit</title>
+        <title>insert</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Bootstrap | Ctrl+/ -->
@@ -37,37 +39,31 @@
         <link href="https://fonts.googleapis.com/css?family=Rokkitt:500&display=swap" rel="stylesheet">
 
         <!-- My CSS -->
-        <link rel="stylesheet" type="text/css" href="static/css/style.css">
+        <link rel="stylesheet" type="text/css" href="<c:url value='/static/css/style.css'/>"
 
     </head>
+
 
     <body style="padding-top:0%">
 
         <!-- NAVBAR HEADER  (BUTTON TOOGLE DOESNT WORK)-->
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-white border" style="padding-left: 150px; padding-right: 150px">
-
-            <img src="https://cdn2.shopify.com/s/files/1/0173/2227/8976/products/mountain-compass-temporary-tattoos-easytatt-6802109694016_2048x2048.jpg?v=1548635909"
-                 width="150" height="120" class="d-inline-block align-center " alt="">
-            <a class="navbar-brand" href="#">
-                <h2 class="text-center font font-weight-bold" style="padding-left: 20px">Compass</h2>
-            </a>
-
+        <nav class="navbar big-banner navbar-expand-lg navbar-light bg-white border"
+             style="padding-left: 150px; padding-right: 150px; height:368px;">
 
             <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="#navbarMenu">
-                <!-- <p class="text-center font-italic font-weight-bold" style="">Compass</p> -->
-                <ul class="navbar-nav ml-auto">
-                    <form class="form-inline" style="padding-right: 65px;">
-                        <input class="form-control mr-auto" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                    </form>
 
+            <div class="collapse navbar-collapse" id="#navbarMenu"
+                 style="position:relative; bottom:130px; left:80px; color: blue">
+                <!-- <p class="text-center font-italic font-weight-bold" style="">Compass</p> -->
+
+
+                <ul class="navbar-nav1 ml-auto">
                     <li class="nav-item">
-                        <a href="/Outdoor/logout" class="nav-link">Logout</a>
+                        <a href="/Outdoor/logout" class="nav-link" style="font-size: 20px;"><i class="far fa-user-circle"></i> Logout</a>
                     </li>
                 </ul>
             </div>
@@ -75,14 +71,14 @@
 
         <!-- <div class="container" style="margin-left: 40px; margin-right: 40"> -->
 
-        <!-- NAVBAR 2(BUTTON TOOGLE DOESNT WORK) -->
-        <nav class="navbar navbar-expand-sm navbar-light align-center" style="background-color: aquamarine">
+        <!-- NAVBAR 2 -->
+        <nav class="navbar navbar-expand-sm navbar-light align-center sticky-top" style="background-color: aquamarine">
             <button class="navbar-toggler" data-toggle="colapse" data-target="#navbarMenu2">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="#navbarMenu2">
 
-                <ul class="navbar-nav mx-auto" style="padding-left: 50px; padding-right:50px">
+                <ul class="navbar-nav mx-auto" style="text-align: center">
                     <li class="navbar-brand">
                         <a href="#" class="navbar-brand">Home</a>
                     </li>
@@ -92,7 +88,8 @@
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Products
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown"
+                             style="background-color: rgb(217, 223, 223)">
                             <a class="dropdown-item" href="#">Tents</a>
                             <a class="dropdown-item" href="#">Hiking Equipment</a>
                             <a class="dropdown-item" href="#">Backpacks</a>
@@ -101,48 +98,51 @@
                     </li>
 
                     <li class="navbar-brand">
-                        <a href="#" class="navbar-brand">About</a>
+                        <a href="#" class="navbar-brand">Brands</a>
                     </li>
                     <li class="navbar-brand">
-                        <a href="#" class="navbar-brand">Contact</a>
+                        <a href="#" class="navbar-brand">Sales</a>
                     </li>
                 </ul>
             </div>
 
         </nav>
 
+
         <!-- MAIN BODY -->
         <div class="container" style="margin-top: 50px ; padding-right: 30px">
             <div class="row">
                 <div class="col-md-6 col-sm-6">
                     <img class="card-img-top" style="height: 420px"
-                         src="https://images.pexels.com/photos/2376997/pexels-photo-2376997.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940/1200x600"
+                         src="${product.imageUrl}"
                          alt="">
                     <div class="delete mt-5 border-top border-info" style=" font-family: 'Montserrat', sans-serif;  width:470px; height: 150px;">
                         <span class="light-text" style="margin-top: 20px;">Do you want to delete this product?</span>
-                       <button style="position:relative; top:72px; right: 292px" onclick="window.location.href='<c:url value="/admin/products/delete/${product.productsId}"/>'">Delete</button>
+                        <button style="position:relative; top:72px; right: 292px" onclick="window.location.href = '<c:url value="/admin/products/delete/${product.productsId}"/>'">Delete</button>
+
+
                     </div>
                 </div>
 
                 <div class="col-md-6 col-sm-6 border border-dark rounded " style="box-shadow:20px 20px 10px grey; ">
 
-                    <form:form method="POST" action="/Outdoor/admin/products" modelAttribute="product" class="main-form needs-validation border" novalidate="novalidate">
+                    <form:form method="POST" action="/Outdoor/admin/products" modelAttribute="product" class="main-form needs-validation" novalidate="novalidate">
 
                         <form:label path="productsId" type="hidden"></form:label>
                         <form:input path="productsId" type="hidden" />
                         <div class="form-group">
 
                             <form:label path="name">Name</form:label>
-                            <form:input type="text" path="name" id="name" maxlength="100" class="form-control" required="required"/>
+                            <form:input type="text" path="name" id="name"  maxlength="100" class="form-control" required="required"/>
                             <div class="invalid-feedback">Please enter a valid name</div>
                         </div>
                         <div class="form-group">
                             <form:label path="price">Price</form:label>
-                            <form:input type="number" min="0.1" step="0.01" path="price" id="price" class="form-control" required="required"/>
+                            <form:input type="number" path="price" id="price" min="0.1" step="0.01" class="form-control" required="required"/>
                             <div class="invalid-feedback">Please enter a valid price</div>
                             <small class="form-text text-muted">
                                 This should be in euros
-                            </small>
+                            </small> 
                         </div>
                         <div class="form-group">
                             <form:label path="imageUrl">Image_URL</form:label>
@@ -151,44 +151,50 @@
                         </div>
                         <div class="form-group">
                             <form:label path="description">Description</form:label>
-                            <form:textarea type="text" path="description" maxlength="600" id="description" class="form-control" required="required"/>
+                            <form:textarea type="text" path="description" id="description" maxlength="600" class="form-control" required="required"
+                                           style="height:100px"/>
                             <div class="invalid-feedback">Please enter a valid text</div>
 
                         </div>      
-<!--                        <div class="form-group">
+
+
+                        <div class="form-group">
                             <label path="quantity">Quantity</label>
                             <input type="number" name="quantity" value="${quantity}" id="quantity" class="form-control" required="required"/>
                             <div class="invalid-feedback">Please enter a valid number</div>
-                        </div>-->
+                        </div>
 
+                               <!--BRAND-->
+                               
                         <div class="form-group">
-                            <label for="brand">Brand</label>
-                            <input type="text" readonly="readonly" value="${pBrand.brandname}"/>
-                            <%--<form:label path="brand">Brand</form:label>--%>
+<!--                            <option selected="selected">3</option>                   -->
+                            <label for="brand">Brand</label>    
+                           
                             <select name="brandsId" id="brand" class="form-control" value="${pBrand.brandsId}" required="required">
-                                <!--here you will need JSTL code 'for-each'--> 
-
-                                <c:forEach items="${brands}" var="b">     
-                                    <option value="${b.brandsId}" >${b.brandname}</option>
+                              
+                                <option selected="${pBrand.brandsId}" value="${pBrand.brandsId}">${pBrand.brandname}</option>
+                                <c:forEach items="${brands}" var="b"> 
+                                     <%--<c:if test="${pBrand.brandname != selected}">--%>
+                                            <option value="${b.brandsId}" >${b.brandname}</option>
+                                     <%--</c:if>--%>
+                                    
                                 </c:forEach>
                             </select>
                         </div>
-<!--<option selected="selected">
-3
-</option>-->
+                               <!--/BRAND-->
 
                         <div class="form-group">
-                            <label for="brand">Brand</label>
-                            <input type="text" readonly="readonly" value="${pCategory.categoryName}"/>
+                            <label for="category">Category</label>
+<!--                            <input type="text" readonly="readonly" value="${pCategory.categoryName}"/>-->
                             <select name="categoryId" id="category" class="form-control" value="${pCategory.categoryName}" required="required">
-                                <!--here you will need JSTL code 'for-each'-->
+                                <option selected="${pCategory.categoryId}" value="${pCategory.categoryId}">${pCategory.categoryName}</option>
                                 <c:forEach items="${categories}" var="cat">
                                     <option value="${cat.categoryId}" >${cat.categoryName}</option>
                                 </c:forEach>     
                             </select>
                         </div>
 
-                        <input type="submit" value="Submit" />
+                        <button type="submit">Update</button>
 
 
                     </div>
@@ -197,25 +203,132 @@
                 <hr>
 
             </div>
-
-
-
-
         </div>
 
+
+        <!-- FOOTER -->
+
+        <footer class="footer mt-5">
+            <div class="container p-5">
+                <!-- FIRST ROW -->
+                <div class="row" style="padding-bottom: 90px; text-align: center">
+                    <div class="col-md-3" style="padding-top: 30px; ">
+                        <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0%">
+                            Get in touch
+                        </h5>
+                    </div>
+                    <div class="col-md-3" style="padding-top: 30px; ">
+                        <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0%">
+                            Categories
+                        </h5>
+
+                        <ul style="padding-left: 0%">
+                            <li class="foo-columns" style="padding-bottom: 18px">
+                                <a href="#" class="text-secondary">
+                                    <i class="fas fa-campground"></i> tents
+                                </a>
+                            </li>
+
+                            <li class="foo-columns" style="padding-bottom: 18px">
+                                <a href="#" class="text-secondary">
+                                    <i class="fas fa-toolbox"></i> hiking equipment
+                                </a>
+                            </li>
+
+                            <li class="foo-columns" style="padding-bottom: 18px">
+                                <a href="#" class="text-secondary ">
+                                    <i class="fas fa-hiking"></i> backpacks
+                                </a>
+                            </li>
+
+                            <li class="foo-columns" style="padding-bottom: 18px">
+                                <a href="#" class="text-secondary">
+                                    <i class="fas fa-medkit"></i> first-aid kits
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3" style="padding-top: 30px; ">
+                        <h5 class="column-title" style="padding-bottom: 30px ;margin-bottom: 0%">
+                            Contact
+                        </h5>
+                        <ul style="padding-left: 0%">
+                            <li class="foo-columns" style="padding-bottom: 18px">
+                                <a href="#" class="text-secondary">
+                                    <i class="far fa-envelope" style=></i> compass@hotmail.com
+                                </a>
+                            </li>
+
+                            <li class="foo-columns" style="padding-bottom: 18px">
+                                <a href="#" class="text-secondary">
+                                    <i class="fas fa-phone-square"></i>
+
+                                    (+30) 6986487890
+                                </a>
+
+                            </li>
+
+                            <li class="foo-columns" style="padding-bottom: 18px">
+                                <a href="#" class="text-secondary">
+                                    <i class="fas fa-map-marker-alt"></i>location
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="col-md-3" style="padding-top: 30px; ">
+                        <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0% ;text-align: center">
+                            Newsletter
+                        </h5>
+                        <form>
+                            <div class="email-field">
+                                <input class="text-secondary"
+                                       style="padding-bottom: 5px; border-style: hidden; padding-top: 0%; text-align: center"
+                                       placeholder="email@example.com">
+                                <hr style="margin-bottom:0% ; margin-top:15px">
+                            </div>
+                            <div class="subscribe">
+                                <button class="subscribe-button">SUBSCRIBE</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+                <!-- SECOND ROW -->
+                <div class="row">
+                    <div class="paypal"
+                         style="padding-left: 15px; padding-right: 15px ; text-align: center ; margin-left:190px ">
+                        <a href="#">
+                            <img class="h-size2" src="<c:url value='/static/pictures/paypal.png'/>"  alt="IMG-PAYPAL">
+                        </a>
+                        <div class="copyrights" style="padding-top: 20px; font-family: 'Montserrat', sans-serif;">
+                            Copyright © 2019 All rights reserved. | This template is made with <i class="far fa-heart"></i>
+                            by AFDEmp
+                            Bootcamp 8
+                        </div>
+                    </div>
+                    <!-- /second row -->
+                </div>
+                <!-- /container -->
+            </div>
+
+        </footer>
+        <!-- Bootstrap  -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
         <script>
-            var form = document.querySelector('.needs-validation');
-            form.addEventListener('submit', function (event) {
-                if (form.checkValidity() === false) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                }
-                form.classList.add('was-validated');
-            });
+                            var form = document.querySelector('.needs-validation');
+                            form.addEventListener('submit', function (event) {
+                                if (form.checkValidity() === false) {
+                                    event.preventDefault();
+                                    event.stopPropagation();
+                                }
+                                form.classList.add('was-validated');
+                            })
         </script>
 
 

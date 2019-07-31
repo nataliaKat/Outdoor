@@ -1,6 +1,7 @@
 package com.mycompany.outdoor.controller;
 
 import com.mycompany.outdoor.model.Product;
+import com.mycompany.outdoor.model.Sale;
 import java.util.List;
 import java.util.Locale;
 
@@ -79,6 +80,7 @@ public class AppController {
     public String buy(@PathVariable("id") Integer id, ModelMap model) {
         Product p = productService.findById(id);
         model.addAttribute("product", p);
+        model.addAttribute("sale",new Sale());
         model.addAttribute("quantity", stockService.getQuantityPerProduct(p));
         return "buy";
     }
@@ -171,7 +173,7 @@ public class AppController {
     @RequestMapping(value = {"/delete-user-{ssoId}"}, method = RequestMethod.GET)
     public String deleteUser(@PathVariable String ssoId) {
         userService.deleteUserBySSO(ssoId);
-        return "redirect:/list";
+        return "redirect:/";
     }
 
     /**
@@ -200,7 +202,7 @@ public class AppController {
         if (isCurrentAuthenticationAnonymous()) {
             return "login";
         } else {
-            return "redirect:/list";
+            return "redirect:/";
         }
     }
 

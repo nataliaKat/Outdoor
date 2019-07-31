@@ -5,6 +5,9 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -28,15 +31,32 @@
     <body>
         <!-- BUTTON QUANTITY PLUS MINUS -->
         <div class="quantityButton" style="padding-top: 45px">
-            Quantity
-            <input type="number" id="quant"
-                   style="outline: none; padding:5px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,.5); margin: 0 5px !important" value="1">
+
+
+
+
         </div>
+
+        <form:form id="myForm" modelAttribute="sale" method="post">
+
+            <form:hidden path="salesDate" id="date"/>
+
+            <input type="hidden" name="productId" id="prod" value="${product.productsId}"/>
+            <input min="1" id='quant' name="quantity" type="number" value="1"/>
+            <form:label path="total" for="quant">Total</form:label>
+            <form:input  readonly="true" path="total" id="total"
+                         style="outline: none; padding:5px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,.5); margin: 0 5px !important"/>
+
+            <!--<input id="post" type="submit" value="Submit" />-->
+        </form:form>
+
+
+
         <!--Message for availability-->
         <div id="message" style="color:red;"></div>
 
         <!-- Set up a container element for the button -->
-        
+
         <div id="paypal-button-container"></div>
 
 
@@ -69,16 +89,33 @@
 
             function init($) {
 
-                $("#quant").on("keyup", handleKeyUp);
+                $("#quant").on("keyup click", handleKeyUp);
                 function handleKeyUp(event) {
                     let usersQuantity = $("#quant").val();
                     if (usersQuantity > ${quantity}) {
-                        $("#message").html("Quantity not available. You will have to wait for us to ");
+                        $("#message").html("Quantity not available.");
+                        $("#total").val(0);
+                        console.log($("#total").val());
+                    } else if (usersQuantity < 0) {
+                        $("#quant").val(1);
+                        $("#total").val(${product.price} * $("#quant").val());
+                        console.log($("#total").val());
                     } else {
                         $("#message").html("");
+                        $("#total").val(${product.price} * $("#quant").val());
+                        console.log($("#total").val());
 
                     }
                 }
+                var today = new Date();
+                var month = today.getMonth() + 1;
+                $("#date").val(today.getFullYear() + "/" + month + "/" + today.getDate());
+                $("#total").val(${product.price} * $("#quant").val());
+
+                console.log($("#prod").val());
+                console.log($("#user").val());
+                console.log($("#date").val());
+                console.log($("#total").val());
 
                 paypal.Buttons({
 
@@ -98,8 +135,11 @@
                         return actions.order.capture().then(function (details) {
                             // Show a success message to the buyer
                             alert('Transaction completed by ' + details.payer.name.given_name + '!');
-                                console.log(details.payer.keys());
-                            });
+                            
+                            document.querySelector("#myForm").submit();
+
+
+                        });
                     }
 
 

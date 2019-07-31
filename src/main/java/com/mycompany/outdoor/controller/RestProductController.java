@@ -31,24 +31,25 @@ public class RestProductController {
 
     @Autowired
     ProductService productService;
-    
+
     @Autowired
     ProductDao productDao;
-    
+
     @RequestMapping(value = "/json/price", method = RequestMethod.GET)
     public ResponseEntity<List<Product>> filterPrice() {
         List<Product> products = productService.findProductsByPrice(100, 200);
-        
+
 //        List<ProductView> productviews = transform(products);
 //          bean.utils copyproperties
         System.out.println(products);
-        
-        if(products.isEmpty()){
 
+        if (products.isEmpty()) {
+            return new ResponseEntity<List<Product>>(HttpStatus.NO_CONTENT);//You many decide to return HttpStatus.NOT_FOUND
+        }
+        return new ResponseEntity<List<Product>>(products, HttpStatus.OK);
+    }
     @Autowired
     BrandService brandService;
-
-   
 
     @RequestMapping(value = "/json/brands", method = RequestMethod.GET)
     public ResponseEntity<List<Brand>> listAllBrands() {
@@ -58,27 +59,27 @@ public class RestProductController {
         }
         return new ResponseEntity<List<Brand>>(brands, HttpStatus.OK);
     }
-    
-        //ALL PRODUCTS
-     @RequestMapping( value = "/json/all",method = RequestMethod.GET)
-     public ResponseEntity< List<Product>> getAllProducts() {
-         List<Product> products = productService.findAllProducts();
-         System.out.println(products);
-     
 
-   if(products.isEmpty()){
+    //ALL PRODUCTS
+    @RequestMapping(value = "/json", method = RequestMethod.GET)
+    public ResponseEntity< List<Product>> getAllProducts() {
+        List<Product> products = productService.findAllProducts();
+        System.out.println(products);
+
+        if (products.isEmpty()) {
             return new ResponseEntity<List<Product>>(HttpStatus.NO_CONTENT);//You many decide to return HttpStatus.NOT_FOUND
         }
         return new ResponseEntity<List<Product>>(products, HttpStatus.OK);
     }
-}
-    @RequestMapping(value = "/json/{id}", method = RequestMethod.GET) 
-    public ResponseEntity<Product> getSingleProduct(@PathVariable("id") Integer id) {
+
+@RequestMapping(value = "/json/{id}", method = RequestMethod.GET)
+        public ResponseEntity<Product> getSingleProduct(@PathVariable("id") Integer id) {
         Product product = productService.findById(id);
         if(product == null) {
             return new ResponseEntity<Product>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<Product>(product, HttpStatus.OK);
     }
+
 
 }

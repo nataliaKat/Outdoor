@@ -70,17 +70,7 @@ public class ProductController {
         return "test";
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public String updateForm(ModelMap model, @PathVariable("id") Integer id) {
-        Product p = productService.findById(id);
-        model.addAttribute("quantity", stockService.getQuantityPerProduct(p));
-        model.addAttribute("product", p);
-        model.addAttribute("pBrand", p.getBrand());
-        model.addAttribute("pCategory", p.getCategory());
-        model.addAttribute("brands", brandService.findAllBrands());
-        model.addAttribute("categories", categoryService.findAllCategories());
-        return "admineditproducts";
-    }
+   
 
     
 //       -- INSERT FORM --
@@ -118,7 +108,8 @@ public class ProductController {
 
 //        -- UPDATE FORM --
     
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+
+     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public String updateForm(ModelMap model, @PathVariable("id") Integer id) {
         Product p = productService.findById(id);
         model.addAttribute("quantity", stockService.getQuantityPerProduct(p));
@@ -130,19 +121,18 @@ public class ProductController {
         return "admineditproducts";
     }
     
-    
-    
     @RequestMapping(method = RequestMethod.POST)
     public String updateProduct(@RequestParam("quantity") int quantity, @RequestParam("brandsId") Integer brandsId, 
             @RequestParam("categoryId") Integer categoryId, @Valid Product product, BindingResult result, ModelMap model) {
 
         Brand foundBrand = brandService.findById(brandsId);
         product.setBrand(foundBrand);
-        Category foundCategory = categoryService.findById(brandsId);
+        Category foundCategory = categoryService.findById(categoryId);
         product.setCategory(foundCategory);
+        
         productService.updateProduct(product);
         stockService.updateStock(product, quantity);
-
+     
 //        System.out.println(result.hasErrors());
 //        if (result.hasErrors()) {
 //            Product p = productService.findById(product.getProductsId());
