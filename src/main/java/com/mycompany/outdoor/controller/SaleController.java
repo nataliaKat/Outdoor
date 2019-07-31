@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @author kat26
  */
 @Controller
-@RequestMapping("/admin/sales")
+@RequestMapping("/sales")
 public class SaleController {
     
     @Autowired
