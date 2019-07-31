@@ -9,8 +9,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=windows-1253">
-        <title></title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Buy</title>
+        <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Bootstrap | Ctrl+/ -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -20,42 +22,43 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
               integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
+        <!-- Monserant-Font -->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+
+        <!-- Muli Font -->
+        <link href="https://fonts.googleapis.com/css?family=Muli:600&display=swap" rel="stylesheet">
+
+        <!-- Rokkitt Font -->
+        <link href="https://fonts.googleapis.com/css?family=Rokkitt:500&display=swap" rel="stylesheet">
+
         <!-- AngularJS -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.min.js"></script>
 
         <!-- My CSS -->
         <link rel="stylesheet" type="text/css" href="static/css/style.css">
         <link rel="stylesheet" type="text/css" href="static/css/jquery.nice-number.css">
+
     </head>
     <body ng-app="app" ng-controller="MainCtrl" ng-cloak style="padding-top:0%">
 
         <!-- NAVBAR HEADER  (BUTTON TOOGLE DOESNT WORK)-->
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-white border" style="padding-left: 150px; padding-right: 150px">
-
-            <img
-                src="https://cdn2.shopify.com/s/files/1/0173/2227/8976/products/mountain-compass-temporary-tattoos-easytatt-6802109694016_2048x2048.jpg?v=1548635909"
-                width="150" height="120" class="d-inline-block align-center " alt="">
-            <a class="navbar-brand" href="#">
-                <h2 class="text-center font font-weight-bold" style="padding-left: 20px">Compass</h2>
-            </a>
-
+        <nav class="navbar big-banner navbar-expand-lg navbar-light bg-white border"
+             style="padding-left: 150px; padding-right: 150px; height:368px;">
 
             <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
 
-            <div class="collapse navbar-collapse" id="#navbarMenu">
+            <div class="collapse navbar-collapse" id="#navbarMenu"
+                 style="position:relative; bottom:130px; left:80px; color: blue">
                 <!-- <p class="text-center font-italic font-weight-bold" style="">Compass</p> -->
-                <ul class="navbar-nav ml-auto">
-                    <form class="form-inline" style="padding-right: 65px;">
-                        <input class="form-control mr-auto" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                    </form>
 
+
+                <ul class="navbar-nav1 ml-auto">
                     <li class="nav-item">
-                        <a href="#" class="nav-link">Logout</a>
+                        <a href="/Outdoor/logout" class="nav-link" style="font-size: 20px;"><i class="far fa-user-circle"></i> Logout</a>
                     </li>
                 </ul>
             </div>
@@ -63,24 +66,25 @@
 
         <!-- <div class="container" style="margin-left: 40px; margin-right: 40"> -->
 
-        <!-- NAVBAR 2(BUTTON TOOGLE DOESNT WORK) -->
-        <nav class="navbar navbar-expand-sm navbar-light align-center" style="background-color: aquamarine">
+        <!-- NAVBAR 2 -->
+        <nav class="navbar navbar-expand-sm navbar-light align-center sticky-top" style="background-color: aquamarine">
             <button class="navbar-toggler" data-toggle="colapse" data-target="#navbarMenu2">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="#navbarMenu2">
 
-                <ul class="navbar-nav mx-auto" style="padding-left: 50px; padding-right:50px">
+                <ul class="navbar-nav mx-auto" style="text-align: center">
                     <li class="navbar-brand">
                         <a href="#" class="navbar-brand">Home</a>
                     </li>
 
                     <li class="navbar-brand dropdown">
-                        <a class="navbar-brand dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false">
+                        <a class="navbar-brand dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Products
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown"
+                             style="background-color: rgb(217, 223, 223)">
                             <a class="dropdown-item" href="#">Tents</a>
                             <a class="dropdown-item" href="#">Hiking Equipment</a>
                             <a class="dropdown-item" href="#">Backpacks</a>
@@ -89,38 +93,56 @@
                     </li>
 
                     <li class="navbar-brand">
-                        <a href="#" class="navbar-brand">About</a>
+                        <a href="#" class="navbar-brand">Brands</a>
                     </li>
                     <li class="navbar-brand">
-                        <a href="#" class="navbar-brand">Contact</a>
+                        <a href="#" class="navbar-brand">Sales</a>
                     </li>
                 </ul>
             </div>
 
         </nav>
 
+
         <!-- MAIN BODY -->
-        <div class="container" style="margin-top: 50px ; padding-right: 30px">
+        <div class="container" style="margin-top: 50px ; padding-right: 30px;">
             <div class="row">
                 <div class="col-md-6 col-sm-6">
-                    <img class="card-img-top"
-                         src="{{product.imageUrl}}"
-                         alt="">
+                    <img class="card-img-top" style="width: 532px; height: 355px"
+                         src="{{product.imageUrl}} "alt="">
                 </div>
 
                 <div class="col-md-6 col-sm-6">
-                    <div class="info" >
-                        <h2 class="product-name m-text16">{{product.name}}</h2>
-                        <p style="padding-bottom: 25px"><span>Code: {{product.productsId}}</span></p>
+                    <div class="info" style="position:relative; left: 50px">
+                        <h2 class="product-name m-text16" style="font-family: 'Muli', sans-serif; ">{{product.name}}</h2>
+                        <p style="font-family: 'Montserrat', sans-serif;"><span>Code: {{product.productsId}}</span></p>
 
-                        Price:<span class="m-text17">&euro;{{product.price}}</span>
-                        Details:
-                        <div class="m-text17">{{product.description}}</div>
+                        <span class="m-text17" style="font-family: 'Rokkitt', serif; font-size:40px">&euro;{{product.price}}</span>
 
-                        <div class="purchase">
-                            <button type="button" ng-click=newPage() class="btn btn-light" data-toggle="button" style="margin-top: 40px; position: relative; left: 85px;">Buy</button>
+
+                        <!-- BUTTON QUANTITY PLUS MINUS -->
+                        <div class="quantityButton" style="padding-top: 30px">
+                            Quantity
+                            <input type="number" id="quant"
+                                   style="outline: none; padding:5px; height:25px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,.5);
+                                   margin: 0 5px !important"
+                                   value="1">
                         </div>
 
+                        <!-- /BUTTON QUANTITY PLUS MINUS -->
+
+
+                        <div class="purchase">
+                            <button type="button" ng-click=newPage() data-toggle="button"
+                                    style="margin-top: 40px; position: relative; left: 85px; ">Buy</button>
+                        </div>
+                        <div class="description" style=" display: flex; align-content: flex-end; overflow: auto; ">
+                            <hr>
+                            <span style="font-family: 'Montserrat', sans-serif;"><hr>
+                                Description <br>
+                                {{product.description}}
+                            </span>
+                        </div>
                     </div>
 
                 </div>
@@ -131,6 +153,112 @@
 
         </div>
 
+        <footer class="footer mt-5">
+            <div class="container p-5">
+                <!-- FIRST ROW -->
+                <div class="row" style="padding-bottom: 90px; text-align: center">
+                    <div class="col-md-3" style="padding-top: 30px; ">
+                        <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0%">
+                            Get in touch
+                        </h5>
+                    </div>
+                    <div class="col-md-3" style="padding-top: 30px; ">
+                        <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0%">
+                            Categories
+                        </h5>
+
+                        <ul style="padding-left: 0%">
+                            <li class="foo-columns" style="padding-bottom: 18px">
+                                <a href="#" class="text-secondary">
+                                    <i class="fas fa-campground"></i> tents
+                                </a>
+                            </li>
+
+                            <li class="foo-columns" style="padding-bottom: 18px">
+                                <a href="#" class="text-secondary">
+                                    <i class="fas fa-toolbox"></i> hiking equipment
+                                </a>
+                            </li>
+
+                            <li class="foo-columns" style="padding-bottom: 18px">
+                                <a href="#" class="text-secondary ">
+                                    <i class="fas fa-hiking"></i> backpacks
+                                </a>
+                            </li>
+
+                            <li class="foo-columns" style="padding-bottom: 18px">
+                                <a href="#" class="text-secondary">
+                                    <i class="fas fa-medkit"></i> first-aid kits
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3" style="padding-top: 30px; ">
+                        <h5 class="column-title" style="padding-bottom: 30px ;margin-bottom: 0%">
+                            Contact
+                        </h5>
+                        <ul style="padding-left: 0%">
+                            <li class="foo-columns" style="padding-bottom: 18px">
+                                <a href="#" class="text-secondary">
+                                    <i class="far fa-envelope" style=></i> compass@hotmail.com
+                                </a>
+                            </li>
+
+                            <li class="foo-columns" style="padding-bottom: 18px">
+                                <a href="#" class="text-secondary">
+                                    <i class="fas fa-phone-square"></i>
+
+                                    (+30) 6986487890
+                                </a>
+
+                            </li>
+
+                            <li class="foo-columns" style="padding-bottom: 18px">
+                                <a href="#" class="text-secondary">
+                                    <i class="fas fa-map-marker-alt"></i>location
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="col-md-3" style="padding-top: 30px; ">
+                        <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0% ;text-align: center">
+                            Newsletter
+                        </h5>
+                        <form>
+                            <div class="email-field">
+                                <input class="text-secondary"
+                                       style="padding-bottom: 5px; border-style: hidden; padding-top: 0%; text-align: center"
+                                       placeholder="email@example.com">
+                                <hr style="margin-bottom:0% ; margin-top:15px">
+                            </div>
+                            <div class="subscribe">
+                                <button class="subscribe-button">SUBSCRIBE</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+                <!-- SECOND ROW -->
+                <div class="row">
+                    <div class="paypal"
+                         style="padding-left: 15px; padding-right: 15px ; text-align: center ; margin-left:190px ">
+                        <a href="#">
+                            <img class="h-size2" src="<c:url value='/static/pictures/paypal.png'/>"  alt="IMG-PAYPAL">
+                        </a>
+                        <div class="copyrights" style="padding-top: 20px; font-family: 'Montserrat', sans-serif;">
+                            Copyright © 2019 All rights reserved. | This template is made with <i class="far fa-heart"></i>
+                            by AFDEmp
+                            Bootcamp 8
+                        </div>
+                    </div>
+                    <!-- /second row -->
+                </div>
+                <!-- /container -->
+            </div>
+
+        </footer>
+
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
@@ -140,38 +268,39 @@
         <script src="static/js/jquery.nice-number.js"></script>
 
         <script>
-                            const ProductApp = angular.module("app", []);
+                                                    const ProductApp = angular.module("app", []);
 
-                            // Add $http service component into our MainCtrl controller
-                            //productApp.controller( "MainCtrl", MainCtrl );
+                                                    // Add $http service component into our MainCtrl controller
+                                                    //productApp.controller( "MainCtrl", MainCtrl );
 
-                            ProductApp.controller("MainCtrl", ['$scope', '$http', MainCtrl]);
+                                                    ProductApp.controller("MainCtrl", ['$scope', '$http', MainCtrl]);
 
-                            function MainCtrl($scope, $http) {
-                                const URL = "http://localhost:8080/Outdoor/json/${id}";
-                                const brandURL = "http://localhost:8080/Outdoor/json/brands";
-                                $scope.products = [];
-                                $scope.brands = [];
-                                $http.get(URL).then(handleJson);
+                                                    function MainCtrl($scope, $http) {
+                                                        const URL = "http://localhost:8080/Outdoor/json/${id}";
+                                                        const brandURL = "http://localhost:8080/Outdoor/json/brands";
+                                                        $scope.products = [];
+                                                        $scope.brands = [];
+                                                        $http.get(URL).then(handleJson);
 
-                                $http.get(brandURL).then(handleJsonBrands);
-                                $scope.newPage = function (id) {
-                                                
-                                    location.href = "http://localhost:8080/Outdoor/" + ${id} + "/buy";
-                                };
+                                                        $http.get(brandURL).then(handleJsonBrands);
+                                                        $scope.newPage = function (id) {
 
-                                function handleJson(response) {
+                                                            location.href = "http://localhost:8080/Outdoor/" + ${id} + "/buy";
+                                                        };
 
-                                    console.log(response.data);
-                                    $scope.product = response.data;
-                                }
+                                                        function handleJson(response) {
 
-                                function handleJsonBrands(response) {
-                                    // console.log(response.data);
-                                    $scope.brands = response.data;
-                                }
-                            }
+                                                            console.log(response.data);
+                                                            $scope.product = response.data;
+                                                        }
+
+                                                        function handleJsonBrands(response) {
+                                                            // console.log(response.data);
+                                                            $scope.brands = response.data;
+                                                        }
+                                                    }
         </script>
+        
         <script type="text/javascript">
                     $(function () {
 

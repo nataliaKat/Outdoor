@@ -61,7 +61,7 @@
 
                 <ul class="navbar-nav1 ml-auto">
                     <li class="nav-item">
-                        <a href="#" class="nav-link" style="font-size: 20px;"><i class="far fa-user-circle"></i> Logout</a>
+                        <a href="/Outdoor/logout" class="nav-link" style="font-size: 20px;"><i class="far fa-user-circle"></i> Logout</a>
                     </li>
                 </ul>
             </div>
@@ -112,19 +112,19 @@
 
                 <div class="col-md-6 col-sm-6 border border-dark rounded " style="box-shadow:20px 20px 10px grey; position:relative; left:310px ">
 
-                    <form:form method="POST" action="/Outdoor/admin/products/new" modelAttribute="product" class="main-form needs-validation" novalidate="novalidate">
+                    <form:form method="POST" action="/Outdoor/admin/products/new" onsubmit="return validation();" modelAttribute="product" class="main-form needs-validation" novalidate="novalidate">
 
                         <form:label path="productsId" type="hidden"></form:label>
                         <form:input path="productsId" type="hidden" />
                         <div class="form-group">
 
                             <form:label path="name">Name</form:label>
-                            <form:input type="text" path="name" id="name" class="form-control" required="required"/>
+                            <form:input type="text"  path="name" name="name" id="name" class="form-control" maxlength="100" required="required"/>
                             <div class="invalid-feedback">Please enter a valid name</div>
                         </div>
                         <div class="form-group">
                             <form:label path="price">Price</form:label>
-                            <form:input min="0.1" step="0.01" type="number" path="price" id="price" class="form-control" required="required"/>
+                            <form:input type="number" min="0.1" step="0.01" path="price" name="price" id="price" class="form-control" required="required"/>
                             <div class="invalid-feedback">Please enter a valid price</div>
                             <small class="form-text text-muted">
                                 This should be in euros
@@ -132,186 +132,189 @@
                         </div>
                         <div class="form-group">
                             <form:label path="imageUrl">Image_URL</form:label>
-                            <form:input type="url" path="imageUrl" id="img_url" class="form-control" required="required"/>
+                            <form:input type="url" path="imageUrl" id="img_url" name="img_url" class="form-control" maxlength="200" required="required"/>
                             <div class="invalid-feedback">Please enter a valid url</div>
                         </div>
                         <div class="form-group">
                             <form:label path="description">Description</form:label>
-                            <form:textarea type="text" path="description" id="description" class="form-control" required="required"/>
+                            <form:textarea type="text" path="description" id="description" name="description" class="form-control" maxlength="600" required="required"/>
                             <div class="invalid-feedback">Please enter a valid text</div>
                         </div>     
-                           
-                            <!--QUANTITY-->
-                                 <div class="form-group">
+
+                        <!--QUANTITY-->
+                        <div class="form-group">
                             <label for="quantity">Quantity</label>
                             <input type="number" name="quantity" id="quantity" class="form-control" required="required"/>
                             <div class="invalid-feedback">Please enter a valid number</div>
-                           
-                                </div>
                             <!--BRAND--> 
-                            
-                        <div class="form-group">
 
-                            <label path="brand">Brand</label>
-                            <select name="brandsId" id="brand" class="form-control" required="required">
-                                <c:forEach items="${brands}" var="b">     
-                                    <option value="${b.brandsId}">${b.brandname}</option>
-                                </c:forEach>
-                            </select>
-                        </div>
+                            <div class="form-group">
+
+                                <label path="brand">Brand</label>
+                                <select name="brandsId" name="brandsId" id="brand" class="form-control" required="required">
+                                    <c:forEach items="${brands}" var="b">     
+                                        <option value="${b.brandsId}">${b.brandname}</option>
+                                    </c:forEach>
+                                </select>
+                            </div>
                             <!--/BRAND-->
-                            
-                            
-                            
+
+
+
                             <!--CATEGORY-->
-                            
-                        <div class="form-group">
-                            <label path="category">Category</label>
-                            <select name="categoryId" id="category" class="form-control" required="required">
-                                <c:forEach items="${categories}" var="cat">
-                                    <option value="${cat.categoryId}">${cat.categoryName}</option>
-                                </c:forEach>     
-                            </select>
+
+                            <div class="form-group">
+                                <label path="category">Category</label>
+                                <select name="categoryId" id="category" class="form-control" required="required">
+                                    <c:forEach items="${categories}" var="cat">
+                                        <option value="${cat.categoryId}">${cat.categoryName}</option>
+                                    </c:forEach>     
+                                </select>
+                            </div>
+
+                            <!--/CATEGORY-->
+
+                            <!--<input type="submit" value="Insert"/>-->
+                            <button type="submit">Insert</button>
+
                         </div>
-                            
-                          <!--/CATEGORY-->
-                            
-                        <!--<input type="submit" value="Insert"/>-->
-                        <button type="submit">Insert</button>
+                    </form:form>
+                       
+                </div>
 
-                    </div>
-                </form:form>
+
+
             </div>
-
-            
 
         </div>
+            <!-- FOOTER -->
 
+            <footer class="footer mt-5">
+                <div class="container p-5">
+                    <!-- FIRST ROW -->
+                    <div class="row" style="padding-bottom: 90px; text-align: center">
+                        <div class="col-md-3" style="padding-top: 30px; ">
+                            <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0%">
+                                Get in touch
+                            </h5>
+                        </div>
+                        <div class="col-md-3" style="padding-top: 30px; ">
+                            <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0%">
+                                Categories
+                            </h5>
 
-        <!-- FOOTER -->
+                            <ul style="padding-left: 0%">
+                                <li class="foo-columns" style="padding-bottom: 18px">
+                                    <a href="#" class="text-secondary">
+                                        <i class="fas fa-campground"></i> tents
+                                    </a>
+                                </li>
 
-        <footer class="footer mt-5">
-            <div class="container p-5">
-                <!-- FIRST ROW -->
-                <div class="row" style="padding-bottom: 90px; text-align: center">
-                    <div class="col-md-3" style="padding-top: 30px; ">
-                        <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0%">
-                            Get in touch
-                        </h5>
-                    </div>
-                    <div class="col-md-3" style="padding-top: 30px; ">
-                        <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0%">
-                            Categories
-                        </h5>
+                                <li class="foo-columns" style="padding-bottom: 18px">
+                                    <a href="#" class="text-secondary">
+                                        <i class="fas fa-toolbox"></i> hiking equipment
+                                    </a>
+                                </li>
 
-                        <ul style="padding-left: 0%">
-                            <li class="foo-columns" style="padding-bottom: 18px">
-                                <a href="#" class="text-secondary">
-                                    <i class="fas fa-campground"></i> tents
-                                </a>
-                            </li>
+                                <li class="foo-columns" style="padding-bottom: 18px">
+                                    <a href="#" class="text-secondary ">
+                                        <i class="fas fa-hiking"></i> backpacks
+                                    </a>
+                                </li>
 
-                            <li class="foo-columns" style="padding-bottom: 18px">
-                                <a href="#" class="text-secondary">
-                                    <i class="fas fa-toolbox"></i> hiking equipment
-                                </a>
-                            </li>
+                                <li class="foo-columns" style="padding-bottom: 18px">
+                                    <a href="#" class="text-secondary">
+                                        <i class="fas fa-medkit"></i> first-aid kits
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3" style="padding-top: 30px; ">
+                            <h5 class="column-title" style="padding-bottom: 30px ;margin-bottom: 0%">
+                                Contact
+                            </h5>
+                            <ul style="padding-left: 0%">
+                                <li class="foo-columns" style="padding-bottom: 18px">
+                                    <a href="#" class="text-secondary">
+                                        <i class="far fa-envelope" style=></i> compass@hotmail.com
+                                    </a>
+                                </li>
 
-                            <li class="foo-columns" style="padding-bottom: 18px">
-                                <a href="#" class="text-secondary ">
-                                    <i class="fas fa-hiking"></i> backpacks
-                                </a>
-                            </li>
+                                <li class="foo-columns" style="padding-bottom: 18px">
+                                    <a href="#" class="text-secondary">
+                                        <i class="fas fa-phone-square"></i>
 
-                            <li class="foo-columns" style="padding-bottom: 18px">
-                                <a href="#" class="text-secondary">
-                                    <i class="fas fa-medkit"></i> first-aid kits
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-md-3" style="padding-top: 30px; ">
-                        <h5 class="column-title" style="padding-bottom: 30px ;margin-bottom: 0%">
-                            Contact
-                        </h5>
-                        <ul style="padding-left: 0%">
-                            <li class="foo-columns" style="padding-bottom: 18px">
-                                <a href="#" class="text-secondary">
-                                    <i class="far fa-envelope" style=></i> compass@hotmail.com
-                                </a>
-                            </li>
+                                        (+30) 6986487890
+                                    </a>
 
-                            <li class="foo-columns" style="padding-bottom: 18px">
-                                <a href="#" class="text-secondary">
-                                    <i class="fas fa-phone-square"></i>
+                                </li>
 
-                                    (+30) 6986487890
-                                </a>
+                                <li class="foo-columns" style="padding-bottom: 18px">
+                                    <a href="#" class="text-secondary">
+                                        <i class="fas fa-map-marker-alt"></i>location
+                                    </a>
+                                </li>
 
-                            </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3" style="padding-top: 30px; ">
+                            <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0% ;text-align: center">
+                                Newsletter
+                            </h5>
+                            <form>
+                                <div class="email-field">
+                                    <input class="text-secondary"
+                                           style="padding-bottom: 5px; border-style: hidden; padding-top: 0%; text-align: center"
+                                           placeholder="email@example.com">
+                                    <hr style="margin-bottom:0% ; margin-top:15px">
+                                </div>
+                                <div class="subscribe">
+                                    <button class="subscribe-button">SUBSCRIBE</button>
+                                </div>
+                            </form>
 
-                            <li class="foo-columns" style="padding-bottom: 18px">
-                                <a href="#" class="text-secondary">
-                                    <i class="fas fa-map-marker-alt"></i>location
-                                </a>
-                            </li>
-
-                        </ul>
-                    </div>
-                    <div class="col-md-3" style="padding-top: 30px; ">
-                        <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0% ;text-align: center">
-                            Newsletter
-                        </h5>
-                        <form>
-                            <div class="email-field">
-                                <input class="text-secondary"
-                                       style="padding-bottom: 5px; border-style: hidden; padding-top: 0%; text-align: center"
-                                       placeholder="email@example.com">
-                                <hr style="margin-bottom:0% ; margin-top:15px">
-                            </div>
-                            <div class="subscribe">
-                                <button class="subscribe-button">SUBSCRIBE</button>
-                            </div>
-                        </form>
-
-                    </div>
-                </div>
-                <!-- SECOND ROW -->
-                <div class="row">
-                    <div class="paypal"
-                         style="padding-left: 15px; padding-right: 15px ; text-align: center ; margin-left:190px ">
-                        <a href="#">
-                            <img class="h-size2" src="<c:url value='/static/pictures/paypal.png'/>"  alt="IMG-PAYPAL">
-                        </a>
-                        <div class="copyrights" style="padding-top: 20px; font-family: 'Montserrat', sans-serif;">
-                            Copyright © 2019 All rights reserved. | This template is made with <i class="far fa-heart"></i>
-                            by AFDEmp
-                            Bootcamp 8
                         </div>
                     </div>
-                    <!-- /second row -->
+                    <!-- SECOND ROW -->
+                    <div class="row">
+                        <div class="paypal"
+                             style="padding-left: 15px; padding-right: 15px ; text-align: center ; margin-left:190px ">
+                            <a href="#">
+                                <img class="h-size2" src="<c:url value='/static/pictures/paypal.png'/>"  alt="IMG-PAYPAL">
+                            </a>
+                            <div class="copyrights" style="padding-top: 20px; font-family: 'Montserrat', sans-serif;">
+                                Copyright © 2019 All rights reserved. | This template is made with <i class="far fa-heart"></i>
+                                by AFDEmp
+                                Bootcamp 8
+                            </div>
+                        </div>
+                        <!-- /second row -->
+                    </div>
+                    <!-- /container -->
                 </div>
-                <!-- /container -->
-            </div>
 
-        </footer>
-        <!-- Bootstrap  -->
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+            </footer>
+            <!-- Bootstrap  -->
+            <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 
-        <script>
-            var form = document.querySelector('.needs-validation');
-            form.addEventListener('submit', function (event) {
-                if (form.checkValidity() === false) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                }
-                form.classList.add('was-validated');
-            })
-        </script>
+            <script>
+                var form = document.querySelector('.needs-validation');
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                })
+
+
+         
+
+            </script>
 
 
     </body>

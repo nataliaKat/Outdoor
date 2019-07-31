@@ -47,28 +47,28 @@
 
         <!-- NAVBAR HEADER  (BUTTON TOOGLE DOESNT WORK)-->
 
-        <nav class="big-banner" class="navbar-expand-lg navbar-light bg-white border"  style="padding-left: 150px; padding-right: 150px; height:368px;">
-
-            <!-- <img
-              src="https://cdn2.shopify.com/s/files/1/0173/2227/8976/products/mountain-compass-temporary-tattoos-easytatt-6802109694016_2048x2048.jpg?v=1548635909"
-              width="150" height="120" class="d-inline-block align-center " alt="">
-            <a class="navbar-brand" href="#">
-              <h2 class="text-center font font-weight-bold" style="padding-left: 20px;">Compass</h2>
-            </a> -->
-
+        <nav class="navbar big-banner navbar-expand-lg navbar-light bg-white border"
+             style="padding-left: 150px; padding-right: 150px; height:368px;">
 
             <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
 
-            <div class="collapse navbar-collapse" id="#navbarMenu"  style="position:relative; bottom:130px; left:80px; color: blue">
+            <div class="collapse navbar-collapse" id="#navbarMenu"
+                 style="position:relative; bottom:130px; left:80px; color: blue">
                 <!-- <p class="text-center font-italic font-weight-bold" style="">Compass</p> -->
 
 
-                <ul class="navbar-nav1 ml-auto">
+                <ul class="navbar-nav1 ml-auto" style="display:flex; align-content:flex-start; ">
                     <li class="nav-item">
-                        <a href="#" class="nav-link" style="font-size: 20px;"><i class="far fa-user-circle"></i> Logout</a>
+                        <a href="/Outdoor/logout" class="nav-link" style="font-size: 20px; padding-right:0px"><i class="far fa-user-circle"></i> Logout </a>
+                    </li>
+                    <li class="nav-item">
+                        <p class="nav-link" style="font-size: 20px; padding-left:10px; padding-right:10px">|</p>  
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" style="font-size: 20px; padding-left:0px"><i class="fas fa-sign-in-alt"></i> Register</a>
                     </li>
                 </ul>
             </div>
@@ -116,13 +116,20 @@
         <div class="container" style="margin-top: 50px">
             <div class="row">
                 <div class="filter col-lg-3 border" style="text-align: center">
-                    FILTER SECTION 
                     
-                    
-              
+                      <button id="new" class="btn-block btn-lg" style="padding-left:0%; padding-right:0%; 
+                                            margin-left:0%" value="" ng-click="insertProduct()">Add</button>
+                    FILTER SECTION
                     <hr><br>
 
-                    Brands<hr>
+                    <!--                    Price <br><hr>
+                    
+                                        Up to 50 Euro<input type="checkbox" id="low"  ng-model="show" onclick="lowPrice()"><br>
+                                        Up to 200 Euro<input type="checkbox" id="medium"><br>
+                                        Up to<input type="checkbox" id="high"> 
+                    -->
+
+                    <!--Brands<hr>-->
                     <!--<ol>-->
                     <!--    <li ng-repeat="brand in brands ">
                             <label for="{{brand.brandname}}">{{brand.brandname}}</label>
@@ -139,7 +146,7 @@
 
                         <!-- ITEM 1 -->
 
-                        <div class="col-lg-4 col-md-6 mb-4" ng-repeat="product in products">
+                        <div class="col-lg-4 col-md-6 mb-4"  ng-model="show" ng-repeat="product in products">
 
                             <div class="card h-100 border" > 
                                 <a href="#"><img class="card-img-top" src="{{ product.imageUrl}}" alt=""></a>
@@ -150,21 +157,15 @@
                                     <h5 style="font-family: 'Rokkitt', serif;">&euro;{{ product.price}} </h5>
                                     <hr style="margin-top:5px; margin-bottom:7px">
                                     <p class="card-text text-left" style="height:100px; overflow:auto"> {{ product.description}} 
-                                    
+
                                     </p>
-                                    
+
                                 </div>
                                 <!-- EDIT -->
                                 <div class="purchase" style="text-align: center">
-                                     <!--<a href='https://www.google.com' role="button" class="btn btn-info btn-block" data-toggle="button">Edit</a>--> 
+                                    <button id="edit" class="btn-block btn-lg" style="padding-left:0%; padding-right:0%; 
+                                            margin-left:0%" value="" ng-click="newPage(product.productsId)">Edit</button>
 
-                                    <!-- natalia's button -->
-                                    <button id="edit" class="btn-block btn-lg" style="padding-left:0%; padding-right:0%; margin-left:0%" value="" ng-click="newPage(product.productsId)">Edit</button> 
-
-                                    <!-- andreas button -->
-<!--                                    <button id="edit" style="position:relative; top:72px; right: 292px" value="{{product.productsId}}" ng-on-click="newPage()"/>   Edit </button> -->
-                                
-                                  
                                 </div>
                                 <!-- /EDIT -->
 
@@ -294,38 +295,35 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
         <script>
-                                               
-                                                const ProductApp = angular.module("app", []);
 
-                                                ProductApp.controller("MainCtrl", ['$scope', '$http', MainCtrl]);
+                                                      const ProductApp = angular.module("app", []);
 
-                                                function MainCtrl($scope, $http) {
-                                                    const URL = "http://localhost:8080/Outdoor/json";
-                                                    const brandURL = "http://localhost:8080/Outdoor/json/brands";
-                                                    $scope.products = [];
-                                                    $scope.brands = [];
-                                                    $http.get(URL).then(handleJson);
-                                                    $http.get(brandURL).then(handleJsonBrands);
-                                                    
-                                                    function handleJson(response) {
+                                                      ProductApp.controller("MainCtrl", ['$scope', '$http', MainCtrl]);
 
-//                                                        console.log(response.data);
-                                                        $scope.products = response.data;
-                                                        
-                                                    }
-                                                    
-                                                    $scope.newPage = function (id) {  
-                                                        
-//                                           
-                                                        location.href = "http://localhost:8080/Outdoor/admin/products/" + id;
-                                                    };
+                                                      function MainCtrl($scope, $http) {
+                                                          const URL = "http://localhost:8080/Outdoor/json";
+                                                          $scope.products = [];
+                                                          $http.get(URL).then(handleJson);
 
 
-                                                    function handleJsonBrands(response) {
-                                                        // console.log(response.data);
-                                                        $scope.brands = response.data;
-                                                    }
-                                                }
+                                                          function handleJson(response) {
+
+                                                              $scope.products = response.data;
+                                                          }
+                                                          $scope.newPage = function(id) {
+                                                          
+                                                              location.href = "http://localhost:8080/Outdoor/admin/products/" + id;
+                                                          };
+                                                          $scope.insertProduct = function() {
+                                                              location.href = "http://localhost:8080/Outdoor/admin/products/new"
+                                                          }
+                                                      }
+
+
+
+
+
+
         </script>
 
         <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

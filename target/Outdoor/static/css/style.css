@@ -119,3 +119,9 @@ i
   display: flex;
   align-self: center;
 }
+
+.navbar-brand
+ {
+ 
+ margin-left:60px;
+ }
