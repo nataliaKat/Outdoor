@@ -146,7 +146,7 @@
 
                         <!-- ITEM 1 -->
 
-                        <div class="col-lg-4 col-md-6 mb-4"  ng-model="show" ng-repeat="product in products">
+                        <div class="col-lg-4 col-md-6 mb-4" ng-repeat="product in products">
 
                             <div class="card h-100 border" > 
                                 <a href="#"><img class="card-img-top" src="{{ product.imageUrl}}" alt=""></a>
