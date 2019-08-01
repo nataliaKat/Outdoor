@@ -123,19 +123,17 @@
                         
                         <li ng-repeat="brand in brands">
                             <label for="{{brand.brandsId}}">{{brand.brandname}}</label>
-                            <input type="checkbox" id="{{brand.brandsId}}" name="brand" ng-click="brandClick(brand.brandsId)">
+                            <input type="checkbox" id="{{brand.brandsId}}" name="brand" ng-click="brandClick(brand.brandsId,0)">
                         </li>
                     </ol>
                     
                       Categories<hr>
                     <ol>
                         
-                        <li ng-repeat="cat in categories">
-                            <label for="{{cat.categoryId}}">{{cat.categoryName}}</label>
-                            <input type="checkbox" id="{{cat.categoryId}}" name="brand" ng-click="brandClick(brand.brandsId)">
-                        <li ng-repeat="brand in brands">
-                            <label for="{{brand.brandsId}}">{{brand.brandname}}</label>
-                            <input type="checkbox" id="{{brand.brandsId}}" ng-click="brandClick(brand.brandsId)">
+                        <li ng-repeat="category in categories">
+                            <label for="{{category.categoryId}}">{{category.categoryName}}</label>
+                            <input type="checkbox" id="{{category.categoryId}}" name="brand" ng-click="brandClick(0,category.categoryId)">
+                       
                         </li>
                     </ol>
                     <!--                    Price <br><hr>
@@ -312,60 +310,66 @@
 
         <script>
 
-                                                        const ProductApp = angular.module("app", []);
-                                                        ProductApp.controller("MainCtrl", ['$scope', '$http', MainCtrl]);
+                            const ProductApp = angular.module("app", []);
+                            ProductApp.controller("MainCtrl", ['$scope', '$http', MainCtrl]);
 
-                                                        function MainCtrl($scope, $http) {
-                                                            const URL = "http://localhost:8080/Outdoor/json";
-                                                            const brandURL = "http://localhost:8080/Outdoor/json/brands";
-                                                            const categoryURL = "http://localhost:8080/Outdoor/json/categories";
-                                                            $scope.products = [];
-                                                            $scope.brands = [];
-                                                            $scope.categories = [];
-                                                     
-                                                            $http.get(URL).then(handleJson);
-                                                            $http.get(brandURL).then(handleJsonBrands);
-                                                            $http.get(categoryURL).then(handleJsonCategories);
-                                                         
-                                                            function handleJsonCategories(response) {
-                                                                console.log(response.data);
-                                                                $scope.categories = response.data;
-                                                            }
+                            function MainCtrl($scope, $http) {
+                                const URL = "http://localhost:8080/Outdoor/json";
+                                const brandURL = "http://localhost:8080/Outdoor/json/brands";
+                                const categoryURL = "http://localhost:8080/Outdoor/json/categories";
+                                $scope.products = [];
+                                $scope.brands = [];
+                                $scope.categories = [];
 
-                                                            function handleJson(response) {
+                                $http.get(URL).then(handleJson);
+                                $http.get(brandURL).then(handleJsonBrands);
+                                $http.get(categoryURL).then(handleJsonCategories);
 
-                                                                console.log(response.data);
-                                                                $scope.products = response.data;
-                                                            }
+                                function handleJsonCategories(response) {
+                                    console.log(response.data);
+                                    $scope.categories = response.data;
+                                }
 
-                                                            function handleJsonBrands(response) {
-                                                                console.log(response.data);
-                                                                $scope.brands = response.data;
-                                                            }
-                                                            function handleJsonPrice(response) {
-                                                                $scope.prices = response.data;
-                                                            }
-                                                            $scope.newPage = function (id) {
+                                function handleJson(response) {
 
-                                                                location.href = "http://localhost:8080/Outdoor/products/" + id;
-                                                            };
+                                    console.log(response.data);
+                                    $scope.products = response.data;
+                                }
 
-                                                            $scope.brandClick = function (id) {
-                                                                console.log("brandClick is on the house");
-                                                                console.log(id);
-                                                                
-                                                                 let brandByIdURL = "http://localhost:8080/Outdoor/json/brands/" + id;
-                                                                 $scope.products = [];
-                                                                 $http.get(brandByIdURL).then(handleJson);
-                                                            }
-                                                            
-                                                            
-                                                        }
+                                function handleJsonBrands(response) {
+                                    console.log(response.data);
+                                    $scope.brands = response.data;
+                                }
+                                function handleJsonPrice(response) {
+                                    $scope.prices = response.data;
+                                }
+                                $scope.newPage = function (id) {
 
+                                    location.href = "http://localhost:8080/Outdoor/products/" + id;
+                                };
 
+//                                                            $scope.brandClick = function (id) {
+//                                                                console.log("brandClick is on the house");
+//                                                                console.log(id);
+//                                                                
+//                                                                 let brandByIdURL = "http://localhost:8080/Outdoor/json/brands/" + id;
+//                                                                 $scope.products = [];
+//                                                                 $http.get(brandByIdURL).then(handleJson);
+//                                                            }
+                                  $scope.brandClick = function (bid,cid) {
+                                    console.log("brandClick is on the house");
+                                    console.log(bid);
+                                    console.log(cid);
+
+                                        let brandAndPriceByIdURL = "http://localhost:8080/Outdoor/json/" + bid + "/" + cid;
+                                        $scope.products = [];
+                                        $http.get(brandAndPriceByIdURL).then(handleJson);
+                                   }
+
+                                    }
         </script>
-
-
+            
+       
 
     </body>
 
