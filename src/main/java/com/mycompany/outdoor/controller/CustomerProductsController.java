@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  *
- * @author Ανδρέας
+ * @author οΏ½οΏ½οΏ½οΏ½οΏ½οΏ½οΏ½
  */
 @Controller
 @RequestMapping("/customer/products")

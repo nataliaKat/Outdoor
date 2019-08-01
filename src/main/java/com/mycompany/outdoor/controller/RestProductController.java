@@ -42,7 +42,7 @@ public class RestProductController {
 
     @RequestMapping(value = "/json/price", method = RequestMethod.GET)
     public ResponseEntity<List<Product>> filterPrice() {
-        List<Product> products = productService.findProductsByPrice(50, 400);
+        List<Product> products = productService.findProductsByPrice(50, 100);
 
 //        List<ProductView> productviews = transform(products);
 //          bean.utils copyproperties
@@ -114,18 +114,31 @@ public class RestProductController {
         return new ResponseEntity<List<Product>>(products, HttpStatus.OK);
     }
     
+    // NEW METHOD
+     @RequestMapping(value = "/json/categoriesbrands/{categoryId}/{brandId}", method = RequestMethod.GET)
+     public ResponseEntity<List<Product>> getProductsByCategoryAndBrand(@PathVariable("categoryId") Integer cid, @PathVariable("brandId") Integer bid) {
+        Category foundCategory = categoryService.findById(cid);
+        Brand foundBrand = brandService.findById(bid);
+        List<Product> products = productService.findProductsByCategoryAndBrand(foundCategory,foundBrand);
+        if (products == null) {
+            return new ResponseEntity<List<Product>>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<List<Product>>(products, HttpStatus.OK);
+    }
     
-//    @RequestMapping(value = "/json/{bid}-{cid}", method = RequestMethod.GET)
-//    public ResponseEntity<List<Product>> getProductsFiltered(@PathVariable("bid") Integer bid, @PathVariable("cid") Integer cid) {
-//        if(bid == 0 && cid == 0) {
-//            return getAllProducts();
-//        } else if(cid != 0) {
-//            return getProductsByCategory(cid);
-//        } else if(bid != 0){
-//            return getProductsByBrand(bid);
-//        } else {
-//            
-//        }
-//    }
+    // NEW METHOD
+    @RequestMapping(value = "/json/{bid}/{cid}", method = RequestMethod.GET)
+    public ResponseEntity<List<Product>> getProductsFiltered(@PathVariable("bid") Integer bid, @PathVariable("cid") Integer cid) {
+        if(bid == 0 && cid == 0) {
+            return getAllProducts();
+        } else if(cid != 0) {
+            return getProductsByCategory(cid);
+        } else if(bid != 0){
+            return getProductsByBrand(bid);
+        } else if( cid !=0 && bid !=0 ) {
+            return getProductsByCategoryAndBrand(cid,bid);
+        }
+       return new ResponseEntity<List<Product>>(HttpStatus.NO_CONTENT);
+    }
 
 }
