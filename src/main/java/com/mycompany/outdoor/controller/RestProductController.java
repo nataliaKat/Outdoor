@@ -7,8 +7,10 @@ package com.mycompany.outdoor.controller;
 
 import com.mycompany.outdoor.dao.ProductDao;
 import com.mycompany.outdoor.model.Brand;
+import com.mycompany.outdoor.model.Category;
 import com.mycompany.outdoor.model.Product;
 import com.mycompany.outdoor.service.BrandService;
+import com.mycompany.outdoor.service.CategoryService;
 import com.mycompany.outdoor.service.ProductService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +36,9 @@ public class RestProductController {
 
     @Autowired
     BrandService brandService;
+    
+    @Autowired
+    CategoryService categoryService;
 
     @RequestMapping(value = "/json/price", method = RequestMethod.GET)
     public ResponseEntity<List<Product>> filterPrice() {
@@ -84,6 +89,16 @@ public class RestProductController {
     public ResponseEntity<List<Product>> getProductsByBrand(@PathVariable("brandId") Integer id) {
         Brand foundBrand = brandService.findById(id);
         List<Product> products = productService.findProductsByBrand(foundBrand);
+        if (products == null) {
+            return new ResponseEntity<List<Product>>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<List<Product>>(products, HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "/json/categories/{categoryId}", method = RequestMethod.GET)
+    public ResponseEntity<List<Product>> getProductsByCategory(@PathVariable("categoryId") Integer id) {
+        Category foundCategory = categoryService.findById(id);
+        List<Product> products = productService.findProductsByCategory(foundCategory);
         if (products == null) {
             return new ResponseEntity<List<Product>>(HttpStatus.NO_CONTENT);
         }
