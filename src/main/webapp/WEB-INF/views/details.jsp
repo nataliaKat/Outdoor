@@ -265,7 +265,7 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
         <!-- BUTTON QUANTITY -->
-        <script src="static/js/jquery.nice-number.js"></script>
+        <script src="../static/js/jquery.nice-number.js"></script>
 
         <script>
                                                     const ProductApp = angular.module("app", []);
