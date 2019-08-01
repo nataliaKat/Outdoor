@@ -63,6 +63,15 @@ public class RestProductController {
         }
         return new ResponseEntity<List<Brand>>(brands, HttpStatus.OK);
     }
+    
+    @RequestMapping(value = "/json/categories", method = RequestMethod.GET)
+    public ResponseEntity<List<Category>> listAllCategories() {
+        List<Category> categories = categoryService.findAllCategories();
+        if (categories.isEmpty()) {
+            return new ResponseEntity<List<Category>>(HttpStatus.NO_CONTENT);//You many decide to return HttpStatus.NOT_FOUND
+        }
+        return new ResponseEntity<List<Category>>(categories, HttpStatus.OK);
+    }
 
     //ALL PRODUCTS
     @RequestMapping(value = "/json", method = RequestMethod.GET)
