@@ -119,13 +119,14 @@
                     FILTER SECTION
                     <hr><br>
 
-<!--                    Brands<hr>
+                    Brands<hr>
                     <ol>
                         <li ng-repeat="brand in brands">
-                            <label for="{{brand.brandname}}">{{brand.brandname}}</label>
-                            <input type="checkbox" id="{{brand.brandname}}" >
+                            <label for="{{brand.brandsId}}">{{brand.brandname}}</label>
+                            <input type="checkbox" id="{{brand.brandsId}}">
                         </li>
                     </ol>
+                    <!--
 
                     Price <br><hr>
 
@@ -308,34 +309,34 @@
                      ProductApp.controller("MainCtrl", ['$scope', '$http', MainCtrl]);
 
                           function MainCtrl($scope, $http) {
-                              const URL = "http://localhost:8080/Outdoor/json/all";
-                              const brandURL = "https://api.myjson.com/bins/e6en1";
-                              const priceURL = "http://localhost:8080/Outdoor/json/price";
+                              const URL = "http://localhost:8080/Outdoor/json";
+                              const brandURL = "https://api.myjson.com/bins/gk4fx";
+//                              
                             $scope.products = [];
-                    $scope.brands = [];
+                            $scope.brands = [];
                       //ΘΑ ΓΕΜΙΖΩ ΜΙΑ ΛΙΣΤΑ - ΤΗΝ products ΜΕ ΤΟ URL ΠΟΥ ΘΕΛΩ ΚΑΘΕ ΦΟΡΑ ΩΣΤΕ ΝΑ ΠΑΙΡΝΩ ΤΟ 
                      //ΚΑΤΑΛΛΗΛΟ JSON
                             //ΘΑ ΦΤΙΑΞΩ ΠΟΛΛΑ URL ΚΑΙ ΘΑ ΤΑ ΦΟΡΤΩΝΩ ΑΝΑΛΟΓΑ ΜΕ ΤΟ ONCLICK ΣΤΗΝ products
                                                  
                                                 
                             $http.get(URL).then(handleJson);
-                      $http.get(brandURL).then(handleJsonBrands);
+                            $http.get(brandURL).then(handleJsonBrands);
 
 
                         function handleJson(response) {
 
                          console.log(response.data);
-                      $scope.products = response.data;
+                        $scope.products = response.data;
                                                  }
 
                         function handleJsonBrands(response) {
-                                 // console.log(response.data);
+                                  console.log(response.data);
                                     $scope.brands = response.data;
                                                  }
                        function handleJsonPrice(response) {
                               $scope.prices = response.data;
                  }
-                                             }
+                                 }
 
 
 

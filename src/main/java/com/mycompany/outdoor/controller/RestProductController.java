@@ -37,7 +37,7 @@ public class RestProductController {
 
     @RequestMapping(value = "/json/price", method = RequestMethod.GET)
     public ResponseEntity<List<Product>> filterPrice() {
-        List<Product> products = productService.findProductsByPrice(100, 200);
+        List<Product> products = productService.findProductsByPrice(50, 100);
 
 //        List<ProductView> productviews = transform(products);
 //          bean.utils copyproperties

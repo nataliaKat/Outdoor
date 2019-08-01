@@ -118,7 +118,13 @@
                 <div class="filter col-lg-3 border" style="text-align: center">
                     FILTER SECTION
                     <hr><br>
-
+                    Brands<hr>
+                    <ol>
+                        <li ng-repeat="brand in brands">
+                            <label for="{{brand.brandsId}}">{{brand.brandname}}</label>
+                            <input type="checkbox" id="{{brand.brandsId}}" ng-click="brandClick(brand.brandsId)">
+                        </li>
+                    </ol>
                     <!--                    Price <br><hr>
                     
                                         Up to 50 Euro<input type="checkbox" id="low"  ng-model="show" onclick="lowPrice()"><br>
@@ -293,29 +299,52 @@
 
         <script>
 
-                                                      const ProductApp = angular.module("app", []);
+                                                        const ProductApp = angular.module("app", []);
+                                                        ProductApp.controller("MainCtrl", ['$scope', '$http', MainCtrl]);
 
-                                                      ProductApp.controller("MainCtrl", ['$scope', '$http', MainCtrl]);
+                                                        function MainCtrl($scope, $http) {
+                                                            const URL = "http://localhost:8080/Outdoor/json";
+                                                            const brandURL = "https://api.myjson.com/bins/gk4fx";
+//                              
+                                                            $scope.products = [];
+                                                            $scope.brands = [];
+                                                            //ΘΑ ΓΕΜΙΖΩ ΜΙΑ ΛΙΣΤΑ - ΤΗΝ products ΜΕ ΤΟ URL ΠΟΥ ΘΕΛΩ ΚΑΘΕ ΦΟΡΑ ΩΣΤΕ ΝΑ ΠΑΙΡΝΩ ΤΟ 
+                                                            //ΚΑΤΑΛΛΗΛΟ JSON
+                                                            //ΘΑ ΦΤΙΑΞΩ ΠΟΛΛΑ URL ΚΑΙ ΘΑ ΤΑ ΦΟΡΤΩΝΩ ΑΝΑΛΟΓΑ ΜΕ ΤΟ ONCLICK ΣΤΗΝ products
 
-                                                      function MainCtrl($scope, $http) {
-                                                          const URL = "http://localhost:8080/Outdoor/json";
-                                                          $scope.products = [];
-                                                          $http.get(URL).then(handleJson);
+
+                                                            $http.get(URL).then(handleJson);
+                                                            $http.get(brandURL).then(handleJsonBrands);
 
 
-                                                          function handleJson(response) {
+                                                            function handleJson(response) {
 
-                                                              $scope.products = response.data;
-                                                          }
-                                                          $scope.newPage = function(id) {
-                                                          
-                                                              location.href = "http://localhost:8080/Outdoor/products/" + id;
-                                                          };
-                                                         
-                                                      }
+                                                                console.log(response.data);
+                                                                $scope.products = response.data;
+                                                            }
+
+                                                            function handleJsonBrands(response) {
+                                                                console.log(response.data);
+                                                                $scope.brands = response.data;
+                                                            }
+                                                            function handleJsonPrice(response) {
+                                                                $scope.prices = response.data;
+                                                            }
+                                                            $scope.newPage = function (id) {
+
+                                                                location.href = "http://localhost:8080/Outdoor/products/" + id;
+                                                            };
+
+                                                            $scope.brandClick = function (id) {
+                                                                console.log("brandClick is on the house");
+                                                                console.log(id);
+                                                            }
+                                                        }
+
+
         </script>
 
-      
+
 
     </body>
 
