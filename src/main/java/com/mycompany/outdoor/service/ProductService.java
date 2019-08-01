@@ -52,7 +52,7 @@ public class ProductService {
     }
 
     public List<Product> findProductsByCategory(Category category) {
-        return dao.findProductsByBrand(category);
+        return dao.findProductsByCategory(category);
     }
     
     public void deleteProductById(Integer id) {
