@@ -143,8 +143,8 @@ public class ProductController {
 
     }
 
-    @RequestMapping(method = RequestMethod.POST)
-    public String updateProduct(@RequestParam("quantity") int quantity, @RequestParam("brandsId") Integer brandsId,
+    @RequestMapping(value = "/{id}", method = RequestMethod.POST)
+    public String updateProduct(@PathVariable("id") Integer pid, @RequestParam("quantity") int quantity, @RequestParam("brandsId") Integer brandsId,
             @RequestParam("categoryId") Integer categoryId, @Valid Product product, BindingResult result, ModelMap model) {
 
         Brand foundBrand = brandService.findById(brandsId);

@@ -126,7 +126,7 @@
 
                 <div class="col-md-6 col-sm-6 border border-dark rounded " style="box-shadow:20px 20px 10px grey; ">
 
-                    <form:form method="POST" action="/Outdoor/admin/products" modelAttribute="product" class="main-form needs-validation" novalidate="novalidate">
+                    <form:form method="POST" modelAttribute="product" class="main-form needs-validation" novalidate="novalidate">
 
                         <form:label path="productsId" type="hidden"></form:label>
                         <form:input path="productsId" type="hidden" />
