@@ -5,6 +5,8 @@
  */
 package com.mycompany.outdoor.dao;
 
+import com.mycompany.outdoor.model.Brand;
+import com.mycompany.outdoor.model.Category;
 import com.mycompany.outdoor.model.Product;
 import java.util.List;
 import org.hibernate.Criteria;
@@ -59,6 +61,18 @@ public class ProductDao extends AbstractDao<Integer, Product> {
         criteria.add(Restrictions.le("price", highPrice));
         return criteria.list();
         
+    }
+
+    public List<Product> findProductsByBrand(Brand brand) {
+        Criteria criteria = createEntityCriteria();
+        criteria.add(Restrictions.eq("brand", brand));
+        return criteria.list();
+    }
+    
+     public List<Product> findProductsByCategory(Category category) {
+        Criteria criteria = createEntityCriteria();
+        criteria.add(Restrictions.eq("category", category));
+        return criteria.list();
     }
 
 }
