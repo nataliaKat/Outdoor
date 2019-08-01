@@ -34,7 +34,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
  * @author kat26
  */
 @Controller
-@RequestMapping("/{id}")
+@RequestMapping("/products/{id}/buy")
 @SessionAttributes("roles")
 public class UserBuyController {
 
@@ -62,13 +62,9 @@ public class UserBuyController {
     @Autowired
     AuthenticationTrustResolver authenticationTrustResolver;
 
-    @RequestMapping(method = RequestMethod.GET)
-    public String showDetails(@PathVariable("id") Integer id, ModelMap model) {
-        model.addAttribute("id", id);
-        return "details";
-    }
 
-    @RequestMapping(value = {"/buy"}, method = RequestMethod.GET)
+
+    @RequestMapping(method = RequestMethod.GET)
     public String buy(@PathVariable("id") Integer id, ModelMap model) {
         Product p = productService.findById(id);
         model.addAttribute("product", p);
@@ -77,7 +73,7 @@ public class UserBuyController {
         return "buy";
     }
 
-    @RequestMapping(value = {"/buy"}, method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST)
     public String saveBuy(@RequestParam("productId") Integer id, @RequestParam("quantity") int quantity, 
             @Valid Sale sale, BindingResult result, ModelMap model) {
         sale.setAppUser(userService.findBySSO(getPrincipal()));

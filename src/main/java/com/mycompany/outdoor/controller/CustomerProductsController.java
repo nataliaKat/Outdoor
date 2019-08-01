@@ -17,27 +17,24 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  *
- * @author Ανδρέας
+ * @author οΏ½οΏ½οΏ½οΏ½οΏ½οΏ½οΏ½
  */
+@Controller
+@RequestMapping("/customer/products")
 public class CustomerProductsController {
 
-    @Controller
-    @RequestMapping("/customer/products")
-    public class CustomerProductsController {
+    @Autowired
+    ProductService productService;
 
-        @Autowired
-        ProductService productService;
+    @Autowired
+    BrandService brandService;
 
-        @Autowired
-        BrandService brandService;
+    @Autowired
+    CategoryService categoryService;
 
-        @Autowired
-        CategoryService categoryService;
+    @Autowired
+    StockService stockService;
 
-        @Autowired
-        StockService stockService;
-    }
-    
     @RequestMapping(method = RequestMethod.GET)
     public String findAllProducts(ModelMap model) {
         return "test";

@@ -1,21 +1,21 @@
 *, *:before, *:after {
     box-sizing: border-box;
-  }
-  
-  body {
+}
+
+body {
     padding-top: 56px;
-    
-  }
+
+}
 /* NAVBAR "PRODUCTS"  */
-  .dropdown-toggle::after {
+.dropdown-toggle::after {
     display:none;
 }
 .big-banner {
-  background-image: url('../pictures/mountain.jpeg');
- background-position: center;
-/* height:100vh;
- width:100vh;*/
- 
+    background-image: url('../pictures/mountain.jpeg');
+    background-position: center;
+    /* height:100vh;
+     width:100vh;*/
+
 }
 
 .big-banner-2 {
@@ -31,7 +31,7 @@ li.dropdown:hover > .dropdown-menu {
 
 .navbar h2 
 {
-  font-family: 'Courier New', Courier, monospace;
+    font-family: 'Courier New', Courier, monospace;
 }
 
  .navbar-brand
@@ -42,49 +42,49 @@ li.dropdown:hover > .dropdown-menu {
 
 .footer
 {
-  background-color: azure;
- 
+    background-color: azure;
+
 }
 
 ul {
-  margin-bottom: 0%;
-  list-style-type: none;
-  padding-left: 0px;
-  text-align: left;
+    margin-bottom: 0%;
+    list-style-type: none;
+    padding-left: 0px;
+    text-align: left;
 
 }
 
 .column-title
 {
-  text-align: left;
+    text-align: left;
 }
 
 button {
-  background-color: rgb(65, 65, 65);
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  margin: 14px 2px;
-  cursor: pointer;
-  border-radius: 16px;
-  -webkit-transition-duration: 0.4s; /* Safari */
-  transition-duration: 0.4s;
+    background-color: rgb(65, 65, 65);
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 14px 2px;
+    cursor: pointer;
+    border-radius: 16px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
 }
 
 button:hover {
-  background-color: aquamarine; 
-  color: black;
+    background-color: aquamarine; 
+    color: black;
 }
 
 i 
-  {
-      font-size: 20px;
-  }
+{
+    font-size: 20px;
+}
 
-  .navbar-nav > li > a {
+.navbar-nav > li > a {
     font-family: 'Montserrat', sans-serif;
     font-size: 25px;
     color: #686868;
@@ -92,36 +92,37 @@ i
     border-bottom: 1px solid transparent;
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
-  }
+}
 
-  .navbar-nav > li:hover > a {
+.navbar-nav > li:hover > a {
     text-decoration: none;
     border-bottom: 1px solid #4b4747;
-  }
-  
+}
 
-  .foo-columns > a:hover {
+
+.foo-columns > a:hover {
     text-decoration: none;
     border-bottom: 1px solid #4b4747;
-  
-  } 
+
+} 
 
 .nav-link{
- color: #371685;
+    color: #371685;
 }  
 
 .card > a > img {
-  height: 200px;
-  background-color: black;  
+    height: 200px;
+    background-color: black;  
 }
 
 .quantityButton input {
-  display: flex;
-  align-self: center;
+    display: flex;
+    align-self: center;
 }
 
 .navbar-brand
- {
- 
- margin-left:60px;
- }
+{
+
+    margin-left:40px;
+    margin-right: 40px;
+}

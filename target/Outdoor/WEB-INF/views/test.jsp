@@ -312,10 +312,10 @@
                                                           }
                                                           $scope.newPage = function(id) {
                                                           
-                                                              location.href = "http://localhost:8080/Outdoor/admin/products/" + id;
+                                                              location.href = "http://localhost:8080/Outdoor/products/" + id;
                                                           };
                                                           $scope.insertProduct = function() {
-                                                              location.href = "http://localhost:8080/Outdoor/admin/products/new"
+                                                              location.href = "http://localhost:8080/Outdoor/products/new"
                                                           }
                                                       }
 

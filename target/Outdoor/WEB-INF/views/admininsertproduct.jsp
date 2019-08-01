@@ -112,7 +112,7 @@
 
                 <div class="col-md-6 col-sm-6 border border-dark rounded " style="box-shadow:20px 20px 10px grey; position:relative; left:310px ">
 
-                    <form:form method="POST" action="/Outdoor/admin/products/new" onsubmit="return validation();" modelAttribute="product" class="main-form needs-validation" novalidate="novalidate">
+                    <form:form method="POST" onsubmit="return validation();" modelAttribute="product" class="main-form needs-validation" novalidate="novalidate">
 
                         <form:label path="productsId" type="hidden"></form:label>
                         <form:input path="productsId" type="hidden" />

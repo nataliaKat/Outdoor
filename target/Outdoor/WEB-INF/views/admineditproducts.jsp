@@ -118,7 +118,7 @@
                          alt="">
                     <div class="delete mt-5 border-top border-info" style=" font-family: 'Montserrat', sans-serif;  width:470px; height: 150px;">
                         <span class="light-text" style="margin-top: 20px;">Do you want to delete this product?</span>
-                        <button style="position:relative; top:72px; right: 292px" onclick="window.location.href = '<c:url value="/admin/products/delete/${product.productsId}"/>'">Delete</button>
+                        <button style="position:relative; top:72px; right: 292px" onclick="window.location.href = '<c:url value="/products/delete/${product.productsId}"/>'">Delete</button>
 
 
                     </div>

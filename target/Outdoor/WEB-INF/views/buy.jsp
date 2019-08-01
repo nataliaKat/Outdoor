@@ -142,7 +142,7 @@
                         return actions.order.capture().then(function (details) {
                             // Show a success message to the buyer
                             alert('Transaction completed by ' + details.payer.name.given_name + '!');
-                            
+                            console.log(details.payer.entries());
                             document.querySelector("#myForm").submit();
 
  

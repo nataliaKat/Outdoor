@@ -35,8 +35,8 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.min.js"></script>
 
         <!-- My CSS -->
-        <link rel="stylesheet" type="text/css" href="static/css/style.css">
-        <link rel="stylesheet" type="text/css" href="static/css/jquery.nice-number.css">
+        <link rel="stylesheet" type="text/css" href="<c:url value="../static/css/style.css"/>">
+        <link rel="stylesheet" type="text/css" href="<c:url value="../static/css/jquery.nice-number.css"/>">
 
     </head>
     <body ng-app="app" ng-controller="MainCtrl" ng-cloak style="padding-top:0%">
@@ -265,7 +265,7 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
         <!-- BUTTON QUANTITY -->
-        <script src="static/js/jquery.nice-number.js"></script>
+        <script src="../static/js/jquery.nice-number.js"></script>
 
         <script>
                                                     const ProductApp = angular.module("app", []);
@@ -285,7 +285,7 @@
                                                         $http.get(brandURL).then(handleJsonBrands);
                                                         $scope.newPage = function (id) {
 
-                                                            location.href = "http://localhost:8080/Outdoor/" + ${id} + "/buy";
+                                                            location.href = "http://localhost:8080/Outdoor/products/" + ${id} + "/buy";
                                                         };
 
                                                         function handleJson(response) {
