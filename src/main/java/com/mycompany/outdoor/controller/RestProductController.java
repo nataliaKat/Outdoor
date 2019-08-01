@@ -113,5 +113,4 @@ public class RestProductController {
         }
         return new ResponseEntity<List<Product>>(products, HttpStatus.OK);
     }
-
-}
+  }
