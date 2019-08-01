@@ -133,6 +133,9 @@
                         <li ng-repeat="cat in categories">
                             <label for="{{cat.categoryId}}">{{cat.categoryName}}</label>
                             <input type="checkbox" id="{{cat.categoryId}}" name="brand" ng-click="brandClick(brand.brandsId)">
+                        <li ng-repeat="brand in brands">
+                            <label for="{{brand.brandsId}}">{{brand.brandname}}</label>
+                            <input type="checkbox" id="{{brand.brandsId}}" ng-click="brandClick(brand.brandsId)">
                         </li>
                     </ol>
                     <!--                    Price <br><hr>

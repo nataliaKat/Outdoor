@@ -94,8 +94,8 @@ public class RestProductController {
         return new ResponseEntity<Product>(product, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/json/brands/{brandId}", method = RequestMethod.GET)
-    public ResponseEntity<List<Product>> getProductsByBrand(@PathVariable("brandId") Integer id) {
+//    @RequestMapping(value = "/json/brands/{brandId}", method = RequestMethod.GET)
+    public ResponseEntity<List<Product>> getProductsByBrand(/*@PathVariable("brandId")*/ Integer id) {
         Brand foundBrand = brandService.findById(id);
         List<Product> products = productService.findProductsByBrand(foundBrand);
         if (products == null) {
@@ -104,8 +104,8 @@ public class RestProductController {
         return new ResponseEntity<List<Product>>(products, HttpStatus.OK);
     }
     
-    @RequestMapping(value = "/json/categories/{categoryId}", method = RequestMethod.GET)
-    public ResponseEntity<List<Product>> getProductsByCategory(@PathVariable("categoryId") Integer id) {
+//    @RequestMapping(value = "/json/categories/{categoryId}", method = RequestMethod.GET)
+    public ResponseEntity<List<Product>> getProductsByCategory(/*@PathVariable("categoryId")*/ Integer id) {
         Category foundCategory = categoryService.findById(id);
         List<Product> products = productService.findProductsByCategory(foundCategory);
         if (products == null) {
@@ -113,4 +113,19 @@ public class RestProductController {
         }
         return new ResponseEntity<List<Product>>(products, HttpStatus.OK);
     }
-  }
+    
+    
+    @RequestMapping(value = "/json/{bid}-{cid}", method = RequestMethod.GET)
+    public ResponseEntity<List<Product>> getProductsFiltered(@PathVariable("bid") Integer bid, @PathVariable("cid") Integer cid) {
+        if(bid == 0 && cid == 0) {
+            return getAllProducts();
+        } else if(cid != 0) {
+            return getProductsByCategory(cid);
+        } else if(bid != 0){
+            return getProductsByBrand(bid);
+        } else {
+            
+        }
+    }
+
+}
