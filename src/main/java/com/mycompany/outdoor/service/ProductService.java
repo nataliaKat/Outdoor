@@ -6,6 +6,7 @@
 package com.mycompany.outdoor.service;
 
 import com.mycompany.outdoor.dao.ProductDao;
+import com.mycompany.outdoor.model.Brand;
 import com.mycompany.outdoor.model.Product;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,6 +53,10 @@ public class ProductService {
    public List<Product> findProductsByPrice(double lowPrice, double highPrice){
        List<Product> priceProducts = dao.findProductsByPrice( lowPrice, highPrice);
        return priceProducts;
+   }
+   
+     public List<Product> findProductsByBrand(Brand brand) {
+       return dao.findProductsByBrand(brand);
    }
    
    

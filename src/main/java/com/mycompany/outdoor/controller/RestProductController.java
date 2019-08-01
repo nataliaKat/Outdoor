@@ -6,8 +6,6 @@
 package com.mycompany.outdoor.controller;
 
 import com.mycompany.outdoor.dao.ProductDao;
-import com.mycompany.outdoor.model.Product;
-import com.mycompany.outdoor.model.view.ProductView;
 import com.mycompany.outdoor.model.Brand;
 import com.mycompany.outdoor.model.Product;
 import com.mycompany.outdoor.service.BrandService;
@@ -19,7 +17,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -35,9 +32,12 @@ public class RestProductController {
     @Autowired
     ProductDao productDao;
 
+    @Autowired
+    BrandService brandService;
+
     @RequestMapping(value = "/json/price", method = RequestMethod.GET)
     public ResponseEntity<List<Product>> filterPrice() {
-        List<Product> products = productService.findProductsByPrice(100, 200);
+        List<Product> products = productService.findProductsByPrice(50, 400);
 
 //        List<ProductView> productviews = transform(products);
 //          bean.utils copyproperties
@@ -48,8 +48,7 @@ public class RestProductController {
         }
         return new ResponseEntity<List<Product>>(products, HttpStatus.OK);
     }
-    @Autowired
-    BrandService brandService;
+
 
     @RequestMapping(value = "/json/brands", method = RequestMethod.GET)
     public ResponseEntity<List<Brand>> listAllBrands() {
@@ -72,14 +71,23 @@ public class RestProductController {
         return new ResponseEntity<List<Product>>(products, HttpStatus.OK);
     }
 
-@RequestMapping(value = "/json/{id}", method = RequestMethod.GET)
-        public ResponseEntity<Product> getSingleProduct(@PathVariable("id") Integer id) {
+    @RequestMapping(value = "/json/{id}", method = RequestMethod.GET)
+    public ResponseEntity<Product> getSingleProduct(@PathVariable("id") Integer id) {
         Product product = productService.findById(id);
-        if(product == null) {
+        if (product == null) {
             return new ResponseEntity<Product>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<Product>(product, HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/json/brands/{brandId}", method = RequestMethod.GET)
+    public ResponseEntity<List<Product>> getProductsByBrand(@PathVariable("brandId") Integer id) {
+        Brand foundBrand = brandService.findById(id);
+        List<Product> products = productService.findProductsByBrand(foundBrand);
+        if (products == null) {
+            return new ResponseEntity<List<Product>>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<List<Product>>(products, HttpStatus.OK);
+    }
 
 }
