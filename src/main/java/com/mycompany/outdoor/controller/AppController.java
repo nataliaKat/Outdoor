@@ -208,7 +208,6 @@ public class AppController {
             return "redirect:/";
         }
     }
-    
 
     /**
      * This method handles logout requests. Toggle the handlers if you are
