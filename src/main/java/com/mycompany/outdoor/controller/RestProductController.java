@@ -131,9 +131,9 @@ public class RestProductController {
     public ResponseEntity<List<Product>> getProductsFiltered(@PathVariable("bid") Integer bid, @PathVariable("cid") Integer cid) {
         if(bid == 0 && cid == 0) {
             return getAllProducts();
-        } else if(cid != 0) {
+        } else if(cid != 0 && bid ==0) {
             return getProductsByCategory(cid);
-        } else if(bid != 0){
+        } else if(bid != 0 && cid ==0){
             return getProductsByBrand(bid);
         } else if( cid !=0 && bid !=0 ) {
             return getProductsByCategoryAndBrand(cid,bid);

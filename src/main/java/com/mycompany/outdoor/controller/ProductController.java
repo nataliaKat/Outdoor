@@ -131,6 +131,7 @@ public class ProductController {
                 return "details";
             } else {
                 Product p = productService.findById(id);
+               
                 model.addAttribute("quantity", stockService.getQuantityPerProduct(p));
                 model.addAttribute("product", p);
                 model.addAttribute("pBrand", p.getBrand());
@@ -143,8 +144,8 @@ public class ProductController {
 
     }
 
-    @RequestMapping(method = RequestMethod.POST)
-    public String updateProduct(@RequestParam("quantity") int quantity, @RequestParam("brandsId") Integer brandsId,
+    @RequestMapping(value = "/{id}", method = RequestMethod.POST)
+    public String updateProduct(@PathVariable("id") Integer pid,@RequestParam("quantity") int quantity, @RequestParam("brandsId") Integer brandsId,
             @RequestParam("categoryId") Integer categoryId, @Valid Product product, BindingResult result, ModelMap model) {
 
         Brand foundBrand = brandService.findById(brandsId);

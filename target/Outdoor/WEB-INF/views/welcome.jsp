@@ -360,7 +360,7 @@
                                     console.log("brandClick is on the house");
                                     console.log(bid);
                                     console.log(cid);
-
+                                        let isBrandFilterActive = false;
                                         let brandAndPriceByIdURL = "http://localhost:8080/Outdoor/json/" + bid + "/" + cid;
                                         $scope.products = [];
                                         $http.get(brandAndPriceByIdURL).then(handleJson);
