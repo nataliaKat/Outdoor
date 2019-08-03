@@ -180,3 +180,9 @@ i
         display:flex;
         justify-content: space-around;
     }
+    
+    
+    .brand, .category {
+        font-family: 'Montserrat', sans-serif;
+        
+    }

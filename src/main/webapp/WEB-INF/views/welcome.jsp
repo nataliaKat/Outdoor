@@ -117,74 +117,58 @@
             <div class="row">
                 <div class="filter col-lg-3 border" style="text-align: center">
 
+                    <div class="category">
+                        <h4> Brands</h4><hr>
+                        <ol>
 
-                    <h4> Brands</h4><hr>
-                    <ol>
-
-                        <li ng-repeat="brand in brands">
-                            <label for="{{brand.brandsId}}">{{brand.brandname}}</label>
-                            <input type="radio" id="{{brand.brandsId}}" name="brand" ng-click="brandClick(brand.brandsId, 0)">
-                        </li>
-                    </ol>
-
-                    <h4>Categories</h4><hr>
-                    <ol>
-
-                        <li ng-repeat="category in categories">
-                            <label for="{{category.categoryId}}">{{category.categoryName}}</label>
-                            <input type="radio" id="{{category.categoryId}}" name="category" ng-click="brandClick(0, category.categoryId)">
-
-                        </li>
-                    </ol>
-                    <!--Price-->
-                    <br><hr>
-                    <h4>Price</h4>
-                    <!--VALUE POINTERS-->
-                    
-                    <div class="valuePointers">
-                        <div class="box">
-                            <center>
-                                <div id="value"></div>
-                            </center>
-
-                        </div>
-                        <div class="box2">
-                            <center>
-                                <div id="value2"></div>
-                            </center>
-                        </div>
-                    </div>
-                    
-                    <!--RANGE BARS-->
-                    <div class="rangeContainer">
-                        <input type="range" min="0" max="499" value="50" class="slider" id="slider">
-                        <input type="range" min="500" max="1000" value="900" class="slider" id="slider2">
+                            <li ng-repeat="brand in brands">
+                                <label for="{{brand.brandsId}}">{{brand.brandname}}</label>
+                                <input type="radio" id="{{brand.brandsId}}" name="brand" ng-click="brandClick(brand.brandsId, 0)">
+                            </li>
+                        </ol>
                     </div>
 
+                    <div class="brand">
+                        <h4>Categories</h4><hr>
+                        <ol>
+
+                            <li ng-repeat="category in categories">
+                                <label for="{{category.categoryId}}">{{category.categoryName}}</label>
+                                <input type="radio" id="{{category.categoryId}}" name="category" ng-click="brandClick(0, category.categoryId)">
+
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="price">
+                        <h4>Price</h4><hr>
+                        <!--VALUE POINTERS-->
+
+                        <div class="valuePointers">
+                            <div class="box">
+                                <center>
+                                    <div id="value"></div>
+                                </center>
+                            </div>
+                            <div> <h3>-</h3></div>
+                            <div class="box2">
+                                <center>
+                                    <div id="value2"></div>
+                                </center>
+                            </div>
+                        </div>
 
 
-                    <script type="text/javascript">
-                                var slider = document.getElementById("slider");
-                                var val = document.getElementById("value");
-                                val.innerHTML = slider.value;
-                                slider.oninput = function () {
-                                    val.innerHTML = this.value;
-                                }
-
-                                var slider2 = document.getElementById("slider2");
-                                var val2 = document.getElementById("value2");
-                                val2.innerHTML = slider2.value;
-                                slider2.oninput = function () {
-                                    val2.innerHTML = this.value;
-                                }
-
-                    </script>
-                    <!--                    Price <br><hr>
-                    
-                                        Up to 50 Euro<input type="checkbox" id="low"  ng-model="show" onclick="lowPrice()"><br>
-                                        Up to 200 Euro<input type="checkbox" id="medium"><br>
-                                        Up to<input type="checkbox" id="high"> 
-                    -->
+                        <!--RANGE BARS-->
+                        <div class="rangeContainer">
+                            <input type="range" min="0" max="100" value="0" class="slider" id="slider" ng-model="price_slider.start[0]" ng-click="priceFiltering('filter')" value="Filter">
+                            <h3>&euro;</h3>
+                            <input type="range" min="101" max="500" value="500" class="slider" id="slider2" ng-model="price_slider.start[1]" ng-click="priceFiltering('filter')" value="Filter">
+                            <br>
+                            <span ng-click="price_slider.start = [0, 500]" class="clear" id="clearPrice" >Clear</span>
+                        </div>
+                    </div>
+               
 
                 </div>
 
@@ -196,7 +180,7 @@
 
                         <!-- ITEM 1 -->
 
-                        <div class="col-lg-4 col-md-6 mb-4"  ng-model="show" ng-repeat="product in products">
+                        <div class="col-lg-4 col-md-6 mb-4"  ng-model="show" ng-repeat="product in products| filter:pricefilter">
 
                             <div class="card h-100 border" > 
                                 <a href="#"><img class="card-img-top" src="{{ product.imageUrl}}" alt=""></a>
@@ -414,10 +398,49 @@
                                                                 $http.get(brandAndPriceByIdURL).then(handleJson);
                                                             }
 
+
+
+//                    PRICE FILTER
+                                                            $scope.priceFiltering = function () {
+                                                                $scope.minPrice = $scope.price_slider.start[0];
+                                                                $scope.maxPrice = $scope.price_slider.start[1];
+
+                                                                $scope.pricefilter = function (product) {
+                                                                    if ((product.price <= $scope.maxPrice) && (product.price >= $scope.minPrice)) {
+                                                                        return product;
+                                                                    }
+                                                                };
+                                                            }
+
+                                                            $scope.price_slider = {
+                                                                start: [0, 500],
+                                                                connect: true,
+                                                                step: 1,
+                                                                range: {
+                                                                    min: 0,
+                                                                    max: 2500
+                                                                }
+                                                            };
+                                                            //MAIN
                                                         }
         </script>
 
+        <script type="text/javascript">
+                    var slider = document.getElementById("slider");
+                    var val = document.getElementById("value");
+                    val.innerHTML = slider.value;
+                    slider.oninput = function () {
+                        val.innerHTML = this.value;
+                    }
 
+                    var slider2 = document.getElementById("slider2");
+                    var val2 = document.getElementById("value2");
+                    val2.innerHTML = slider2.value;
+                    slider2.oninput = function () {
+                        val2.innerHTML = this.value;
+                    }
+
+        </script>
 
     </body>
 
