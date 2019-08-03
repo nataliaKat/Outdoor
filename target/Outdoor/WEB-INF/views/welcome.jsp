@@ -138,8 +138,9 @@
                     </ol>
                     <!--Price-->
                     <br><hr>
-                    
+                    <h4>Price</h4>
                     <!--VALUE POINTERS-->
+                    
                     <div class="valuePointers">
                         <div class="box">
                             <center>

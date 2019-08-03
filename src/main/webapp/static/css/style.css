@@ -130,6 +130,7 @@ i
 /*RANGESLIDE*/
 .rangeContainer{
     position:relative;
+    margin-top: 50px;
    
 }
 .slider, .slider2 {
@@ -141,30 +142,30 @@ i
      
 }
 
-.box {
+.box , .box2{
     background-color: #333333;
     width:50px;
     height:50px;
     border-radius:0 50% 50% 50%;
     transform: rotate(-135deg);
-    position:relative;
+/*    position:relative;
     margin:auto;
     left:0;
     right:0;
-    bottom: 0px;
+    bottom: 0px;*/
 }
-.box2 {
+/*.box2 {
     background-color: #333333;
     width:50px;
     height:50px;
     border-radius:0 50% 50% 50%;
-    transform: rotate(-135deg);
-    position:relative;
+    transform: rotate(-135deg);*/
+/*    position:relative;
     margin:auto;
     left:100px;
     right:0;
-    bottom: 0px;
-}
+    bottom: 0px;*/
+/*}*/
     #value, #value2 {
       color: white;
     font-size:20px;
@@ -172,4 +173,10 @@ i
     position: relative;
     top:12px;
     font-family: 'Montserrat', sans-serif;
+    }
+
+    
+    .valuePointers {
+        display:flex;
+        justify-content: space-around;
     }
