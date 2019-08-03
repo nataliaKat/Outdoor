@@ -144,7 +144,7 @@
                         <!--QUANTITY-->
                         <div class="form-group">
                             <label for="quantity">Quantity</label>
-                            <input type="number" name="quantity" id="quantity" class="form-control" required="required"/>
+                            <input type="number" min="0" name="quantity" id="quantity" class="form-control" required="required"/>
                             <div class="invalid-feedback">Please enter a valid number</div>
                             <!--BRAND--> 
 
@@ -315,6 +315,12 @@
          
 
             </script>
+<!--                                   <script type="text/javascript">
+                                       function alertName(){
+                                       alert("Form has been submitted");
+                                       } 
+                                   </script> 
+                                   <script type="text/javascript"> window.onload = alertName; </script>-->
 
 
     </body>

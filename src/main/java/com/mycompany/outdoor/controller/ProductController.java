@@ -35,7 +35,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
- * @author Ανδρέας
+ * @author οΏ½οΏ½οΏ½οΏ½οΏ½οΏ½οΏ½
  */
 @Controller
 @RequestMapping("/products")
@@ -131,8 +131,8 @@ public class ProductController {
                 return "details";
             } else {
                 Product p = productService.findById(id);
-                
-            
+               
+                model.addAttribute("quantity", stockService.getQuantityPerProduct(p));
                 model.addAttribute("product", p);
                 model.addAttribute("pBrand", p.getBrand());
                 model.addAttribute("pCategory", p.getCategory());
