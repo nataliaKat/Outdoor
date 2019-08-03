@@ -101,7 +101,7 @@
                         <a href="#" class="navbar-brand">Brands</a>
                     </li>
                     <li class="navbar-brand">
-                        <a href="#" class="navbar-brand">Sales</a>
+                        <a href="" class="navbar-brand">Sales</a>
                     </li>
                 </ul>
             </div>

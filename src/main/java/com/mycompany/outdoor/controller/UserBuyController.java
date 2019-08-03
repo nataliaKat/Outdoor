@@ -7,6 +7,7 @@ package com.mycompany.outdoor.controller;
 
 import com.mycompany.outdoor.model.Product;
 import com.mycompany.outdoor.model.Sale;
+import com.mycompany.outdoor.model.User;
 import com.mycompany.outdoor.service.ProductService;
 import com.mycompany.outdoor.service.SaleService;
 import com.mycompany.outdoor.service.StockService;
@@ -49,7 +50,7 @@ public class UserBuyController {
 
     @Autowired
     StockService stockService;
-    
+
     @Autowired
     SaleService saleService;
 
@@ -62,29 +63,56 @@ public class UserBuyController {
     @Autowired
     AuthenticationTrustResolver authenticationTrustResolver;
 
-
-
     @RequestMapping(method = RequestMethod.GET)
     public String buy(@PathVariable("id") Integer id, ModelMap model) {
         Product p = productService.findById(id);
         model.addAttribute("product", p);
         model.addAttribute("sale", new Sale());
+        model.addAttribute("user", new User());
+
         model.addAttribute("quantity", stockService.getQuantityPerProduct(p));
         return "buy";
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String saveBuy(@RequestParam("productId") Integer id, @RequestParam("quantity") int quantity, 
-            @Valid Sale sale, BindingResult result, ModelMap model) {
-        sale.setAppUser(userService.findBySSO(getPrincipal()));
+    public String saveBuy(@RequestParam("productId") Integer id, @RequestParam("quantity") int quantity, @RequestParam("first") String fname,
+            @RequestParam("last") String lname, @RequestParam("email") String email,
+            @Valid Sale sale, @Valid User user, BindingResult result, ModelMap model) {
+        user.setFirstName(fname);
+        user.setLastName(lname);
+        user.setEmail(email);
+        System.out.println(" prin to if Userrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr" + user);
+        System.out.println("auth anonymoushsfukjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj" + isCurrentAuthenticationAnonymous());
+
+        if (isCurrentAuthenticationAnonymous()) {
+            System.out.println(isCurrentAuthenticationAnonymous());
+            userService.saveUser(user);
+            System.out.println("Userrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr" + user);
+            sale.setAppUser(user);
+            System.out.println(result.getAllErrors());
+
+        } else {
+            User loggedIn = userService.findBySSO(getPrincipal());
+            System.out.println(loggedIn);
+            sale.setAppUser(loggedIn);
+            System.out.println(result.getAllErrors());
+
+        }
+        System.out.println("addresssssssssssssssssssssss" + sale.getAddress());
+        System.out.println("heyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy sale's user " + sale.getAppUser());
         Product boughtProduct = productService.findById(id);
         sale.setProduct(boughtProduct);
+        System.out.println("prooooooooooooooooooooooduct" + sale.getProduct());
+
         saleService.save(sale);
         stockService.reduceQuantity(boughtProduct, quantity);
-        if (result.hasErrors()) return "buy";
+        System.out.println(result.getAllErrors());
+        if (result.hasErrors()) {
+            return "buy";
+        }
         return "redirect:/";
     }
-    
+
     private String getPrincipal() {
         String userName = null;
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -105,6 +133,5 @@ public class UserBuyController {
         final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         return authenticationTrustResolver.isAnonymous(authentication);
     }
-
 
 }

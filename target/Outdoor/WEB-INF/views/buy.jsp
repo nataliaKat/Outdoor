@@ -46,11 +46,14 @@
             <form:label path="total" for="quant">Total</form:label>
             <form:input  readonly="true" path="total" id="total"
                          style="outline: none; padding:5px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,.5); margin: 0 5px !important"/>
+            <form:hidden id="address" path="address"/> 
+            <input type="hidden" id="firstName" name="first"/>
+            <input type="hidden" id="lastName" name="last"/>
+            <input type="hidden" id="email" name="email"/>
 
             <!--<input id="post" type="submit" value="Submit" />-->
         </form:form>
-
-
+        
 
         <!--Message for availability-->
         <div id="message" style="color:red;"></div>
@@ -82,47 +85,42 @@
         <!-- BUTTON QUANTITY -->
         <script src="static/js/jquery.nice-number.js"></script>
 
- <script>
+        <script>
             // Render the PayPal button into #paypal-button-container            
             jQuery(document).ready(init);
 
- 
+
 
             function init($) {
 
- 
+
 
                 $("#quant").on("keyup click", handleKeyUp);
                 function handleKeyUp(event) {
                     let usersQuantity = $("#quant").val();
-                    if (usersQuantity > ${quantity}) {
+             if (usersQuantity > ${quantity}) {
                         $("#message").html("Quantity not available.");
                         $("#total").val("");
-                        console.log($("#total").val());
                     } else if (usersQuantity < 0) {
                         $("#quant").val(1);
-                        $("#total").val(${product.price} * $("#quant").val());
-                        console.log($("#total").val());
+                 $("#total").val(${product.price} * $("#quant").val());
                     } else {
                         $("#message").html("");
-                        $("#total").val(${product.price} * $("#quant").val());
-                        console.log($("#total").val());
+                 $("#total").val(${product.price} * $("#quant").val());
 
- 
+
 
                     }
                 }
                 var today = new Date();
                 var month = today.getMonth() + 1;
                 $("#date").val(today.getFullYear() + "/" + month + "/" + today.getDate());
-                $("#total").val(${product.price} * $("#quant").val());
+         $("#total").val(${product.price} * $("#quant").val());
 
- 
+
 
 
                 paypal.Buttons({
-
- 
 
                     // Set up the transaction
                     createOrder: function (data, actions) {
@@ -135,32 +133,42 @@
                         });
                     },
 
- 
-
                     // Finalize the transaction
                     onApprove: function (data, actions) {
                         return actions.order.capture().then(function (details) {
                             // Show a success message to the buyer
                             alert('Transaction completed by ' + details.payer.name.given_name + '!');
-                            console.log(details.payer.entries());
-                            document.querySelector("#myForm").submit();
+                            console.log('Email address ' + details.payer.email_address);
+//                            console.log('Address ' + details.purchase_units[0].shipping.address.address_line_1)
+//                            $('#address').val(details.purchase_units[0].shipping.address.address_line_1 + ", " + details.purchase_units[0].address.shipping.postal_code )
+//                            console.log(details.purchase_units[0].shipping.address.address_line_1 + ", " + details.purchase_units[0].address.shipping.postal_code );
+                            console.log(details);
+                            document.querySelector('#firstName').value = details.payer.name.given_name;
+                            document.querySelector('#lastName').value = details.payer.name.surname;
+                            document.querySelector('#email').value = details.payer.email_address;
 
- 
+
+       //                            $('#firstName').val(details.payer.name.given_name);
+       //                            $('#lastName').val(details.payer.name.surname);
+       //                            $('#email').val(details.payer.email_address);
+//                            document.querySelector("#myForm").submit();
+
+
 
 
                         });
                     }
 
- 
+
 
 
                 }).render('#paypal-button-container');
 
- 
+
 
             }
 
- 
+
 
         </script>
     </body>

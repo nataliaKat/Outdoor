@@ -107,6 +107,8 @@
                             <th scope="col" style="width: 100px">Product_id</th>
                             <th scope="col" style="width: 100px">Product</th>
                             <th scope="col" style="width: 100px">Total</th>
+                            <th scope="col" style="width: 100px">Shipping Address</th>
+
 
                         </tr>
                     </thead>
@@ -119,6 +121,7 @@
                                 <td>${sale.product.productsId}</td>
                                 <td>${sale.product.name}</td>
                                 <td>${sale.total}</td>
+                                <td>${sale.address}</td>
                             </tr>
                         </c:forEach>
                     </tbody>
@@ -126,7 +129,7 @@
 
 
 
-   
+
 
                 <!-- FOOTER -->
 
