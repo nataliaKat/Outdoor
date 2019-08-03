@@ -54,9 +54,35 @@ public class ProductService {
     public List<Product> findProductsByCategory(Category category) {
         return dao.findProductsByCategory(category);
     }
-    
+
     public void deleteProductById(Integer id) {
         dao.deleteProductById(id);
+    }
+
+    public List<Product> findProductsByCategoryAndBrand(Category category, Brand brand) {
+        return dao.findProductsByCategoryAndBrand(category, brand);
+    }
+
+    public double getMinPrice() {
+        List<Product> products = findAllProducts();
+        double min = products.get(0).getPrice();
+        for (Product p : products) {
+            if (p.getPrice() < min) {
+                min = p.getPrice();
+            }
+        }
+        return min;
+    }
+
+    public double getMaxPrice() {
+        List<Product> products = findAllProducts();
+        double max = products.get(0).getPrice();
+        for (Product p : products) {
+            if (p.getPrice() > max) {
+                max = p.getPrice();
+            }
+        }
+        return max;
     }
 
 }
