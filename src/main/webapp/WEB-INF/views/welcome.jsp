@@ -116,40 +116,51 @@
         <div class="container" style="margin-top: 50px">
             <div class="row">
                 <div class="filter col-lg-3 border" style="text-align: center">
-                    FILTER SECTION
-                    <hr><br>
-                    Brands<hr>
+                    
+                    
+                    <h4> Brands</h4><hr>
                     <ol>
-                        
+            
                         <li ng-repeat="brand in brands">
                             <label for="{{brand.brandsId}}">{{brand.brandname}}</label>
-                            <input type="checkbox" id="{{brand.brandsId}}" name="brand" ng-click="brandClick(brand.brandsId,0)">
+                            <input type="radio" id="{{brand.brandsId}}" name="brand" ng-click="brandClick(brand.brandsId,0)">
                         </li>
                     </ol>
                     
-                      Categories<hr>
+                    <h4>Categories</h4><hr>
                     <ol>
                         
                         <li ng-repeat="category in categories">
                             <label for="{{category.categoryId}}">{{category.categoryName}}</label>
-                            <input type="checkbox" id="{{category.categoryId}}" name="brand" ng-click="brandClick(0,category.categoryId)">
+                            <input type="radio" id="{{category.categoryId}}" name="category" ng-click="brandClick(0,category.categoryId)">
                        
                         </li>
                     </ol>
+                        <!--Price-->
+                      <br><hr>
+                      <div class="box">
+                          <center>
+                              <div id="value"></div>
+                          </center>
+                      </div>
+                      <div class="container">
+                          <input type="range" min="0" max="1000" value="50" class="slider" id="slider">
+                      </div>
+                      <script type="text/javascript">
+                          var slider = document.getElementById("slider");
+                          var val = document.getElementById("value");
+                          val.innerHTML = slider.value;
+                          slider.oninput = function() {
+                              val.innerHTML = this.value;
+                          }
+                      </script>
                     <!--                    Price <br><hr>
                     
                                         Up to 50 Euro<input type="checkbox" id="low"  ng-model="show" onclick="lowPrice()"><br>
                                         Up to 200 Euro<input type="checkbox" id="medium"><br>
                                         Up to<input type="checkbox" id="high"> 
                     -->
-
-                    <!--Brands<hr>-->
-                    <!--<ol>-->
-                    <!--    <li ng-repeat="brand in brands ">
-                            <label for="{{brand.brandname}}">{{brand.brandname}}</label>
-                            <input type="checkbox" id="{{brand.brandname}}" ng-model="show">
-                        </li>-->
-                    <!--</ol>-->
+                        
                 </div>
 
                 <div class="col-lg-9">
@@ -309,13 +320,14 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
         <script>
-
+        var savedbid = 0;
+        var savedcid = 0;
                             const ProductApp = angular.module("app", []);
                             ProductApp.controller("MainCtrl", ['$scope', '$http', MainCtrl]);
 
                             function MainCtrl($scope, $http) {
                                 const URL = "http://localhost:8080/Outdoor/json";
-                                const brandURL = "http://localhost:8080/Outdoor/json/brands";
+                                const brandURL = "http://localhost:8080/Outdoor/json/brands/";
                                 const categoryURL = "http://localhost:8080/Outdoor/json/categories";
                                 $scope.products = [];
                                 $scope.brands = [];
@@ -326,18 +338,18 @@
                                 $http.get(categoryURL).then(handleJsonCategories);
 
                                 function handleJsonCategories(response) {
-                                    console.log(response.data);
+//                                    console.log(response.data);
                                     $scope.categories = response.data;
                                 }
 
                                 function handleJson(response) {
 
-                                    console.log(response.data);
+//                                    console.log(response.data);
                                     $scope.products = response.data;
                                 }
 
                                 function handleJsonBrands(response) {
-                                    console.log(response.data);
+//                                    console.log(response.data);
                                     $scope.brands = response.data;
                                 }
                                 function handleJsonPrice(response) {
@@ -357,12 +369,23 @@
 //                                                                 $http.get(brandByIdURL).then(handleJson);
 //                                                            }
                                   $scope.brandClick = function (bid,cid) {
-                                    console.log("brandClick is on the house");
-                                    console.log(bid);
-                                    console.log(cid);
-                                        let isBrandFilterActive = false;
-                                        let brandAndPriceByIdURL = "http://localhost:8080/Outdoor/json/" + bid + "/" + cid;
-                                        $scope.products = [];
+//                                    console.log("bid an cid");
+//                                    console.log(bid);
+//                                    console.log(cid);
+                                    
+////                                    savedbid = bid;
+//                                    console.log(" saved cid "+savedcid);
+//                                    console.log("saved bid "+savedbid);
+                                    
+                                        if (bid !=0 && cid == 0) {
+                                            savedbid = bid;
+                                            console.log(" IF savedbid " + savedbid);
+                                        } else if (bid ==0 && cid !=0) {
+                                            savedcid = cid;
+                                            console.log("IF savedcid " + savedcid);
+                                        }
+                                        let brandAndPriceByIdURL = "http://localhost:8080/Outdoor/json/" + savedbid + "/" + savedcid;
+//                                        $scope.products = [];
                                         $http.get(brandAndPriceByIdURL).then(handleJson);
                                    }
 

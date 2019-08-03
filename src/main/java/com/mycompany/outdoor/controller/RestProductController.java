@@ -115,7 +115,7 @@ public class RestProductController {
     }
     
     // NEW METHOD
-     @RequestMapping(value = "/json/categoriesbrands/{categoryId}/{brandId}", method = RequestMethod.GET)
+//     @RequestMapping(value = "/json/categoriesbrands/{categoryId}/{brandId}", method = RequestMethod.GET)
      public ResponseEntity<List<Product>> getProductsByCategoryAndBrand(@PathVariable("categoryId") Integer cid, @PathVariable("brandId") Integer bid) {
         Category foundCategory = categoryService.findById(cid);
         Brand foundBrand = brandService.findById(bid);
