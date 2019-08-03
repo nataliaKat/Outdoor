@@ -54,13 +54,9 @@ public class ProductService {
     public List<Product> findProductsByCategory(Category category) {
         return dao.findProductsByCategory(category);
     }
-    public List<Product> findProductsByCategoryAndBrand( Category category, Brand brand){
-        return dao.findProductsByCategoryAndBrand(category,brand);
-    }
     
     public void deleteProductById(Integer id) {
         dao.deleteProductById(id);
     }
-    
 
 }

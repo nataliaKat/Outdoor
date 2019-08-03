@@ -74,10 +74,5 @@ public class ProductDao extends AbstractDao<Integer, Product> {
         criteria.add(Restrictions.eq("category", category));
         return criteria.list();
     }
-     public List<Product> findProductsByCategoryAndBrand(Category category, Brand brand) {
-         Criteria criteria = createEntityCriteria();
-         criteria.add(Restrictions.eq("category",category));
-         criteria.add(Restrictions.eq("brand",brand));
-         return criteria.list();
-     }
+
 }

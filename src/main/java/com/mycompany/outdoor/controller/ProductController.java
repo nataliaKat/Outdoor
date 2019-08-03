@@ -131,12 +131,16 @@ public class ProductController {
                 return "details";
             } else {
                 Product p = productService.findById(id);
-                model.addAttribute("quantity", stockService.getQuantityPerProduct(p));
+                
+            
                 model.addAttribute("product", p);
                 model.addAttribute("pBrand", p.getBrand());
                 model.addAttribute("pCategory", p.getCategory());
                 model.addAttribute("brands", brandService.findAllBrands());
                 model.addAttribute("categories", categoryService.findAllCategories());
+                int quantity = stockService.getQuantityPerProduct(p);
+                    model.addAttribute("quantity", quantity);
+                System.out.println("Quantityyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy" + quantity);
                 return "admineditproducts";
             }
         }
@@ -153,6 +157,8 @@ public class ProductController {
         product.setCategory(foundCategory);
 
         productService.updateProduct(product);
+        
+//        stockService.
         stockService.updateStock(product, quantity);
 
         if (result.hasErrors()) {

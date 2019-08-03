@@ -312,13 +312,9 @@
                 })
 
 
+         
+
             </script>
-                                   <script type="text/javascript">
-                                       function alertName(){
-                                       alert("Form has been submitted");
-                                       } 
-                                   </script> 
-                                   <script type="text/javascript"> window.onload = alertName; </script>
 
 
     </body>
