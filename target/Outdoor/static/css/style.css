@@ -4,6 +4,7 @@
 
 body {
     padding-top: 56px;
+    outline:none
 
 }
 /* NAVBAR "PRODUCTS"  */
@@ -72,12 +73,15 @@ button {
     border-radius: 16px;
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
+  
 }
 
-button:hover {
-    background-color: aquamarine; 
-    color: black;
-}
+    button:hover {
+        background-color: aquamarine; 
+        color: black;
+
+    }
+
 
 i 
 {
@@ -264,6 +268,7 @@ i
       border-radius: 50%;
      
     }
+  
     
 
     /* On mouse-over, add a grey background color */
@@ -298,3 +303,5 @@ i
             background: white;
     }
     
+    
+  

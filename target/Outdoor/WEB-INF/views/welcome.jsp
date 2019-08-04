@@ -122,8 +122,8 @@
                         <ol class="nostyle">
 
                             <li ng-repeat="brand in brands" class="filterItem" >
-                                <label class="label" for="{{brand.brandsId}}">{{brand.brandname}}
-                                <input type="radio" id="{{brand.brandsId}}" name="brand" ng-click="brandClick(brand.brandsId, 0)">
+                                <label class="label" for="{{brand.brandsId}}" path="brand" name="brand">{{brand.brandname}}
+                                <input type="radio" id="{{brand.brandsId}}" name="brand" path="brand" ng-click="brandClick(brand.brandsId, 0)">
                                 <span class="checkmark"></span>
                                 </label>
                             </li>
@@ -134,9 +134,9 @@
                         <h4>Categories</h4><hr>
                         <ol class="nostyle">
                             <li ng-repeat="category in categories" class="filterItem">
-                                <label class="label" for="{{category.categoryId}}">{{category.categoryName}}
-                                <input type="radio" id="{{category.categoryId}}" name="category" ng-click="brandClick(0, category.categoryId)">
-                                <span class="checkmark"></span>
+                                <label class="label" for="cat{{category.categoryId}}" path="category" name="category">{{category.categoryName}}
+                                <input type="radio" id="cat{{category.categoryId}}" name="category" path="category" ng-click="brandClick(0, category.categoryId)">
+                                <span class="checkmark2"></span>
                                 </label>
                             </li>
                         </ol>
@@ -164,19 +164,19 @@
                         <!--RANGE BARS-->
                         <div class="rangeContainer">
                             <div class="col1" >
-                           Min &euro; <input type="range" min="0" max="100" value="0" class="slider" id="slider" ng-model="price_slider.start[0]" ng-click="priceFiltering('filter')" value="Filter">
+                           Min &euro; <input type="range" min="${minimumPrice}" max="${maximumPrice}/2" value="${minimumPrice}" class="slider" id="slider" ng-model="price_slider.start[0]" ng-click="priceFiltering('filter')" value="Filter">
                            </div>
                             <br>
                             <div class="col1">
-                           Max &euro; <input type="range" min="101" max="500" value="500" class="slider" id="slider2" ng-model="price_slider.start[1]" ng-click="priceFiltering('filter')" value="Filter">
+                           Max &euro; <input type="range" min="${maximumPrice}/2" max="${maximumPrice}" value="${maximumPrice}" class="slider" id="slider2" ng-model="price_slider.start[1]" ng-click="priceFiltering('filter')" value="Filter">
                             </div> 
                            <br>
                             <!--<span ng-click="price_slider.start = [0, 500]" class="clear" id="clearPrice" >Clear</span>-->
                         </div>
                     </div>
                     <br>
-                    <a href="/Outdoor" ><span><h5> Clear all filters</h5></span> </a>
-
+                    <a href="/Outdoor/products"><span><h5> Clear all filters</h5></span> </a>
+                    
                 </div>
 
                 <div class="col-lg-9">
@@ -420,12 +420,12 @@
                                                             }
 
                                                             $scope.price_slider = {
-                                                                start: [0, 500],
+                                                                start: [${minimumPrice}, ${maximumPrice}],
                                                                 connect: true,
                                                                 step: 1,
                                                                 range: {
-                                                                    min: 0,
-                                                                    max: 2500
+                                                                    min: ${minimumPrice},
+                                                                    max: ${maximumPrice}
                                                                 }
                                                             };
                                                             //MAIN

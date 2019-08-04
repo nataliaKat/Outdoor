@@ -116,7 +116,7 @@ public class ProductController {
         return "redirect:/products";
     }
 
-    //        -- UPDATE FORM -- 
+    //        DETAILS FORM
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public String updateOrShowDetails(ModelMap model, @PathVariable("id") Integer id) {
         if (isCurrentAuthenticationAnonymous()) {
@@ -127,7 +127,11 @@ public class ProductController {
             Iterator<UserProfile> iterator = user.getUserProfiles().iterator();
             Integer userProfile = iterator.next().getId();
             if (userProfile == 1) {
+                Product p = productService.findById(id);
+                
                 model.addAttribute("id", id);
+                model.addAttribute("quantity", stockService.getQuantityPerProduct(p));
+                System.out.println("QUANTITY IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIS"+stockService.getQuantityPerProduct(p));
                 return "details";
             } else {
                 Product p = productService.findById(id);
@@ -138,9 +142,7 @@ public class ProductController {
                 model.addAttribute("pCategory", p.getCategory());
                 model.addAttribute("brands", brandService.findAllBrands());
                 model.addAttribute("categories", categoryService.findAllCategories());
-                int quantity = stockService.getQuantityPerProduct(p);
-                    model.addAttribute("quantity", quantity);
-                System.out.println("Quantityyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy" + quantity);
+                
                 return "admineditproducts";
             }
         }
