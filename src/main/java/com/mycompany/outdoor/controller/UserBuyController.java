@@ -22,6 +22,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenBasedRememberMeServices;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.event.TransactionalEventListener;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -81,14 +82,16 @@ public class UserBuyController {
         user.setFirstName(fname);
         user.setLastName(lname);
         user.setEmail(email);
+
         System.out.println(" prin to if Userrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr" + user);
         System.out.println("auth anonymoushsfukjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj" + isCurrentAuthenticationAnonymous());
 
         if (isCurrentAuthenticationAnonymous()) {
             System.out.println(isCurrentAuthenticationAnonymous());
-            userService.saveUser(user);
-            System.out.println("Userrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr" + user);
             sale.setAppUser(user);
+
+            userService.saveUser(user);
+//            System.out.println("Userrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr" + user);
             System.out.println(result.getAllErrors());
 
         } else {
@@ -103,14 +106,19 @@ public class UserBuyController {
         Product boughtProduct = productService.findById(id);
         sale.setProduct(boughtProduct);
         System.out.println("prooooooooooooooooooooooduct" + sale.getProduct());
-
-        saleService.save(sale);
+        persistSale(sale);
         stockService.reduceQuantity(boughtProduct, quantity);
         System.out.println(result.getAllErrors());
         if (result.hasErrors()) {
             return "buy";
         }
         return "redirect:/";
+    }
+
+    @TransactionalEventListener
+    private void persistSale(Sale sale) {
+        System.out.println("Entered sale functionnnnnnnnnnnnnnnnnnnnnn");
+        saleService.save(sale);
     }
 
     private String getPrincipal() {

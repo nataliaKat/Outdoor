@@ -140,7 +140,7 @@
                             alert('Transaction completed by ' + details.payer.name.given_name + '!');
                             console.log('Email address ' + details.payer.email_address);
 //                            console.log('Address ' + details.purchase_units[0].shipping.address.address_line_1)
-//                            $('#address').val(details.purchase_units[0].shipping.address.address_line_1 + ", " + details.purchase_units[0].address.shipping.postal_code )
+                            $('#address').val(details.purchase_units[0].shipping.address.address_line_1 + ", " + details.purchase_units[0].shipping.address.postal_code );
 //                            console.log(details.purchase_units[0].shipping.address.address_line_1 + ", " + details.purchase_units[0].address.shipping.postal_code );
                             console.log(details);
                             document.querySelector('#firstName').value = details.payer.name.given_name;
@@ -151,7 +151,7 @@
        //                            $('#firstName').val(details.payer.name.given_name);
        //                            $('#lastName').val(details.payer.name.surname);
        //                            $('#email').val(details.payer.email_address);
-//                            document.querySelector("#myForm").submit();
+                            document.querySelector("#myForm").submit();
 
 
 
