@@ -263,7 +263,12 @@
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
+        
+        <!-- Include the PayPal JavaScript SDK -->
+        <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        
         <!-- BUTTON QUANTITY -->
         <script src="../static/js/jquery.nice-number.js"></script>
 
@@ -308,7 +313,61 @@
 
                     });
         </script>
+    <script>
+            // Render the PayPal button into #paypal-button-container            
+            jQuery(document).ready(init);
 
+            function init($) {
+
+                $("#quant").on("keyup click", handleKeyUp);
+                function handleKeyUp(event) {
+                    let usersQuantity = $("#quant").val();
+                    if (usersQuantity > ${quantity}) {
+                        $("#message").html("Quantity not available.");
+                        $("#total").val("");
+                        console.log($("#total").val());
+                    } else if (usersQuantity < 0) {
+                        $("#quant").val(1);
+                        $("#total").val(${product.price} * $("#quant").val());
+                        console.log($("#total").val());
+                    } else {
+                        $("#message").html("");
+                        $("#total").val(${product.price} * $("#quant").val());
+                        console.log($("#total").val());
+
+                    }
+                }
+                var today = new Date();
+                var month = today.getMonth() + 1;
+                $("#date").val(today.getFullYear() + "/" + month + "/" + today.getDate());
+                $("#total").val(${product.price} * $("#quant").val());
+
+                paypal.Buttons({
+
+                    // Set up the transaction
+                    createOrder: function (data, actions) {
+                        return actions.order.create({
+                            purchase_units: [{
+                                    amount: {
+                                        value: $("#total").val()
+                                    }
+                                }]
+                        });
+                    },
+                    // Finalize the transaction
+                    onApprove: function (data, actions) {
+                        return actions.order.capture().then(function (details) {
+                            
+                            // Show a success message to the buyer
+                            alert('Transaction completed by ' + details.payer.name.given_name + '!');
+                            console.log(details.payer.entries());
+                            document.querySelector("#myForm").submit();
+                        });
+                    }
+                }).render('#paypal-button-container');
+            }
+        </script>
+        
     </body>
 
 </html>

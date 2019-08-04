@@ -115,27 +115,29 @@
         <!-- MAIN BODY -->
         <div class="container" style="margin-top: 50px">
             <div class="row">
-                <div class="filter col-lg-3 border" style="text-align: center">
+                <div class="filter col-lg-3 border" >
 
-                    <div class="category">
+                    <div class="brand">
                         <h4> Brands</h4><hr>
-                        <ol>
+                        <ol class="nostyle">
 
-                            <li ng-repeat="brand in brands">
-                                <label for="{{brand.brandsId}}">{{brand.brandname}}</label>
+                            <li ng-repeat="brand in brands" class="filterItem" >
+                                <label class="label" for="{{brand.brandsId}}">{{brand.brandname}}
                                 <input type="radio" id="{{brand.brandsId}}" name="brand" ng-click="brandClick(brand.brandsId, 0)">
+                                <span class="checkmark"></span>
+                                </label>
                             </li>
                         </ol>
                     </div>
 
-                    <div class="brand">
+                    <div class="category">
                         <h4>Categories</h4><hr>
-                        <ol>
-
-                            <li ng-repeat="category in categories">
-                                <label for="{{category.categoryId}}">{{category.categoryName}}</label>
+                        <ol class="nostyle">
+                            <li ng-repeat="category in categories" class="filterItem">
+                                <label class="label" for="{{category.categoryId}}">{{category.categoryName}}
                                 <input type="radio" id="{{category.categoryId}}" name="category" ng-click="brandClick(0, category.categoryId)">
-
+                                <span class="checkmark"></span>
+                                </label>
                             </li>
                         </ol>
                     </div>
@@ -161,14 +163,19 @@
 
                         <!--RANGE BARS-->
                         <div class="rangeContainer">
-                            <input type="range" min="0" max="100" value="0" class="slider" id="slider" ng-model="price_slider.start[0]" ng-click="priceFiltering('filter')" value="Filter">
-                            <h3>&euro;</h3>
-                            <input type="range" min="101" max="500" value="500" class="slider" id="slider2" ng-model="price_slider.start[1]" ng-click="priceFiltering('filter')" value="Filter">
+                            <div class="col1" >
+                           Min &euro; <input type="range" min="0" max="100" value="0" class="slider" id="slider" ng-model="price_slider.start[0]" ng-click="priceFiltering('filter')" value="Filter">
+                           </div>
                             <br>
-                            <span ng-click="price_slider.start = [0, 500]" class="clear" id="clearPrice" >Clear</span>
+                            <div class="col1">
+                           Max &euro; <input type="range" min="101" max="500" value="500" class="slider" id="slider2" ng-model="price_slider.start[1]" ng-click="priceFiltering('filter')" value="Filter">
+                            </div> 
+                           <br>
+                            <!--<span ng-click="price_slider.start = [0, 500]" class="clear" id="clearPrice" >Clear</span>-->
                         </div>
                     </div>
-               
+                    <br>
+                    <a href="/Outdoor" ><span><h5> Clear all filters</h5></span> </a>
 
                 </div>
 
@@ -388,10 +395,10 @@
 
                                                                 if (bid != 0 && cid == 0) {
                                                                     savedbid = bid;
-                                                                    console.log(" IF savedbid " + savedbid);
+                                                                    console.log(" IF saved BID " + savedbid);
                                                                 } else if (bid == 0 && cid != 0) {
                                                                     savedcid = cid;
-                                                                    console.log("IF savedcid " + savedcid);
+                                                                    console.log("IF saved CID " + savedcid);
                                                                 }
                                                                 let brandAndPriceByIdURL = "http://localhost:8080/Outdoor/json/" + savedbid + "/" + savedcid;
 //                                        $scope.products = [];
