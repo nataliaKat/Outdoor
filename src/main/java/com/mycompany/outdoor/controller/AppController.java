@@ -69,6 +69,8 @@ public class AppController {
 //        List<User> users = userService.findAllUsers();
 //        model.addAttribute("users", users);
 //        model.addAttribute("loggedinuser", getPrincipal());
+        model.addAttribute("minimumPrice", productService.getMinPrice());
+        model.addAttribute("maximumPrice", productService.getMaxPrice());
         return "welcome";
     }
 

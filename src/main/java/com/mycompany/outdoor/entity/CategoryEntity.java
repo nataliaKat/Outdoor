@@ -13,7 +13,7 @@ import java.util.Objects;
  */
 public class CategoryEntity {
         private Integer categoryId;
-        private String categoryName;
+    private String categoryName;
 
     public CategoryEntity() {
     }

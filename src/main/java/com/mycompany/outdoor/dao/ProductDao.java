@@ -51,16 +51,15 @@ public class ProductDao extends AbstractDao<Integer, Product> {
     }
 
     public void deleteProductById(Integer id) {
-       delete(findById(id));
+        delete(findById(id));
     }
-    
-    
-    public List<Product> findProductsByPrice(double lowPrice, double highPrice){
+
+    public List<Product> findProductsByPrice(double lowPrice, double highPrice) {
         Criteria criteria = createEntityCriteria();
         criteria.add(Restrictions.ge("price", lowPrice));
         criteria.add(Restrictions.le("price", highPrice));
         return criteria.list();
-        
+
     }
 
     public List<Product> findProductsByBrand(Brand brand) {
@@ -68,16 +67,18 @@ public class ProductDao extends AbstractDao<Integer, Product> {
         criteria.add(Restrictions.eq("brand", brand));
         return criteria.list();
     }
-    
-     public List<Product> findProductsByCategory(Category category) {
+
+    public List<Product> findProductsByCategory(Category category) {
         Criteria criteria = createEntityCriteria();
         criteria.add(Restrictions.eq("category", category));
         return criteria.list();
     }
-     public List<Product> findProductsByCategoryAndBrand(Category category, Brand brand) {
-         Criteria criteria = createEntityCriteria();
-         criteria.add(Restrictions.eq("category",category));
-         criteria.add(Restrictions.eq("brand",brand));
-         return criteria.list();
-     }
+
+    public List<Product> findProductsByCategoryAndBrand(Category category, Brand brand) {
+        Criteria criteria = createEntityCriteria();
+        criteria.add(Restrictions.eq("category", category));
+        criteria.add(Restrictions.eq("brand", brand));
+        return criteria.list();
+    }
+
 }

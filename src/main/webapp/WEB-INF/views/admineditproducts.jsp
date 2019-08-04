@@ -160,7 +160,7 @@
 
                         <div class="form-group">
                             <label path="quantity">Quantity</label>
-                            <input type="number" name="quantity" value="${quantity}" id="quantity" class="form-control" required="required"/>
+                            <input type="number" name="quantity" value="${quantity}" id="quantity" class="form-control" required="required" min="0"/>
                             <div class="invalid-feedback">Please enter a valid number</div>
                         </div>
 

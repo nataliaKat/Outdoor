@@ -35,7 +35,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
- * @author ÁíäñÝáò
+ * @author ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  */
 @Controller
 @RequestMapping("/products")
@@ -138,6 +138,9 @@ public class ProductController {
                 model.addAttribute("pCategory", p.getCategory());
                 model.addAttribute("brands", brandService.findAllBrands());
                 model.addAttribute("categories", categoryService.findAllCategories());
+                int quantity = stockService.getQuantityPerProduct(p);
+                    model.addAttribute("quantity", quantity);
+                System.out.println("Quantityyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy" + quantity);
                 return "admineditproducts";
             }
         }
@@ -145,7 +148,7 @@ public class ProductController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.POST)
-    public String updateProduct(@PathVariable("id") Integer pid,@RequestParam("quantity") int quantity, @RequestParam("brandsId") Integer brandsId,
+    public String updateProduct(@PathVariable("id") Integer pid, @RequestParam("quantity") int quantity, @RequestParam("brandsId") Integer brandsId,
             @RequestParam("categoryId") Integer categoryId, @Valid Product product, BindingResult result, ModelMap model) {
 
         Brand foundBrand = brandService.findById(brandsId);
@@ -154,6 +157,8 @@ public class ProductController {
         product.setCategory(foundCategory);
 
         productService.updateProduct(product);
+        
+//        stockService.
         stockService.updateStock(product, quantity);
 
         if (result.hasErrors()) {

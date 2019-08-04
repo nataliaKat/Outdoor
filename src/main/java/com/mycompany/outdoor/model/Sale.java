@@ -59,8 +59,8 @@ public class Sale implements Serializable {
     @ManyToOne
     private Product product;
     
-//    @Column(name = "user_address")
-//    private String address;
+    @Column(name = "shipping_address")
+    private String address;
     
 //    @Column(name = "user_phonenumber")
 //    private String phonenumber;
@@ -68,23 +68,23 @@ public class Sale implements Serializable {
     public Sale() {
     }
 
-    public Sale(Integer salesId, Date salesDate, Double total, User appUser, Product product) {
+    public Sale(Integer salesId, Date salesDate, Double total, User appUser, Product product, String address) {
         this.salesId = salesId;
         this.salesDate = salesDate;
         this.total = total;
         this.appUser = appUser;
         this.product = product;
-//        this.address = address;
+        this.address = address;
 //        this.phonenumber = phonenumber;
     }
 
-//    public String getAddress() {
-//        return address;
-//    }
-//
-//    public void setAddress(String address) {
-//        this.address = address;
-//    }
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
 //
 //    public String getPhonenumber() {
 //        return phonenumber;
@@ -153,7 +153,7 @@ public class Sale implements Serializable {
         hash = 11 * hash + Objects.hashCode(this.total);
         hash = 11 * hash + Objects.hashCode(this.appUser);
         hash = 11 * hash + Objects.hashCode(this.product);
-//        hash = 11 * hash + Objects.hashCode(this.address);
+        hash = 11 * hash + Objects.hashCode(this.address);
 //        hash = 11 * hash + Objects.hashCode(this.phonenumber);
         return hash;
     }
@@ -170,9 +170,9 @@ public class Sale implements Serializable {
             return false;
         }
         final Sale other = (Sale) obj;
-//        if (!Objects.equals(this.address, other.address)) {
-//            return false;
-//        }
+        if (!Objects.equals(this.address, other.address)) {
+            return false;
+        }
 //        if (!Objects.equals(this.phonenumber, other.phonenumber)) {
 //            return false;
 //        }
