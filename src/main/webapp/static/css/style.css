@@ -7,6 +7,17 @@ body {
     outline:none
 
 }
+
+    .logo {
+       font-family: 'Montserrat', sans-serif;
+        font-size: 60px;
+        color: rgb(65, 65, 65);
+    }
+    .far fa-compass{
+        font-size: 50px
+    }
+
+
 /* NAVBAR "PRODUCTS"  */
 .dropdown-toggle::after {
     display:none;
@@ -14,10 +25,22 @@ body {
 .big-banner {
     background-image: url('../pictures/mountain.jpeg');
     background-position: center;
-    /* height:100vh;
-     width:100vh;*/
-
+    
 }
+
+    .dropdown-menu > ol > li {
+         
+       -webkit-transition-duration: 0.4s; 
+        transition-duration: 0.4s;
+    }
+
+    .dropdown-menu > ol > li:hover {
+        color: white;
+        text-decoration: none;
+        background-color: rgb(65, 65, 65);
+    }
+
+
 
 .big-banner-2 {
   background-image: url('../pictures/mountain.jpeg');
@@ -205,9 +228,17 @@ i
     
     .brand, .category, .price {
         font-family: 'Montserrat', sans-serif;
-        
     }
-    
+    .price > h4, .brand > h4, .category > h4 {
+        display:flex;
+        justify-content: center;
+        margin-bottom:0px;
+        font-weight: bold;
+        margin-top: 25px;
+    }  
+    .price > hr, .brand > hr, .category > hr {
+        margin-top:8px;
+    }
     .clear, radio{
         cursor:pointer;
     }
@@ -260,13 +291,13 @@ i
     /* Create a custom radio button */
     .checkmark {
       position: absolute;
-      top: 0;
+      top: 4px;
       left: 0;
       height: 25px;
       width: 25px;
       background-color: #eee;
       border-radius: 50%;
-     
+      
     }
   
     
@@ -304,4 +335,3 @@ i
     }
     
     
-  

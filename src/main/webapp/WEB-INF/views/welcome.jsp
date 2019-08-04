@@ -57,7 +57,7 @@
 
             <div class="collapse navbar-collapse" id="#navbarMenu"
                  style="position:relative; bottom:130px; left:80px; color: blue">
-                <!-- <p class="text-center font-italic font-weight-bold" style="">Compass</p> -->
+                 <p class="logo">Compass <i class="far fa-compass"></i></p> 
 
 
                 <ul class="navbar-nav1 ml-auto" style="display:flex; align-content:flex-start; ">
@@ -85,7 +85,7 @@
 
                 <ul class="navbar-nav mx-auto" style="text-align: center">
                     <li class="navbar-brand">
-                        <a href="#" class="navbar-brand">Home</a>
+                        <a href="/Outdoor" class="navbar-brand">Home</a>
                     </li>
 
                     <li class="navbar-brand dropdown">
@@ -94,18 +94,27 @@
                             Products
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: rgb(217, 223, 223)">
-                            <a class="dropdown-item" href="#">Tents</a>
-                            <a class="dropdown-item" href="#">Hiking Equipment</a>
-                            <a class="dropdown-item" href="#">Backpacks</a>
-                            <a class="dropdown-item" href="#">First Aid Kits</a>
+                            <ol class="nostyle">
+                            <li ng-repeat="category in categories" class="filterItem" style="padding: none">
+                                <label class="label" for="category{{category.categoryId}}" path="category" name="category">{{category.categoryName}}
+                                <input type="radio" id="category{{category.categoryId}}" name="category" path="category" ng-click="brandClick(0, category.categoryId)">
+                               
+                                </label>
+                            </li>
+                        </ol>
                         </div>
                     </li>
 
-                    <li class="navbar-brand">
-                        <a href="#" class="navbar-brand">Brands</a>
-                    </li>
-                    <li class="navbar-brand">
-                        <a href="#" class="navbar-brand">Sales</a>
+                   <li class="navbar-brand dropdown">
+                        <a class="navbar-brand dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            Profile
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: rgb(217, 223, 223)">
+                            <a class="dropdown-item" href="/Outdoor/history">Orders History</a>
+                            <a class="dropdown-item" href="/Outdoor/edit-user">Edit profile</a>
+                           
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -134,9 +143,9 @@
                         <h4>Categories</h4><hr>
                         <ol class="nostyle">
                             <li ng-repeat="category in categories" class="filterItem">
-                                <label class="label" for="cat{{category.categoryId}}" path="category" name="category">{{category.categoryName}}
-                                <input type="radio" id="cat{{category.categoryId}}" name="category" path="category" ng-click="brandClick(0, category.categoryId)">
-                                <span class="checkmark2"></span>
+                                <label class="label" for="category{{category.categoryId}}" path="category" name="category">{{category.categoryName}}
+                                <input type="radio" id="category{{category.categoryId}}" name="category" path="category" ng-click="brandClick(0, category.categoryId)">
+                                <span class="checkmark"></span>
                                 </label>
                             </li>
                         </ol>
@@ -175,7 +184,7 @@
                         </div>
                     </div>
                     <br>
-                    <a href="/Outdoor/products"><span><h5> Clear all filters</h5></span> </a>
+                    <a href="/Outdoor"><span><h5> Clear all filters</h5></span> </a>
                     
                 </div>
 
