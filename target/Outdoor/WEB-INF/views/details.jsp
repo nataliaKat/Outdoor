@@ -60,12 +60,17 @@
 
                 <ul class="navbar-nav1 ml-auto" style="display:flex; align-content:flex-start; ">
                     <li class="nav-item">
-                        <a href="/Outdoor/logout" class="nav-link" style="font-size: 20px; padding-right:0px"><i class="far fa-user-circle"></i> Logout </a>
+                        <a href="/Outdoor/login" class="nav-link" style="font-size: 20px; padding-right:0px"><i class="far fa-user-circle"></i> Login </a>
+                    </li>
+                    <li class="nav-item">
+                        <p class="nav-link" style="font-size: 20px; padding-left:10px; padding-right:10px">|</p>  
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" style="font-size: 20px; padding-left:0px"><i class="fas fa-sign-in-alt"></i> Register</a>
                     </li>
 
                 </ul>
             </div>
-        </nav>
 
         <!-- <div class="container" style="margin-left: 40px; margin-right: 40"> -->
 

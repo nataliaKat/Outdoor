@@ -1,24 +1,19 @@
 <%-- 
-    Document   : admineditproducts
-    Created on : 22 Ιουλ 2019, 12:30:30 πμ
+    Document   : details
+    Created on : 28 Ιουλ 2019, 7:44:35 μμ
     Author     : kat26
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-
-
-
 
 <!DOCTYPE html>
-
-<html class="no-js">
-
+<html>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>insert</title>
+        <title>Buy</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Bootstrap | Ctrl+/ -->
@@ -42,14 +37,13 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.min.js"></script>
 
         <!-- My CSS -->
-        <link rel="stylesheet" type="text/css" href="<c:url value='/static/css/style.css'/>"
+        <link rel="stylesheet" type="text/css" href="<c:url value="../static/css/style.css"/>">
+        <link rel="stylesheet" type="text/css" href="<c:url value="../static/css/jquery.nice-number.css"/>">
 
     </head>
+    <body ng-app="app" ng-controller="MainCtrl" ng-cloak style="padding-top:0%">
 
-
-    <body ng-app="app" ng-controller="MainCtrl" ng-cloak style="padding-top: 0px">
-
-                <!-- NAVBAR HEADER  (BUTTON TOOGLE DOESNT WORK)-->
+        <!-- NAVBAR HEADER  (BUTTON TOOGLE DOESNT WORK)-->
 
         <nav class="navbar big-banner navbar-expand-lg navbar-light bg-white border"
              style="padding-left: 150px; padding-right: 150px; height:368px;">
@@ -66,13 +60,16 @@
 
                 <ul class="navbar-nav1 ml-auto">
                     <li class="nav-item">
-                        <a href="/Outdoor/logout" class="nav-link" style="font-size: 20px;"><i class="far fa-user-circle"></i> Logout</a>
+                        <a href="/Outdoor/logout" class="nav-link" style="font-size: 20px;"><i class="far fa-user-circle"></i>Logout</a>
                     </li>
+               
                 </ul>
             </div>
         </nav>
 
+        <!-- <div class="container" style="margin-left: 40px; margin-right: 40"> -->
 
+        <!-- NAVBAR 2 -->
         <nav class="navbar navbar-expand-sm navbar-light align-center sticky-top" style="background-color: aquamarine">
             <button class="navbar-toggler" data-toggle="colapse" data-target="#navbarMenu2">
                 <span class="navbar-toggler-icon"></span>
@@ -81,7 +78,7 @@
 
                 <ul class="navbar-nav mx-auto" style="text-align: center">
                     <li class="navbar-brand">
-                        <a href="/Outdoor/products" class="navbar-brand">Home</a>
+                        <a href="#" class="navbar-brand">Home</a>
                     </li>
 
                     <li class="navbar-brand dropdown">
@@ -104,114 +101,85 @@
 
                
                     <li class="navbar-brand">
-                        <a href="/Outdoor/sales" class="navbar-brand">Sales</a>
+                        <a href="#" class="navbar-brand">Sales</a>
                     </li>
                 </ul>
             </div>
 
         </nav>
 
+
         <!-- MAIN BODY -->
-        <div class="container" style="margin-top: 50px ; padding-right: 30px">
+        <div class="container" style="margin-top: 50px ; padding-right: 30px;">
             <div class="row">
                 <div class="col-md-6 col-sm-6">
-                    <img class="card-img-top" style="height: 420px"
-                         src="${product.imageUrl}"
-                         alt="">
-                    <div class="delete mt-5 border-top border-info" style=" font-family: 'Montserrat', sans-serif;  width:470px; height: 150px;">
-                        <span class="light-text" style="margin-top: 20px;">Do you want to delete this product?</span>
-                        <button style="position:relative; top:72px; right: 292px" onclick="window.location.href = '<c:url value="/products/delete/${product.productsId}"/>'">Delete</button>
-
-
-                    </div>
+                    <img class="card-img-top" style="width: 532px; height: 355px"
+                         src="{{product.imageUrl}} "alt="">
                 </div>
 
-                <div class="col-md-6 col-sm-6 border border-dark rounded " style="box-shadow:20px 20px 10px grey; ">
+                <div class="col-md-6 col-sm-6">
+                    <div class="info" style="position:relative; left: 50px">
+                        <h2 class="product-name m-text16" style="font-family: 'Muli', sans-serif; ">{{product.name}}</h2>
+                        <p style="font-family: 'Montserrat', sans-serif;"><span>Code: {{product.productsId}}</span></p>
 
-                    <form:form method="POST" modelAttribute="product" class="main-form needs-validation" novalidate="novalidate">
-
-                        <form:label path="productsId" type="hidden"></form:label>
-                        <form:input path="productsId" type="hidden" />
-                        <div class="form-group">
-
-                            <form:label path="name">Name</form:label>
-                            <form:input type="text" path="name" id="name"  maxlength="100" class="form-control" required="required"/>
-                            <div class="invalid-feedback">Please enter a valid name</div>
-                        </div>
-                        <div class="form-group">
-                            <form:label path="price">Price</form:label>
-                            <form:input type="number" path="price" id="price" min="0.1" step="0.01" class="form-control" required="required"/>
-                            <div class="invalid-feedback">Please enter a valid price</div>
-                            <small class="form-text text-muted">
-                                This should be in euros
-                            </small> 
-                        </div>
-                        <div class="form-group">
-                            <form:label path="imageUrl">Image_URL</form:label>
-                            <form:input type="url" path="imageUrl" id="img_url" maxlength="200" class="form-control" required="required"/>
-                            <div class="invalid-feedback">Please enter a valid url</div>
-                        </div>
-                        <div class="form-group">
-                            <form:label path="description">Description</form:label>
-                            <form:textarea type="text" path="description" id="description" maxlength="600" class="form-control" required="required"
-                                           style="height:100px"/>
-                            <div class="invalid-feedback">Please enter a valid text</div>
-
-                        </div>      
+                        <span class="m-text17" style="font-family: 'Rokkitt', serif; font-size:40px">&euro;{{product.price}}</span>
 
 
-                        <div class="form-group">
-                            <label path="quantity">Quantity</label>
-                            <input type="number" name="quantity" value="${quantity}" id="quantity" class="form-control" required="required" min="0"/>
-                            <div class="invalid-feedback">Please enter a valid number</div>
+                        <!--STOCK AVAILABILITY-->
+
+                        <div style="padding-top: 30px; font-family: 'Montserrat', sans-serif;">
+
+                            <h5 style="font-size: 22px">Availability: </h5> 
+                            <span id="stock" style="font-size" > </span>
+
                         </div>
 
-                        <!--BRAND-->
+                        <!-- BUTTON QUANTITY PLUS MINUS -->
+                        <!--                        <div class="quantityButton" style="padding-top: 30px; outline:none">
+                                                    Quantity
+                                                    <input type="number" 
+                                                           style="outline: none; padding:5px; height:25px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,.5);
+                                                           margin: 0 5px !important"
+                                                           value="1">
+                                                </div>-->
+                        <!-- /BUTTON QUANTITY PLUS MINUS -->
 
-                        <div class="form-group">
-                            <!--                            <option selected="selected">3</option>                   -->
-                            <label for="brand">Brand</label>    
 
-                            <select name="brandsId" id="brand" class="form-control" value="${pBrand.brandsId}" required="required">
 
-                                <option selected="${pBrand.brandsId}" value="${pBrand.brandsId}">${pBrand.brandname}</option>
-                                <c:forEach items="${brands}" var="b"> 
-                                    <c:if test="${pBrand != b}">
-                                        <option value="${b.brandsId}" >${b.brandname}</option>
-                                    </c:if>
 
-                                </c:forEach>
-                            </select>
-                        </div>
-                        <!--/BRAND-->
 
-                        <div class="form-group">
-                            <label for="category">Category</label>
-<!--                            <input type="text" readonly="readonly" value="${pCategory.categoryName}"/>-->
-                            <select name="categoryId" id="category" class="form-control" value="${pCategory.categoryName}" required="required">
-                                <option selected="${pCategory.categoryId}" value="${pCategory.categoryId}">${pCategory.categoryName}</option>
-                                <c:forEach items="${categories}" var="cat">
-                                    <c:if test="${pCategory != cat}">
-                                        <option value="${cat.categoryId}" >${cat.categoryName}</option>
-                                    </c:if>
-                                </c:forEach>     
-                            </select>
+
+                        <!--BUY BUTTON-->
+                        <div class="purchase">
+                            <button type="button" ng-click=newPage() data-toggle="button"
+                                    style="margin-top: 40px; position: relative; left: 85px; ">Buy</button>
+
+                            <!--Message for availability-->
+
+
                         </div>
 
-                        <button type="submit">Update</button>
 
-
+                        <!--DESCRIPTION-->
+                        <div class="description" style=" display: flex; align-content: flex-end; overflow: auto; ">
+                            <hr>
+                            <span style="font-family: 'Montserrat', sans-serif;"><hr>
+                                Description <br>
+                                {{product.description}}
+                            </span>
+                        </div>
                     </div>
-                </form:form>
+
+                </div>
 
                 <hr>
 
             </div>
+
         </div>
 
 
-        <!-- FOOTER -->
-
+        <!--FOOTER-->
         <footer class="footer mt-5">
             <div class="container p-5">
                 <!-- FIRST ROW -->
@@ -227,26 +195,26 @@
                         </h5>
 
                         <ul style="padding-left: 0%">
+                               <li class="foo-columns" style="padding-bottom: 18px">
+                                <a href="http://localhost:8080/Outdoor/cat/1" class="text-secondary ">
+                                    <i class="fas fa-hiking"></i> backpacks
+                                </a>
+                            </li>
+                            
                             <li class="foo-columns" style="padding-bottom: 18px">
-                                <a href="#" class="text-secondary">
+                                <a href="http://localhost:8080/Outdoor/cat/2"  class="text-secondary">
                                     <i class="fas fa-campground"></i> tents
                                 </a>
                             </li>
 
                             <li class="foo-columns" style="padding-bottom: 18px">
-                                <a href="#" class="text-secondary">
+                                <a href="http://localhost:8080/Outdoor/cat/3" class="text-secondary">
                                     <i class="fas fa-toolbox"></i> hiking equipment
                                 </a>
                             </li>
 
                             <li class="foo-columns" style="padding-bottom: 18px">
-                                <a href="#" class="text-secondary ">
-                                    <i class="fas fa-hiking"></i> backpacks
-                                </a>
-                            </li>
-
-                            <li class="foo-columns" style="padding-bottom: 18px">
-                                <a href="#" class="text-secondary">
+                                <a href="http://localhost:8080/Outdoor/cat/4"  class="text-secondary">
                                     <i class="fas fa-medkit"></i> first-aid kits
                                 </a>
                             </li>
@@ -317,12 +285,17 @@
             </div>
 
         </footer>
-        <!-- Bootstrap  -->
+
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-           <script>
+
+
+        <!-- BUTTON QUANTITY -->
+        <script src="../static/js/jquery.nice-number.js"></script>
+
+        <script>
             
             
                             var savedbid = 0;
@@ -382,17 +355,25 @@
                                             }
         </script>
 
+        <script type="text/javascript">
+                    $(function () {
+
+                        $('input[type="number"]').niceNumber();
+
+                    });
+        </script>
+        <!--STOCK AVAILABILITY-->
         <script>
-                        var form = document.querySelector('.needs-validation');
-                        form.addEventListener('submit', function (event) {
-                            if (form.checkValidity() === false) {
-                                event.preventDefault();
-                                event.stopPropagation();
-                            }
-                            form.classList.add('was-validated');
-                        })
+
+                    function myFunction(quantity) {
+                        if (quantity > 0) {
+                            return ("In stock");
+                        }
+                        return ("Out of Stock");
+                    }
+                    document.getElementById("stock").innerHTML = myFunction(${quantity});
         </script>
 
-
     </body>
+
 </html>
