@@ -353,7 +353,7 @@
                             ProductApp.controller("MainCtrl", ['$scope', '$http', MainCtrl]);
 
                             function MainCtrl($scope, $http) {
-                                const URL = "http://localhost:8080/Outdoor/json";
+                                const URL = "http://localhost:8080/Outdoor/json/0/0";
                                 const brandURL = "http://localhost:8080/Outdoor/json/brands/";
                                 const categoryURL = "http://localhost:8080/Outdoor/json/categories";
                                 $scope.products = [];

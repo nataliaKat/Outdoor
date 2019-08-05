@@ -87,10 +87,14 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown"
                              style="background-color: rgb(217, 223, 223)">
-                            <a class="dropdown-item" href="#">Tents</a>
-                            <a class="dropdown-item" href="#">Hiking Equipment</a>
-                            <a class="dropdown-item" href="#">Backpacks</a>
-                            <a class="dropdown-item" href="#">First Aid Kits</a>
+                            <ol class="nostyle">
+                                <li ng-repeat="category in categories" class="filterItem" style="padding: none">
+                                    <label class="label" for="cat{{category.categoryId}}" path="category" name="category">{{category.categoryName}}
+                                        <input href="/Outdoor/cat/{category.categoryId}" type="radio" id="cat{{category.categoryId}}" name="category" path="category" ng-click="brandClick(0, category.categoryId)">
+
+                                    </label>
+                                </li>
+                            </ol>
                         </div>
                     </li>
 
@@ -128,7 +132,7 @@
 
                             <h5 style="font-size: 22px">Availability: </h5> 
                             <span id="stock" style="font-size" > </span>
-                           
+
                         </div>
 
                         <!-- BUTTON QUANTITY PLUS MINUS -->
@@ -293,19 +297,24 @@
         <script src="../static/js/jquery.nice-number.js"></script>
 
         <script>
-                                            const ProductApp = angular.module("app", []);
+            
+            
+                            var savedbid = 0;
+                            var savedcid = 0;
 
-                                            // Add $http service component into our MainCtrl controller
-                                            //productApp.controller( "MainCtrl", MainCtrl );
+                                            const ProductApp = angular.module("app", []);
 
                                             ProductApp.controller("MainCtrl", ['$scope', '$http', MainCtrl]);
 
                                             function MainCtrl($scope, $http) {
                                                 const URL = "http://localhost:8080/Outdoor/json/${id}";
                                                 const brandURL = "http://localhost:8080/Outdoor/json/brands";
+                                                 const categoryURL = "http://localhost:8080/Outdoor/json/categories";
                                                 $scope.products = [];
                                                 $scope.brands = [];
+                                                 $scope.categories = [];
                                                 $http.get(URL).then(handleJson);
+                                                $http.get(categoryURL).then(handleJsonCategories);
 
                                                 $http.get(brandURL).then(handleJsonBrands);
                                                 $scope.newPage = function (id) {
@@ -318,11 +327,28 @@
                                                     console.log(response.data);
                                                     $scope.product = response.data;
                                                 }
-
+                                                function handleJsonCategories(response) {
+                                                    $scope.categories = response.data;
+                                                }
                                                 function handleJsonBrands(response) {
                                                     // console.log(response.data);
                                                     $scope.brands = response.data;
                                                 }
+                                                
+                                                         
+                                $scope.brandClick = function (bid, cid) {
+                                
+                                    if (bid != 0 && cid == 0) {
+                                        savedbid = bid;
+                                        console.log(" IF saved BID " + savedbid);
+                                    } else if (bid == 0 && cid != 0) {
+                                        savedcid = cid;
+                                        console.log("IF saved CID " + savedcid);
+                                    }
+                                    let brandAndPriceByIdURL = "http://localhost:8080/Outdoor/json/" + savedbid + "/" + savedcid;
+                                    $http.get(brandAndPriceByIdURL).then(handleJson);
+                                    document.documentElement.scrollTop = 300;
+                                }
                                             }
         </script>
 
@@ -335,7 +361,7 @@
         </script>
         <!--STOCK AVAILABILITY-->
         <script>
-                 
+
                     function myFunction(quantity) {
                         if (quantity > 0) {
                             return ("In stock");
