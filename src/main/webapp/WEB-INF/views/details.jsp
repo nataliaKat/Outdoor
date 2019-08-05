@@ -89,8 +89,8 @@
                              style="background-color: rgb(217, 223, 223)">
                             <ol class="nostyle">
                                 <li ng-repeat="category in categories" class="filterItem" style="padding: none">
-                                    <label class="label" for="cat{{category.categoryId}}" path="category" name="category">{{category.categoryName}}
-                                        <input href="/Outdoor/cat/{category.categoryId}" type="radio" id="cat{{category.categoryId}}" name="category" path="category" ng-click="brandClick(0, category.categoryId)">
+                                    <label class="label" for="{{category.categoryId}}" path="category" name="category">{{category.categoryName}}
+                                        <input type="radio" id="{{category.categoryId}}" name="category" path="category" ng-click=newWelcome(category.categoryId)>
 
                                     </label>
                                 </li>
@@ -196,26 +196,26 @@
                         </h5>
 
                         <ul style="padding-left: 0%">
+                               <li class="foo-columns" style="padding-bottom: 18px">
+                                <a href="http://localhost:8080/Outdoor/cat/1" class="text-secondary ">
+                                    <i class="fas fa-hiking"></i> backpacks
+                                </a>
+                            </li>
+                            
                             <li class="foo-columns" style="padding-bottom: 18px">
-                                <a href="#" class="text-secondary">
+                                <a href="http://localhost:8080/Outdoor/cat/2"  class="text-secondary">
                                     <i class="fas fa-campground"></i> tents
                                 </a>
                             </li>
 
                             <li class="foo-columns" style="padding-bottom: 18px">
-                                <a href="#" class="text-secondary">
+                                <a href="http://localhost:8080/Outdoor/cat/3" class="text-secondary">
                                     <i class="fas fa-toolbox"></i> hiking equipment
                                 </a>
                             </li>
 
                             <li class="foo-columns" style="padding-bottom: 18px">
-                                <a href="#" class="text-secondary ">
-                                    <i class="fas fa-hiking"></i> backpacks
-                                </a>
-                            </li>
-
-                            <li class="foo-columns" style="padding-bottom: 18px">
-                                <a href="#" class="text-secondary">
+                                <a href="http://localhost:8080/Outdoor/cat/4"  class="text-secondary">
                                     <i class="fas fa-medkit"></i> first-aid kits
                                 </a>
                             </li>
@@ -317,21 +317,25 @@
                                                 $http.get(categoryURL).then(handleJsonCategories);
 
                                                 $http.get(brandURL).then(handleJsonBrands);
+                                                
+                                                $scope.newWelcome = function(id) {
+                                                   
+                                                    location.href ="http://localhost:8080/Outdoor/cat/" + id;
+                                                }
+                                                
                                                 $scope.newPage = function (id) {
 
                                                     location.href = "http://localhost:8080/Outdoor/products/" + ${id} + "/buy";
                                                 };
 
                                                 function handleJson(response) {
-
-                                                    console.log(response.data);
                                                     $scope.product = response.data;
                                                 }
                                                 function handleJsonCategories(response) {
                                                     $scope.categories = response.data;
                                                 }
                                                 function handleJsonBrands(response) {
-                                                    // console.log(response.data);
+                                                   
                                                     $scope.brands = response.data;
                                                 }
                                                 

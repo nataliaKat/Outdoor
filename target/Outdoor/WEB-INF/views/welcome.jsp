@@ -98,7 +98,6 @@
                             <li ng-repeat="category in categories" class="filterItem" style="padding: none">
                                 <label class="label" for="cat{{category.categoryId}}" path="category" name="category">{{category.categoryName}}
                                 <input type="radio" id="cat{{category.categoryId}}" name="category" path="category" ng-click="brandClick(0, category.categoryId)">
-                               
                                 </label>
                             </li>
                         </ol>
@@ -250,28 +249,35 @@
                         <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0%">
                             Categories
                         </h5>
+                        
+                        
+<!--    <label class="label" for="cat{{category.categoryId}}" path="category" name="category">{{category.categoryName}}
+           <input type="radio" id="cat{{category.categoryId}}" name="category" path="category" 
+                  ng-click="brandClick(0, category.categoryId)">
+           </label>-->
+                        
 
                         <ul style="padding-left: 0%">
+                             <li class="foo-columns" style="padding-bottom: 18px">
+                                <a href="http://localhost:8080/Outdoor/cat/1" class="text-secondary ">
+                                    <i class="fas fa-hiking"></i> backpacks
+                                </a>
+                            </li>
+                            
                             <li class="foo-columns" style="padding-bottom: 18px">
-                                <a href="#" class="text-secondary">
+                                <a href="http://localhost:8080/Outdoor/cat/2"  class="text-secondary">
                                     <i class="fas fa-campground"></i> tents
                                 </a>
                             </li>
 
                             <li class="foo-columns" style="padding-bottom: 18px">
-                                <a href="#" class="text-secondary">
+                                <a href="http://localhost:8080/Outdoor/cat/3" class="text-secondary">
                                     <i class="fas fa-toolbox"></i> hiking equipment
                                 </a>
                             </li>
 
                             <li class="foo-columns" style="padding-bottom: 18px">
-                                <a href="#" class="text-secondary ">
-                                    <i class="fas fa-hiking"></i> backpacks
-                                </a>
-                            </li>
-
-                            <li class="foo-columns" style="padding-bottom: 18px">
-                                <a href="#" class="text-secondary">
+                                <a href="http://localhost:8080/Outdoor/cat/4"  class="text-secondary">
                                     <i class="fas fa-medkit"></i> first-aid kits
                                 </a>
                             </li>
@@ -283,7 +289,7 @@
                         </h5>
                         <ul style="padding-left: 0%">
                             <li class="foo-columns" style="padding-bottom: 18px">
-                                <a href="#" class="text-secondary">
+                                <a href="" class="text-secondary">
                                     <i class="far fa-envelope" style=></i> compass@hotmail.com
                                 </a>
                             </li>
@@ -353,7 +359,7 @@
                             ProductApp.controller("MainCtrl", ['$scope', '$http', MainCtrl]);
 
                             function MainCtrl($scope, $http) {
-                                const URL = "http://localhost:8080/Outdoor/json/0/0";
+                                const URL = "http://localhost:8080/Outdoor/json/0/" +${catcat};
                                 const brandURL = "http://localhost:8080/Outdoor/json/brands/";
                                 const categoryURL = "http://localhost:8080/Outdoor/json/categories";
                                 $scope.products = [];

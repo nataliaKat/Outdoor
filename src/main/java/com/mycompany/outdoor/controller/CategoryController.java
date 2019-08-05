@@ -32,6 +32,8 @@ public class CategoryController {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public String getProductsByCategory(ModelMap model, @PathVariable("id") Integer id) {
         model.addAttribute("catcat", id);
+        model.addAttribute("minimumPrice", productService.getMinPrice());
+        model.addAttribute("maximumPrice", productService.getMaxPrice());
         return "welcome";
     }
     
