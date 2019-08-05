@@ -106,6 +106,11 @@
                     <li class="navbar-brand">
                         <a href="/Outdoor/sales" class="navbar-brand">Sales</a>
                     </li>
+                    
+                    <li class="navbar-brand">
+                        <a href="/Outdoor/edit-user" class="navbar-brand">Profile</a>
+                    </li>
+                    
                 </ul>
             </div>
 
@@ -210,16 +215,20 @@
         </div>
 
 
-        <!-- FOOTER -->
+       
 
+        <!--FOOTER-->
         <footer class="footer mt-5">
             <div class="container p-5">
                 <!-- FIRST ROW -->
                 <div class="row" style="padding-bottom: 90px; text-align: center">
                     <div class="col-md-3" style="padding-top: 30px; ">
                         <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0%">
-                            Get in touch
+                           <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0%">
+                           Chat with us!
                         </h5>
+                        <br>
+                        <a href="http://ra2.anystream.eu/websocketchat-0.0.1-SNAPSHOT/"><i class="far fa-comments chat" style="font-size:70px; margin-right: 120px;"></i> </a>
                     </div>
                     <div class="col-md-3" style="padding-top: 30px; ">
                         <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0%">
@@ -227,26 +236,26 @@
                         </h5>
 
                         <ul style="padding-left: 0%">
+                               <li class="foo-columns" style="padding-bottom: 18px">
+                                <a href="http://localhost:8080/Outdoor/cat/1" class="text-secondary ">
+                                    <i class="fas fa-hiking"></i> backpacks
+                                </a>
+                            </li>
+                            
                             <li class="foo-columns" style="padding-bottom: 18px">
-                                <a href="#" class="text-secondary">
+                                <a href="http://localhost:8080/Outdoor/cat/2"  class="text-secondary">
                                     <i class="fas fa-campground"></i> tents
                                 </a>
                             </li>
 
                             <li class="foo-columns" style="padding-bottom: 18px">
-                                <a href="#" class="text-secondary">
+                                <a href="http://localhost:8080/Outdoor/cat/3" class="text-secondary">
                                     <i class="fas fa-toolbox"></i> hiking equipment
                                 </a>
                             </li>
 
                             <li class="foo-columns" style="padding-bottom: 18px">
-                                <a href="#" class="text-secondary ">
-                                    <i class="fas fa-hiking"></i> backpacks
-                                </a>
-                            </li>
-
-                            <li class="foo-columns" style="padding-bottom: 18px">
-                                <a href="#" class="text-secondary">
+                                <a href="http://localhost:8080/Outdoor/cat/4"  class="text-secondary">
                                     <i class="fas fa-medkit"></i> first-aid kits
                                 </a>
                             </li>

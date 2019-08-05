@@ -88,7 +88,7 @@ public class ProductController {
     }
 
     //       -- INSERT FORM --
-    @RequestMapping(value = {"/new"}, method = RequestMethod.GET)
+    @RequestMapping(value = "/new", method = RequestMethod.GET)
     public String insertForm(ModelMap model) {
 
         Product product = new Product();
@@ -98,7 +98,7 @@ public class ProductController {
         return "admininsertproduct";
     }
 
-    @RequestMapping(value = {"/new"}, method = RequestMethod.POST)
+    @RequestMapping(value = "/new", method = RequestMethod.POST)
     public String saveProduct(@RequestParam("brandsId") Integer brandsId, @RequestParam("categoryId") Integer categoryId, @RequestParam("quantity") int quantity, @Valid Product product, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
             return "redirect:/products/new";
@@ -124,6 +124,7 @@ public class ProductController {
     public String updateOrShowDetails(ModelMap model, @PathVariable("id") Integer id) {
         if (isCurrentAuthenticationAnonymous()) {
             Product p = productService.findById(id);
+            
 
             model.addAttribute("quantity", stockService.getQuantityPerProduct(p));
             model.addAttribute("id", id);
