@@ -36,13 +36,16 @@
         <!-- Rokkitt Font -->
         <link href="https://fonts.googleapis.com/css?family=Rokkitt:500&display=swap" rel="stylesheet">
 
+        <!-- AngularJS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.min.js"></script>
+
         <!-- My CSS -->
         <link rel="stylesheet" type="text/css" href="<c:url value='/static/css/style.css'/>"
 
     </head>
 
 
-    <body style="padding-top:0%">
+    <body ng-app="app" ng-controller="MainCtrl" ng-cloak style="padding-top: 0px">
 
         <!-- NAVBAR HEADER  (BUTTON TOOGLE DOESNT WORK)-->
 
@@ -67,9 +70,7 @@
             </div>
         </nav>
 
-        <!-- <div class="container" style="margin-left: 40px; margin-right: 40"> -->
 
-        <!-- NAVBAR 2 -->
         <nav class="navbar navbar-expand-sm navbar-light align-center sticky-top" style="background-color: aquamarine">
             <button class="navbar-toggler" data-toggle="colapse" data-target="#navbarMenu2">
                 <span class="navbar-toggler-icon"></span>
@@ -78,7 +79,7 @@
 
                 <ul class="navbar-nav mx-auto" style="text-align: center">
                     <li class="navbar-brand">
-                        <a href="#" class="navbar-brand">Home</a>
+                        <a href="/Outdoor/products" class="navbar-brand">Home</a>
                     </li>
 
                     <li class="navbar-brand dropdown">
@@ -88,23 +89,29 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown"
                              style="background-color: rgb(217, 223, 223)">
-                            <a class="dropdown-item" href="#">Tents</a>
-                            <a class="dropdown-item" href="#">Hiking Equipment</a>
-                            <a class="dropdown-item" href="#">Backpacks</a>
-                            <a class="dropdown-item" href="#">First Aid Kits</a>
+                            <ol class="nostyle">
+                                <li ng-repeat="category in categories" class="filterItem" style="padding: none">
+                                    <label class="label" for="{{category.categoryId}}" path="category" name="category">{{category.categoryName}}
+                                        <input type="radio" id="{{category.categoryId}}" name="category" path="category" ng-click=newWelcome(category.categoryId)>
+
+                                    </label>
+                                </li>
+                            </ol>
                         </div>
                     </li>
 
+
                     <li class="navbar-brand">
-                        <a href="#" class="navbar-brand">Brands</a>
+                        <a href="/Outdoor/sales" class="navbar-brand">Sales</a>
                     </li>
                     <li class="navbar-brand">
-                        <a href="#" class="navbar-brand">Sales</a>
+                        <a href="/Outdoor/edit-user" class="navbar-brand">Profile</a>
                     </li>
                 </ul>
             </div>
 
         </nav>
+
 
         <!-- FORM COLUMN -->
         <div class="container" style="margin-top: 50px ; padding-right: 30px">
@@ -302,7 +309,65 @@
 integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script>
 
+
+                                            var savedbid = 0;
+                                            var savedcid = 0;
+
+                                            const ProductApp = angular.module("app", []);
+
+                                            ProductApp.controller("MainCtrl", ['$scope', '$http', MainCtrl]);
+
+                                            function MainCtrl($scope, $http) {
+                                                const URL = "http://localhost:8080/Outdoor/json/${id}";
+                                                const brandURL = "http://localhost:8080/Outdoor/json/brands";
+                                                const categoryURL = "http://localhost:8080/Outdoor/json/categories";
+                                                $scope.products = [];
+                                                $scope.brands = [];
+                                                $scope.categories = [];
+                                                $http.get(URL).then(handleJson);
+                                                $http.get(categoryURL).then(handleJsonCategories);
+
+                                                $http.get(brandURL).then(handleJsonBrands);
+
+                                                $scope.newWelcome = function (id) {
+
+                                                    location.href = "http://localhost:8080/Outdoor/cat/" + id;
+                                                }
+
+                                                $scope.newPage = function (id) {
+
+                                                    location.href = "http://localhost:8080/Outdoor/products/" + ${id} + "/buy";
+                                                };
+
+                                                function handleJson(response) {
+                                                    $scope.product = response.data;
+                                                }
+                                                function handleJsonCategories(response) {
+                                                    $scope.categories = response.data;
+                                                }
+                                                function handleJsonBrands(response) {
+
+                                                    $scope.brands = response.data;
+                                                }
+
+
+                                                $scope.brandClick = function (bid, cid) {
+
+                                                    if (bid != 0 && cid == 0) {
+                                                        savedbid = bid;
+                                                        console.log(" IF saved BID " + savedbid);
+                                                    } else if (bid == 0 && cid != 0) {
+                                                        savedcid = cid;
+                                                        console.log("IF saved CID " + savedcid);
+                                                    }
+                                                    let brandAndPriceByIdURL = "http://localhost:8080/Outdoor/json/" + savedbid + "/" + savedcid;
+                                                    $http.get(brandAndPriceByIdURL).then(handleJson);
+                                                    document.documentElement.scrollTop = 300;
+                                                }
+                                            }
+</script>
 
 <script>
     var form = document.querySelector('.needs-validation');

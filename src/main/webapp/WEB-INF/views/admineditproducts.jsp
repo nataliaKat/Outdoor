@@ -106,6 +106,11 @@
                     <li class="navbar-brand">
                         <a href="/Outdoor/sales" class="navbar-brand">Sales</a>
                     </li>
+                    
+                    <li class="navbar-brand">
+                        <a href="/Outdoor/edit-user" class="navbar-brand">Profile</a>
+                    </li>
+                    
                 </ul>
             </div>
 
