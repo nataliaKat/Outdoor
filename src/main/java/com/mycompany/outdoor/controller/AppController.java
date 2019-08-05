@@ -65,10 +65,7 @@ public class AppController {
      */
     @RequestMapping(method = RequestMethod.GET)
     public String welcome(ModelMap model) {
-
-//        List<User> users = userService.findAllUsers();
-//        model.addAttribute("users", users);
-//        model.addAttribute("loggedinuser", getPrincipal());
+        model.addAttribute("catcat", 0);
         model.addAttribute("minimumPrice", productService.getMinPrice());
         model.addAttribute("maximumPrice", productService.getMaxPrice());
         return "welcome";
