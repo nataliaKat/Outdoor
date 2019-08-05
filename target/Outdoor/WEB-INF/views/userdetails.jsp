@@ -55,14 +55,14 @@
 
             <div class="collapse navbar-collapse" id="#navbarMenu"
                  style="position:relative; bottom:130px; left:80px; color: blue">
-                <!-- <p class="text-center font-italic font-weight-bold" style="">Compass</p> -->
+                <p class="logo">C<i class="far fa-compass logopic"></i>mpass </p> 
 
 
-                <ul class="navbar-nav1 ml-auto">
+                <ul class="navbar-nav1 ml-auto" style="display:flex; align-content:flex-start; ">
                     <li class="nav-item">
-                        <a href="/Outdoor/logout" class="nav-link" style="font-size: 20px;"><i class="far fa-user-circle"></i>Logout</a>
+                        <a href="/Outdoor/login" class="nav-link" style="font-size: 20px; padding-right:0px"><i class="far fa-user-circle"></i> Logout </a>
                     </li>
-               
+
                 </ul>
             </div>
         </nav>
@@ -78,36 +78,40 @@
 
                 <ul class="navbar-nav mx-auto" style="text-align: center">
                     <li class="navbar-brand">
-                        <a href="#" class="navbar-brand">Home</a>
+                        <a href="/Outdoor/products" class="navbar-brand">Home</a>
                     </li>
 
                     <li class="navbar-brand dropdown">
-                        <a class="navbar-brand dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="navbar-brand dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
                             Products
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown"
-                             style="background-color: rgb(217, 223, 223)">
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: rgb(217, 223, 223)">
                             <ol class="nostyle">
                                 <li ng-repeat="category in categories" class="filterItem" style="padding: none">
-                                    <label class="label" for="{{category.categoryId}}" path="category" name="category">{{category.categoryName}}
-                                        <input type="radio" id="{{category.categoryId}}" name="category" path="category" ng-click=newWelcome(category.categoryId)>
-
+                                    <label class="label" for="cat{{category.categoryId}}" path="category" name="category">{{category.categoryName}}
+                                        <input type="radio" id="cat{{category.categoryId}}" name="category" path="category" ng-click="brandClick(0, category.categoryId)">
                                     </label>
                                 </li>
                             </ol>
                         </div>
                     </li>
 
-               
-                    <li class="navbar-brand">
-                        <a href="#" class="navbar-brand">Sales</a>
+                    <li class="navbar-brand dropdown">
+                        <a class="navbar-brand dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            Profile
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: rgb(217, 223, 223)">
+                            <a class="dropdown-item" href="/Outdoor/history">Orders History</a>
+                            <a class="dropdown-item" href="/Outdoor/edit-user">Edit profile</a>
+
+                        </div>
                     </li>
                 </ul>
             </div>
 
         </nav>
-
 
         <!-- MAIN BODY -->
         <div class="container" style="margin-top: 50px ; padding-right: 30px;">
@@ -195,12 +199,12 @@
                         </h5>
 
                         <ul style="padding-left: 0%">
-                               <li class="foo-columns" style="padding-bottom: 18px">
+                            <li class="foo-columns" style="padding-bottom: 18px">
                                 <a href="http://localhost:8080/Outdoor/cat/1" class="text-secondary ">
                                     <i class="fas fa-hiking"></i> backpacks
                                 </a>
                             </li>
-                            
+
                             <li class="foo-columns" style="padding-bottom: 18px">
                                 <a href="http://localhost:8080/Outdoor/cat/2"  class="text-secondary">
                                     <i class="fas fa-campground"></i> tents
@@ -296,10 +300,10 @@
         <script src="../static/js/jquery.nice-number.js"></script>
 
         <script>
-            
-            
-                            var savedbid = 0;
-                            var savedcid = 0;
+
+
+                                            var savedbid = 0;
+                                            var savedcid = 0;
 
                                             const ProductApp = angular.module("app", []);
 
@@ -308,20 +312,20 @@
                                             function MainCtrl($scope, $http) {
                                                 const URL = "http://localhost:8080/Outdoor/json/${id}";
                                                 const brandURL = "http://localhost:8080/Outdoor/json/brands";
-                                                 const categoryURL = "http://localhost:8080/Outdoor/json/categories";
+                                                const categoryURL = "http://localhost:8080/Outdoor/json/categories";
                                                 $scope.products = [];
                                                 $scope.brands = [];
-                                                 $scope.categories = [];
+                                                $scope.categories = [];
                                                 $http.get(URL).then(handleJson);
                                                 $http.get(categoryURL).then(handleJsonCategories);
 
                                                 $http.get(brandURL).then(handleJsonBrands);
-                                                
-                                                $scope.newWelcome = function(id) {
-                                                   
-                                                    location.href ="http://localhost:8080/Outdoor/cat/" + id;
+
+                                                $scope.newWelcome = function (id) {
+
+                                                    location.href = "http://localhost:8080/Outdoor/cat/" + id;
                                                 }
-                                                
+
                                                 $scope.newPage = function (id) {
 
                                                     location.href = "http://localhost:8080/Outdoor/products/" + ${id} + "/buy";
@@ -334,24 +338,24 @@
                                                     $scope.categories = response.data;
                                                 }
                                                 function handleJsonBrands(response) {
-                                                   
+
                                                     $scope.brands = response.data;
                                                 }
-                                                
-                                                         
-                                $scope.brandClick = function (bid, cid) {
-                                
-                                    if (bid != 0 && cid == 0) {
-                                        savedbid = bid;
-                                        console.log(" IF saved BID " + savedbid);
-                                    } else if (bid == 0 && cid != 0) {
-                                        savedcid = cid;
-                                        console.log("IF saved CID " + savedcid);
-                                    }
-                                    let brandAndPriceByIdURL = "http://localhost:8080/Outdoor/json/" + savedbid + "/" + savedcid;
-                                    $http.get(brandAndPriceByIdURL).then(handleJson);
-                                    document.documentElement.scrollTop = 300;
-                                }
+
+
+                                                $scope.brandClick = function (bid, cid) {
+
+                                                    if (bid != 0 && cid == 0) {
+                                                        savedbid = bid;
+                                                        console.log(" IF saved BID " + savedbid);
+                                                    } else if (bid == 0 && cid != 0) {
+                                                        savedcid = cid;
+                                                        console.log("IF saved CID " + savedcid);
+                                                    }
+                                                    let brandAndPriceByIdURL = "http://localhost:8080/Outdoor/json/" + savedbid + "/" + savedcid;
+                                                    $http.get(brandAndPriceByIdURL).then(handleJson);
+                                                    document.documentElement.scrollTop = 300;
+                                                }
                                             }
         </script>
 

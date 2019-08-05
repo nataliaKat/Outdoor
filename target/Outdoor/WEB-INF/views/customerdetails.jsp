@@ -43,7 +43,7 @@
     </head>
     <body ng-app="app" ng-controller="MainCtrl" ng-cloak style="padding-top:0%">
 
-          <!-- NAVBAR HEADER  (BUTTON TOOGLE DOESNT WORK)-->
+        <!-- NAVBAR HEADER  (BUTTON TOOGLE DOESNT WORK)-->
 
         <nav class="navbar big-banner navbar-expand-lg navbar-light bg-white border"
              style="padding-left: 150px; padding-right: 150px; height:368px;">
@@ -59,15 +59,10 @@
 
 
                 <ul class="navbar-nav1 ml-auto" style="display:flex; align-content:flex-start; ">
-                  <li class="nav-item">
-                        <a href="/Outdoor/login" class="nav-link" style="font-size: 20px; padding-right:0px"><i class="far fa-user-circle"></i> Login </a>
-                    </li>
                     <li class="nav-item">
-                        <p class="nav-link" style="font-size: 20px; padding-left:10px; padding-right:10px">|</p>  
+                        <a href="/Outdoor/login" class="nav-link" style="font-size: 20px; padding-right:0px"><i class="far fa-user-circle"></i> Logout </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link" style="font-size: 20px; padding-left:0px"><i class="fas fa-sign-in-alt"></i> Register</a>
-                    </li>
+
                 </ul>
             </div>
         </nav>
@@ -83,7 +78,7 @@
 
                 <ul class="navbar-nav mx-auto" style="text-align: center">
                     <li class="navbar-brand">
-                        <a href="/Outdoor" class="navbar-brand">Home</a>
+                        <a href="/Outdoor/products" class="navbar-brand">Home</a>
                     </li>
 
                     <li class="navbar-brand dropdown">
@@ -196,11 +191,11 @@
                 <div class="row" style="padding-bottom: 90px; text-align: center">
                     <div class="col-md-3" style="padding-top: 30px; ">
                         <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0%">
-                           <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0%">
-                           Chat with us!
-                        </h5>
-                        <br>
-                        <a href="http://ra2.anystream.eu/websocketchat-0.0.1-SNAPSHOT/"><i class="far fa-comments chat" style="font-size:70px; margin-right: 120px;"></i> </a>
+                            <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0%">
+                                Chat with us!
+                            </h5>
+                            <br>
+                            <a href="http://ra2.anystream.eu/websocketchat-0.0.1-SNAPSHOT/"><i class="far fa-comments chat" style="font-size:70px; margin-right: 120px;"></i> </a>
                     </div>
                     <div class="col-md-3" style="padding-top: 30px; ">
                         <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0%">
@@ -208,12 +203,12 @@
                         </h5>
 
                         <ul style="padding-left: 0%">
-                               <li class="foo-columns" style="padding-bottom: 18px">
+                            <li class="foo-columns" style="padding-bottom: 18px">
                                 <a href="http://localhost:8080/Outdoor/cat/1" class="text-secondary ">
                                     <i class="fas fa-hiking"></i> backpacks
                                 </a>
                             </li>
-                            
+
                             <li class="foo-columns" style="padding-bottom: 18px">
                                 <a href="http://localhost:8080/Outdoor/cat/2"  class="text-secondary">
                                     <i class="fas fa-campground"></i> tents
@@ -309,8 +304,8 @@
         <script src="../static/js/jquery.nice-number.js"></script>
 
         <script>
-                            var savedbid = 0;
-                            var savedcid = 0;
+                                            var savedbid = 0;
+                                            var savedcid = 0;
 
                                             const ProductApp = angular.module("app", []);
 
@@ -319,20 +314,20 @@
                                             function MainCtrl($scope, $http) {
                                                 const URL = "http://localhost:8080/Outdoor/json/${id}";
                                                 const brandURL = "http://localhost:8080/Outdoor/json/brands";
-                                                 const categoryURL = "http://localhost:8080/Outdoor/json/categories";
+                                                const categoryURL = "http://localhost:8080/Outdoor/json/categories";
                                                 $scope.products = [];
                                                 $scope.brands = [];
-                                                 $scope.categories = [];
+                                                $scope.categories = [];
                                                 $http.get(URL).then(handleJson);
                                                 $http.get(categoryURL).then(handleJsonCategories);
 
                                                 $http.get(brandURL).then(handleJsonBrands);
-                                                
-                                                $scope.newWelcome = function(id) {
-                                                   
-                                                    location.href ="http://localhost:8080/Outdoor/cat/" + id;
+
+                                                $scope.newWelcome = function (id) {
+
+                                                    location.href = "http://localhost:8080/Outdoor/cat/" + id;
                                                 }
-                                                
+
                                                 $scope.newPage = function (id) {
 
                                                     location.href = "http://localhost:8080/Outdoor/products/" + ${id} + "/buy";
@@ -345,24 +340,24 @@
                                                     $scope.categories = response.data;
                                                 }
                                                 function handleJsonBrands(response) {
-                                                   
+
                                                     $scope.brands = response.data;
                                                 }
-                                                
-                                                         
-                                $scope.brandClick = function (bid, cid) {
-                                
-                                    if (bid != 0 && cid == 0) {
-                                        savedbid = bid;
-                                        console.log(" IF saved BID " + savedbid);
-                                    } else if (bid == 0 && cid != 0) {
-                                        savedcid = cid;
-                                        console.log("IF saved CID " + savedcid);
-                                    }
-                                    let brandAndPriceByIdURL = "http://localhost:8080/Outdoor/json/" + savedbid + "/" + savedcid;
-                                    $http.get(brandAndPriceByIdURL).then(handleJson);
-                                    document.documentElement.scrollTop = 300;
-                                }
+
+
+                                                $scope.brandClick = function (bid, cid) {
+
+                                                    if (bid != 0 && cid == 0) {
+                                                        savedbid = bid;
+                                                        console.log(" IF saved BID " + savedbid);
+                                                    } else if (bid == 0 && cid != 0) {
+                                                        savedcid = cid;
+                                                        console.log("IF saved CID " + savedcid);
+                                                    }
+                                                    let brandAndPriceByIdURL = "http://localhost:8080/Outdoor/json/" + savedbid + "/" + savedcid;
+                                                    $http.get(brandAndPriceByIdURL).then(handleJson);
+                                                    document.documentElement.scrollTop = 300;
+                                                }
                                             }
         </script>
 

@@ -33,7 +33,10 @@
     </head>
 
 
-    <body style="padding-top:0%">
+    <body ng-app="app" ng-controller="MainCtrl" ng-cloak style="padding-top:0%">
+
+        <!-- NAVBAR HEADER  (BUTTON TOOGLE DOESNT WORK)-->
+
         <nav class="navbar big-banner navbar-expand-lg navbar-light bg-white border"
              style="padding-left: 150px; padding-right: 150px; height:368px;">
 
@@ -44,13 +47,14 @@
 
             <div class="collapse navbar-collapse" id="#navbarMenu"
                  style="position:relative; bottom:130px; left:80px; color: blue">
-                <!-- <p class="text-center font-italic font-weight-bold" style="">Compass</p> -->
+                <p class="logo">C<i class="far fa-compass logopic"></i>mpass </p> 
 
 
-                <ul class="navbar-nav1 ml-auto">
+                <ul class="navbar-nav1 ml-auto" style="display:flex; align-content:flex-start; ">
                     <li class="nav-item">
-                        <a href="#" class="nav-link" style="font-size: 20px;"><i class="far fa-user-circle"></i> Logout</a>
+                        <a href="/Outdoor/login" class="nav-link" style="font-size: 20px; padding-right:0px"><i class="far fa-user-circle"></i> Logout </a>
                     </li>
+
                 </ul>
             </div>
         </nav>
@@ -66,28 +70,35 @@
 
                 <ul class="navbar-nav mx-auto" style="text-align: center">
                     <li class="navbar-brand">
-                        <a href="#" class="navbar-brand">Home</a>
+                        <a href="/Outdoor/products" class="navbar-brand">Home</a>
                     </li>
 
                     <li class="navbar-brand dropdown">
-                        <a class="navbar-brand dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="navbar-brand dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
                             Products
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown"
-                             style="background-color: rgb(217, 223, 223)">
-                            <a class="dropdown-item" href="#">Tents</a>
-                            <a class="dropdown-item" href="#">Hiking Equipment</a>
-                            <a class="dropdown-item" href="#">Backpacks</a>
-                            <a class="dropdown-item" href="#">First Aid Kits</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: rgb(217, 223, 223)">
+                            <ol class="nostyle">
+                                <li ng-repeat="category in categories" class="filterItem" style="padding: none">
+                                    <label class="label" for="cat{{category.categoryId}}" path="category" name="category">{{category.categoryName}}
+                                        <input type="radio" id="cat{{category.categoryId}}" name="category" path="category" ng-click="brandClick(0, category.categoryId)">
+                                    </label>
+                                </li>
+                            </ol>
                         </div>
                     </li>
 
-                    <li class="navbar-brand">
-                        <a href="#" class="navbar-brand">Brands</a>
-                    </li>
-                    <li class="navbar-brand">
-                        <a href="#" class="navbar-brand">Sales</a>
+                    <li class="navbar-brand dropdown">
+                        <a class="navbar-brand dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            Profile
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: rgb(217, 223, 223)">
+                            <a class="dropdown-item" href="/Outdoor/history">Orders History</a>
+                            <a class="dropdown-item" href="/Outdoor/edit-user">Edit profile</a>
+
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -128,113 +139,115 @@
 
    
 
-                <!-- FOOTER -->
-
-                <footer class="footer mt-5">
-                    <div class="container p-5">
-                        <!-- FIRST ROW -->
-                        <div class="row" style="padding-bottom: 90px; text-align: center">
-                            <div class="col-md-3" style="padding-top: 30px; ">
-                                <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0%">
-                                    Get in touch
-                                </h5>
-                            </div>
-                            <div class="col-md-3" style="padding-top: 30px; ">
-                                <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0%">
-                                    Categories
-                                </h5>
-
-                                <ul style="padding-left: 0%">
-                                    <li class="foo-columns" style="padding-bottom: 18px">
-                                        <a href="#" class="text-secondary">
-                                            <i class="fas fa-campground"></i> tents
-                                        </a>
-                                    </li>
-
-                                    <li class="foo-columns" style="padding-bottom: 18px">
-                                        <a href="#" class="text-secondary">
-                                            <i class="fas fa-toolbox"></i> hiking equipment
-                                        </a>
-                                    </li>
-
-                                    <li class="foo-columns" style="padding-bottom: 18px">
-                                        <a href="#" class="text-secondary ">
-                                            <i class="fas fa-hiking"></i> backpacks
-                                        </a>
-                                    </li>
-
-                                    <li class="foo-columns" style="padding-bottom: 18px">
-                                        <a href="#" class="text-secondary">
-                                            <i class="fas fa-medkit"></i> first-aid kits
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="col-md-3" style="padding-top: 30px; ">
-                                <h5 class="column-title" style="padding-bottom: 30px ;margin-bottom: 0%">
-                                    Contact
-                                </h5>
-                                <ul style="padding-left: 0%">
-                                    <li class="foo-columns" style="padding-bottom: 18px">
-                                        <a href="#" class="text-secondary">
-                                            <i class="far fa-envelope" style=></i> compass@hotmail.com
-                                        </a>
-                                    </li>
-
-                                    <li class="foo-columns" style="padding-bottom: 18px">
-                                        <a href="#" class="text-secondary">
-                                            <i class="fas fa-phone-square"></i>
-
-                                            (+30) 6986487890
-                                        </a>
-
-                                    </li>
-
-                                    <li class="foo-columns" style="padding-bottom: 18px">
-                                        <a href="#" class="text-secondary">
-                                            <i class="fas fa-map-marker-alt"></i>location
-                                        </a>
-                                    </li>
-
-                                </ul>
-                            </div>
-                            <div class="col-md-3" style="padding-top: 30px; ">
-                                <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0% ;text-align: center">
-                                    Newsletter
-                                </h5>
-                                <form>
-                                    <div class="email-field">
-                                        <input class="text-secondary"
-                                               style="padding-bottom: 5px; border-style: hidden; padding-top: 0%; text-align: center"
-                                               placeholder="email@example.com">
-                                        <hr style="margin-bottom:0% ; margin-top:15px">
-                                    </div>
-                                    <div class="subscribe">
-                                        <button class="subscribe-button">SUBSCRIBE</button>
-                                    </div>
-                                </form>
-
-                            </div>
-                        </div>
-                        <!-- SECOND ROW -->
-                        <div class="row">
-                            <div class="paypal"
-                                 style="padding-left: 15px; padding-right: 15px ; text-align: center ; margin-left:190px ">
-                                <a href="#">
-                                    <img class="h-size2" src="static/pictures/paypal.png" alt="IMG-PAYPAL">
-                                </a>
-                                <div class="copyrights" style="padding-top: 20px; font-family: 'Montserrat', sans-serif;">
-                                    Copyright © 2019 All rights reserved. | This template is made with <i class="far fa-heart"></i>
-                                    by AFDEmp
-                                    Bootcamp 8
-                                </div>
-                            </div>
-                            <!-- /second row -->
-                        </div>
-                        <!-- /container -->
+                <!--FOOTER-->
+        <footer class="footer mt-5">
+            <div class="container p-5">
+                <!-- FIRST ROW -->
+                <div class="row" style="padding-bottom: 90px; text-align: center">
+                    <div class="col-md-3" style="padding-top: 30px; ">
+                        <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0%">
+                           <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0%">
+                           Chat with us!
+                        </h5>
+                        <br>
+                        <a href="http://ra2.anystream.eu/websocketchat-0.0.1-SNAPSHOT/"><i class="far fa-comments chat" style="font-size:70px; margin-right: 120px;"></i> </a>
                     </div>
+                    <div class="col-md-3" style="padding-top: 30px; ">
+                        <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0%">
+                            Categories
+                        </h5>
 
-                </footer>
+                        <ul style="padding-left: 0%">
+                               <li class="foo-columns" style="padding-bottom: 18px">
+                                <a href="http://localhost:8080/Outdoor/cat/1" class="text-secondary ">
+                                    <i class="fas fa-hiking"></i> backpacks
+                                </a>
+                            </li>
+                            
+                            <li class="foo-columns" style="padding-bottom: 18px">
+                                <a href="http://localhost:8080/Outdoor/cat/2"  class="text-secondary">
+                                    <i class="fas fa-campground"></i> tents
+                                </a>
+                            </li>
+
+                            <li class="foo-columns" style="padding-bottom: 18px">
+                                <a href="http://localhost:8080/Outdoor/cat/3" class="text-secondary">
+                                    <i class="fas fa-toolbox"></i> hiking equipment
+                                </a>
+                            </li>
+
+                            <li class="foo-columns" style="padding-bottom: 18px">
+                                <a href="http://localhost:8080/Outdoor/cat/4"  class="text-secondary">
+                                    <i class="fas fa-medkit"></i> first-aid kits
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3" style="padding-top: 30px; ">
+                        <h5 class="column-title" style="padding-bottom: 30px ;margin-bottom: 0%">
+                            Contact
+                        </h5>
+                        <ul style="padding-left: 0%">
+                            <li class="foo-columns" style="padding-bottom: 18px">
+                                <a href="#" class="text-secondary">
+                                    <i class="far fa-envelope" style=></i> compass@hotmail.com
+                                </a>
+                            </li>
+
+                            <li class="foo-columns" style="padding-bottom: 18px">
+                                <a href="#" class="text-secondary">
+                                    <i class="fas fa-phone-square"></i>
+
+                                    (+30) 6986487890
+                                </a>
+
+                            </li>
+
+                            <li class="foo-columns" style="padding-bottom: 18px">
+                                <a href="#" class="text-secondary">
+                                    <i class="fas fa-map-marker-alt"></i>location
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="col-md-3" style="padding-top: 30px; ">
+                        <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0% ;text-align: center">
+                            Newsletter
+                        </h5>
+                        <form>
+                            <div class="email-field">
+                                <input class="text-secondary"
+                                       style="padding-bottom: 5px; border-style: hidden; padding-top: 0%; text-align: center"
+                                       placeholder="email@example.com">
+                                <hr style="margin-bottom:0% ; margin-top:15px">
+                            </div>
+                            <div class="subscribe">
+                                <button class="subscribe-button">SUBSCRIBE</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+                <!-- SECOND ROW -->
+                <div class="row">
+                    <div class="paypal"
+                         style="padding-left: 15px; padding-right: 15px ; text-align: center ; margin-left:190px ">
+                        <a href="#">
+                            <img class="h-size2" src="<c:url value='/static/pictures/paypal.png'/>"  alt="IMG-PAYPAL">
+                        </a>
+                        <div class="copyrights" style="padding-top: 20px; font-family: 'Montserrat', sans-serif;">
+                            Copyright © 2019 All rights reserved. | This template is made with <i class="far fa-heart"></i>
+                            by AFDEmp
+                            Bootcamp 8
+                        </div>
+                    </div>
+                    <!-- /second row -->
+                </div>
+                <!-- /container -->
+            </div>
+
+        </footer>
                 <!-- Bootstrap  -->
                 <script src="https://code.jquery.com/jquery-3.4.1.min.js"
                 integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
