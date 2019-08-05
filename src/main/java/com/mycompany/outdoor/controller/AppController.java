@@ -65,10 +65,21 @@ public class AppController {
      */
     @RequestMapping(method = RequestMethod.GET)
     public String welcome(ModelMap model) {
-        model.addAttribute("catcat", 0);
+    model.addAttribute("catcat", 0);
         model.addAttribute("minimumPrice", productService.getMinPrice());
         model.addAttribute("maximumPrice", productService.getMaxPrice());
-        return "welcome";
+        if (isCurrentAuthenticationAnonymous()) {
+            return "welcome";
+        } else {
+            User user = userService.findBySSO(getPrincipal());
+            Iterator<UserProfile> iterator = user.getUserProfiles().iterator();
+            Integer userProfile = iterator.next().getId();
+            if (userProfile == 1) {
+                return "customerproducts";
+            } else {
+                return "adminproducts";
+            }
+        }
     }
 
     /**

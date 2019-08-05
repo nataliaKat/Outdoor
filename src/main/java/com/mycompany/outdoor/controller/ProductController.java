@@ -69,7 +69,10 @@ public class ProductController {
     AuthenticationTrustResolver authenticationTrustResolver;
 
     @RequestMapping(method = RequestMethod.GET)
-    public String getProductsPerRole() {
+    public String getProductsPerRole(ModelMap model) {
+        model.addAttribute("catcat", 0);
+        model.addAttribute("minimumPrice", productService.getMinPrice());
+        model.addAttribute("maximumPrice", productService.getMaxPrice());
         if (isCurrentAuthenticationAnonymous()) {
             return "welcome";
         } else {
