@@ -80,7 +80,7 @@
 
                 <ul class="navbar-nav mx-auto" style="text-align: center">
                     <li class="navbar-brand">
-                        <a href="#" class="navbar-brand">Home</a>
+                        <a href="/Outdoor" class="navbar-brand">Home</a>
                     </li>
 
                     <li class="navbar-brand dropdown">
@@ -89,18 +89,26 @@
                             Products
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: rgb(217, 223, 223)">
-                            <a class="dropdown-item" href="#">Tents</a>
-                            <a class="dropdown-item" href="#">Hiking Equipment</a>
-                            <a class="dropdown-item" href="#">Backpacks</a>
-                            <a class="dropdown-item" href="#">First Aid Kits</a>
+                            <ol class="nostyle">
+                                <li ng-repeat="category in categories" class="filterItem" style="padding: none">
+                                    <label class="label" for="cat{{category.categoryId}}" path="category" name="category">{{category.categoryName}}
+                                        <input type="radio" id="cat{{category.categoryId}}" name="category" path="category" ng-click="brandClick(0, category.categoryId)">
+                                    </label>
+                                </li>
+                            </ol>
                         </div>
                     </li>
 
-                    <li class="navbar-brand">
-                        <a href="#" class="navbar-brand">Brands</a>
-                    </li>
-                    <li class="navbar-brand">
-                        <a href="#" class="navbar-brand">Sales</a>
+                    <li class="navbar-brand dropdown">
+                        <a class="navbar-brand dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            Profile
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: rgb(217, 223, 223)">
+                            <a class="dropdown-item" href="/Outdoor/history">Orders History</a>
+                            <a class="dropdown-item" href="/Outdoor/edit-user">Edit profile</a>
+
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -108,17 +116,17 @@
         </nav>
 
         <!-- MAIN BODY -->
-        <div class="container" style="margin-top: 50px">
+         <div class="container" style="margin-top: 50px">
             <div class="row">
-                <div class="filter col-lg-3 border" style="text-align: center">
-                        
-                      <div class="brand">
+                <div class="filter col-lg-3 border"  >
+
+                    <div class="brand">
                         <h4> Brands</h4><hr>
                         <ol class="nostyle">
 
                             <li ng-repeat="brand in brands" class="filterItem" >
-                                <label class="label" for="{{brand.brandsId}}">{{brand.brandname}}
-                                <input type="radio" id="{{brand.brandsId}}" name="brand" ng-click="brandClick(brand.brandsId, 0)">
+                                <label class="label" for="{{brand.brandsId}}" path="brand" name="brand">{{brand.brandname}}
+                                <input type="radio" id="{{brand.brandsId}}" name="brand" path="brand" ng-click="brandClick(brand.brandsId, 0)">
                                 <span class="checkmark"></span>
                                 </label>
                             </li>
@@ -129,8 +137,8 @@
                         <h4>Categories</h4><hr>
                         <ol class="nostyle">
                             <li ng-repeat="category in categories" class="filterItem">
-                                <label class="label" for="{{category.categoryId}}">{{category.categoryName}}
-                                <input type="radio" id="{{category.categoryId}}" name="category" ng-click="brandClick(0, category.categoryId)">
+                                <label class="label" for="category{{category.categoryId}}" path="category" name="category">{{category.categoryName}}
+                                <input type="radio" id="category{{category.categoryId}}" name="category" path="category" ng-click="brandClick(0, category.categoryId)">
                                 <span class="checkmark"></span>
                                 </label>
                             </li>
@@ -159,24 +167,24 @@
                         <!--RANGE BARS-->
                         <div class="rangeContainer">
                             <div class="col1" >
-                           Min &euro; <input type="range" min="0" max="100" value="0" class="slider" id="slider" ng-model="price_slider.start[0]" ng-click="priceFiltering('filter')" value="Filter">
+                           Min &euro; <input type="range" min="${minimumPrice}" max="${maximumPrice/2}" value="${minimumPrice}" class="slider" id="slider" ng-model="price_slider.start[0]" ng-click="priceFiltering('filter')" value="Filter">
                            </div>
                             <br>
                             <div class="col1">
-                           Max &euro; <input type="range" min="101" max="500" value="500" class="slider" id="slider2" ng-model="price_slider.start[1]" ng-click="priceFiltering('filter')" value="Filter">
+                           Max &euro; <input type="range" min="${maximumPrice/2}" max="${maximumPrice}" value="${maximumPrice}" class="slider" id="slider2" ng-model="price_slider.start[1]" ng-click="priceFiltering('filter')" value="Filter">
                             </div> 
                            <br>
                             <!--<span ng-click="price_slider.start = [0, 500]" class="clear" id="clearPrice" >Clear</span>-->
                         </div>
                     </div>
                     <br>
-                    <a href="/Outdoor/products" ><span><h5> Clear all filters</h5></span> </a>
-
+                    <a href="/Outdoor"><span><h5> Clear all filters</h5></span> </a>
                     
                 </div>
 
                 <div class="col-lg-9">
                     <div class="row">
+
 
 
 
