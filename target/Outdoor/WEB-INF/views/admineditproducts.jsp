@@ -164,24 +164,24 @@
                             <div class="invalid-feedback">Please enter a valid number</div>
                         </div>
 
-                               <!--BRAND-->
-                               
+                        <!--BRAND-->
+
                         <div class="form-group">
-<!--                            <option selected="selected">3</option>                   -->
+                            <!--                            <option selected="selected">3</option>                   -->
                             <label for="brand">Brand</label>    
-                           
+
                             <select name="brandsId" id="brand" class="form-control" value="${pBrand.brandsId}" required="required">
-                              
+
                                 <option selected="${pBrand.brandsId}" value="${pBrand.brandsId}">${pBrand.brandname}</option>
                                 <c:forEach items="${brands}" var="b"> 
-                                     <%--<c:if test="${pBrand.brandname != selected}">--%>
-                                            <option value="${b.brandsId}" >${b.brandname}</option>
-                                     <%--</c:if>--%>
-                                    
+                                    <c:if test="${pBrand != b}">
+                                        <option value="${b.brandsId}" >${b.brandname}</option>
+                                    </c:if>
+
                                 </c:forEach>
                             </select>
                         </div>
-                               <!--/BRAND-->
+                        <!--/BRAND-->
 
                         <div class="form-group">
                             <label for="category">Category</label>
@@ -189,7 +189,9 @@
                             <select name="categoryId" id="category" class="form-control" value="${pCategory.categoryName}" required="required">
                                 <option selected="${pCategory.categoryId}" value="${pCategory.categoryId}">${pCategory.categoryName}</option>
                                 <c:forEach items="${categories}" var="cat">
-                                    <option value="${cat.categoryId}" >${cat.categoryName}</option>
+                                    <c:if test="${pCategory != cat}">
+                                        <option value="${cat.categoryId}" >${cat.categoryName}</option>
+                                    </c:if>
                                 </c:forEach>     
                             </select>
                         </div>

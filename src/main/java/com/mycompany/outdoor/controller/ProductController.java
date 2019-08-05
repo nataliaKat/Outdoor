@@ -131,7 +131,7 @@ public class ProductController {
                 
                 model.addAttribute("id", id);
                 model.addAttribute("quantity", stockService.getQuantityPerProduct(p));
-                System.out.println("QUANTITY IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIS"+stockService.getQuantityPerProduct(p));
+               
                 return "details";
             } else {
                 Product p = productService.findById(id);
@@ -159,8 +159,7 @@ public class ProductController {
         product.setCategory(foundCategory);
 
         productService.updateProduct(product);
-        
-//        stockService.
+       
         stockService.updateStock(product, quantity);
 
         if (result.hasErrors()) {

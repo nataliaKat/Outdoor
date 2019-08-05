@@ -1,32 +1,39 @@
 *, *:before, *:after {
     box-sizing: border-box;
+    outline:none
 }
 
 body {
     padding-top: 56px;
-    outline:none
+    
 
 }
+    .filter {
+        height: 1100px;
+
+     }
+
 
     .logo {
        font-family: 'Montserrat', sans-serif;
         font-size: 60px;
         color: rgb(65, 65, 65);
     }
-    .far fa-compass{
-        font-size: 50px
+   .logopic {
+       font-size: 40px;
+       
     }
 
 
 /* NAVBAR "PRODUCTS"  */
-.dropdown-toggle::after {
-    display:none;
-}
-.big-banner {
-    background-image: url('../pictures/mountain.jpeg');
-    background-position: center;
-    
-}
+    .dropdown-toggle::after {
+        display:none;
+    }
+    .big-banner {
+        background-image: url('../pictures/mountain.jpeg');
+        background-position: center;
+
+    }
 
     .dropdown-menu > ol > li {
          
@@ -39,7 +46,17 @@ body {
         text-decoration: none;
         background-color: rgb(65, 65, 65);
     }
+    .dropdown-menu > a {
 
+          -webkit-transition-duration: 0.4s; 
+           transition-duration: 0.4s;
+       }   
+
+    .dropdown-menu > a:hover {
+        color: white;
+        text-decoration: none;
+        background-color: rgb(65, 65, 65);
+    }
 
 
 .big-banner-2 {
@@ -96,6 +113,7 @@ button {
     border-radius: 16px;
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
+    outline:none
   
 }
 
@@ -106,10 +124,10 @@ button {
     }
 
 
-i 
-{
-    font-size: 20px;
-}
+    i 
+    {
+        font-size: 20px;
+    }
 
 .navbar-nav > li > a {
     font-family: 'Montserrat', sans-serif;
@@ -202,13 +220,13 @@ i
         
     }
 
-.box , .box2{
-    background-color: #333333;
-    width:50px;
-    height:50px;
-    border-radius:0 50% 50% 50%;
-    transform: rotate(-135deg);
-}
+    .box , .box2{
+        background-color: #333333;
+        width:50px;
+        height:50px;
+        border-radius:0 50% 50% 50%;
+        transform: rotate(-135deg);
+    }
 
     #value, #value2 {
       color: white;
@@ -333,5 +351,3 @@ i
             border-radius: 50%;
             background: white;
     }
-    
-    

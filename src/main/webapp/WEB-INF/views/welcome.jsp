@@ -57,7 +57,7 @@
 
             <div class="collapse navbar-collapse" id="#navbarMenu"
                  style="position:relative; bottom:130px; left:80px; color: blue">
-                 <p class="logo">Compass <i class="far fa-compass"></i></p> 
+                 <p class="logo">C<i class="far fa-compass logopic"></i>mpass </p> 
 
 
                 <ul class="navbar-nav1 ml-auto" style="display:flex; align-content:flex-start; ">
@@ -96,8 +96,8 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: rgb(217, 223, 223)">
                             <ol class="nostyle">
                             <li ng-repeat="category in categories" class="filterItem" style="padding: none">
-                                <label class="label" for="category{{category.categoryId}}" path="category" name="category">{{category.categoryName}}
-                                <input type="radio" id="category{{category.categoryId}}" name="category" path="category" ng-click="brandClick(0, category.categoryId)">
+                                <label class="label" for="cat{{category.categoryId}}" path="category" name="category">{{category.categoryName}}
+                                <input type="radio" id="cat{{category.categoryId}}" name="category" path="category" ng-click="brandClick(0, category.categoryId)">
                                
                                 </label>
                             </li>
@@ -124,7 +124,7 @@
         <!-- MAIN BODY -->
         <div class="container" style="margin-top: 50px">
             <div class="row">
-                <div class="filter col-lg-3 border" >
+                <div class="filter col-lg-3 border"  >
 
                     <div class="brand">
                         <h4> Brands</h4><hr>
@@ -173,11 +173,11 @@
                         <!--RANGE BARS-->
                         <div class="rangeContainer">
                             <div class="col1" >
-                           Min &euro; <input type="range" min="${minimumPrice}" max="${maximumPrice}/2" value="${minimumPrice}" class="slider" id="slider" ng-model="price_slider.start[0]" ng-click="priceFiltering('filter')" value="Filter">
+                           Min &euro; <input type="range" min="${minimumPrice}" max="${maximumPrice/2}" value="${minimumPrice}" class="slider" id="slider" ng-model="price_slider.start[0]" ng-click="priceFiltering('filter')" value="Filter">
                            </div>
                             <br>
                             <div class="col1">
-                           Max &euro; <input type="range" min="${maximumPrice}/2" max="${maximumPrice}" value="${maximumPrice}" class="slider" id="slider2" ng-model="price_slider.start[1]" ng-click="priceFiltering('filter')" value="Filter">
+                           Max &euro; <input type="range" min="${maximumPrice/2}" max="${maximumPrice}" value="${maximumPrice}" class="slider" id="slider2" ng-model="price_slider.start[1]" ng-click="priceFiltering('filter')" value="Filter">
                             </div> 
                            <br>
                             <!--<span ng-click="price_slider.start = [0, 500]" class="clear" id="clearPrice" >Clear</span>-->
@@ -241,8 +241,10 @@
                 <div class="row" style="padding-bottom: 90px; text-align: center">
                     <div class="col-md-3" style="padding-top: 30px; ">
                         <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0%">
-                            Get in touch
+                           Chat with us!
                         </h5>
+                        <br>
+                        <a href="http://ra2.anystream.eu/websocketchat-0.0.1-SNAPSHOT/"><i class="far fa-comments chat" style="font-size:70px; margin-right: 120px;"></i> </a>
                     </div>
                     <div class="col-md-3" style="padding-top: 30px; ">
                         <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0%">
@@ -345,99 +347,81 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
         <script>
-                                                        var savedbid = 0;
-                                                        var savedcid = 0;
-                                                        const ProductApp = angular.module("app", []);
-                                                        ProductApp.controller("MainCtrl", ['$scope', '$http', MainCtrl]);
+                            var savedbid = 0;
+                            var savedcid = 0;
+                            const ProductApp = angular.module("app", []);
+                            ProductApp.controller("MainCtrl", ['$scope', '$http', MainCtrl]);
 
-                                                        function MainCtrl($scope, $http) {
-                                                            const URL = "http://localhost:8080/Outdoor/json";
-                                                            const brandURL = "http://localhost:8080/Outdoor/json/brands/";
-                                                            const categoryURL = "http://localhost:8080/Outdoor/json/categories";
-                                                            $scope.products = [];
-                                                            $scope.brands = [];
-                                                            $scope.categories = [];
+                            function MainCtrl($scope, $http) {
+                                const URL = "http://localhost:8080/Outdoor/json";
+                                const brandURL = "http://localhost:8080/Outdoor/json/brands/";
+                                const categoryURL = "http://localhost:8080/Outdoor/json/categories";
+                                $scope.products = [];
+                                $scope.brands = [];
+                                $scope.categories = [];
 
-                                                            $http.get(URL).then(handleJson);
-                                                            $http.get(brandURL).then(handleJsonBrands);
-                                                            $http.get(categoryURL).then(handleJsonCategories);
+                                $http.get(URL).then(handleJson);
+                                $http.get(brandURL).then(handleJsonBrands);
+                                $http.get(categoryURL).then(handleJsonCategories);
 
-                                                            function handleJsonCategories(response) {
-//                                    console.log(response.data);
-                                                                $scope.categories = response.data;
-                                                            }
+                                function handleJsonCategories(response) {
+                                    $scope.categories = response.data;
+                                }
 
-                                                            function handleJson(response) {
+                                function handleJson(response) {
+                                    $scope.products = response.data;
+                                }
 
-//                                    console.log(response.data);
-                                                                $scope.products = response.data;
-                                                            }
+                                function handleJsonBrands(response) {
+                                    $scope.brands = response.data;
+                                }
+                                function handleJsonPrice(response) {
+                                    $scope.prices = response.data;
+                                }
+                                $scope.newPage = function (id) {
 
-                                                            function handleJsonBrands(response) {
-//                                    console.log(response.data);
-                                                                $scope.brands = response.data;
-                                                            }
-                                                            function handleJsonPrice(response) {
-                                                                $scope.prices = response.data;
-                                                            }
-                                                            $scope.newPage = function (id) {
+                                    location.href = "http://localhost:8080/Outdoor/products/" + id;
+                                };
 
-                                                                location.href = "http://localhost:8080/Outdoor/products/" + id;
-                                                            };
-
-//                                                            $scope.brandClick = function (id) {
-//                                                                console.log("brandClick is on the house");
-//                                                                console.log(id);
-//                                                                
-//                                                                 let brandByIdURL = "http://localhost:8080/Outdoor/json/brands/" + id;
-//                                                                 $scope.products = [];
-//                                                                 $http.get(brandByIdURL).then(handleJson);
-//                                                            }
-                                                            $scope.brandClick = function (bid, cid) {
-//                                    console.log("bid an cid");
-//                                    console.log(bid);
-//                                    console.log(cid);
-
-////                                    savedbid = bid;
-//                                    console.log(" saved cid "+savedcid);
-//                                    console.log("saved bid "+savedbid);
-
-                                                                if (bid != 0 && cid == 0) {
-                                                                    savedbid = bid;
-                                                                    console.log(" IF saved BID " + savedbid);
-                                                                } else if (bid == 0 && cid != 0) {
-                                                                    savedcid = cid;
-                                                                    console.log("IF saved CID " + savedcid);
-                                                                }
-                                                                let brandAndPriceByIdURL = "http://localhost:8080/Outdoor/json/" + savedbid + "/" + savedcid;
-//                                        $scope.products = [];
-                                                                $http.get(brandAndPriceByIdURL).then(handleJson);
-                                                            }
+                                      
+                                $scope.brandClick = function (bid, cid) {
+                                
+                                    if (bid != 0 && cid == 0) {
+                                        savedbid = bid;
+                                        console.log(" IF saved BID " + savedbid);
+                                    } else if (bid == 0 && cid != 0) {
+                                        savedcid = cid;
+                                        console.log("IF saved CID " + savedcid);
+                                    }
+                                    let brandAndPriceByIdURL = "http://localhost:8080/Outdoor/json/" + savedbid + "/" + savedcid;
+                                    $http.get(brandAndPriceByIdURL).then(handleJson);
+                                    document.documentElement.scrollTop = 300;
+                                }
 
 
 
 //                    PRICE FILTER
-                                                            $scope.priceFiltering = function () {
-                                                                $scope.minPrice = $scope.price_slider.start[0];
-                                                                $scope.maxPrice = $scope.price_slider.start[1];
+                                $scope.priceFiltering = function () {
+                                    $scope.minPrice = $scope.price_slider.start[0];
+                                    $scope.maxPrice = $scope.price_slider.start[1];
 
-                                                                $scope.pricefilter = function (product) {
-                                                                    if ((product.price <= $scope.maxPrice) && (product.price >= $scope.minPrice)) {
-                                                                        return product;
-                                                                    }
-                                                                };
-                                                            }
+                                    $scope.pricefilter = function (product) {
+                                        if ((product.price <= $scope.maxPrice) && (product.price >= $scope.minPrice)) {
+                                            return product;
+                                        }
+                                    };
+                                }
 
-                                                            $scope.price_slider = {
-                                                                start: [${minimumPrice}, ${maximumPrice}],
-                                                                connect: true,
-                                                                step: 1,
-                                                                range: {
-                                                                    min: ${minimumPrice},
-                                                                    max: ${maximumPrice}
-                                                                }
-                                                            };
-                                                            //MAIN
+                                $scope.price_slider = {
+                                    start: [${minimumPrice}, ${maximumPrice}],
+                                    connect: true,
+                                    step: 1,
+                                    range: {
+                                        min: ${minimumPrice},
+                                        max: ${maximumPrice}
+                                    }
+                                };
+                                //MAIN
                                                         }
         </script>
 
