@@ -1,19 +1,19 @@
 <%-- 
-    Document   : buy
-    Created on : 28 Ιουλ 2019, 9:50:03 μμ
+    Document   : details
+    Created on : 28 Ιουλ 2019, 7:44:35 μμ
     Author     : kat26
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Buy</title>
+        <title>Details</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Bootstrap | Ctrl+/ -->
@@ -37,13 +37,13 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.min.js"></script>
 
         <!-- My CSS -->
-        <link rel="stylesheet" type="text/css" href="<c:url value="/static/css/style.css"/>">
-        <link rel="stylesheet" type="text/css" href="<c:url value="/static/css/jquery.nice-number.css"/>">
+        <link rel="stylesheet" type="text/css" href="<c:url value="../static/css/style.css"/>">
+        <link rel="stylesheet" type="text/css" href="<c:url value="../static/css/jquery.nice-number.css"/>">
 
     </head>
     <body ng-app="app" ng-controller="MainCtrl" ng-cloak style="padding-top:0%">
 
-        <!-- NAVBAR HEADER  (BUTTON TOOGLE DOESNT WORK)-->
+          <!-- NAVBAR HEADER  (BUTTON TOOGLE DOESNT WORK)-->
 
         <nav class="navbar big-banner navbar-expand-lg navbar-light bg-white border"
              style="padding-left: 150px; padding-right: 150px; height:368px;">
@@ -59,10 +59,15 @@
 
 
                 <ul class="navbar-nav1 ml-auto" style="display:flex; align-content:flex-start; ">
-                    <li class="nav-item">
-                        <a href="/Outdoor/logout" class="nav-link" style="font-size: 20px; padding-right:0px"><i class="far fa-user-circle"></i> Logout </a>
+                  <li class="nav-item">
+                        <a href="/Outdoor/login" class="nav-link" style="font-size: 20px; padding-right:0px"><i class="far fa-user-circle"></i> Login </a>
                     </li>
-
+                    <li class="nav-item">
+                        <p class="nav-link" style="font-size: 20px; padding-left:10px; padding-right:10px">|</p>  
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" style="font-size: 20px; padding-left:0px"><i class="fas fa-sign-in-alt"></i> Register</a>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -113,57 +118,75 @@
 
         </nav>
 
-    <body>
 
-        <!-- BUTTON QUANTITY PLUS MINUS -->
-        <!--   <div class="quantityButton" style="padding-top: 30px; outline:none">
-                    Quantity
-                    <input type="number" 
-                           style="outline: none; padding:5px; height:25px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,.5);
-                           margin: 0 5px !important"
-                           value="1">
-                </div>-->
-        <!-- /BUTTON QUANTITY PLUS MINUS -->
-
-
-        <!-- BUTTON QUANTITY PLUS MINUS -->
-        <!--<div class="quantityButton" style="padding-top: 45px">-->
-
-        <!--</div>-->
-        <div class="container" style="margin-top: 50px ; ">
+        <!-- MAIN BODY -->
+        <div class="container" style="margin-top: 50px ; padding-right: 30px;">
             <div class="row">
-
-                <div class="col-md-6 col-sm-6 border border-dark rounded " style="box-shadow:20px 20px 10px grey; position:relative; left:310px ">
-                    <form:form id="myForm" modelAttribute="sale" method="post">
-
-                        <form:hidden path="salesDate" id="date"/>
-
-                        <input type="hidden" name="productId" id="prod" value="${product.productsId}"/>
-
-                        <div class="form-group" style="text-align:center">
-                            <label for="quant">Quantity</label><br>
-                            <input min="1" id='quant' name="quantity" type="number" value="1"/>
-                             <!--Message for availability-->
-                            <div id="message" style="color:red;"></div>
-                        </div>
-
-                        <div class="form-group" style="text-align:center">
-                            <form:label path="total" for="quant">Total &euro;</form:label><br>
-                            <form:input  readonly="true" path="total" id="total"/>
-                        </div>
-
-                        <form:hidden id="address" path="address"/>
-                        <!--<input id="post" type="submit" value="Submit" />-->
-                    </form:form>
-
-                    <div class="form-group">
-                        <!-- Set up a container element for the button -->
-                        <div id="paypal-button-container"></div>
-                    </div>
+                <div class="col-md-6 col-sm-6">
+                    <img class="card-img-top" style="width: 532px; height: 355px"
+                         src="{{product.imageUrl}} "alt="">
                 </div>
-            </div>
-        </div>
 
+                <div class="col-md-6 col-sm-6">
+                    <div class="info" style="position:relative; left: 50px">
+                        <h2 class="product-name m-text16" style="font-family: 'Muli', sans-serif; ">{{product.name}}</h2>
+                        <p style="font-family: 'Montserrat', sans-serif;"><span>Code: {{product.productsId}}</span></p>
+
+                        <span class="m-text17" style="font-family: 'Rokkitt', serif; font-size:40px">&euro;{{product.price}}</span>
+
+
+                        <!--STOCK AVAILABILITY-->
+
+                        <div style="padding-top: 30px; font-family: 'Montserrat', sans-serif;">
+
+                            <h5 style="font-size: 22px">Availability: </h5> 
+                            <span id="stock" style="font-size" > </span>
+
+                        </div>
+
+                        <!-- BUTTON QUANTITY PLUS MINUS -->
+                        <!--                        <div class="quantityButton" style="padding-top: 30px; outline:none">
+                                                    Quantity
+                                                    <input type="number" 
+                                                           style="outline: none; padding:5px; height:25px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,.5);
+                                                           margin: 0 5px !important"
+                                                           value="1">
+                                                </div>-->
+                        <!-- /BUTTON QUANTITY PLUS MINUS -->
+
+
+
+
+
+
+                        <!--BUY BUTTON-->
+                        <div class="purchase">
+                            <button type="button" ng-click=newPage() data-toggle="button"
+                                    style="margin-top: 40px; position: relative; left: 85px; ">Buy</button>
+
+                            <!--Message for availability-->
+
+
+                        </div>
+
+
+                        <!--DESCRIPTION-->
+                        <div class="description" style=" display: flex; align-content: flex-end; overflow: auto; ">
+                            <hr>
+                            <span style="font-family: 'Montserrat', sans-serif;"><hr>
+                                Description <br>
+                                {{product.description}}
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <hr>
+
+            </div>
+
+        </div>
 
 
         <!--FOOTER-->
@@ -173,7 +196,7 @@
                 <div class="row" style="padding-bottom: 90px; text-align: center">
                     <div class="col-md-3" style="padding-top: 30px; ">
                         <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0%">
-                            <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0%">
+                           <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0%">
                            Chat with us!
                         </h5>
                         <br>
@@ -185,12 +208,12 @@
                         </h5>
 
                         <ul style="padding-left: 0%">
-                            <li class="foo-columns" style="padding-bottom: 18px">
+                               <li class="foo-columns" style="padding-bottom: 18px">
                                 <a href="http://localhost:8080/Outdoor/cat/1" class="text-secondary ">
                                     <i class="fas fa-hiking"></i> backpacks
                                 </a>
                             </li>
-
+                            
                             <li class="foo-columns" style="padding-bottom: 18px">
                                 <a href="http://localhost:8080/Outdoor/cat/2"  class="text-secondary">
                                     <i class="fas fa-campground"></i> tents
@@ -276,146 +299,71 @@
 
         </footer>
 
-
-
-
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-        <!-- Include the PayPal JavaScript SDK -->
-        <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-
 
 
         <!-- BUTTON QUANTITY -->
-        <script src="static/js/jquery.nice-number.js"></script>
+        <script src="../static/js/jquery.nice-number.js"></script>
 
         <script>
-                                                    // Render the PayPal button into #paypal-button-container            
-                                                    jQuery(document).ready(init);
-                                                    function init($) {
+                            var savedbid = 0;
+                            var savedcid = 0;
 
-                                                        $("#quant").on("keyup click", handleKeyUp);
-                                                        function handleKeyUp(event) {
-                                                            let usersQuantity = $("#quant").val();
-                                                            if (usersQuantity > ${quantity}) {
-                                                                $("#message").html("Quantity not available.");
-                                                                $("#total").val("");
-                                                                console.log($("#total").val());
-                                                            } else if (usersQuantity < 0) {
-                                                                $("#quant").val(1);
-                                                                $("#total").val(${product.price} * $("#quant").val());
-                                                                console.log($("#total").val());
-                                                            } else {
-                                                                $("#message").html("");
-                                                                $("#total").val(${product.price} * $("#quant").val());
-                                                                console.log($("#total").val());
+                                            const ProductApp = angular.module("app", []);
 
+                                            ProductApp.controller("MainCtrl", ['$scope', '$http', MainCtrl]);
 
+                                            function MainCtrl($scope, $http) {
+                                                const URL = "http://localhost:8080/Outdoor/json/${id}";
+                                                const brandURL = "http://localhost:8080/Outdoor/json/brands";
+                                                 const categoryURL = "http://localhost:8080/Outdoor/json/categories";
+                                                $scope.products = [];
+                                                $scope.brands = [];
+                                                 $scope.categories = [];
+                                                $http.get(URL).then(handleJson);
+                                                $http.get(categoryURL).then(handleJsonCategories);
 
-                                                            }
-                                                        }
-                                                        var today = new Date();
-                                                        var month = today.getMonth() + 1;
-                                                        $("#date").val(today.getFullYear() + "/" + month + "/" + today.getDate());
-                                                        $("#total").val(${product.price} * $("#quant").val());
+                                                $http.get(brandURL).then(handleJsonBrands);
+                                                
+                                                $scope.newWelcome = function(id) {
+                                                   
+                                                    location.href ="http://localhost:8080/Outdoor/cat/" + id;
+                                                }
+                                                
+                                                $scope.newPage = function (id) {
 
-                                                        paypal.Buttons({
+                                                    location.href = "http://localhost:8080/Outdoor/products/" + ${id} + "/buy";
+                                                };
 
-                                                            // Set up the transaction
-                                                            createOrder: function (data, actions) {
-                                                                return actions.order.create({
-                                                                    purchase_units: [{
-                                                                            amount: {
-                                                                                value: $("#total").val()
-                                                                            }
-                                                                        }]
-                                                                });
-                                                            },
-
-                                                            // Finalize the transaction
-                                                            onApprove: function (data, actions) {
-                                                                return actions.order.capture().then(function (details) {
-                                                                    // Show a success message to the buyer
-                                                                    alert('Transaction completed by ' + details.payer.name.given_name + '!');
-                                                                    console.log(details);
-//                            console.log(details.purchase_units[0].shipping.address.address_line_1 + ", " + details.purchase_units[0].shipping.address.postal_code);
-                                                                    $('#address').val(details.purchase_units[0].shipping.address.address_line_1 + ", " + details.purchase_units[0].shipping.address.postal_code);
-
-                                                                    document.querySelector("#myForm").submit();
-                                                                });
-                                                            }
-
-                                                        }).render('#paypal-button-container');
-
-
-
-                                                    }
-
-
-
-        </script>
-
-
-        <script>
-                    var savedbid = 0;
-                    var savedcid = 0;
-
-                    const ProductApp = angular.module("app", []);
-
-                    ProductApp.controller("MainCtrl", ['$scope', '$http', MainCtrl]);
-
-                    function MainCtrl($scope, $http) {
-                        const URL = "http://localhost:8080/Outdoor/json/${id}";
-                        const brandURL = "http://localhost:8080/Outdoor/json/brands";
-                        const categoryURL = "http://localhost:8080/Outdoor/json/categories";
-                        $scope.products = [];
-                        $scope.brands = [];
-                        $scope.categories = [];
-                        $http.get(URL).then(handleJson);
-                        $http.get(categoryURL).then(handleJsonCategories);
-
-                        $http.get(brandURL).then(handleJsonBrands);
-
-                        $scope.newWelcome = function (id) {
-
-                            location.href = "http://localhost:8080/Outdoor/cat/" + id;
-                        }
-
-                        $scope.newPage = function (id) {
-
-                            location.href = "http://localhost:8080/Outdoor/products/" + ${id} + "/buy";
-                        };
-
-                        function handleJson(response) {
-                            $scope.product = response.data;
-                        }
-                        function handleJsonCategories(response) {
-                            $scope.categories = response.data;
-                        }
-                        function handleJsonBrands(response) {
-
-                            $scope.brands = response.data;
-                        }
-
-
-                        $scope.brandClick = function (bid, cid) {
-
-                            if (bid != 0 && cid == 0) {
-                                savedbid = bid;
-                                console.log(" IF saved BID " + savedbid);
-                            } else if (bid == 0 && cid != 0) {
-                                savedcid = cid;
-                                console.log("IF saved CID " + savedcid);
-                            }
-                            let brandAndPriceByIdURL = "http://localhost:8080/Outdoor/json/" + savedbid + "/" + savedcid;
-                            $http.get(brandAndPriceByIdURL).then(handleJson);
-                            document.documentElement.scrollTop = 300;
-                        }
-                    }
+                                                function handleJson(response) {
+                                                    $scope.product = response.data;
+                                                }
+                                                function handleJsonCategories(response) {
+                                                    $scope.categories = response.data;
+                                                }
+                                                function handleJsonBrands(response) {
+                                                   
+                                                    $scope.brands = response.data;
+                                                }
+                                                
+                                                         
+                                $scope.brandClick = function (bid, cid) {
+                                
+                                    if (bid != 0 && cid == 0) {
+                                        savedbid = bid;
+                                        console.log(" IF saved BID " + savedbid);
+                                    } else if (bid == 0 && cid != 0) {
+                                        savedcid = cid;
+                                        console.log("IF saved CID " + savedcid);
+                                    }
+                                    let brandAndPriceByIdURL = "http://localhost:8080/Outdoor/json/" + savedbid + "/" + savedcid;
+                                    $http.get(brandAndPriceByIdURL).then(handleJson);
+                                    document.documentElement.scrollTop = 300;
+                                }
+                                            }
         </script>
 
         <script type="text/javascript">
@@ -425,5 +373,18 @@
 
                     });
         </script>
+        <!--STOCK AVAILABILITY-->
+        <script>
+
+                    function myFunction(quantity) {
+                        if (quantity > 0) {
+                            return ("In stock");
+                        }
+                        return ("Out of Stock");
+                    }
+                    document.getElementById("stock").innerHTML = myFunction(${quantity});
+        </script>
+
     </body>
+
 </html>

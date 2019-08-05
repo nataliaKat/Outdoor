@@ -13,7 +13,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Buy</title>
+        <title>Details</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Bootstrap | Ctrl+/ -->
@@ -43,9 +43,19 @@
     </head>
     <body ng-app="app" ng-controller="MainCtrl" ng-cloak style="padding-top:0%">
 
-         <div class="collapse navbar-collapse" id="#navbarMenu"
+          <!-- NAVBAR HEADER  (BUTTON TOOGLE DOESNT WORK)-->
+
+        <nav class="navbar big-banner navbar-expand-lg navbar-light bg-white border"
+             style="padding-left: 150px; padding-right: 150px; height:368px;">
+
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+
+            <div class="collapse navbar-collapse" id="#navbarMenu"
                  style="position:relative; bottom:130px; left:80px; color: blue">
-                 <p class="logo">C<i class="far fa-compass logopic"></i>mpass </p> 
+                <p class="logo">C<i class="far fa-compass logopic"></i>mpass </p> 
 
 
                 <ul class="navbar-nav1 ml-auto" style="display:flex; align-content:flex-start; ">
@@ -58,6 +68,7 @@
                     <li class="nav-item">
                         <a href="#" class="nav-link" style="font-size: 20px; padding-left:0px"><i class="fas fa-sign-in-alt"></i> Register</a>
                     </li>
+
                 </ul>
             </div>
 
@@ -72,30 +83,35 @@
 
                 <ul class="navbar-nav mx-auto" style="text-align: center">
                     <li class="navbar-brand">
-                        <a href="#" class="navbar-brand">Home</a>
+                        <a href="/Outdoor" class="navbar-brand">Home</a>
                     </li>
 
                     <li class="navbar-brand dropdown">
-                        <a class="navbar-brand dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="navbar-brand dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
                             Products
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown"
-                             style="background-color: rgb(217, 223, 223)">
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: rgb(217, 223, 223)">
                             <ol class="nostyle">
                                 <li ng-repeat="category in categories" class="filterItem" style="padding: none">
-                                    <label class="label" for="{{category.categoryId}}" path="category" name="category">{{category.categoryName}}
-                                        <input type="radio" id="{{category.categoryId}}" name="category" path="category" ng-click=newWelcome(category.categoryId)>
-
+                                    <label class="label" for="cat{{category.categoryId}}" path="category" name="category">{{category.categoryName}}
+                                        <input type="radio" id="cat{{category.categoryId}}" name="category" path="category" ng-click="brandClick(0, category.categoryId)">
                                     </label>
                                 </li>
                             </ol>
                         </div>
                     </li>
 
-               
-                    <li class="navbar-brand">
-                        <a href="#" class="navbar-brand">Sales</a>
+                    <li class="navbar-brand dropdown">
+                        <a class="navbar-brand dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            Profile
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: rgb(217, 223, 223)">
+                            <a class="dropdown-item" href="/Outdoor/history">Orders History</a>
+                            <a class="dropdown-item" href="/Outdoor/edit-user">Edit profile</a>
+
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -180,8 +196,11 @@
                 <div class="row" style="padding-bottom: 90px; text-align: center">
                     <div class="col-md-3" style="padding-top: 30px; ">
                         <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0%">
-                            Get in touch
+                           <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0%">
+                           Chat with us!
                         </h5>
+                        <br>
+                        <a href="http://ra2.anystream.eu/websocketchat-0.0.1-SNAPSHOT/"><i class="far fa-comments chat" style="font-size:70px; margin-right: 120px;"></i> </a>
                     </div>
                     <div class="col-md-3" style="padding-top: 30px; ">
                         <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0%">
@@ -290,8 +309,6 @@
         <script src="../static/js/jquery.nice-number.js"></script>
 
         <script>
-            
-            
                             var savedbid = 0;
                             var savedcid = 0;
 
