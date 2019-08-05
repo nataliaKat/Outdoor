@@ -297,8 +297,6 @@
         <script src="../static/js/jquery.nice-number.js"></script>
 
         <script>
-            
-            
                             var savedbid = 0;
                             var savedcid = 0;
 
