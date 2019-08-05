@@ -12,7 +12,9 @@ body {
         height: 1100px;
 
      }
-
+     .filteradmin{
+         height: 1150px;
+     }
 
     .logo {
        font-family: 'Montserrat', sans-serif;
