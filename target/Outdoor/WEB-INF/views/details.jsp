@@ -43,31 +43,23 @@
     </head>
     <body ng-app="app" ng-controller="MainCtrl" ng-cloak style="padding-top:0%">
 
-        <!-- NAVBAR HEADER  (BUTTON TOOGLE DOESNT WORK)-->
-
-        <nav class="navbar big-banner navbar-expand-lg navbar-light bg-white border"
-             style="padding-left: 150px; padding-right: 150px; height:368px;">
-
-            <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-
-            <div class="collapse navbar-collapse" id="#navbarMenu"
+         <div class="collapse navbar-collapse" id="#navbarMenu"
                  style="position:relative; bottom:130px; left:80px; color: blue">
-                <!-- <p class="text-center font-italic font-weight-bold" style="">Compass</p> -->
+                 <p class="logo">C<i class="far fa-compass logopic"></i>mpass </p> 
 
 
-                <ul class="navbar-nav1 ml-auto">
+                <ul class="navbar-nav1 ml-auto" style="display:flex; align-content:flex-start; ">
                     <li class="nav-item">
-                        <a href="/Outdoor/login" class="nav-link" style="font-size: 20px;"><i class="far fa-user-circle"></i> Login</a>
+                        <a href="/Outdoor/login" class="nav-link" style="font-size: 20px; padding-right:0px"><i class="far fa-user-circle"></i> Login </a>
+                    </li>
+                    <li class="nav-item">
+                        <p class="nav-link" style="font-size: 20px; padding-left:10px; padding-right:10px">|</p>  
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link" style="font-size: 20px; padding-left:0px"><i class="fas fa-sign-in-alt"></i> Register</a>
                     </li>
                 </ul>
             </div>
-        </nav>
 
         <!-- <div class="container" style="margin-left: 40px; margin-right: 40"> -->
 

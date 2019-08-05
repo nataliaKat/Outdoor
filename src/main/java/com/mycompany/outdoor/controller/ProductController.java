@@ -71,7 +71,7 @@ public class ProductController {
     @RequestMapping(method = RequestMethod.GET)
     public String getProductsPerRole() {
         if (isCurrentAuthenticationAnonymous()) {
-            return "customerproducts";
+            return "welcome";
         } else {
             User user = userService.findBySSO(getPrincipal());
             Iterator<UserProfile> iterator = user.getUserProfiles().iterator();
@@ -79,7 +79,7 @@ public class ProductController {
             if (userProfile == 1) {
                 return "customerproducts";
             } else {
-                return "test";
+                return "adminproducts";
             }
         }
     }
@@ -135,7 +135,7 @@ public class ProductController {
                 model.addAttribute("id", id);
                 model.addAttribute("quantity", stockService.getQuantityPerProduct(p));
 
-                return "details";
+                return "userdetails";
             } else {
                 Product p = productService.findById(id);
 

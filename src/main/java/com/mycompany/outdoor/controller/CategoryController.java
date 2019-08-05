@@ -57,7 +57,7 @@ public class CategoryController {
             if (userProfile == 1) {
                 return "customerproducts";
             } else {
-                return "test";
+                return "adminproducts";
             }
         }
     }
