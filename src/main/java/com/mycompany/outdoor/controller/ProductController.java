@@ -120,6 +120,9 @@ public class ProductController {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public String updateOrShowDetails(ModelMap model, @PathVariable("id") Integer id) {
         if (isCurrentAuthenticationAnonymous()) {
+                            Product p = productService.findById(id);
+
+                model.addAttribute("quantity", stockService.getQuantityPerProduct(p));
             model.addAttribute("id", id);
             return "details";
         } else {
