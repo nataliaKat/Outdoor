@@ -1,18 +1,19 @@
 <%-- 
-    Document   : adminproducts
-    Created on : 18 Ιουλ 2019, 8:41:46 μμ
+    Document   : test
+    Created on : 25 Ιουλ 2019, 8:06:27 μμ
     Author     : kat26
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html class="no-js">
 
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Compass</title>
+        <title>shop-admin</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Bootstrap | Ctrl+/ -->
@@ -49,26 +50,25 @@
         <nav class="navbar big-banner navbar-expand-lg navbar-light bg-white border"
              style="padding-left: 150px; padding-right: 150px; height:368px;">
 
-            <!-- <img
-              src="https://cdn2.shopify.com/s/files/1/0173/2227/8976/products/mountain-compass-temporary-tattoos-easytatt-6802109694016_2048x2048.jpg?v=1548635909"
-              width="150" height="120" class="d-inline-block align-center " alt="">
-            <a class="navbar-brand" href="#">
-              <h2 class="text-center font font-weight-bold" style="padding-left: 20px;">Compass</h2>
-            </a> -->
-
-
             <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
 
-            <div class="collapse navbar-collapse" id="#navbarMenu"  style="position:relative; bottom:130px; left:80px; color: blue">
+            <div class="collapse navbar-collapse" id="#navbarMenu"
+                 style="position:relative; bottom:130px; left:80px; color: blue">
                 <!-- <p class="text-center font-italic font-weight-bold" style="">Compass</p> -->
 
 
-                <ul class="navbar-nav1 ml-auto">
+                <ul class="navbar-nav1 ml-auto" style="display:flex; align-content:flex-start; ">
                     <li class="nav-item">
-                        <a href="#" class="nav-link" style="font-size: 20px;"><i class="far fa-user-circle"></i> Logout</a>
+                        <a href="/Outdoor/logout" class="nav-link" style="font-size: 20px; padding-right:0px"><i class="far fa-user-circle"></i> Logout </a>
+                    </li>
+                    <li class="nav-item">
+                        <p class="nav-link" style="font-size: 20px; padding-left:10px; padding-right:10px">|</p>  
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" style="font-size: 20px; padding-left:0px"><i class="fas fa-sign-in-alt"></i> Register</a>
                     </li>
                 </ul>
             </div>
@@ -116,59 +116,55 @@
         <div class="container" style="margin-top: 50px">
             <div class="row">
                 <div class="filter col-lg-3 border" style="text-align: center">
+                    
+                      <button id="new" class="btn-block btn-lg" style="padding-left:0%; padding-right:0%; 
+                                            margin-left:0%" value="" ng-click="insertProduct()">Add</button>
                     FILTER SECTION
                     <hr><br>
 
-                    Brands<hr>
-                    <ol>
-                        <li ng-repeat="brand in brands">
-                            <label for="{{brand.brandsId}}">{{brand.brandname}}</label>
-                            <input type="checkbox" id="{{brand.brandsId}}">
-                        </li>
-                    </ol>
-                    <!--
+                    <!--                    Price <br><hr>
+                    
+                                        Up to 50 Euro<input type="checkbox" id="low"  ng-model="show" onclick="lowPrice()"><br>
+                                        Up to 200 Euro<input type="checkbox" id="medium"><br>
+                                        Up to<input type="checkbox" id="high"> 
+                    -->
 
-                    Price <br><hr>
-
-                    Up to 50 Euro<input type="checkbox" id="low"><br>
-                    Up to 200 Euro<input type="checkbox" id="medium"><br>
-                    Up to<input type="checkbox" id="high"> 
--->
-
-
-
-
+                    <!--Brands<hr>-->
+                    <!--<ol>-->
+                    <!--    <li ng-repeat="brand in brands ">
+                            <label for="{{brand.brandname}}">{{brand.brandname}}</label>
+                            <input type="checkbox" id="{{brand.brandname}}" ng-model="show">
+                        </li>-->
+                    <!--</ol>-->
                 </div>
 
                 <div class="col-lg-9">
                     <div class="row">
 
-                        <!-- ITEM 1 -->
-                        <%--<c:forEach items='${products}' var='product'>--%>
-                           
-                        <div  class="col-lg-4 col-md-6 mb-4" ng-repeat="product in products">
 
-                            <div class="card h-100 border" >
-                                <a href="#"><img class="card-img-top" src="{{ product.imageUrl }}" alt=""></a>
-                                <div class="card-body" >
-                                    <h4 class="card-title" style="font-family: 'Muli', sans-serif; overflow: hidden; height: 60px; ">
-                                        <a href="#"> {{ product.name}} </a>
+
+
+                        <!-- ITEM 1 -->
+
+                        <div class="col-lg-4 col-md-6 mb-4" ng-repeat="product in products">
+
+                            <div class="card h-100 border" > 
+                                <a href="#"><img class="card-img-top" src="{{ product.imageUrl}}" alt=""></a>
+                                <div class="card-body" >{{product.brand.brandname}}
+                                    <h4 class="card-title" style="font-family: 'Muli', sans-serif; overflow: hidden; height: 60px">
+                                        <a href="#">{{ product.name}}</a>
                                     </h4>
-                                    <h5 style="font-family: 'Rokkitt', serif;">&euro; {{ product.price }} </h5>
+                                    <h5 style="font-family: 'Rokkitt', serif;">&euro;{{ product.price}} </h5>
                                     <hr style="margin-top:5px; margin-bottom:7px">
-                                    <p class="card-text text-left" style="height:100px; overflow:auto"> {{ product.description }}
+                                    <p class="card-text text-left" style="height:100px; overflow:auto"> {{ product.description}} 
+
                                     </p>
+
                                 </div>
                                 <!-- EDIT -->
                                 <div class="purchase" style="text-align: center">
-                                    <!-- <a href="#" role="button" class="btn btn-info btn-block" data-toggle="button">Edit</a> -->
-
-                                    <!-- natalia's button -->
-                                    <!-- <button class="btn-block btn-lg" style="padding-left:0%; padding-right:0%; margin-left:0%">Edit</button> -->
-
-                                    <!-- andreas button -->
-                                    <!-- <button style="position:relative; top:72px; right: 292px" onclick="window.location.href='<c:url value="/admin/products/delete/${product.productsId}"/>'">Edit</button> -->
-                                    <button class="btn-block"  onclick="window.location.href = '<c:url value="/admin/products/{{product.productsId}}"/>'">Edit</button>
+                                    <button id="edit" class="btn-block btn-lg" style="padding-left:0%; padding-right:0%; 
+                                            margin-left:0%" value="" ng-click="newPage(product.productsId)">Edit</button>
 
                                 </div>
                                 <!-- /EDIT -->
@@ -176,6 +172,7 @@
                                 <div class="card-footer">
                                     <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
                                 </div>
+
                             </div>
                         </div>
 
@@ -186,9 +183,9 @@
         </div>
 
 
-        <!--FOOTER-->
+        <!-- FOOTER -->
 
-        <footer class="footer">
+        <footer class="footer mt-5">
             <div class="container p-5">
                 <!-- FIRST ROW -->
                 <div class="row" style="padding-bottom: 90px; text-align: center">
@@ -196,35 +193,34 @@
                         <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0%">
                             Get in touch
                         </h5>
-
-
                     </div>
                     <div class="col-md-3" style="padding-top: 30px; ">
                         <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0%">
                             Categories
                         </h5>
-                        <ul>
+
+                        <ul style="padding-left: 0%">
                             <li class="foo-columns" style="padding-bottom: 18px">
                                 <a href="#" class="text-secondary">
-                                    <i class="fas fa-campground"></i>  tents 
+                                    <i class="fas fa-campground"></i> tents
                                 </a>
                             </li>
 
                             <li class="foo-columns" style="padding-bottom: 18px">
                                 <a href="#" class="text-secondary">
-                                    <i class="fas fa-toolbox"></i>  hiking equipment
+                                    <i class="fas fa-toolbox"></i> hiking equipment
+                                </a>
+                            </li>
+
+                            <li class="foo-columns" style="padding-bottom: 18px">
+                                <a href="#" class="text-secondary ">
+                                    <i class="fas fa-hiking"></i> backpacks
                                 </a>
                             </li>
 
                             <li class="foo-columns" style="padding-bottom: 18px">
                                 <a href="#" class="text-secondary">
-                                    <i class="fas fa-hiking"></i>  backpacks
-                                </a>
-                            </li>
-
-                            <li class="foo-columns" style="padding-bottom: 18px">
-                                <a href="#" class="text-secondary">
-                                    <i class="fas fa-medkit"></i>  first-aid kits
+                                    <i class="fas fa-medkit"></i> first-aid kits
                                 </a>
                             </li>
                         </ul>
@@ -232,10 +228,8 @@
                     <div class="col-md-3" style="padding-top: 30px; ">
                         <h5 class="column-title" style="padding-bottom: 30px ;margin-bottom: 0%">
                             Contact
-
-
                         </h5>
-                        <ul>
+                        <ul style="padding-left: 0%">
                             <li class="foo-columns" style="padding-bottom: 18px">
                                 <a href="#" class="text-secondary">
                                     <i class="far fa-envelope" style=></i> compass@hotmail.com
@@ -244,8 +238,11 @@
 
                             <li class="foo-columns" style="padding-bottom: 18px">
                                 <a href="#" class="text-secondary">
-                                    <i class="fas fa-phone-square"></i>(+30) 6986487890
+                                    <i class="fas fa-phone-square"></i>
+
+                                    (+30) 6986487890
                                 </a>
+
                             </li>
 
                             <li class="foo-columns" style="padding-bottom: 18px">
@@ -262,7 +259,9 @@
                         </h5>
                         <form>
                             <div class="email-field">
-                                <input class="text-secondary" style="padding-bottom: 5px; border-style: hidden; padding-top: 0%; text-align: center" placeholder="email@example.com"> 
+                                <input class="text-secondary"
+                                       style="padding-bottom: 5px; border-style: hidden; padding-top: 0%; text-align: center"
+                                       placeholder="email@example.com">
                                 <hr style="margin-bottom:0% ; margin-top:15px">
                             </div>
                             <div class="subscribe">
@@ -276,11 +275,11 @@
                 <div class="row">
                     <div class="paypal" style="padding-left: 15px; padding-right: 15px ; text-align: center ; margin-left:190px ">
                         <a href="#">
-                            <img class="h-size2" src="<c:url value='/static/pictures/paypal.png'/>" alt="IMG-PAYPAL">
-                            
+                            <img class="h-size2" src="static/pictures/paypal.png" alt="IMG-PAYPAL">
                         </a>
-                        <div class="copyrights" style="padding-top: 20px;">
-                            Copyright © 2019 All rights reserved. | This template is made with <i class="far fa-heart"></i> by AFDEmp Bootcamp 8
+                        <div class="copyrights" style="padding-top: 20px; font-family: 'Montserrat', sans-serif;">
+                            Copyright © 2019 All rights reserved. | This template is made with <i class="far fa-heart"></i> by AFDEmp
+                            Bootcamp 8
                         </div>
                     </div>
                     <!-- /second row -->
@@ -289,58 +288,55 @@
             </div>
 
         </footer>
-
+        <!-- Bootstrap  -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-                integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-
-
-
-
-
         <script>
 
-                   const ProductApp = angular.module("app", []);
-                     ProductApp.controller("MainCtrl", ['$scope', '$http', MainCtrl]);
+                                                      const ProductApp = angular.module("app", []);
 
-                          function MainCtrl($scope, $http) {
-                              const URL = "http://localhost:8080/Outdoor/json";
-                              const brandURL = "https://api.myjson.com/bins/gk4fx";
-//                              
-                            $scope.products = [];
-                            $scope.brands = [];
-                      //ΘΑ ΓΕΜΙΖΩ ΜΙΑ ΛΙΣΤΑ - ΤΗΝ products ΜΕ ΤΟ URL ΠΟΥ ΘΕΛΩ ΚΑΘΕ ΦΟΡΑ ΩΣΤΕ ΝΑ ΠΑΙΡΝΩ ΤΟ 
-                     //ΚΑΤΑΛΛΗΛΟ JSON
-                            //ΘΑ ΦΤΙΑΞΩ ΠΟΛΛΑ URL ΚΑΙ ΘΑ ΤΑ ΦΟΡΤΩΝΩ ΑΝΑΛΟΓΑ ΜΕ ΤΟ ONCLICK ΣΤΗΝ products
-                                                 
-                                                
-                            $http.get(URL).then(handleJson);
-                            $http.get(brandURL).then(handleJsonBrands);
+                                                      ProductApp.controller("MainCtrl", ['$scope', '$http', MainCtrl]);
+
+                                                      function MainCtrl($scope, $http) {
+                                                          const URL = "http://localhost:8080/Outdoor/json";
+                                                          $scope.products = [];
+                                                          $http.get(URL).then(handleJson);
 
 
-                        function handleJson(response) {
+                                                          function handleJson(response) {
 
-                         console.log(response.data);
-                        $scope.products = response.data;
-                                                 }
+                                                              $scope.products = response.data;
+                                                          }
+                                                          $scope.newPage = function(id) {
+                                                          
+                                                              location.href = "http://localhost:8080/Outdoor/products/" + id;
+                                                          };
+                                                          $scope.insertProduct = function() {
+                                                              location.href = "http://localhost:8080/Outdoor/products/new"
+                                                          }
+                                                      }
 
-                        function handleJsonBrands(response) {
-                                  console.log(response.data);
-                                    $scope.brands = response.data;
-                                                 }
-                       function handleJsonPrice(response) {
-                              $scope.prices = response.data;
-                 }
-                                 }
+
+
 
 
 
         </script>
+
+        <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+              integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+              crossorigin="anonymous"></script>
+      
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+              integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+              crossorigin="anonymous"></script> 
+              
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+              integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+              crossorigin="anonymous"></script>  -->
 
     </body>
 

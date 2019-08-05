@@ -60,7 +60,10 @@
 
                 <ul class="navbar-nav1 ml-auto">
                     <li class="nav-item">
-                        <a href="/Outdoor/logout" class="nav-link" style="font-size: 20px;"><i class="far fa-user-circle"></i> Logout</a>
+                        <a href="/Outdoor/login" class="nav-link" style="font-size: 20px;"><i class="far fa-user-circle"></i> Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" style="font-size: 20px; padding-left:0px"><i class="fas fa-sign-in-alt"></i> Register</a>
                     </li>
                 </ul>
             </div>
@@ -98,9 +101,7 @@
                         </div>
                     </li>
 
-                    <li class="navbar-brand">
-                        <a href="#" class="navbar-brand">Brands</a>
-                    </li>
+               
                     <li class="navbar-brand">
                         <a href="#" class="navbar-brand">Sales</a>
                     </li>

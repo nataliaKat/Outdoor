@@ -120,9 +120,9 @@ public class ProductController {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public String updateOrShowDetails(ModelMap model, @PathVariable("id") Integer id) {
         if (isCurrentAuthenticationAnonymous()) {
-                            Product p = productService.findById(id);
+            Product p = productService.findById(id);
 
-                model.addAttribute("quantity", stockService.getQuantityPerProduct(p));
+            model.addAttribute("quantity", stockService.getQuantityPerProduct(p));
             model.addAttribute("id", id);
             return "details";
         } else {
@@ -131,21 +131,21 @@ public class ProductController {
             Integer userProfile = iterator.next().getId();
             if (userProfile == 1) {
                 Product p = productService.findById(id);
-                
+
                 model.addAttribute("id", id);
                 model.addAttribute("quantity", stockService.getQuantityPerProduct(p));
-               
+
                 return "details";
             } else {
                 Product p = productService.findById(id);
-               
+
                 model.addAttribute("quantity", stockService.getQuantityPerProduct(p));
                 model.addAttribute("product", p);
                 model.addAttribute("pBrand", p.getBrand());
                 model.addAttribute("pCategory", p.getCategory());
                 model.addAttribute("brands", brandService.findAllBrands());
                 model.addAttribute("categories", categoryService.findAllCategories());
-                
+
                 return "admineditproducts";
             }
         }
@@ -162,7 +162,7 @@ public class ProductController {
         product.setCategory(foundCategory);
 
         productService.updateProduct(product);
-       
+
         stockService.updateStock(product, quantity);
 
         if (result.hasErrors()) {
