@@ -6,7 +6,7 @@
 <html>
 
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
         <title>${profile} Profile Details</title>
          <!-- Bootstrap | Ctrl+/ -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -19,17 +19,16 @@
         <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
 
         <!-- My CSS -->
-        <link rel="stylesheet" type="text/css" href="static/css/style.css">
-        <link type="text/css" href="static/css/bootstrap.css" rel="stylesheet"></link>
-        <link type="text/css"  href="static/css/app.css" rel="stylesheet"></link>
+        <link rel="stylesheet" type="text/css" href="<c:url value='/static/css/style.css'/>"></link>
+        
+        <link href="<c:url value='/static/css/bootstrap.css' />" rel="stylesheet"></link>
+        <link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
        
 
     </head>
 
     <body class="big-banner-2">
         <div class="generic-container">
-        
-                
             <div class="well lead">Profile Details</div>
             <form:form method="POST" modelAttribute="user" onsubmit="return validation();" class="form-horizontal needs-validation" novalidate="novalidate">
                 <form:input type="hidden" path="id" id="id"/>
