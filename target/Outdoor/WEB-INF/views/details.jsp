@@ -257,12 +257,7 @@
 
                             </li>
 
-                            <li class="foo-columns" style="padding-bottom: 18px">
-                                <a href="#" class="text-secondary">
-                                    <i class="fas fa-map-marker-alt"></i>location
-                                </a>
-                            </li>
-
+                           
                         </ul>
                     </div>
                     <div class="col-md-3" style="padding-top: 30px; ">
