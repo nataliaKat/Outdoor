@@ -102,14 +102,15 @@
                 </div>
 
                 <div class="row">
-                    <div class="form-actions floatRight" style="display:flex; justify-content: space-around">
+                    <div class="form-actions floatRight floatRight2" style="display:flex; justify-content: space-around">
                         <c:choose>
                             <c:when test="${edit}">
-                                <input type="submit" value="Update" class="btn btn-primary btn-sm"/> or <a href="<c:url value='/products' />">Cancel</a>
+                                <button type="submit" value="Update" 
+                                        class="btn-block" style="font-size:10px; color:white;">Update</button>  <a href="<c:url value='/products'/>">or Cancel</a>
                             </c:when>
                             <c:otherwise>
-                                <button type="submit" value="Update" 
-                                        class="btn-block" style="font-size:10px; color:white; width" value="Register">Register</button> or <a href="<c:url value='/products' />">Cancel</a>
+                                <button type="submit" value="Register" 
+                                        class="btn-block" style="font-size:10px; color:white;">Register</button>  <a href="<c:url value='/products'/>">or Cancel</a>
                             </c:otherwise>
                         </c:choose>
                     </div>

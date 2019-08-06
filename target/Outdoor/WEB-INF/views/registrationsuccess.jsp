@@ -7,10 +7,16 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<title>Registration Confirmation Page</title>
-	<link href="<c:url value='/static/css/bootstrap.css' />" rel="stylesheet"></link>
-	<link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
+	  <!-- Monserant-Font -->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+
+        <!-- My CSS -->
+        <link rel="stylesheet" type="text/css" href="<c:url value='/static/css/style.css'/>"></link>
+        
+        <link href="<c:url value='/static/css/bootstrap.css' />" rel="stylesheet"></link>
+        <link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
 </head>
-<body>
+<body class="big-banner-2">
 	<div class="generic-container">
 		<%@include file="authheader.jsp" %>
 		

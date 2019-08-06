@@ -12,7 +12,10 @@
         <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
 
         <!-- My CSS -->
-        <link rel="stylesheet" type="text/css" href="static/css/style.css">
+        <link rel="stylesheet" type="text/css" href="<c:url value='/static/css/style.css'/>"></link>
+        
+        <link href="<c:url value='/static/css/bootstrap.css' />" rel="stylesheet"></link>
+        <link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
 </head>
 <body class="big-banner-2">
 	<div class="generic-container">
