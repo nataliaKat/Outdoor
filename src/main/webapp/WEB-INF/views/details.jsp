@@ -36,9 +36,14 @@
         <!-- AngularJS -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.min.js"></script>
 
+        <!--Toastr-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">  
+        
         <!-- My CSS -->
         <link rel="stylesheet" type="text/css" href="<c:url value="../static/css/style.css"/>">
         <link rel="stylesheet" type="text/css" href="<c:url value="../static/css/jquery.nice-number.css"/>">
+        
+        
 
     </head>
     <body ng-app="app" ng-controller="MainCtrl" ng-cloak style="padding-top:0%">
@@ -195,12 +200,11 @@
                 <!-- FIRST ROW -->
                 <div class="row" style="padding-bottom: 90px; text-align: center">
                     <div class="col-md-3" style="padding-top: 30px; ">
-                        <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0%">
-                           <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0%">
-                           Chat with us!
+                        <h5 class="column-title " style="padding-bottom: 30px; margin-bottom: 0%">
+                            Chat with us!
                         </h5>
                         <br>
-                        <a href="http://ra1.anystream.eu:1090/websocketchat-0.0.1-SNAPSHOT/"><i class="far fa-comments chat" style="font-size:70px; margin-right: 120px;"></i> </a>
+                        <a class="add"><i class="far fa-comments " style="font-size:70px; margin-right: 120px;"></i> </a>
                     </div>
                     <div class="col-md-3" style="padding-top: 30px; ">
                         <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0%">
@@ -303,6 +307,8 @@
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <!--Toastr-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
 
         <!-- BUTTON QUANTITY -->
@@ -364,6 +370,13 @@
                                     document.documentElement.scrollTop = 300;
                                 }
                                             }
+                                            
+                                               $(document).ready(function () {
+                                                            $(".add").click(function () {
+                                                                toastr.info("You have to login first");
+                                                            });
+                                                            $
+                                                        });
         </script>
 
         <script type="text/javascript">

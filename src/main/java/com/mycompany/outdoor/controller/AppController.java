@@ -95,14 +95,14 @@ public class AppController {
         return "registration";
     }
 
-    @RequestMapping(value = {"/admin/newadmin"}, method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/newadmin", method = RequestMethod.GET)
     public String newAdmin(ModelMap model) {
         User user = new User();
         model.addAttribute("user", user);
         model.addAttribute("edit", false);
         model.addAttribute("loggedinuser", getPrincipal());
         model.addAttribute("userProfile", 2);
-        model.addAttribute("profile", "Administrator");
+//        model.addAttribute("profile", "Administrator");
         return "registration";
     }
 

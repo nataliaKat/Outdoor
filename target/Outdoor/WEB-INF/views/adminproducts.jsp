@@ -45,7 +45,7 @@
 
     <body ng-app="app" ng-controller="MainCtrl" ng-cloak style="padding-top: 0px">
 
-             <!-- NAVBAR HEADER  (BUTTON TOOGLE DOESNT WORK)-->
+        <!-- NAVBAR HEADER  (BUTTON TOOGLE DOESNT WORK)-->
 
         <nav class="navbar big-banner navbar-expand-lg navbar-light bg-white border"
              style="padding-left: 150px; padding-right: 150px; height:368px;">
@@ -56,7 +56,7 @@
 
             <div class="collapse navbar-collapse" id="#navbarMenu"
                  style="position:relative; bottom:130px; left:80px; color: blue">
-            <p class="logo">C<i class="far fa-compass logopic"></i>mpass </p>
+                <p class="logo">C<i class="far fa-compass logopic"></i>mpass </p>
 
                 <ul class="navbar-nav1 ml-auto">
                     <li class="nav-item">
@@ -66,8 +66,8 @@
             </div>
         </nav>
 
-             <!--NAVBAR 2-->
-             
+        <!--NAVBAR 2-->
+
         <nav class="navbar navbar-expand-sm navbar-light align-center sticky-top" style="background-color: aquamarine">
             <button class="navbar-toggler" data-toggle="colapse" data-target="#navbarMenu2">
                 <span class="navbar-toggler-icon"></span>
@@ -79,23 +79,23 @@
                         <a href="/Outdoor/products" class="navbar-brand">Home</a>
                     </li>
 
-                   <li class="navbar-brand dropdown">
+                    <li class="navbar-brand dropdown">
                         <a class="navbar-brand dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">
                             Products
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: rgb(217, 223, 223)">
                             <ol class="nostyle">
-                            <li ng-repeat="category in categories" class="filterItem" style="padding: none">
-                                <label class="label" for="cat{{category.categoryId}}" path="category" name="category">{{category.categoryName}}
-                                <input type="radio" id="cat{{category.categoryId}}" name="category" path="category" ng-click="brandClick(0, category.categoryId)">
-                                </label>
-                            </li>
-                        </ol>
+                                <li ng-repeat="category in categories" class="filterItem" style="padding: none">
+                                    <label class="label" for="cat{{category.categoryId}}" path="category" name="category">{{category.categoryName}}
+                                        <input type="radio" id="cat{{category.categoryId}}" name="category" path="category" ng-click="brandClick(0, category.categoryId)">
+                                    </label>
+                                </li>
+                            </ol>
                         </div>
                     </li>
 
-               
+
                     <li class="navbar-brand">
                         <a href="/Outdoor/sales" class="navbar-brand">Sales</a>
                     </li>
@@ -111,20 +111,20 @@
         <div class="container" style="margin-top: 50px">
             <div class="row">
                 <div class="filteradmin col-lg-3 border">
-                    
-                      <button id="new" class="btn-block btn-lg" style="padding-left:0%; padding-right:0%; 
-                                            margin-left:0%" value="" ng-click="insertProduct()">Add new product</button>
-                                             
-                      <button id="new" class="btn-block btn-lg" style="padding-left:0%; padding-right:0%; 
-                                            margin-left:0%" value="" ng-click="newAdmin()">Add new admin</button>
-                <div class="brand">
+
+                    <button id="new" class="btn-block btn-lg" style="padding-left:0%; padding-right:0%; 
+                            margin-left:0%" value="" ng-click="insertProduct()">Add new product</button>
+
+                    <button id="new" class="btn-block btn-lg" style="padding-left:0%; padding-right:0%; 
+                            margin-left:0%" value="" ng-click="newAdmin()">Add new admin</button>
+                    <div class="brand">
                         <h4> Brands</h4><hr>
                         <ol class="nostyle">
 
                             <li ng-repeat="brand in brands" class="filterItem" >
                                 <label class="label" for="{{brand.brandsId}}" path="brand" name="brand">{{brand.brandname}}
-                                <input type="radio" id="{{brand.brandsId}}" name="brand" path="brand" ng-click="brandClick(brand.brandsId, 0)">
-                                <span class="checkmark"></span>
+                                    <input type="radio" id="{{brand.brandsId}}" name="brand" path="brand" ng-click="brandClick(brand.brandsId, 0)">
+                                    <span class="checkmark"></span>
                                 </label>
                             </li>
                         </ol>
@@ -135,8 +135,8 @@
                         <ol class="nostyle">
                             <li ng-repeat="category in categories" class="filterItem">
                                 <label class="label" for="category{{category.categoryId}}" path="category" name="category">{{category.categoryName}}
-                                <input type="radio" id="category{{category.categoryId}}" name="category" path="category" ng-click="brandClick(0, category.categoryId)">
-                                <span class="checkmark"></span>
+                                    <input type="radio" id="category{{category.categoryId}}" name="category" path="category" ng-click="brandClick(0, category.categoryId)">
+                                    <span class="checkmark"></span>
                                 </label>
                             </li>
                         </ol>
@@ -164,25 +164,25 @@
                         <!--RANGE BARS-->
                         <div class="rangeContainer">
                             <div class="col1" >
-                           Min &euro; <input type="range" min="${minimumPrice}" max="${maximumPrice/2}" value="${minimumPrice}" class="slider" id="slider" ng-model="price_slider.start[0]" ng-click="priceFiltering('filter')" value="Filter">
-                           </div>
+                                Min &euro; <input type="range" min="${minimumPrice}" max="${maximumPrice/2}" value="${minimumPrice}" class="slider" id="slider" ng-model="price_slider.start[0]" ng-click="priceFiltering('filter')" value="Filter">
+                            </div>
                             <br>
                             <div class="col1">
-                           Max &euro; <input type="range" min="${maximumPrice/2}" max="${maximumPrice}" value="${maximumPrice}" class="slider" id="slider2" ng-model="price_slider.start[1]" ng-click="priceFiltering('filter')" value="Filter">
+                                Max &euro; <input type="range" min="${maximumPrice/2}" max="${maximumPrice}" value="${maximumPrice}" class="slider" id="slider2" ng-model="price_slider.start[1]" ng-click="priceFiltering('filter')" value="Filter">
                             </div> 
-                           <br>
+                            <br>
                             <!--<span ng-click="price_slider.start = [0, 500]" class="clear" id="clearPrice" >Clear</span>-->
                         </div>
                     </div>
                     <br>
                     <a href="/Outdoor"><span><h5> Clear all filters</h5></span> </a>
-                    
-              
+
+
 
                 </div>
-                    
-                
-        
+
+
+
                 <div class="col-lg-9">
                     <div class="row">
                         <!-- ITEM 1 -->
@@ -232,8 +232,11 @@
                 <div class="row" style="padding-bottom: 90px; text-align: center">
                     <div class="col-md-3" style="padding-top: 30px; ">
                         <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0%">
-                            Get in touch
+                         
+                           Chat with us!
                         </h5>
+                        <br>
+                        <a href="http://ra1.anystream.eu:1090/websocketchat-0.0.1-SNAPSHOT/"><i class="far fa-comments chat" style="font-size:70px; margin-right: 120px;"></i> </a>
                     </div>
                     <div class="col-md-3" style="padding-top: 30px; ">
                         <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0%">
@@ -241,12 +244,12 @@
                         </h5>
 
                         <ul style="padding-left: 0%">
-                          <li class="foo-columns" style="padding-bottom: 18px">
+                            <li class="foo-columns" style="padding-bottom: 18px">
                                 <a href="http://localhost:8080/Outdoor/cat/1" class="text-secondary ">
                                     <i class="fas fa-hiking"></i> backpacks
                                 </a>
                             </li>
-                            
+
                             <li class="foo-columns" style="padding-bottom: 18px">
                                 <a href="http://localhost:8080/Outdoor/cat/2"  class="text-secondary">
                                     <i class="fas fa-campground"></i> tents
@@ -335,87 +338,87 @@
 
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-          <script>
-                            var savedbid = 0;
-                            var savedcid = 0;
-                            const ProductApp = angular.module("app", []);
-                            ProductApp.controller("MainCtrl", ['$scope', '$http', MainCtrl]);
+        <script>
+                                                        var savedbid = 0;
+                                                        var savedcid = 0;
+                                                        const ProductApp = angular.module("app", []);
+                                                        ProductApp.controller("MainCtrl", ['$scope', '$http', MainCtrl]);
 
-                            function MainCtrl($scope, $http) {
-                                const URL = "http://localhost:8080/Outdoor/json/0/" +${catcat};
-                                const brandURL = "http://localhost:8080/Outdoor/json/brands/";
-                                const categoryURL = "http://localhost:8080/Outdoor/json/categories";
-                                $scope.products = [];
-                                $scope.brands = [];
-                                $scope.categories = [];
+                                                        function MainCtrl($scope, $http) {
+                                                            const URL = "http://localhost:8080/Outdoor/json/0/" +${catcat};
+                                                            const brandURL = "http://localhost:8080/Outdoor/json/brands/";
+                                                            const categoryURL = "http://localhost:8080/Outdoor/json/categories";
+                                                            $scope.products = [];
+                                                            $scope.brands = [];
+                                                            $scope.categories = [];
 
-                                $http.get(URL).then(handleJson);
-                                $http.get(brandURL).then(handleJsonBrands);
-                                $http.get(categoryURL).then(handleJsonCategories);
+                                                            $http.get(URL).then(handleJson);
+                                                            $http.get(brandURL).then(handleJsonBrands);
+                                                            $http.get(categoryURL).then(handleJsonCategories);
 
-                                function handleJsonCategories(response) {
-                                    $scope.categories = response.data;
-                                }
+                                                            function handleJsonCategories(response) {
+                                                                $scope.categories = response.data;
+                                                            }
 
-                                function handleJson(response) {
-                                    $scope.products = response.data;
-                                }
+                                                            function handleJson(response) {
+                                                                $scope.products = response.data;
+                                                            }
 
-                                function handleJsonBrands(response) {
-                                    $scope.brands = response.data;
-                                }
-                                function handleJsonPrice(response) {
-                                    $scope.prices = response.data;
-                                }
-                                $scope.newPage = function (id) {
+                                                            function handleJsonBrands(response) {
+                                                                $scope.brands = response.data;
+                                                            }
+                                                            function handleJsonPrice(response) {
+                                                                $scope.prices = response.data;
+                                                            }
+                                                            $scope.newPage = function (id) {
 
-                                    location.href = "http://localhost:8080/Outdoor/products/" + id;
-                                };
-                                  $scope.insertProduct = function() {
-                                                              location.href = "http://localhost:8080/Outdoor/products/new"
-                                                          }
-                                    $scope.newAdmin = function() {
-                                                              location.href = "http://localhost:8080/Outdoor/admin/newadmin"
-                                                          }
-                                      
-                                $scope.brandClick = function (bid, cid) {
-                                
-                                    if (bid != 0 && cid == 0) {
-                                        savedbid = bid;
-                                        console.log(" IF saved BID " + savedbid);
-                                    } else if (bid == 0 && cid != 0) {
-                                        savedcid = cid;
-                                        console.log("IF saved CID " + savedcid);
-                                    }
-                                    let brandAndPriceByIdURL = "http://localhost:8080/Outdoor/json/" + savedbid + "/" + savedcid;
-                                    $http.get(brandAndPriceByIdURL).then(handleJson);
-                                    document.documentElement.scrollTop = 300;
-                                }
+                                                                location.href = "http://localhost:8080/Outdoor/products/" + id;
+                                                            };
+                                                            $scope.insertProduct = function () {
+                                                                location.href = "http://localhost:8080/Outdoor/products/new";
+                                                            }
+                                                            $scope.newAdmin = function () {
+                                                                location.href = "http://localhost:8080/Outdoor/admin/newadmin";
+                                                            }
+
+                                                            $scope.brandClick = function (bid, cid) {
+
+                                                                if (bid != 0 && cid == 0) {
+                                                                    savedbid = bid;
+                                                                    console.log(" IF saved BID " + savedbid);
+                                                                } else if (bid == 0 && cid != 0) {
+                                                                    savedcid = cid;
+                                                                    console.log("IF saved CID " + savedcid);
+                                                                }
+                                                                let brandAndPriceByIdURL = "http://localhost:8080/Outdoor/json/" + savedbid + "/" + savedcid;
+                                                                $http.get(brandAndPriceByIdURL).then(handleJson);
+                                                                document.documentElement.scrollTop = 300;
+                                                            }
 
 
 
 //                    PRICE FILTER
-                                $scope.priceFiltering = function () {
-                                    $scope.minPrice = $scope.price_slider.start[0];
-                                    $scope.maxPrice = $scope.price_slider.start[1];
+                                                            $scope.priceFiltering = function () {
+                                                                $scope.minPrice = $scope.price_slider.start[0];
+                                                                $scope.maxPrice = $scope.price_slider.start[1];
 
-                                    $scope.pricefilter = function (product) {
-                                        if ((product.price <= $scope.maxPrice) && (product.price >= $scope.minPrice)) {
-                                            return product;
-                                        }
-                                    };
-                                }
+                                                                $scope.pricefilter = function (product) {
+                                                                    if ((product.price <= $scope.maxPrice) && (product.price >= $scope.minPrice)) {
+                                                                        return product;
+                                                                    }
+                                                                };
+                                                            }
 
-                                $scope.price_slider = {
-                                    start: [${minimumPrice}, ${maximumPrice}],
-                                    connect: true,
-                                    step: 1,
-                                    range: {
-                                        min: ${minimumPrice},
-                                        max: ${maximumPrice}
-                                    }
-                                };
-                                //MAIN
+                                                            $scope.price_slider = {
+                                                                start: [${minimumPrice}, ${maximumPrice}],
+                                                                connect: true,
+                                                                step: 1,
+                                                                range: {
+                                                                    min: ${minimumPrice},
+                                                                    max: ${maximumPrice}
+                                                                }
+                                                            };
+                                                            //MAIN
                                                         }
         </script>
 
