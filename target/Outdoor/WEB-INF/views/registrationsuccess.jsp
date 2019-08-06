@@ -6,7 +6,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<title>Registration Confirmation Page</title>
+	<title>Compass</title>
 	  <!-- Monserant-Font -->
         <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
 
