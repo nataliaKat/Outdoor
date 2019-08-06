@@ -18,7 +18,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>insert</title>
+        <title>edit-admin</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Bootstrap | Ctrl+/ -->
@@ -39,7 +39,7 @@
         <link href="https://fonts.googleapis.com/css?family=Rokkitt:500&display=swap" rel="stylesheet">
 
         <!-- AngularJS -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.min.js"></script>
+        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.min.js"></script>-->
 
         <!-- My CSS -->
         <link rel="stylesheet" type="text/css" href="<c:url value='/static/css/style.css'/>"
@@ -89,16 +89,32 @@
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Products
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown"
-                             style="background-color: rgb(217, 223, 223)">
-                            <ol class="nostyle">
-                                <li ng-repeat="category in categories" class="filterItem" style="padding: none">
-                                    <label class="label" for="{{category.categoryId}}" path="category" name="category">{{category.categoryName}}
-                                        <input type="radio" id="{{category.categoryId}}" name="category" path="category" ng-click=newWelcome(category.categoryId)>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: rgb(217, 223, 223)">
+                            <ul style="padding-left: 0%">
+                               <li class="foo-columns" style="padding-bottom: 18px">
+                                <a href="http://localhost:8080/Outdoor/cat/1" class="text-secondary ">
+                                    Backpacks
+                                </a>
+                            </li>
+                            
+                            <li class="foo-columns" style="padding-bottom: 18px">
+                                <a href="http://localhost:8080/Outdoor/cat/2"  class="text-secondary">
+                                   Tents
+                                </a>
+                            </li>
 
-                                    </label>
-                                </li>
-                            </ol>
+                            <li class="foo-columns" style="padding-bottom: 18px">
+                                <a href="http://localhost:8080/Outdoor/cat/3" class="text-secondary">
+                                    Hiking Equipment
+                                </a>
+                            </li>
+
+                            <li class="foo-columns" style="padding-bottom: 18px">
+                                <a href="http://localhost:8080/Outdoor/cat/4"  class="text-secondary">
+                                   First-Aid Kits
+                                </a>
+                            </li>
+                        </ul>
                         </div>
                     </li>
 
