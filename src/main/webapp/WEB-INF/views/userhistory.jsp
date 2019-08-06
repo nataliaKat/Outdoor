@@ -27,6 +27,9 @@
         <!-- Rokkitt Font -->
         <link href="https://fonts.googleapis.com/css?family=Rokkitt:500&display=swap" rel="stylesheet">
 
+        <!-- AngularJS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.min.js"></script>
+        
         <!-- My CSS -->
         <link rel="stylesheet" type="text/css" href="static/css/style.css">
 
@@ -52,7 +55,7 @@
 
                 <ul class="navbar-nav1 ml-auto" style="display:flex; align-content:flex-start; ">
                     <li class="nav-item">
-                        <a href="/Outdoor/login" class="nav-link" style="font-size: 20px; padding-right:0px"><i class="far fa-user-circle"></i> Logout </a>
+                        <a href="/Outdoor/logout" class="nav-link" style="font-size: 20px; padding-right:0px"><i class="far fa-user-circle"></i> Logout </a>
                     </li>
 
                 </ul>
@@ -135,7 +138,8 @@
                     </tbody>
                 </table>  
 
-
+            </div>
+        </div>
 
    
 
@@ -146,11 +150,11 @@
                 <div class="row" style="padding-bottom: 90px; text-align: center">
                     <div class="col-md-3" style="padding-top: 30px; ">
                         <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0%">
-                           <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0%">
+                           
                            Chat with us!
                         </h5>
                         <br>
-                        <a href="http://ra2.anystream.eu/websocketchat-0.0.1-SNAPSHOT/"><i class="far fa-comments chat" style="font-size:70px; margin-right: 120px;"></i> </a>
+                        <a href="http://ra1.anystream.eu:1090/websocketchat-0.0.1-SNAPSHOT/"><i class="far fa-comments chat" style="font-size:70px; margin-right: 120px;"></i> </a>
                     </div>
                     <div class="col-md-3" style="padding-top: 30px; ">
                         <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0%">
@@ -265,7 +269,66 @@
                         form.classList.add('was-validated');
                     })
                 </script>
+                
+                 <script>
 
+
+                                            var savedbid = 0;
+                                            var savedcid = 0;
+
+                                            const ProductApp = angular.module("app", []);
+
+                                            ProductApp.controller("MainCtrl", ['$scope', '$http', MainCtrl]);
+
+                                            function MainCtrl($scope, $http) {
+                                                const URL = "http://localhost:8080/Outdoor/json/${id}";
+                                                const brandURL = "http://localhost:8080/Outdoor/json/brands";
+                                                const categoryURL = "http://localhost:8080/Outdoor/json/categories";
+                                                $scope.products = [];
+                                                $scope.brands = [];
+                                                $scope.categories = [];
+                                                $http.get(URL).then(handleJson);
+                                                $http.get(categoryURL).then(handleJsonCategories);
+
+                                                $http.get(brandURL).then(handleJsonBrands);
+
+                                                $scope.newWelcome = function (id) {
+
+                                                    location.href = "http://localhost:8080/Outdoor/cat/" + id;
+                                                }
+
+                                                $scope.newPage = function (id) {
+
+                                                    location.href = "http://localhost:8080/Outdoor/products/" + ${id} + "/buy";
+                                                };
+
+                                                function handleJson(response) {
+                                                    $scope.product = response.data;
+                                                }
+                                                function handleJsonCategories(response) {
+                                                    $scope.categories = response.data;
+                                                }
+                                                function handleJsonBrands(response) {
+
+                                                    $scope.brands = response.data;
+                                                }
+
+
+                                                $scope.brandClick = function (bid, cid) {
+
+                                                    if (bid != 0 && cid == 0) {
+                                                        savedbid = bid;
+                                                        console.log(" IF saved BID " + savedbid);
+                                                    } else if (bid == 0 && cid != 0) {
+                                                        savedcid = cid;
+                                                        console.log("IF saved CID " + savedcid);
+                                                    }
+                                                    let brandAndPriceByIdURL = "http://localhost:8080/Outdoor/json/" + savedbid + "/" + savedcid;
+                                                    $http.get(brandAndPriceByIdURL).then(handleJson);
+                                                    document.documentElement.scrollTop = 300;
+                                                }
+                                            }
+        </script>
                 </body>
 
                 </html>

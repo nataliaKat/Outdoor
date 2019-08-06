@@ -60,7 +60,7 @@
 
                 <ul class="navbar-nav1 ml-auto" style="display:flex; align-content:flex-start; ">
                     <li class="nav-item">
-                        <a href="/Outdoor/login" class="nav-link" style="font-size: 20px; padding-right:0px"><i class="far fa-user-circle"></i> Logout </a>
+                        <a href="/Outdoor/logout" class="nav-link" style="font-size: 20px; padding-right:0px"><i class="far fa-user-circle"></i> Logout </a>
                     </li>
 
                 </ul>
@@ -90,7 +90,7 @@
                             <ol class="nostyle">
                                 <li ng-repeat="category in categories" class="filterItem" style="padding: none">
                                     <label class="label" for="cat{{category.categoryId}}" path="category" name="category">{{category.categoryName}}
-                                        <input type="radio" id="cat{{category.categoryId}}" name="category" path="category" ng-click="brandClick(0, category.categoryId)">
+                                        <input type="radio" id="cat{{category.categoryId}}" name="category" path="category"  ng-click=newWelcome(category.categoryId)>
                                     </label>
                                 </li>
                             </ol>
@@ -188,11 +188,15 @@
             <div class="container p-5">
                 <!-- FIRST ROW -->
                 <div class="row" style="padding-bottom: 90px; text-align: center">
-                    <div class="col-md-3" style="padding-top: 30px; ">
+                     <div class="col-md-3" style="padding-top: 30px; ">
                         <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0%">
-                            Get in touch
+                         
+                           Chat with us!
                         </h5>
+                        <br>
+                        <a href="http://ra1.anystream.eu:1090/websocketchat-0.0.1-SNAPSHOT/"><i class="far fa-comments chat" style="font-size:70px; margin-right: 120px;"></i> </a>
                     </div>
+
                     <div class="col-md-3" style="padding-top: 30px; ">
                         <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0%">
                             Categories

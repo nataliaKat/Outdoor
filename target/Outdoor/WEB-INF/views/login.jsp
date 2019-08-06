@@ -8,6 +8,8 @@
         <link href="<c:url value='/static/css/bootstrap.css' />"  rel="stylesheet"></link>
         <link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
         <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.css" />
+        <!-- Monserant-Font -->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
 
         <!-- My CSS -->
         <link rel="stylesheet" type="text/css" href="static/css/style.css">
@@ -16,9 +18,9 @@
 
     <body class="big-banner-2">
         <div id="mainWrapper">
-            <div class="login-container">
-                <div class="login-card">
-                    <div class="login-form">
+            <div class="login-container"  >
+                <div class="login-card" style="font-family: 'Montserrat', sans-serif;">
+                    <div class="login-form"  >
                         <c:url var="loginUrl" value="/login" />
                         <form action="${loginUrl}" method="post" class="form-horizontal">
                             <c:if test="${param.error != null}">
@@ -35,21 +37,25 @@
                                 <label class="input-group-addon" for="username"><i class="fa fa-user"></i></label>
                                 <input type="text" class="form-control" id="username" name="ssoId" placeholder="Enter Username" required>
                             </div>
+
                             <div class="input-group input-sm">
                                 <label class="input-group-addon" for="password"><i class="fa fa-lock"></i></label> 
                                 <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password" required>
                             </div>
                             <div class="input-group input-sm">
                                 <div class="checkbox">
-                                    <label><input type="checkbox" id="rememberme" name="remember-me"> Remember Me</label>  
+                                    <label style=" font-size:13px">  <input type="checkbox" id="rememberme" name="remember-me" style="font-family: 'Montserrat'"> Remember Me</label>  
                                 </div>
                             </div>
                             <input type="hidden" name="${_csrf.parameterName}"  value="${_csrf.token}" />
 
                             <div class="form-actions">
-                                <input type="submit"
-                                       class="btn btn-block btn-primary btn-default" value="Log in">
-                                <a href="/Outdoor/newuser">Register</a>
+                                
+                                <button type="submit"
+                                        class="btn-block" style="font-family: 'Montserrat', sans-serif; 
+                                        font-size:20px;" value="Log in">Login</button>
+                                        
+                                <a href="/Outdoor/newuser" style="font-family: 'Montserrat', sans-serif; font-size:15px">Register</a>
                             </div>
                         </form>
                     </div>

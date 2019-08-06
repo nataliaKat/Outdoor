@@ -128,7 +128,7 @@ public class ProductController {
 
             model.addAttribute("quantity", stockService.getQuantityPerProduct(p));
             model.addAttribute("id", id);
-            return "customerdetails";
+            return "details";
         } else {
             User user = userService.findBySSO(getPrincipal());
             Iterator<UserProfile> iterator = user.getUserProfiles().iterator();

@@ -4,7 +4,7 @@ html{
 
 body{
 	height: 100%;
-	/*background-color:rgb(245, 245, 245);*/
+	font-family: 'Montserrat', sans-serif;
 }
 
 
@@ -70,6 +70,7 @@ body, #mainWrapper, .form-control{
     width: 40%;
     left: 30%;
     position: absolute;
+        border-radius: 12px;
 }
 
 .login-card {
@@ -84,3 +85,8 @@ body, #mainWrapper, .form-control{
 .authbar{
 	margin-bottom:15px;
 }
+
+.login-form {
+    font-family: 'Montserrat', sans-serif;
+}
+

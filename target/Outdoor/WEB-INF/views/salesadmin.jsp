@@ -49,7 +49,7 @@
 
             <div class="collapse navbar-collapse" id="#navbarMenu"
                  style="position:relative; bottom:130px; left:80px; color: blue">
-                <!-- <p class="text-center font-italic font-weight-bold" style="">Compass</p> -->
+              <p class="logo">C<i class="far fa-compass logopic"></i>mpass </p>
 
 
                 <ul class="navbar-nav1 ml-auto">
@@ -133,7 +133,8 @@
                 </table>  
 
 
-
+            </div>
+        </div>
    
 
 <!--FOOTER-->
@@ -143,11 +144,11 @@
                 <div class="row" style="padding-bottom: 90px; text-align: center">
                     <div class="col-md-3" style="padding-top: 30px; ">
                         <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0%">
-                           <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0%">
+                         
                            Chat with us!
                         </h5>
                         <br>
-                        <a href="http://ra2.anystream.eu/websocketchat-0.0.1-SNAPSHOT/"><i class="far fa-comments chat" style="font-size:70px; margin-right: 120px;"></i> </a>
+                        <a href="http://ra1.anystream.eu:1090/websocketchat-0.0.1-SNAPSHOT/"><i class="far fa-comments chat" style="font-size:70px; margin-right: 120px;"></i> </a>
                     </div>
                     <div class="col-md-3" style="padding-top: 30px; ">
                         <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0%">

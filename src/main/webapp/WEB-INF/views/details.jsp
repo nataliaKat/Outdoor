@@ -66,12 +66,12 @@
                         <p class="nav-link" style="font-size: 20px; padding-left:10px; padding-right:10px">|</p>  
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link" style="font-size: 20px; padding-left:0px"><i class="fas fa-sign-in-alt"></i> Register</a>
+                        <a href="http://localhost:8080/Outdoor/newuser" class="nav-link" style="font-size: 20px; padding-left:0px"><i class="fas fa-sign-in-alt"></i> Register</a>
                     </li>
 
                 </ul>
             </div>
-
+        </nav>
         <!-- <div class="container" style="margin-left: 40px; margin-right: 40"> -->
 
         <!-- NAVBAR 2 -->
@@ -95,7 +95,7 @@
                             <ol class="nostyle">
                                 <li ng-repeat="category in categories" class="filterItem" style="padding: none">
                                     <label class="label" for="cat{{category.categoryId}}" path="category" name="category">{{category.categoryName}}
-                                        <input type="radio" id="cat{{category.categoryId}}" name="category" path="category" ng-click="brandClick(0, category.categoryId)">
+                                        <input type="radio" id="cat{{category.categoryId}}" name="category" path="category" ng-click=newWelcome(category.categoryId)>
                                     </label>
                                 </li>
                             </ol>
@@ -200,7 +200,7 @@
                            Chat with us!
                         </h5>
                         <br>
-                        <a href="http://ra2.anystream.eu/websocketchat-0.0.1-SNAPSHOT/"><i class="far fa-comments chat" style="font-size:70px; margin-right: 120px;"></i> </a>
+                        <a href="http://ra1.anystream.eu:1090/websocketchat-0.0.1-SNAPSHOT/"><i class="far fa-comments chat" style="font-size:70px; margin-right: 120px;"></i> </a>
                     </div>
                     <div class="col-md-3" style="padding-top: 30px; ">
                         <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0%">

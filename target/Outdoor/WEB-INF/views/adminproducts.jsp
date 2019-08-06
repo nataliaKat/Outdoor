@@ -54,10 +54,8 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-
             <div class="collapse navbar-collapse" id="#navbarMenu"
                  style="position:relative; bottom:130px; left:80px; color: blue">
-                <!-- <p class="text-center font-italic font-weight-bold" style="">Compass</p> -->
             <p class="logo">C<i class="far fa-compass logopic"></i>mpass </p>
 
                 <ul class="navbar-nav1 ml-auto">
