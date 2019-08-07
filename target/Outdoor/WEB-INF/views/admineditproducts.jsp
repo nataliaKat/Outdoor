@@ -240,7 +240,7 @@
                            Chat with us!
                         </h5>
                         <br>
-                        <a href="http://ra1.anystream.eu:1090/websocketchat-0.0.1-SNAPSHOT/"><i class="far fa-comments chat" style="font-size:70px; margin-right: 120px;"></i> </a>
+                        <a href="http://ra1.anystream.eu:1090/compass-chat/"><i class="far fa-comments chat" style="font-size:70px; margin-right: 120px;"></i> </a>
                     </div>
                     <div class="col-md-3" style="padding-top: 30px; ">
                         <h5 class="column-title" style="padding-bottom: 30px; margin-bottom: 0%">
