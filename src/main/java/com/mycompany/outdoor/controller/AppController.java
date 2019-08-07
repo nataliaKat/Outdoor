@@ -1,7 +1,5 @@
 package com.mycompany.outdoor.controller;
 
-import com.mycompany.outdoor.model.Product;
-import com.mycompany.outdoor.model.Sale;
 import java.util.List;
 import java.util.Locale;
 
@@ -117,14 +115,7 @@ public class AppController {
             return "registration";
         }
 
-        /*
-		 * Preferred way to achieve uniqueness of field [sso] should be implementing custom @Unique annotation 
-		 * and applying it on field [sso] of Model class [User].
-		 * 
-		 * Below mentioned peace of code [if block] is to demonstrate that you can fill custom errors outside the validation
-		 * framework as well while still using internationalized messages.
-		 * 
-         */
+        
         if (!userService.isUserSSOUnique(user.getId(), user.getSsoId())) {
             FieldError ssoError = new FieldError("user", "ssoId", messageSource.getMessage("non.unique.ssoId", new String[]{user.getSsoId()}, Locale.getDefault()));
             result.addError(ssoError);
@@ -136,7 +127,7 @@ public class AppController {
 
         model.addAttribute("success", "User " + user.getFirstName() + " " + user.getLastName() + " registered successfully");
         model.addAttribute("loggedinuser", getPrincipal());
-        //return "success";
+     
         return "registrationsuccess";
     }
 

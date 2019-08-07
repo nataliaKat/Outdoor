@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.mycompany.outdoor.controller;
 
 import com.mycompany.outdoor.dao.ProductDao;
@@ -21,10 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- *
- * @author kat26
- */
+
 @RestController
 public class RestProductController {
 
@@ -44,8 +37,6 @@ public class RestProductController {
     public ResponseEntity<List<Product>> filterPrice() {
         List<Product> products = productService.findProductsByPrice(50, 100);
 
-//        List<ProductView> productviews = transform(products);
-//          bean.utils copyproperties
         System.out.println(products);
 
         if (products.isEmpty()) {

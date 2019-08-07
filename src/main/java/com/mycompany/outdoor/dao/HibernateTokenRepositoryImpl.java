@@ -10,8 +10,6 @@ import org.springframework.security.web.authentication.rememberme.PersistentReme
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
-import com.mycompany.outdoor.dao.AbstractDao;
 import com.mycompany.outdoor.model.PersistentLogin;
 
 @Repository("tokenRepositoryDao")

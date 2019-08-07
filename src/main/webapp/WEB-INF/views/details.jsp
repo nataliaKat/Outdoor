@@ -1,8 +1,3 @@
-<%-- 
-    Document   : details
-    Created on : 28 Ιουλ 2019, 7:44:35 μμ
-    Author     : kat26
---%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
@@ -77,7 +72,7 @@
                 </ul>
             </div>
         </nav>
-        <!-- <div class="container" style="margin-left: 40px; margin-right: 40"> -->
+       
 
         <!-- NAVBAR 2 -->
         <nav class="navbar navbar-expand-sm navbar-light align-center sticky-top" style="background-color: aquamarine">
@@ -148,21 +143,6 @@
                             <span id="stock" style="font-size" > </span>
 
                         </div>
-
-                        <!-- BUTTON QUANTITY PLUS MINUS -->
-                        <!--                        <div class="quantityButton" style="padding-top: 30px; outline:none">
-                                                    Quantity
-                                                    <input type="number" 
-                                                           style="outline: none; padding:5px; height:25px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,.5);
-                                                           margin: 0 5px !important"
-                                                           value="1">
-                                                </div>-->
-                        <!-- /BUTTON QUANTITY PLUS MINUS -->
-
-
-
-
-
 
                         <!--BUY BUTTON-->
                         <div class="purchase">
@@ -355,10 +335,10 @@
                                 
                                     if (bid != 0 && cid == 0) {
                                         savedbid = bid;
-                                        console.log(" IF saved BID " + savedbid);
+                                        
                                     } else if (bid == 0 && cid != 0) {
                                         savedcid = cid;
-                                        console.log("IF saved CID " + savedcid);
+                                       
                                     }
                                     let brandAndPriceByIdURL = "http://localhost:8080/Outdoor/json/" + savedbid + "/" + savedcid;
                                     $http.get(brandAndPriceByIdURL).then(handleJson);
@@ -374,13 +354,7 @@
                                                         });
         </script>
 
-        <script type="text/javascript">
-                    $(function () {
-
-                        $('input[type="number"]').niceNumber();
-
-                    });
-        </script>
+       
         <!--STOCK AVAILABILITY-->
         <script>
 

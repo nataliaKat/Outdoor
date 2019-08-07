@@ -71,7 +71,7 @@
             </div>
         </nav>
 
-        <!-- <div class="container" style="margin-left: 40px; margin-right: 40"> -->
+      
 
         <!-- NAVBAR 2 -->
         <nav class="navbar navbar-expand-sm navbar-light align-center sticky-top" style="background-color: aquamarine">
@@ -176,8 +176,7 @@
                                 Max &euro; <input type="range" min="${maximumPrice/2}" max="${maximumPrice}" value="${maximumPrice}" class="slider" id="slider2" ng-model="price_slider.start[1]" ng-click="priceFiltering('filter')" value="Filter">
                             </div> 
                             <br>
-                            <!--<span ng-click="price_slider.start = [0, 500]" class="clear" id="clearPrice" >Clear</span>-->
-                        </div>
+                              </div>
                     </div>
                     <br>
                     <a href="/Outdoor"><span><h5> Clear all filters</h5></span> </a>
@@ -186,9 +185,6 @@
 
                 <div class="col-lg-9">
                     <div class="row">
-
-
-
 
                         <!-- ITEM 1 -->
 
@@ -380,10 +376,10 @@
 
                                                                 if (bid != 0 && cid == 0) {
                                                                     savedbid = bid;
-                                                                    console.log(" IF saved BID " + savedbid);
+                                                                    
                                                                 } else if (bid == 0 && cid != 0) {
                                                                     savedcid = cid;
-                                                                    console.log("IF saved CID " + savedcid);
+                                                                   
                                                                 }
                                                                 let brandAndPriceByIdURL = "http://localhost:8080/Outdoor/json/" + savedbid + "/" + savedcid;
                                                                 $http.get(brandAndPriceByIdURL).then(handleJson);

@@ -139,27 +139,11 @@
 
                         </div>
 
-                        <!-- BUTTON QUANTITY PLUS MINUS -->
-                        <!--                        <div class="quantityButton" style="padding-top: 30px; outline:none">
-                                                    Quantity
-                                                    <input type="number" 
-                                                           style="outline: none; padding:5px; height:25px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,.5);
-                                                           margin: 0 5px !important"
-                                                           value="1">
-                                                </div>-->
-                        <!-- /BUTTON QUANTITY PLUS MINUS -->
-
-
-
-
-
-
+                   
                         <!--BUY BUTTON-->
                         <div class="purchase">
                             <button type="button" ng-click=newPage() data-toggle="button"
                                     style="margin-top: 40px; position: relative; left: 85px; ">Buy</button>
-
-                            <!--Message for availability-->
 
 
                         </div>
@@ -344,10 +328,10 @@
 
                                                     if (bid != 0 && cid == 0) {
                                                         savedbid = bid;
-                                                        console.log(" IF saved BID " + savedbid);
+                                                        
                                                     } else if (bid == 0 && cid != 0) {
                                                         savedcid = cid;
-                                                        console.log("IF saved CID " + savedcid);
+                                                        
                                                     }
                                                     let brandAndPriceByIdURL = "http://localhost:8080/Outdoor/json/" + savedbid + "/" + savedcid;
                                                     $http.get(brandAndPriceByIdURL).then(handleJson);

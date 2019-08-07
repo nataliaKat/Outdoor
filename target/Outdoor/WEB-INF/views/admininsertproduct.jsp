@@ -1,8 +1,4 @@
-<%-- 
-    Document   : admininsertproduct
-    Created on : Jul 25, 2019, 12:16:51 AM
-    Author     : Eleni
---%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -59,9 +55,7 @@
 
             <div class="collapse navbar-collapse" id="#navbarMenu"
                  style="position:relative; bottom:130px; left:80px; color: blue">
-                <!-- <p class="text-center font-italic font-weight-bold" style="">Compass</p> -->
-
-
+               
                 <ul class="navbar-nav1 ml-auto">
                     <li class="nav-item">
                         <a href="/Outdoor/logout" class="nav-link" style="font-size: 20px;"><i class="far fa-user-circle"></i> Logout</a>
@@ -183,7 +177,6 @@
 
                         <!--/CATEGORY-->
 
-                        <!--<input type="submit" value="Insert"/>-->
                         <button type="submit">Insert</button>
 
 
@@ -356,10 +349,10 @@ integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="ano
 
                                                     if (bid != 0 && cid == 0) {
                                                         savedbid = bid;
-                                                        console.log(" IF saved BID " + savedbid);
+                                                        
                                                     } else if (bid == 0 && cid != 0) {
                                                         savedcid = cid;
-                                                        console.log("IF saved CID " + savedcid);
+                                                        
                                                     }
                                                     let brandAndPriceByIdURL = "http://localhost:8080/Outdoor/json/" + savedbid + "/" + savedcid;
                                                     $http.get(brandAndPriceByIdURL).then(handleJson);
@@ -378,13 +371,6 @@ integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="ano
         form.classList.add('was-validated');
     })
 </script>
-<!--                                   <script type="text/javascript">
-                                       function alertName(){
-                                       alert("Form has been submitted");
-                                       } 
-                                   </script> 
-                                   <script type="text/javascript"> window.onload = alertName; </script>-->
-
 
 </body>
 </html>

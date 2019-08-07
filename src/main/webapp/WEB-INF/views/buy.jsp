@@ -1,8 +1,3 @@
-<%-- 
-    Document   : buy
-    Created on : 28 Ιουλ 2019, 9:50:03 μμ
-    Author     : kat26
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
@@ -67,7 +62,7 @@
             </div>
         </nav>
 
-        <!-- <div class="container" style="margin-left: 40px; margin-right: 40"> -->
+       
 
         <!-- NAVBAR 2 -->
         <nav class="navbar navbar-expand-sm navbar-light align-center sticky-top" style="background-color: aquamarine">
@@ -115,21 +110,7 @@
 
     <body>
 
-        <!-- BUTTON QUANTITY PLUS MINUS -->
-        <!--   <div class="quantityButton" style="padding-top: 30px; outline:none">
-                    Quantity
-                    <input type="number" 
-                           style="outline: none; padding:5px; height:25px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,.5);
-                           margin: 0 5px !important"
-                           value="1">
-                </div>-->
-        <!-- /BUTTON QUANTITY PLUS MINUS -->
-
-
-        <!-- BUTTON QUANTITY PLUS MINUS -->
-        <!--<div class="quantityButton" style="padding-top: 45px">-->
-
-        <!--</div>-->
+     
         <div class="container" style="margin-top: 50px ; ">
             <div class="row">
 
@@ -153,11 +134,11 @@
                         </div>
 
                         <form:hidden id="address" path="address"/>
-                        <!--<input id="post" type="submit" value="Submit" />-->
+                        
                     </form:form>
 
                     <div class="form-group">
-                        <!-- Set up a container element for the button -->
+                        
                         <div id="paypal-button-container"></div>
                     </div>
                 </div>
@@ -286,9 +267,6 @@
 
 
 
-        <!-- BUTTON QUANTITY -->
-        <script src="static/js/jquery.nice-number.js"></script>
-
         <script>
                                                     // Render the PayPal button into #paypal-button-container            
                                                     jQuery(document).ready(init);
@@ -300,15 +278,15 @@
                                                             if (usersQuantity > ${quantity}) {
                                                                 $("#message").html("Quantity not available.");
                                                                 $("#total").val("");
-                                                                console.log($("#total").val());
+                                                                
                                                             } else if (usersQuantity < 0) {
                                                                 $("#quant").val(1);
                                                                 $("#total").val(${product.price} * $("#quant").val());
-                                                                console.log($("#total").val());
+                                                                
                                                             } else {
                                                                 $("#message").html("");
                                                                 $("#total").val(${product.price} * $("#quant").val());
-                                                                console.log($("#total").val());
+                                                                
 
 
 
@@ -316,7 +294,7 @@
                                                         }
                                                         var today = new Date();
                                                         var month = today.getMonth() + 1;
-                                                        var day = today.getDate() + 1;
+                                                        var day = today.getDate();
                                                         $("#date").val(today.getFullYear() + "/" + month + "/" + day);
                                                         $("#total").val(${product.price} * $("#quant").val());
 
@@ -338,8 +316,7 @@
                                                                 return actions.order.capture().then(function (details) {
                                                                     // Show a success message to the buyer
                                                                     alert('Transaction completed by ' + details.payer.name.given_name + '!');
-                                                                    console.log(details);
-//                            console.log(details.purchase_units[0].shipping.address.address_line_1 + ", " + details.purchase_units[0].shipping.address.postal_code);
+                                                              
                                                                     $('#address').val(details.purchase_units[0].shipping.address.address_line_1 + ", " + details.purchase_units[0].shipping.address.postal_code);
 
                                                                     document.querySelector("#myForm").submit();
@@ -403,10 +380,10 @@
 
                             if (bid != 0 && cid == 0) {
                                 savedbid = bid;
-                                console.log(" IF saved BID " + savedbid);
+                                
                             } else if (bid == 0 && cid != 0) {
                                 savedcid = cid;
-                                console.log("IF saved CID " + savedcid);
+                                
                             }
                             let brandAndPriceByIdURL = "http://localhost:8080/Outdoor/json/" + savedbid + "/" + savedcid;
                             $http.get(brandAndPriceByIdURL).then(handleJson);
@@ -415,12 +392,6 @@
                     }
         </script>
 
-        <script type="text/javascript">
-                    $(function () {
-
-                        $('input[type="number"]').niceNumber();
-
-                    });
-        </script>
+       
     </body>
 </html>

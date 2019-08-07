@@ -1,8 +1,4 @@
-<%-- 
-    Document   : admineditproducts
-    Created on : 22 Ιουλ 2019, 12:30:30 πμ
-    Author     : kat26
---%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -391,10 +387,10 @@
                                 
                                     if (bid != 0 && cid == 0) {
                                         savedbid = bid;
-                                        console.log(" IF saved BID " + savedbid);
+                                        
                                     } else if (bid == 0 && cid != 0) {
                                         savedcid = cid;
-                                        console.log("IF saved CID " + savedcid);
+                                       
                                     }
                                     let brandAndPriceByIdURL = "http://localhost:8080/Outdoor/json/" + savedbid + "/" + savedcid;
                                     $http.get(brandAndPriceByIdURL).then(handleJson);

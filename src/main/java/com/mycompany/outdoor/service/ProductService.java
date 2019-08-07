@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.mycompany.outdoor.service;
 
 import com.mycompany.outdoor.dao.ProductDao;
@@ -13,10 +9,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-/**
- *
- * @author kat26
- */
+
 @Service("productService")
 public class ProductService {
 
@@ -38,8 +31,6 @@ public class ProductService {
     public List<Product> findAllProducts() {
         List<Product> products = dao.findAllProducts();
         return products;
-
-        //return dao.findAllProducts();
     }
 
     public List<Product> findProductsByPrice(double lowPrice, double highPrice) {

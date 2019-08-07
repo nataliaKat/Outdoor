@@ -147,22 +147,6 @@ public class Product implements Serializable {
 
     
 
-//    public Stock getQuantity() {
-//        return quantity;
-//    }
-//
-//    public void setStockList(Stock quantity) {
-//        this.quantity = quantity;
-//    }
-//    public List<Sale> getSaleList() {
-//        return saleList;
-//    }
-//
-//    public void setSaleList(List<Sale> saleList) {
-//        this.saleList = saleList;
-//    }
-//
-//
     public Category getCategory() {
         return category;
     }

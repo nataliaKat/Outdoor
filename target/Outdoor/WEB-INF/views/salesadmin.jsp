@@ -297,10 +297,10 @@
 
                                                     if (bid != 0 && cid == 0) {
                                                         savedbid = bid;
-                                                        console.log(" IF saved BID " + savedbid);
+                                                        
                                                     } else if (bid == 0 && cid != 0) {
                                                         savedcid = cid;
-                                                        console.log("IF saved CID " + savedcid);
+                                                        
                                                     }
                                                     let brandAndPriceByIdURL = "http://localhost:8080/Outdoor/json/" + savedbid + "/" + savedcid;
                                                     $http.get(brandAndPriceByIdURL).then(handleJson);
