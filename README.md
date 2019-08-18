@@ -12,4 +12,4 @@ Project functionalities include:
 *Users are able to:
 **View product details
 **Buy products using their PayPal account
-**
+
