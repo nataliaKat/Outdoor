@@ -85,7 +85,7 @@
                             <ol class="nostyle">
                                 <li ng-repeat="category in categories" class="filterItem" style="padding: none">
                                     <label class="label" for="cat{{category.categoryId}}" path="category" name="category">{{category.categoryName}}
-                                        <input type="radio" id="cat{{category.categoryId}}" name="category" path="category" ng-click="brandClick(0, category.categoryId)">
+                                        <input type="radio" id="cat{{category.categoryId}}" name="category" path="category" ng-click=newWelcome(category.categoryId)>
                                     </label>
                                 </li>
                             </ol>
@@ -255,16 +255,6 @@
                 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 
-                <script>
-                    var form = document.querySelector('.needs-validation');
-                    form.addEventListener('submit', function (event) {
-                        if (form.checkValidity() === false) {
-                            event.preventDefault();
-                            event.stopPropagation();
-                        }
-                        form.classList.add('was-validated');
-                    })
-                </script>
                 
                  <script>
 
@@ -291,6 +281,7 @@
                                                 $scope.newWelcome = function (id) {
 
                                                     location.href = "/Outdoor/cat/" + id;
+                                                    console.log("entered");
                                                 }
 
                                                 $scope.newPage = function (id) {
