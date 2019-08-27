@@ -191,7 +191,7 @@
                         <div class="col-lg-4 col-md-6 mb-4"  ng-model="show" ng-repeat="product in products| filter:pricefilter">
 
                             <div class="card h-100 border" > 
-                                <a href="#"><img class="card-img-top" src="{{ product.imageUrl}}" alt=""></a>
+                                <a href="#"><img class="card-img-top" ng-src="{{ product.imageUrl}}" alt=""></a>
                                 <div class="card-body" >{{product.brand.brandname}}
                                     <h4 class="card-title" style="font-family: 'Muli', sans-serif; overflow: hidden; height: 60px">
                                         <a href="#">{{ product.name}}</a>
