@@ -245,25 +245,25 @@
 
                         <ul style="padding-left: 0%">
                             <li class="foo-columns" style="padding-bottom: 18px">
-                                <a href="http://localhost:8080/Outdoor/cat/1" class="text-secondary ">
+                                <a href="/Outdoor/cat/1" class="text-secondary ">
                                     <i class="fas fa-hiking"></i> backpacks
                                 </a>
                             </li>
 
                             <li class="foo-columns" style="padding-bottom: 18px">
-                                <a href="http://localhost:8080/Outdoor/cat/2"  class="text-secondary">
+                                <a href="/Outdoor/cat/2"  class="text-secondary">
                                     <i class="fas fa-campground"></i> tents
                                 </a>
                             </li>
 
                             <li class="foo-columns" style="padding-bottom: 18px">
-                                <a href="http://localhost:8080/Outdoor/cat/3" class="text-secondary">
+                                <a href="/Outdoor/cat/3" class="text-secondary">
                                     <i class="fas fa-toolbox"></i> hiking equipment
                                 </a>
                             </li>
 
                             <li class="foo-columns" style="padding-bottom: 18px">
-                                <a href="http://localhost:8080/Outdoor/cat/4"  class="text-secondary">
+                                <a href="/Outdoor/cat/4"  class="text-secondary">
                                     <i class="fas fa-medkit"></i> first-aid kits
                                 </a>
                             </li>
@@ -341,9 +341,9 @@
                                                         ProductApp.controller("MainCtrl", ['$scope', '$http', MainCtrl]);
 
                                                         function MainCtrl($scope, $http) {
-                                                            const URL = "http://localhost:8080/Outdoor/json/0/" +${catcat};
-                                                            const brandURL = "http://localhost:8080/Outdoor/json/brands/";
-                                                            const categoryURL = "http://localhost:8080/Outdoor/json/categories";
+                                                            const URL = "/Outdoor/json/0/" +${catcat};
+                                                            const brandURL = "/Outdoor/json/brands/";
+                                                            const categoryURL = "/Outdoor/json/categories";
                                                             $scope.products = [];
                                                             $scope.brands = [];
                                                             $scope.categories = [];
@@ -368,7 +368,7 @@
                                                             }
                                                             $scope.newPage = function (id) {
 
-                                                                location.href = "http://localhost:8080/Outdoor/products/" + id;
+                                                                location.href = "/Outdoor/products/" + id;
                                                             };
 
 
@@ -381,7 +381,7 @@
                                                                     savedcid = cid;
                                                                    
                                                                 }
-                                                                let brandAndPriceByIdURL = "http://localhost:8080/Outdoor/json/" + savedbid + "/" + savedcid;
+                                                                let brandAndPriceByIdURL = "/Outdoor/json/" + savedbid + "/" + savedcid;
                                                                 $http.get(brandAndPriceByIdURL).then(handleJson);
                                                                 document.documentElement.scrollTop = 300;
                                                             }
