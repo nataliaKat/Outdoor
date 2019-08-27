@@ -34,9 +34,6 @@
         <!-- Rokkitt Font -->
         <link href="https://fonts.googleapis.com/css?family=Rokkitt:500&display=swap" rel="stylesheet">
 
-        <!-- AngularJS -->
-        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.min.js"></script>-->
-
         <!-- My CSS -->
         <link rel="stylesheet" type="text/css" href="<c:url value='/static/css/style.css'/>"
 
@@ -339,65 +336,7 @@
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-           <script>
-            
-            
-                            var savedbid = 0;
-                            var savedcid = 0;
-
-                                            const ProductApp = angular.module("app", []);
-
-                                            ProductApp.controller("MainCtrl", ['$scope', '$http', MainCtrl]);
-
-                                            function MainCtrl($scope, $http) {
-                                                const URL = "/Outdoor/json/${id}";
-                                                const brandURL = "/Outdoor/json/brands";
-                                                 const categoryURL = "/Outdoor/json/categories";
-                                                $scope.products = [];
-                                                $scope.brands = [];
-                                                 $scope.categories = [];
-                                                $http.get(URL).then(handleJson);
-                                                $http.get(categoryURL).then(handleJsonCategories);
-
-                                                $http.get(brandURL).then(handleJsonBrands);
-                                                
-                                                $scope.newWelcome = function(id) {
-                                                   
-                                                    location.href ="/Outdoor/cat/" + id;
-                                                }
-                                                
-                                                $scope.newPage = function (id) {
-
-                                                    location.href = "/Outdoor/products/" + ${id} + "/buy";
-                                                };
-
-                                                function handleJson(response) {
-                                                    $scope.product = response.data;
-                                                }
-                                                function handleJsonCategories(response) {
-                                                    $scope.categories = response.data;
-                                                }
-                                                function handleJsonBrands(response) {
-                                                   
-                                                    $scope.brands = response.data;
-                                                }
-                                                
-                                                         
-                                $scope.brandClick = function (bid, cid) {
-                                
-                                    if (bid != 0 && cid == 0) {
-                                        savedbid = bid;
-                                        
-                                    } else if (bid == 0 && cid != 0) {
-                                        savedcid = cid;
-                                       
-                                    }
-                                    let brandAndPriceByIdURL = "/Outdoor/json/" + savedbid + "/" + savedcid;
-                                    $http.get(brandAndPriceByIdURL).then(handleJson);
-                                    document.documentElement.scrollTop = 300;
-                                }
-                                            }
-        </script>
+           
 
         <script>
                         var form = document.querySelector('.needs-validation');
