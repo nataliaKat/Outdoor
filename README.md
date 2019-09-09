@@ -2,6 +2,7 @@
 This is a group project for a hiking equipment eshop (Compass) developed during 8th Java Coding Bootcamp by AFDEmp. 
 Login as admin -username: tom
                 password: abc125
+                ------------
 Login as user -username: gio 
                password: 123
 
