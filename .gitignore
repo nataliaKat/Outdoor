@@ -1,13 +1,13 @@
 
-target/classes/com/mycompany/outdoor/controller/ProductController.class
-*.class
-*.class
-*.class
-*.class
-*.class
-target/classes/com/mycompany/outdoor/controller/ProductController.class
+#target/classes/com/mycompany/outdoor/controller/ProductController.class
+#*.class
+#*.class
+#*.class
+#*.class
+#*.class
+#target/classes/com/mycompany/outdoor/controller/ProductController.class
 # Compiled class file
-*.class
+#*.class
 
 # Log file
 *.log
