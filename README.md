@@ -1,5 +1,9 @@
 # Outdoor
-This is a group project for a hiking equipment eshop (Compass) developed during 8th Java Coding Bootcamp by AFDEmp. 
+This is a group project for a hiking equipment eshop (Compass) developed during 8th Java Coding Bootcamp by AFDEmp. </br>Login as admin -username: tom 
+                password: abc125</br>
+                ------------</br>
+Login as user -username: gio 
+               password: 123
 
 ## Functionalities
 * Connection to a remote mysql database
