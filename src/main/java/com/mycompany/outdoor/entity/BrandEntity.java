@@ -7,6 +7,7 @@ import java.util.Objects;
 public class BrandEntity {
         private Integer brandsId;
     private String brandname;
+    private String hi;
 
     public BrandEntity() {
     }

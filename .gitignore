@@ -1,11 +1,7 @@
-*.class
 
 *.jar
 *.war
-
-
-hs_err_pid*
-/.metadata/
-
 *.lst
 
+*.class
+target/*
