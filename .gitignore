@@ -4,4 +4,10 @@
 *.lst
 
 *.class
-target/*
+/target/*
+
+/build/
+/target/
+/.metadata/
+*/.metadata/**
+*/target/**
